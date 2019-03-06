@@ -1,0 +1,298 @@
+﻿@model SRDP.WebUI.ModelViews.HistoricoIndividualModelView
+
+@{
+    ViewBag.Title = "Historico Individual";
+}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.4/css/buttons.bootstrap4.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/scroller/1.5.0/css/scroller.bootstrap4.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css" />
+
+
+
+
+<div class="container">
+    <h4 class="page-title">Historico Individual</h4>
+    <div class="row">
+        <div class="col-md-3">
+            @using (Html.BeginForm((FormMethod.Get, new { @class = "col-md-12" })))
+            {
+                <div class="card">
+                    <div class="card-body">
+                        @Html.LabelFor(x => Model.SearchParameters.CodArea, htmlAttributes: new { @class = "control-label" })
+                        <div>
+                            @Html.DropDownListFor(x => Model.SearchParameters.CodArea, new SelectList(Model.SearchParameters.Areas, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "CodArea" })
+                        </div>
+                        @Html.LabelFor(x => Model.SearchParameters.CodGeog, htmlAttributes: new { @class = "control-label" })
+                        <div>
+                            @Html.DropDownListFor(x => Model.SearchParameters.CodGeog, new SelectList(Model.SearchParameters.UbicacionesGeograficas, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "CodGeog" })
+                        </div>
+                        @Html.LabelFor(x => Model.SearchParameters.CodCargo, htmlAttributes: new { @class = "control-label" })
+                        <div>
+                            @Html.DropDownListFor(x => Model.SearchParameters.CodCargo, new SelectList(Model.SearchParameters.Cargos, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "CodCargo" })
+                        </div>
+                        @Html.LabelFor(x => Model.SearchParameters.CodCentroCosto, htmlAttributes: new { @class = "control-label" })
+                        <div>
+                            @Html.DropDownListFor(x => Model.SearchParameters.CodCentroCosto, new SelectList(Model.SearchParameters.CentrosCosto, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "CodCentroCosto" })
+                        </div>
+                        @Html.LabelFor(x => Model.SearchParameters.TipoRol, htmlAttributes: new { @class = "control-label" })
+                        <div>
+                            @Html.DropDownListFor(x => Model.SearchParameters.TipoRol, new SelectList(Model.SearchParameters.Roles, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "TipoRol" })
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-action">
+                            <button class="btn btn-secondary my-2 my-sm-0 pull-left" type="submit" value="Buscar">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered table-striped" id="historicoIndividualTable">
+                        <thead>
+                            <tr>
+                                <th rowspan="2">
+                                    @Html.DisplayNameFor(model => model.Data[0].NombreCompleto)
+                                </th>
+                                <th rowspan="2">
+                                    @Html.DisplayNameFor(model => model.Data[0].Cargo)
+                                </th>
+                                <th rowspan="2">
+                                    @Html.DisplayNameFor(model => model.Data[0].Area)
+                                </th>
+                                <th rowspan="2">
+                                    @Html.DisplayNameFor(model => model.Data[0].UbicacionGeografica)
+                                </th>
+                                <th rowspan="2">
+                                    @Html.DisplayNameFor(model => model.Data[0].CentroCosto)
+                                </th>
+                                <th colspan="4">
+                                    <span>DEPOSITO</span>
+                                </th>
+                                <th colspan="4">
+                                    <span>INMUEBLES</span>
+                                </th>
+                                <th colspan="4">
+                                    <span>VEHICULOS</span>
+                                </th>
+                                <th colspan="4">
+                                    <span>OTROS INGRESOS</span>
+                                </th>
+                                <th colspan="4">
+                                    <span>DEUDAS BANCARIAS</span>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Data[0].DepositoGestionAnterior)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Data[0].DepositoMontoGestionAnterior)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Data[0].DepositoGestionActual)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Data[0].DepositoMontoGestionActual)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Data[0].InmuebleGestionAnterior)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Data[0].InmuebleMontoGestionAnterior)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Data[0].InmuebleGestionActual)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Data[0].InmuebleMontoGestionActual)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Data[0].VehiculoGestionAnterior)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Data[0].VehiculoMontoGestionAnterior)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Data[0].VehiculoGestionActual)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Data[0].VehiculoMontoGestionActual)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Data[0].OtroIngresoGestionAnterior)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Data[0].OtroIngresoMontoGestionAnterior)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Data[0].OtroIngresoGestionActual)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Data[0].OtroIngresoMontoGestionActual)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Data[0].DeudaBancariaGestionAnterior)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Data[0].DeudaBancariaMontoGestionAnterior)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Data[0].DeudaBancariaGestionActual)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Data[0].DeudaBancariaMontoGestionActual)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Data)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NombreCompleto)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Cargo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Area)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UbicacionGeografica)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CentroCosto)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DepositoGestionAnterior)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DepositoMontoGestionAnterior)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DepositoGestionActual)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DepositoMontoGestionActual)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.InmuebleGestionAnterior)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.InmuebleMontoGestionAnterior)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.InmuebleGestionActual)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.InmuebleMontoGestionActual)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.VehiculoGestionAnterior)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.VehiculoMontoGestionAnterior)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.VehiculoGestionActual)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.VehiculoMontoGestionActual)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OtroIngresoGestionAnterior)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OtroIngresoMontoGestionAnterior)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OtroIngresoGestionActual)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OtroIngresoMontoGestionActual)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DeudaBancariaGestionAnterior)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DeudaBancariaMontoGestionAnterior)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DeudaBancariaGestionActual)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DeudaBancariaMontoGestionActual)
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+    <script src="https://cdn.datatables.net/fixedcolumns/3.2.6/js/dataTables.fixedColumns.min.js"></script>
+
+    <script src="https://cdn.datatables.net/buttons/1.5.4/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.flash.min.js"></script>
+
+    <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/scroller/1.5.0/js/dataTables.scroller.js"></script>
+
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+
+    <script>
+        var dataTable;
+        $(document).ready(function () {
+            dataTable = $("#historicoIndividualTable").DataTable({
+                dom: 'Bfrtip',
+                lengthChange: false,
+                buttons: ['copy', 'excel',
+                    {
+                        extend: 'pdfHtml5',
+                        orientation: 'landscape',
+                        pageSize: 'LETTER'
+                    }
+                ],
+                deferRender: true,
+                scrollY: 300,
+                scrollX: true,
+                scrollCollapse: true,
+                scroller: true
+                //dom: "tip",
+                //searching: false,
+                //language: {
+
+                //    "emptyTable": "No data found, Please click on <b>Add New</b> Button"
+                //}
+            });
+            new $.fn.dataTable.FixedColumns(dataTable);
+            dataTable.buttons().container()
+                .appendTo('#historicoIndividualTable_wrapper .col-md-6:eq(0)');
+        });
+
+    </script>
+}

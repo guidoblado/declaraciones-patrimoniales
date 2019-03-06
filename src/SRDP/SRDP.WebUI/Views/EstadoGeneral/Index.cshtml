@@ -1,0 +1,171 @@
+﻿@model SRDP.WebUI.ModelViews.EstadoGeneralModelView
+
+@{
+    ViewBag.Title = "Reporte de Estado General";
+}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.4/css/buttons.bootstrap4.min.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/scroller/1.5.0/css/scroller.bootstrap4.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css" />
+
+<div class="container">
+    <h4 class="page-title">Estado general</h4>
+    <div class="row">
+        <div class="col-md-3">
+            @using (Html.BeginForm((FormMethod.Get, new { @class = "col-md-12" })))
+            {
+                <div class="card">
+                    <div class="card-body">
+                        @Html.LabelFor(x => Model.SearchParameters.CodArea, htmlAttributes: new { @class = "control-label" })
+                        <div>
+                            @Html.DropDownListFor(x => Model.SearchParameters.CodArea, new SelectList(Model.SearchParameters.Areas, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "CodArea" })
+                        </div>
+                        @Html.LabelFor(x => Model.SearchParameters.CodGeog, htmlAttributes: new { @class = "control-label" })
+                        <div>
+                            @Html.DropDownListFor(x => Model.SearchParameters.CodGeog, new SelectList(Model.SearchParameters.UbicacionesGeograficas, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "CodGeog" })
+                        </div>
+                        @Html.LabelFor(x => Model.SearchParameters.CodCargo, htmlAttributes: new { @class = "control-label" })
+                        <div>
+                            @Html.DropDownListFor(x => Model.SearchParameters.CodCargo, new SelectList(Model.SearchParameters.Cargos, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "CodCargo" })
+                        </div>
+                        @Html.LabelFor(x => Model.SearchParameters.CodCentroCosto, htmlAttributes: new { @class = "control-label" })
+                        <div>
+                            @Html.DropDownListFor(x => Model.SearchParameters.CodCentroCosto, new SelectList(Model.SearchParameters.CentrosCosto, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "CodCentroCosto" })
+                        </div>
+                        @Html.LabelFor(x => Model.SearchParameters.TipoRol, htmlAttributes: new { @class = "control-label" })
+                        <div>
+                            @Html.DropDownListFor(x => Model.SearchParameters.TipoRol, new SelectList(Model.SearchParameters.Roles, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "TipoRol" })
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-action">
+                            <button class="btn btn-secondary my-2 my-sm-0 pull-left" type="submit" value="Buscar">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-striped table-bordered" id="declaracionEstadoTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    @Html.DisplayNameFor(model => model.Data[0].NombreCompleto)
+                                </th>
+                                <th scope="col">
+                                    @Html.DisplayNameFor(model => model.Data[0].Cargo)
+                                </th>
+                                <th scope="col">
+                                    @Html.DisplayNameFor(model => model.Data[0].Area)
+                                </th>
+                                <th scope="col">
+                                    @Html.DisplayNameFor(model => model.Data[0].UbicacionGeografica)
+                                </th>
+                                <th scope="col">
+                                    @Html.DisplayNameFor(model => model.Data[0].CentroCosto)
+                                </th>
+                                <th scope="col">
+                                    @Html.DisplayNameFor(model => model.Data[0].Rol)
+                                </th>
+                                <th scope="col">
+                                    @Html.DisplayNameFor(model => model.Data[0].EstadoDeclaracion)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Data)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NombreCompleto)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Cargo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Area)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UbicacionGeografica)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CentroCosto)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Rol)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EstadoDeclaracion)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section scripts{
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+    <script src="https://cdn.datatables.net/buttons/1.5.4/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.flash.min.js"></script>
+
+    <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/scroller/1.5.0/js/dataTables.scroller.js"></script>
+
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+
+    @*https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js // should be loaded first before other plugins
+        https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js
+        https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js  // can be loaded up
+        https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js
+        https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js
+        https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js
+        https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js*@
+
+
+    <script>
+        var dataTable;
+        $(document).ready(function () {
+            dataTable = $("#declaracionEstadoTable").DataTable({
+                dom: 'Bfrtip',
+                lengthChange: false,
+                buttons: ['copy', 'excel',
+                    {
+                        extend: 'pdfHtml5',
+                        orientation: 'landscape',
+                        pageSize: 'LETTER'
+                    }
+                ],
+                //dom: "tip",
+                //searching: false,
+                //language: {
+
+                //    "emptyTable": "No data found, Please click on <b>Add New</b> Button"
+                //}
+            })
+        });
+        dataTable.buttons().container()
+            .appendTo('#declaracionEstadoTable_wrapper .col-md-6:eq(0)');
+    </script>
+}

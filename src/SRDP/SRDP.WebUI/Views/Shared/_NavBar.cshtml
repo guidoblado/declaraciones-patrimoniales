@@ -1,0 +1,94 @@
+﻿
+<div class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
+    <div class="container">
+        @Html.ActionLink("SRDP", "Index", "Home", new { @class = "navbar-brand" })
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+            <li>@Html.ActionLink("Declaraciones", "Index", "Declaraciones")</li>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="#" id="navbardropreports" data-toggle="dropdown">
+                    Reportes
+                </a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-item">
+                        @Html.ActionLink("Estado General", "Index", "EstadoGeneral")
+                    </div>
+                    <div class="dropdown-item">
+                        @Html.ActionLink("Alerta general", "Index", "AlertaGeneral")
+                    </div>
+                    <div class="dropdown-item">
+                        @Html.ActionLink("Alerta Individual", "Index", "AlertaIndividual")
+                    </div>
+                    <div class="dropdown-item">
+                        @Html.ActionLink("Historico individual", "Index", "HistoricoIndividual")
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="#" id="navbardropadmin" data-toggle="dropdown">
+                    Administrar
+                </a>
+                <div class="dropdown-menu">
+                    <div class="dropdown-item">
+                        @Html.ActionLink("Reglas Alerta", "Index", "ReglasAlerta")
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <span class="navbar-text fa fa-user">  @User.Identity.Name</span>
+    </div>
+</div>
+
+@*<div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
+            <a class="navbar-brand" href="#">SRDP</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" wfd-id="598">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" >
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        @Html.ActionLink("Inicio", "Index", "Home", new { @class = "nav-link" } )
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Declaraciones", "Index", "Declaraciones", new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#reportes">
+                            Reportes
+                            <span class="caret"></span>
+                        </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a asp-area="" asp-controller="HistoricoIndividual" asp-action="Index">
+                                        <span class="sub-item">Historico Individual</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-area="" asp-controller="EstadoGeneral" asp-action="Index">
+                                        <span class="sub-item">Estado General</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-area="" asp-controller="AlertaGeneral" asp-action="Index">
+                                        <span class="sub-item">Alerta General</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                    </li>
+                    <li class="nav-item" wfd-id="448">
+                        @Html.ActionLink("Alertas", "Index", "Alertas", new { @class = "nav-link" })
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <span class="text-white">
+                        @User.Identity.Name
+                        <span class="user-level"></span>
+                        <span class="caret"></span>
+                    </span>
+                </form>
+            </div>
+        </nav>
+    </div>*@

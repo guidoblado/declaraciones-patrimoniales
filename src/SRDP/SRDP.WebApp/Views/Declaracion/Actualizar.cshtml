@@ -1,0 +1,183 @@
+﻿@model SRDP.WebApp.Models.DeclaracionModel
+
+@{
+    ViewData["Title"] = "Actualizar";
+}
+
+
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <h2>Formulario de Declaración Patrimonial</h2>
+            @*Datos Personales*@
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Datos Personales</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-2 font-weight-bold col-form-label-sm">
+                                    @Html.DisplayNameFor(model => model.NombreCompleto)
+                                </div>
+                                <div class="col-sm-4 form-control-sm">
+                                    @Html.DisplayFor(model => model.NombreCompleto)
+                                </div>
+                                <div class="col-sm-2 font-weight-bold col-form-label-sm">
+                                    @Html.DisplayNameFor(model => model.CedulaIdentidad)
+                                </div>
+                                <div class="col-sm-4 form-control-sm">
+                                    @Html.DisplayFor(model => model.CedulaIdentidad)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2 font-weight-bold col-form-label-sm">
+                                    @Html.DisplayNameFor(model => model.FechaNacimiento)
+                                </div>
+                                <div class="col-sm-4 form-control-sm">
+                                    @Html.DisplayFor(model => model.FechaNacimiento)
+                                </div>
+                                <div class="col-sm-2 font-weight-bold col-form-label-sm">
+                                    @Html.DisplayNameFor(model => model.EstadoCivil)
+                                </div>
+                                <div class="col-sm-4 form-control-sm">
+                                    @Html.DisplayFor(model => model.EstadoCivil)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*Depositos*@
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="card-title">Depósitos</div>
+                                    <div class="card-text">Indicar todos los depósitos que usted tenga a su nombre en el sistema financiero nacional e internacional tanto en moneda nacional, dólares americanos u otros</div>
+                                </div>
+                                <div class="col-md-2">
+                                    <p class="demo">
+                                        <a id="addDeposito" class="btn btn-secondary btn-round pull-right text-white" )"><i class="fa fa-plus"></i> Nuevo</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table id="depositosTable" class="table table-bordered table-head-bg-info table-bordered-bd-info mt-4">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">
+                                            Institución
+                                        </th>
+                                        <th scope="col">
+                                            Tipo de Cuenta
+                                        </th>
+                                        <th scope="col">
+                                            Saldo
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<div id="editDepositoModal" class="modal fade" role="dialog" data-url='@Url.Action("Save", "Depositos", new { id = Guid.Empty, declaracionID = Model.DeclaracionID } )'></div>
+
+
+@section Scripts
+    {
+    <script>
+        $(document).ready(function () {
+            $("#addDeposito").click(function () {
+                var url = $("#editDepositoModal").data("url");
+                $.get(url, function (data) {
+
+                    $("#editDepositoModal").html(data);
+                    $("#editDepositoModal").modal("show");
+                })
+            });
+        });
+        $(document).ready(function () {
+            dataTable = $("#depositosTable").DataTable({
+                "ajax": {
+                    "url": "/Depositos/GetDepositos/@Model.DeclaracionID",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "institucion" },
+                    { "data": "tipoDeCuenta" },
+                    { "data": "saldo", render: $.fn.dataTable.render.number(',', '.', 2, '$ ') },
+                    { "data": "id" , "render" : function (data) {
+                        return "<a class='btn btn-primary btn-sm text-white' onclick=PopupForm('@Url.Action("Save","Depositos")/" + data + "')><i class='fa fa-pencil'></i> Editar</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Eliminar</a>";
+                    },
+                        "orderable": false,
+                        "searchable":false,
+                        "width":"150px"
+                    }
+                ],
+                dom: "tip",
+                searching: false,
+            });
+        });
+        function PopupForm(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+            .done(function (response) {
+                $("#editDepositoModal").html(response);
+                $("#editDepositoModal").modal('show');
+                //Popup = formDiv.dialog({
+                //    autoOpen: true,
+                //    resizable: false,
+                //    title: 'Ingrese los datos del deposito',
+                //    height: 500,
+                //    width: 700,
+                //    close: function () {
+                //        Popup.dialog('destroy').remove();
+                //    }
+
+                //});
+            });
+        }
+
+        function SubmitForm(form) {
+            $.validator.unobtrusive.parse(form);
+            if ($(form).valid()) {
+                $.ajax({
+                    type: "POST",
+                    url: form.action,
+                    data: $(form).serialize(),
+                    success: function (data) {
+                        if (data.success) {
+                            $("#editDepositoModal").modal('close');
+                            dataTable.ajax.reload();
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "success"
+                            })
+
+                        }
+                        else {
+                            $("#editDepositoModal").modal('close');
+                            dataTable.ajax.reload();
+                        }
+                    }
+                });
+            }
+            return false;
+        }
+    </script>
+}

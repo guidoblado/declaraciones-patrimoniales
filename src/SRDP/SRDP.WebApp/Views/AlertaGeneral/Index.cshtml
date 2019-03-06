@@ -1,0 +1,122 @@
+﻿@model SRDP.WebApp.ModelViews.AlertaGeneralModelView
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <h4 class="page-title">Estado general</h4>
+            <partial name="_AlertaParamView" , model="Model.AlertaParameters" />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-bordered table-sm" id="alertaGeneralTable">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Data[0].NombreCompleto)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Data[0].Cargo)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Data[0].Area)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Data[0].UbicacionGeografica)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Data[0].CentroDeCosto)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Data[0].Rol)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Data[0].EstadoDeclaracion)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Data[0].PatrimonioActual)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Data[0].PatrimonioGestionAnterior)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Data[0].DiferenciaPatrimonio)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Data[0].VariacionPorcentual)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Data)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NombreCompleto)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Cargo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Area)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.UbicacionGeografica)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CentroDeCosto)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Rol)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.EstadoDeclaracion)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PatrimonioActual)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PatrimonioGestionAnterior)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DiferenciaPatrimonio)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.VariacionPorcentual)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Detalles", "Details", new { /* id=item.PrimaryKey */ })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+    {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#alertaGeneralTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'excel', 'pdf', 'print'
+                ],
+                "scrollX": true,
+
+            });
+
+        });
+    </script>
+}
+

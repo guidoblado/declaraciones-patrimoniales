@@ -1,0 +1,109 @@
+﻿@model IEnumerable<SRDP.Application.UseCases.DeclaracionOutput>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <h4 class="page-title">Declaraciones</h4>
+            <div class="row">
+                <div class="col-sm-12">
+                    <nav class="navbar navbar-light bg-light justify-content-between">
+                        <a class="navbar-brand">Declaraciones</a>
+                        @using (Html.BeginForm(FormMethod.Get, new { @class = "form-inline" }))
+                        {
+                            @Html.TextBox("Nombre", "", new { @type = "text", placeholder = "Buscar por nombre", @class = "form-control mr-sm-2" })
+                            @*<input class="form-control mr-sm-2" placeholder="Buscar por nombre" aria-label="Search">*@
+                            <button class="btn btn-secondary my-2 my-sm-0" type="submit" value="Buscar">Buscar</button>
+                        }
+                    </nav>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Aqui los filtros</div>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm" id="declaraciones_table">
+                                <thead>
+                                    <tr>
+                                        <th scope="row">
+                                            @Html.DisplayNameFor(model => model.Gestion)
+                                        </th>
+                                        <th scope="row">
+                                            @Html.ActionLink("Nombre Completo", "Index", new { ordenadoPor = ViewBag.NameSortParam })
+                                        </th>
+                                        <th scope="row">
+                                            @Html.DisplayNameFor(model => model.CedulaIdentidad)
+                                        </th>
+                                        <th scope="row">
+                                            @Html.DisplayNameFor(model => model.FechaNacimiento)
+                                        </th>
+                                        <th scope="row">
+                                            @Html.DisplayNameFor(model => model.EstadoCivil)
+                                        </th>
+                                        <th scope="row">
+                                            @Html.ActionLink("Fecha Llenado", "Index", new { ordenadoPor = ViewBag.DateSortParam })
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td scope="row">
+                                                @Html.DisplayFor(modelItem => item.Gestion)
+                                            </td>
+                                            <td scope="row">
+                                                @Html.DisplayFor(modelItem => item.NombreCompleto)
+                                            </td>
+                                            <td scope="row">
+                                                @Html.DisplayFor(modelItem => item.CedulaIdentidad)
+                                            </td>
+                                            <td scope="row">
+                                                @Html.DisplayFor(modelItem => item.FechaNacimiento.Date)
+                                            </td>
+                                            <td scope="row">
+                                                @Html.DisplayFor(modelItem => item.EstadoCivil)
+                                            </td>
+                                            <td scope="row">
+                                                @Html.DisplayFor(modelItem => item.FechaLlenado.Date)
+                                            </td>
+                                            <td scope="row">
+                                                @Html.ActionLink("Ver Detalles", "Details", new { id = item.DeclaracionID })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#declaraciones_table').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'excel', 'pdf', 'print'
+                ],
+                "scrollX": true,
+
+            });
+
+        });
+    </script>
+}
+
+

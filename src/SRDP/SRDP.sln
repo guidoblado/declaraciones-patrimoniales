@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2019
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SRDP.Domain", "SRDP.Domain\SRDP.Domain.csproj", "{E8BF9B2C-5EB7-41C9-B891-722EAD9DB195}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SRDP.Application", "SRDP.Application\SRDP.Application.csproj", "{829AE0B1-44B4-47C7-BA85-B0D0E1F416F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SRDP.Infrastructure", "SRDP.Infrastructure\SRDP.Infrastructure.csproj", "{401BC8DD-87A9-477B-9839-F973CE86E51C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SRDP.Persitence", "SRDP.Persitence\SRDP.Persitence.csproj", "{E3378157-14A9-4801-B287-674E77E8D0E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SRDP.WebUI", "SRDP.WebUI\SRDP.WebUI.csproj", "{9537B8DB-A903-4879-84A4-3D986770042F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SRDP.WebApp", "SRDP.WebApp\SRDP.WebApp.csproj", "{EC72A945-96C6-418C-9D52-C5F619EC9730}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E8BF9B2C-5EB7-41C9-B891-722EAD9DB195}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8BF9B2C-5EB7-41C9-B891-722EAD9DB195}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8BF9B2C-5EB7-41C9-B891-722EAD9DB195}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8BF9B2C-5EB7-41C9-B891-722EAD9DB195}.Release|Any CPU.Build.0 = Release|Any CPU
+		{829AE0B1-44B4-47C7-BA85-B0D0E1F416F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{829AE0B1-44B4-47C7-BA85-B0D0E1F416F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{829AE0B1-44B4-47C7-BA85-B0D0E1F416F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{829AE0B1-44B4-47C7-BA85-B0D0E1F416F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{401BC8DD-87A9-477B-9839-F973CE86E51C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{401BC8DD-87A9-477B-9839-F973CE86E51C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{401BC8DD-87A9-477B-9839-F973CE86E51C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{401BC8DD-87A9-477B-9839-F973CE86E51C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3378157-14A9-4801-B287-674E77E8D0E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3378157-14A9-4801-B287-674E77E8D0E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3378157-14A9-4801-B287-674E77E8D0E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3378157-14A9-4801-B287-674E77E8D0E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9537B8DB-A903-4879-84A4-3D986770042F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9537B8DB-A903-4879-84A4-3D986770042F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9537B8DB-A903-4879-84A4-3D986770042F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9537B8DB-A903-4879-84A4-3D986770042F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC72A945-96C6-418C-9D52-C5F619EC9730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC72A945-96C6-418C-9D52-C5F619EC9730}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC72A945-96C6-418C-9D52-C5F619EC9730}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC72A945-96C6-418C-9D52-C5F619EC9730}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1F110680-9B8A-4004-A442-42B9DAC26EB6}
+	EndGlobalSection
+EndGlobal

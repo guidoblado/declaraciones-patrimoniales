@@ -1,0 +1,74 @@
+﻿@model SRDP.Application.UseCases.DeclaracionOutput
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>DeclaracionOutput</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DeclaracionID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeclaracionID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gestion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gestion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreCompleto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreCompleto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CedulaIdentidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CedulaIdentidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaNacimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoCivil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoCivil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaLlenado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaLlenado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

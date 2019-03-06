@@ -1,0 +1,51 @@
+﻿@model SRDP.WebApp.Models.DepositoModel
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="modal-dialog col-10">
+            <div class="modal-content">
+                <div class="modal-body">
+                    @using (Html.BeginForm("Save", "Depositos", FormMethod.Post, new { onsubmit = "return SubmitForm(this)" }))
+                    {
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="ID" class="control-label"></label>
+                            <input asp-for="ID" class="form-control" />
+                            <span asp-validation-for="ID" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DeclaracionID" class="control-label"></label>
+                            <input asp-for="DeclaracionID" class="form-control" />
+                            <span asp-validation-for="DeclaracionID" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Institucion" class="control-label"></label>
+                            <input asp-for="Institucion" class="form-control" />
+                            <span asp-validation-for="Institucion" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="TipoDeCuenta" class="control-label"></label>
+                            <input asp-for="TipoDeCuenta" class="form-control" />
+                            <span asp-validation-for="TipoDeCuenta" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Saldo" class="control-label"></label>
+                            <span class="input-group-addon">$</span>
+                            <input asp-for="Saldo" class="form-control" />
+                            <span asp-validation-for="Saldo" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Guardar" class="btn btn-default" />
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

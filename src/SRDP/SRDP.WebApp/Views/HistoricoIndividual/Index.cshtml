@@ -1,0 +1,158 @@
+﻿@model SRDP.WebApp.ModelViews.HistoricoIndividualModelView
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="main-panel">
+    <div class="content">
+        <div class="page-inner">
+            <h4 class="page-title">Historico Individual</h4>
+            <partial name="_SearchParamView" , model="Model.SearchParameters" />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-bordered" id="table_id">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2">
+                                            @Html.DisplayNameFor(model => model.Data[0].NombreCompleto)
+                                        </th>
+                                        <th rowspan="2">
+                                            @Html.DisplayNameFor(model => model.Data[0].Cargo)
+                                        </th>
+                                        <th rowspan="2">
+                                            @Html.DisplayNameFor(model => model.Data[0].Area)
+                                        </th>
+                                        <th rowspan="2">
+                                            @Html.DisplayNameFor(model => model.Data[0].UbicacionGeografica)
+                                        </th>
+                                        <th rowspan="2">
+                                            @Html.DisplayNameFor(model => model.Data[0].CentroCosto)
+                                        </th>
+                                        <th colspan="2">
+                                            <label for="DepositoGestionAnterior">Depositos</label>
+                                        </th>
+                                        <th colspan="2">
+                                            <label for="InmuebleGestionAnterior">Inmuebles</label>
+                                        </th>
+                                        <th colspan="2">
+                                            <label for="VehiculoGestionAnterior">Vehiculos</label>
+                                        </th>
+                                        <th colspan="2">
+                                            <label for="OtroIngresoGestionAnterior">Otros Ingresos</label>
+                                        </th>
+                                        <th colspan="2">
+                                            <label for="DeudaBancariaGestionAnterior">Deudas Bancarias</label>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayFor(model => model.GestionAnterior)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayFor(model => model.GestionActual)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayFor(model => model.GestionAnterior)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayFor(model => model.GestionActual)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayFor(model => model.GestionAnterior)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayFor(model => model.GestionActual)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayFor(model => model.GestionAnterior)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayFor(model => model.GestionActual)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayFor(model => model.GestionAnterior)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayFor(model => model.GestionActual)
+                                        </th>
+                                    </tr>
+                                    <tr></tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Data)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NombreCompleto)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Cargo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Area)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.UbicacionGeografica)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CentroCosto)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DepositoMontoGestionAnterior)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DepositoMontoGestionActual)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.InmuebleMontoGestionAnterior)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.InmuebleMontoGestionActual)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.VehiculoMontoGestionAnterior)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.VehiculoMontoGestionActual)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.OtroIngresoMontoGestionAnterior)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.OtroIngresoMontoGestionActual)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DeudaBancariaMontoGestionAnterior)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DeudaBancariaMontoGestionActual)
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@*@section Scripts
+    {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#table_id').DataTable({
+                "scrollX": true,
+            });
+
+        });
+    </script>
+}*@
+
+

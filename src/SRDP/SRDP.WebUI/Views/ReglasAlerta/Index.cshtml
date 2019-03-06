@@ -1,0 +1,164 @@
+﻿@model IEnumerable<SRDP.WebUI.Models.ReglaAlertaModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+<div class="container">
+    <h4 class="page-title">Reglas para la generación de Alertas</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <a id="addRegla" class="btn btn-primary btn-round pull-right" onclick=PopupForm('@Url.Action("Save", "ReglasAlerta" , new { id=Guid.Empty })')><i class="fa fa-plus"></i> Nuevo</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-striped" id="reglasAlertaTable">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Gestion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Descripcion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Monto)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Operador)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Porcentaje)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Gestion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Descripcion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Monto)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Operador)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Porcentaje)
+                            </td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" onclick=PopupForm('@Url.Action("Save", "ReglasAlerta" , new { id=item.ID })')> <i class='fa fa-pencil'></i> Editar</a>
+                                <a class='btn btn-danger btn-sm' onclick=Delete('@Url.Action("Delete", "ReglasAlerta" , new { id=item.ID })')><i class='fa fa-trash'></i> Eliminar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+
+    <script>
+        var Popup, dataTable;
+        var dataTable;
+        $(document).ready(function () {
+            dataTable = $("#reglasAlertaTable").DataTable({
+                dom: 'tip',
+                lengthChange: false,
+                searching: false,
+                //dom: "tip",
+                //searching: false,
+                //language: {
+
+                //    "emptyTable": "No data found, Please click on <b>Add New</b> Button"
+                //}
+            })
+        });
+        function PopupForm(url) {
+            var formDiv = $('<div/>');
+            $.get(url)
+                .done(function (response) {
+                    formDiv.html(response);
+
+                    Popup = formDiv.dialog({
+                        autoOpen: true,
+                        resizable: false,
+                        title: 'Ingrese los datos',
+                        height: 500,
+                        width: 550,
+                        close: function () {
+                            Popup.dialog('destroy').remove();
+                        }
+
+                    });
+                });
+        }
+        function SubmitForm(form) {
+            $.validator.unobtrusive.parse(form);
+            if ($(form).valid()) {
+                $.ajax({
+                    type: "POST",
+                    url: form.action,
+                    data: $(form).serialize(),
+                    success: function (data) {
+                        if (data.success) {
+                            Popup.dialog('close');
+                            location.reload(true);
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "success"
+                            })
+
+                        }
+                        else {
+                            Popup.dialog('close');
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "success"
+                            })
+                        }
+                    }
+                });
+            }
+            return false;
+        }
+        function Delete(url) {
+            if (confirm('¿Está seguro que desea eliminar el registro?')) {
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    success: function (data) {
+                        if (data.success) {
+                            location.reload(true);
+
+                            $.notify(data.message, {
+                                globalPosition: "top center",
+                                className: "success"
+                            })
+
+                        }
+                    }
+
+                });
+            }
+        }
+
+    </script>
+}

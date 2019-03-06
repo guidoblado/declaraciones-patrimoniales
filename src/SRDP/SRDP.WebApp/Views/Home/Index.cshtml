@@ -1,0 +1,112 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="main-panel">
+    <div class="content">
+        <div class="panel-header bg-primary-gradient">
+            <div class="page-inner py-5">
+                <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                    <div>
+                        <h2 class="text-white pb-2 fw-bold">La Boliviana</h2>
+                        <h5 class="text-white op-7 mb-2">Sistema de declaraciones patrimoniales</h5>
+                    </div>
+                    <div class="ml-md-auto py-2 py-md-0">
+                        <a href="https://localhost:44327/declaracion/actualizar/862525C1-6A2F-435A-9A89-7EE4D151895D" class="btn btn-secondary btn-round">Actualizar Declaracion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-inner mt--5">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card full-height">
+                        <div class="card-header">
+                            <div class="card-title">Actividad</div>
+                        </div>
+                        <div class="card-body">
+                            <ol class="activity-feed">
+                                <li class="feed-item feed-item-secondary">
+                                    <time class="date" datetime="9-25">Sep 25</time>
+                                    <span class="text">Declaracion Enviada <a href="#">"Ver detalles"</a></span>
+                                </li>
+                                <li class="feed-item feed-item-success">
+                                    <time class="date" datetime="9-24">Sep 24</time>
+                                    <span class="text">Deposito actualizado <a href="#">"Ver detalle"</a></span>
+                                </li>
+                                <li class="feed-item feed-item-info">
+                                    <time class="date" datetime="9-23">Sep 23</time>
+                                    <span class="text">Vehiculos actualizados <a href="single-group.php">"Ver detalle"</a></span>
+                                </li>
+                                <li class="feed-item feed-item-warning">
+                                    <time class="date" datetime="9-21">Sep 21</time>
+                                    <span class="text">Inmuebles Actualizados <a href="#">"Ver detalle"</a></span>
+                                </li>
+                                <li class="feed-item feed-item-danger">
+                                    <time class="date" datetime="9-18">Sep 18</time>
+                                    <span class="text">Declaracion creada <a href="#">"Ver detalle"</a></span>
+                                </li>
+                                <li class="feed-item">
+                                    <time class="date" datetime="9-17">Sep 17</time>
+                                    <span class="text">Declaracion Impresa <a href="single-event.php">"Ver detalle"</a></span>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card full-height">
+                        <div class="card-header">
+                            <div class="card-head-row">
+                                <div class="card-title">Mensajes</div>
+                                <div class="card-tools">
+                                    <ul class="nav nav-pills nav-secondary nav-pills-no-bd nav-sm" id="pills-tab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="pills-today" data-toggle="pill" href="#pills-today" role="tab" aria-selected="true">Hoy</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="pills-week" data-toggle="pill" href="#pills-week" role="tab" aria-selected="false">Semana</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="pills-month" data-toggle="pill" href="#pills-month" role="tab" aria-selected="false">Mes</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="avatar avatar-online">
+                                    <span class="avatar-title rounded-circle border border-white bg-info">J</span>
+                                </div>
+                                <div class="flex-1 ml-3 pt-1">
+                                    <h6 class="text-uppercase fw-bold mb-1">Recordatorio actualizacion <span class="text-warning pl-3">pendiente</span></h6>
+                                    <span class="text-muted">No olvide actualizar su declaracion</span>
+                                </div>
+                                <div class="float-right pt-1">
+                                    <small class="text-muted">8:40 PM</small>
+                                </div>
+                            </div>
+                            <div class="separator-dashed"></div>
+                            <div class="d-flex">
+                                <div class="avatar avatar-offline">
+                                    <span class="avatar-title rounded-circle border border-white bg-secondary">P</span>
+                                </div>
+                                <div class="flex-1 ml-3 pt-1">
+                                    <h6 class="text-uppercase fw-bold mb-1">Gestion Cerrada <span class="text-success pl-3">cerrado</span></h6>
+                                    <span class="text-muted">Ya no es posible realizar modificaciones.</span>
+                                </div>
+                                <div class="float-right pt-1">
+                                    <small class="text-muted">Hace un mes</small>
+                                </div>
+                            </div>
+                            <div class="separator-dashed"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

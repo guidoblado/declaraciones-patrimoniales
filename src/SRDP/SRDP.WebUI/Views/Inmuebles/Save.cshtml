@@ -1,0 +1,71 @@
+﻿@model SRDP.WebUI.Models.InmuebleModel
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("Save", "Inmuebles", FormMethod.Post, new { onSubmit = "return SubmitForm(this)" }))
+{
+    @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.DeclaracionID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Direccion, new { @class = "control-label" })
+        @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Direccion)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.TipoDeInmueble, new { @class = "control-label" })
+        @Html.DropDownListFor(model => model.TipoDeInmueble, Model.TiposDeInmuebles, "-Seleccionar-", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.TipoDeInmueble)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.PorcentajeParticipacion, new { @class = "control-label" })
+        <div class="form-group">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">%</span>
+                </div>
+                @Html.EditorFor(model => model.PorcentajeParticipacion, new { htmlAttributes = new { @class = "form-control mb-9" } })
+                @Html.ValidationMessageFor(model => model.PorcentajeParticipacion)
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ValorComercial, new { @class = "control-label" })
+        <div class="form-group">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                </div>
+                @Html.EditorFor(model => model.ValorComercial, new { htmlAttributes = new { @class = "form-control mb-9" } })
+                @Html.ValidationMessageFor(model => model.ValorComercial)
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.SaldoHipoteca, new { @class = "control-label" })
+        <div class="form-group">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                </div>
+                @Html.EditorFor(model => model.SaldoHipoteca, new { htmlAttributes = new { @class = "form-control mb-9" } })
+                @Html.ValidationMessageFor(model => model.SaldoHipoteca)
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Banco, new { @class = "control-label" })
+        @Html.EditorFor(model => model.Banco, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Banco)
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Aceptar" class="btn btn-primary" />
+        <input type="reset" value="Cancelar" class="btn btn-default" />
+    </div>
+}
+

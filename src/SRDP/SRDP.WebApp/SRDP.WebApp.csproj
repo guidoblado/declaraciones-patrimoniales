@@ -1,0 +1,169 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\lib\datatables.css" />
+    <Content Remove="wwwroot\lib\datatables.js" />
+    <Content Remove="wwwroot\lib\datatables.min.css" />
+    <Content Remove="wwwroot\lib\datatables.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="Autofac.Configuration" Version="4.1.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.1.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Rotativa.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="Rotativa.NetCore" Version="1.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SRDP.Application\SRDP.Application.csproj" />
+    <ProjectReference Include="..\SRDP.Persitence\SRDP.Persitence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\lib\atlantis\css\atlantis.css.map" />
+    <None Include="wwwroot\lib\atlantis\fonts\flaticon\Flaticon.svg" />
+    <None Include="wwwroot\lib\atlantis\fonts\flaticon\_flaticon.scss" />
+    <None Include="wwwroot\lib\atlantis\fonts\fontawesome\fa-brands-400.svg" />
+    <None Include="wwwroot\lib\atlantis\fonts\fontawesome\fa-brands-400.woff2" />
+    <None Include="wwwroot\lib\atlantis\fonts\fontawesome\fa-regular-400.svg" />
+    <None Include="wwwroot\lib\atlantis\fonts\fontawesome\fa-regular-400.woff2" />
+    <None Include="wwwroot\lib\atlantis\fonts\fontawesome\fa-solid-900.svg" />
+    <None Include="wwwroot\lib\atlantis\fonts\fontawesome\fa-solid-900.woff2" />
+    <None Include="wwwroot\lib\atlantis\fonts\simple-line-icons\Simple-Line-Icons.svg" />
+    <None Include="wwwroot\lib\atlantis\fonts\simple-line-icons\Simple-Line-Icons.woff2" />
+    <None Include="wwwroot\lib\atlantis\img\examples\logoinvoice.svg" />
+    <None Include="wwwroot\lib\atlantis\img\icon.svg" />
+    <None Include="wwwroot\lib\atlantis\img\img-shadow.gvdesign" />
+    <None Include="wwwroot\lib\atlantis\img\logo.svg" />
+    <None Include="wwwroot\lib\atlantis\img\logo2.svg" />
+    <None Include="wwwroot\lib\atlantis\img\logoalternatif.svg" />
+    <None Include="wwwroot\lib\atlantis\img\logoproduct.svg" />
+    <None Include="wwwroot\lib\atlantis\img\logoproduct2.svg" />
+    <None Include="wwwroot\lib\atlantis\img\logoproduct3.svg" />
+    <None Include="wwwroot\lib\atlantis\img\visa.svg" />
+    <None Include="wwwroot\lib\atlantis\js\atlantis.js" />
+    <None Include="wwwroot\lib\atlantis\js\atlantis.min.js" />
+    <None Include="wwwroot\lib\atlantis\js\atlantis2.js" />
+    <None Include="wwwroot\lib\atlantis\js\core\bootstrap.min.js" />
+    <None Include="wwwroot\lib\atlantis\js\core\jquery.3.2.1.min.js" />
+    <None Include="wwwroot\lib\atlantis\js\core\popper.min.js" />
+    <None Include="wwwroot\lib\atlantis\js\demo.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\bootstrap-notify\bootstrap-notify.min.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\chart-circle\circles.min.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\chart.js\chart.min.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\datatables\datatables.min.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jquery-scrollbar\jquery.scrollbar.min.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jquery-ui-1.12.1.custom\jquery-ui.min.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jquery-ui-touch-punch\jquery.ui.touch-punch.min.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jquery.sparkline\jquery.sparkline.min.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\jquery.vmap.min.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\continents\jquery.vmap.africa.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\continents\jquery.vmap.asia.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\continents\jquery.vmap.australia.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\continents\jquery.vmap.europe.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\continents\jquery.vmap.north-america.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\continents\jquery.vmap.south-america.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.algeria.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.argentina.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.brazil.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.canada.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.croatia.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.europe.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.france.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.germany.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.greece.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.indonesia.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.iran.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.iraq.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.new_regions_france.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.russia.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.serbia.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.tunisia.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.turkey.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.ukraine.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.usa.counties.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.usa.districts.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.usa.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\jqvmap\maps\jquery.vmap.world.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\sweetalert\sweetalert.min.js" />
+    <None Include="wwwroot\lib\atlantis\js\plugin\webfont\webfont.min.js" />
+    <None Include="wwwroot\lib\atlantis\js\setting-demo.js" />
+    <None Include="wwwroot\lib\atlantis\js\setting-demo2.js" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_activityfeed.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_alerts.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_avatars.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_badges.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_breadcrumbs.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_buttons.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_cards.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_charts.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_colorinputs.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_dropdowns.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_gutters.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_imagecheck.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_inputs.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_listgroup.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_loader.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_maps.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_modals.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_navbars.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_navsearch.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_navtabs.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_paginations.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_popovers.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_progress.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_selectgroup.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_sliders.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_stamps.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_tables.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\components\_timeline.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\plugins\_animate.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\plugins\_datatables.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\plugins\_jqueryscrollbar.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\plugins\_jqueryui.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\plugins\_sweetalert.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\_background.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\_components.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\_flaticon.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\_font-awesome.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\_layouts-colors.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\_layouts.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\_opacity.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\_outlinefocus.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\_plugins.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\_responsive-horizontal.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\_responsive.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\_typography.scss" />
+    <None Include="wwwroot\lib\atlantis\sass\atlantis\_variables.scss" />
+    <None Include="wwwroot\lib\datatables\Scroller-1.5.0\js\dataTables.scroller.js" />
+    <None Include="wwwroot\lib\datatables\Scroller-1.5.0\js\dataTables.scroller.min.js" />
+    <None Include="wwwroot\lib\datatables\Scroller-1.5.0\js\scroller.bootstrap.js" />
+    <None Include="wwwroot\lib\datatables\Scroller-1.5.0\js\scroller.bootstrap.min.js" />
+    <None Include="wwwroot\lib\datatables\Scroller-1.5.0\js\scroller.bootstrap4.js" />
+    <None Include="wwwroot\lib\datatables\Scroller-1.5.0\js\scroller.bootstrap4.min.js" />
+    <None Include="wwwroot\lib\datatables\Scroller-1.5.0\js\scroller.dataTables.js" />
+    <None Include="wwwroot\lib\datatables\Scroller-1.5.0\js\scroller.foundation.js" />
+    <None Include="wwwroot\lib\datatables\Scroller-1.5.0\js\scroller.foundation.min.js" />
+    <None Include="wwwroot\lib\datatables\Scroller-1.5.0\js\scroller.jqueryui.js" />
+    <None Include="wwwroot\lib\datatables\Scroller-1.5.0\js\scroller.jqueryui.min.js" />
+    <None Include="wwwroot\lib\datatables\Scroller-1.5.0\js\scroller.semanicui.js" />
+    <None Include="wwwroot\lib\datatables\Scroller-1.5.0\js\scroller.semanticui.js" />
+    <None Include="wwwroot\lib\datatables\Scroller-1.5.0\js\scroller.semanticui.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Rotativa\" />
+    <Folder Include="Reports\" />
+  </ItemGroup>
+
+</Project>

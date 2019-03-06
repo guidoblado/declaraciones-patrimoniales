@@ -1,0 +1,57 @@
+﻿@model SRDP.WebUI.Models.ReglaAlertaParameterModel
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+
+@using (Html.BeginForm("Index", "AlertaIndividual", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="card">
+        <div class="card-body">
+            <div class="form">
+                @Html.LabelFor(x => Model.Reglas, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.DropDownListFor(x => Model.ReglaID, new SelectList(Model.Reglas, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "SelectedRegla", onchage = "RefreshForm(this)" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => Model.ReglaAlerta.Descripcion, htmlAttributes: new { @class = "control-label" })
+                    <div>
+                        @Html.DisplayFor(model => model.ReglaAlerta.Descripcion)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => Model.ReglaAlerta.Monto, htmlAttributes: new { @class = "control-label" })
+                    <div>
+                        @Html.DisplayFor(model => model.ReglaAlerta.Monto)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => Model.ReglaAlerta.Operador, htmlAttributes: new { @class = "control-label" })
+                    <div>
+                        @Html.DisplayFor(model => model.ReglaAlerta.Operador)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => Model.ReglaAlerta.Porcentaje, htmlAttributes: new { @class = "control-label" })
+                    <div>
+                        @Html.DisplayFor(model => model.ReglaAlerta.Porcentaje)
+                        @Ajax.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-footer">
+            <div class="card-action">
+                <button class="btn btn-secondary my-2 my-sm-0 pull-left" type="submit" value="Buscar">Buscar</button>
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts{
+    <script>
+        function RefreshForm() {
+            $
+        }
+    </script>
+}

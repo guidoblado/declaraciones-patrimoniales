@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SRDP.WebApp</title>
+
+    <environment include="Development">
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+        @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />*@
+        @*<link rel="stylesheet" href="~/css/site.css" />*@
+        @*<link rel="stylesheet" type="text/css" href="~/lib/datatables/media/css/jquery.dataTables.css">
+        <link rel="stylesheet" type="text/css" href="~/lib/datatables/media/css/dataTables.bootstrap4.css">
+        <link rel="stylesheet" type="text/css" href="~/lib/datatables/media/css/responsive.dataTables.css">
+        <link rel="stylesheet" href="~/css/style.css" />*@
+
+
+        <link href="~/lib/datatables/datatables.css" rel="stylesheet" />
+        <!-- Atlantis Theme-->
+        <!-- Fonts and icons -->
+        <link rel="icon" href="~/lib/atlantis/img/icon.ico" type="image/x-icon" />
+        <script src="~/lib/atlantis/js/plugin/webfont/webfont.min.js"></script>
+        <script>
+            WebFont.load({
+                google: { "families": ["Lato:300,400,700,900"] },
+                custom: { "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['/lib/atlantis/css/fonts.css'] },
+                active: function () {
+                    sessionStorage.fonts = true;
+                }
+            });
+        </script>
+
+        <!-- CSS Files -->
+        <link rel="stylesheet" href="~/lib/atlantis/css/bootstrap.min.css">
+        <link rel="stylesheet" href="~/lib/atlantis/css/atlantis.css">
+
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+   <partial name="_CookieConsentPartial" />
+    
+    <div class="wrapper" >
+        <partial name="_Header" />
+        <partial name="_SideBar" />
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2019 - SRDP Think Solutions</p>
+        </footer>
+    </div>
+
+    <environment include="Development">
+        @*<script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>*@
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @*<script src="~/lib/datatables.js"></script>
+        <script src="~/lib/datatables/media/js/jquery.dataTables.min.js"></script>
+        <script src="~/lib/datatables/media/js/dataTables.bootstrap4.js"></script>
+        <script src="~/lib/datatables/media/js/dataTables.responsive.js"></script>
+        <script src="~/lib/datatables/media/js/responsive.bootstrap4.js"></script>*@
+        <!-- buttons for Export datatable -->
+        @*<script src="~/lib/datatables/media/js/button/dataTables.buttons.js"></script>
+        <script src="~/lib/datatables/media/js/button/buttons.bootstrap4.js"></script>
+        <script src="~/lib/datatables/media/js/button/buttons.print.js"></script>
+        <script src="~/lib/datatables/media/js/button/buttons.html5.js"></script>
+        <script src="~/lib/datatables/media/js/button/buttons.flash.js"></script>
+        <script src="~/lib/datatables/media/js/button/pdfmake.min.js"></script>
+        <script src="~/lib/datatables/media/js/button/vfs_fonts.js"></script>*@
+
+        <!--   Core JS Files Atlantis  -->
+        <script src="~/lib/atlantis/js/core/jquery.3.2.1.min.js"></script>
+        <script src="~/lib/atlantis/js/core/popper.min.js"></script>
+        <script src="~/lib/atlantis/js/core/bootstrap.min.js"></script>
+        <!-- jQuery UI -->
+        <script src="~/lib/atlantis/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+        <script src="~/lib/atlantis/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+        <!--   Core JS Files  -->
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+        <!-- jQuery Scrollbar -->
+        <script src="~/lib/atlantis/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+        <!-- Datatables -->
+        @*<script src="~/lib/atlantis/js/plugin/datatables/datatables.min.js"></script>*@
+        <script src="~/lib/datatables/datatables.js"></script>
+        <!-- Atlantis JS -->
+        <script src="~/lib/atlantis/js/atlantis.js"></script>
+
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

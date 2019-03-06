@@ -1,0 +1,48 @@
+﻿@model SRDP.WebApp.Models.SearchParametersModel
+
+<div class="row">
+    @using (Html.BeginForm(FormMethod.Get, new { @class = "col-md-12" }))
+    { 
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.LabelFor(x => Model.CodArea, htmlAttributes: new { @class = "control-label" })
+                        <div>
+                            @Html.DropDownListFor(x => Model.CodArea, new SelectList(Model.Areas, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "CodArea" })
+                        </div>
+                        @Html.LabelFor(x => Model.CodGeog, htmlAttributes: new { @class = "control-label" })
+                        <div>
+                            @Html.DropDownListFor(x => Model.CodGeog, new SelectList(Model.UbicacionesGeograficas, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "CodGeog" })
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(x => Model.CodCargo, htmlAttributes: new { @class = "control-label" })
+                        <div>
+                            @Html.DropDownListFor(x => Model.CodCargo, new SelectList(Model.Cargos, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "CodCargo" })
+                        </div>
+                        @Html.LabelFor(x => Model.CodCentroCosto, htmlAttributes: new { @class = "control-label" })
+                        <div>
+                            @Html.DropDownListFor(x => Model.CodCentroCosto, new SelectList(Model.CentrosCosto, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "CodCentroCosto" })
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(x => Model.TipoRol, htmlAttributes: new { @class = "control-label" })
+                        <div>
+                            @Html.DropDownListFor(x => Model.TipoRol, new SelectList(Model.Roles, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "TipoRol" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-action">
+                <button class="btn btn-secondary my-2 my-sm-0 pull-left" type="submit" value="Buscar">Buscar</button>
+            </div>
+
+        </div>
+    }
+</div>
+
+
+

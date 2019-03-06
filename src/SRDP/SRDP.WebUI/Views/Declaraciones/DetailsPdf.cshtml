@@ -1,0 +1,353 @@
+﻿@model SRDP.WebUI.Models.DeclaracionModel
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+<div class="container">
+    <h2>Formulario de Declaración Patrimonial</h2>
+    @*Datos Personales*@
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" style="margin:16px 0 8px 0">
+                <div class="card-header">
+                    <div class="card-title">Datos Personales</div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-2 font-weight-bold col-form-label-sm">
+                            @Html.DisplayNameFor(model => model.NombreCompleto)
+                        </div>
+                        <div class="col-sm-4 form-control-sm">
+                            @Html.DisplayFor(model => model.NombreCompleto)
+                        </div>
+                        <div class="col-sm-2 font-weight-bold col-form-label-sm">
+                            @Html.DisplayNameFor(model => model.CedulaIdentidad)
+                        </div>
+                        <div class="col-sm-4 form-control-sm">
+                            @Html.DisplayFor(model => model.CedulaIdentidad)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2 font-weight-bold col-form-label-sm">
+                            @Html.DisplayNameFor(model => model.FechaNacimiento)
+                        </div>
+                        <div class="col-sm-4 form-control-sm">
+                            @Html.DisplayFor(model => model.FechaNacimiento)
+                        </div>
+                        <div class="col-sm-2 font-weight-bold col-form-label-sm">
+                            @Html.DisplayNameFor(model => model.EstadoCivil)
+                        </div>
+                        <div class="col-sm-4 form-control-sm">
+                            @Html.DisplayFor(model => model.EstadoCivil)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2 font-weight-bold col-form-label-sm">
+                            @Html.DisplayNameFor(model => model.Gestion)
+                        </div>
+                        <div class="col-sm-4 form-control-sm">
+                            @Html.DisplayFor(model => model.Gestion)
+                        </div>
+                        <div class="col-sm-2 font-weight-bold col-form-label-sm">
+                            @Html.DisplayNameFor(model => model.PatrimonioNeto)
+                        </div>
+                        <div class="col-sm-4 form-control-sm">
+                            @Html.DisplayFor(model => model.PatrimonioNeto)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*Depositos*@
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" style="margin:16px 0 8px 0">
+                <div class="card-header">
+                    <div class="card-title">Depósitos</div>
+                </div>
+                <div class="card-body">
+                    <table id="depositosTable" class="table table-bordered table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.Depositos[0].Institucion)
+                                </th>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.Depositos[0].TipoDeCuenta)
+                                </th>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.Depositos[0].Saldo)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Depositos)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Institucion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TipoDeCuenta)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Saldo)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*Inmuebles*@
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" style="margin:16px 0 8px 0">
+                <div class="card-header">
+                    <div class="card-title">Inmuebles</div>
+                </div>
+                <div class="card-body">
+                    <table id="inmueblesTable" class="table table-bordered table-head-bg-info table-condensed">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.Inmuebles[0].Direccion)
+                                </th>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.Inmuebles[0].TipoDeInmueble)
+                                </th>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.Inmuebles[0].PorcentajeParticipacion)
+                                </th>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.Inmuebles[0].ValorComercial)
+                                </th>
+                                <th>
+                                    @Html.LabelFor(model => model.Inmuebles[0].SaldoHipoteca)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Inmuebles)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Direccion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TipoDeInmueble)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PorcentajeParticipacion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ValorComercial)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SaldoHipoteca)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*Vehiculos*@
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" style="margin:16px 0 8px 0">
+                <div class="card-header">
+                    <div class="card-title">Vehículos</div>
+                </div>
+                <div class="card-body">
+                    <table id="vehiculosTable" class="table table-bordered table-head-bg-info table-condensed">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.Vehiculos[0].Marca)
+                                </th>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.Vehiculos[0].TipoVehiculo)
+                                </th>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.Vehiculos[0].Anio)
+                                </th>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.Vehiculos[0].ValorAproximado)
+                                </th>
+                                <th>
+                                    @Html.LabelFor(model => model.Vehiculos[0].SaldoDeudor)
+                                </th>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.Vehiculos[0].Banco)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Vehiculos)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Marca)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TipoVehiculo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Anio)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ValorAproximado)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SaldoDeudor)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Banco)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*OtrosIngresos*@
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" style="margin:16px 0 8px 0">
+                <div class="card-header">
+                    <div class="card-title">Otros Ingresos</div>
+                </div>
+                <div class="card-body">
+                    <table id="vehiculosTable" class="table table-bordered table-head-bg-info table-condensed">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.OtrosIngresos[0].Concepto)
+                                </th>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.OtrosIngresos[0].IngresoMensual)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.OtrosIngresos)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Concepto)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IngresoMensual)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*ValoresNegociables*@
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" style="margin:16px 0 8px 0">
+                <div class="card-header">
+                    <div class="card-title">Valores Negociables</div>
+                </div>
+                <div class="card-body">
+                    <table id="vehiculosTable" class="table table-bordered table-head-bg-info table-condensed">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.ValoresNegociables[0].Descripcion)
+                                </th>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.ValoresNegociables[0].TipoValor)
+                                </th>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.ValoresNegociables[0].ValorAproximado)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ValoresNegociables)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Descripcion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TipoValor)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ValorAproximado)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*DeudasBancarias*@
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" style="margin:16px 0 8px 0">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="card-title">Deudas en Entidades Financieras</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table id="vehiculosTable" class="table table-bordered table-head-bg-info table-condensed">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.DeudasBancarias[0].InstitucionFinanciera)
+                                </th>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.DeudasBancarias[0].Tipo)
+                                </th>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.DeudasBancarias[0].Monto)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.DeudasBancarias)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.InstitucionFinanciera)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Tipo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Monto)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaLlenado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaLlenado)
+        </dd>
+
+    </dl>
+</div>

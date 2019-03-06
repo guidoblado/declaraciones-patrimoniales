@@ -1,0 +1,91 @@
+﻿<div class="sidebar sidebar-style-2">
+    <div class="sidebar-wrapper scrollbar scrollbar-inner">
+        <div class="sidebar-content">
+            <div class="user">
+                <div class="avatar-sm float-left mr-2">
+                    <img src="~/lib/atlantis/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+                </div>
+                <div class="info">
+                    <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+                        <span>
+                            @User.Identity.Name
+                            <span class="user-level"></span>
+                            <span class="caret"></span>
+                        </span>
+                    </a>
+                    <div class="clearfix"></div>
+
+                    <div class="collapse in" id="collapseExample">
+                        <ul class="nav">
+                            <li>
+                                <a href="#profile">
+                                    <span class="link-collapse">My Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#edit">
+                                    <span class="link-collapse">Edit Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#settings">
+                                    <span class="link-collapse">Settings</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav nav-primary" id="accordion-menu">
+                <li class="nav-item">
+                    <a asp-area="" asp-controller="Home" asp-action="Index">
+                        <i class="fas fa-home"></i>
+                        <p>Inicio</p>
+                    </a>
+                </li>
+                <li class="nav-section">
+                    <span class="sidebar-mini-icon">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </span>
+                    <h4 class="text-section">Administrar</h4>
+                </li>
+                <li class="nav-item">
+                    <a asp-area="" asp-controller="Declaracion" asp-action="Index">
+                        <i class="fas fa-layer-group"></i>
+                        <p>Declaraciones</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a data-toggle="collapse" href="#reportes">
+                        <i class="fas fa-th-list"></i>
+                        <p>Reportes</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="reportes">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a asp-area="" asp-controller="HistoricoIndividual" asp-action="Index" >
+                                    <span class="sub-item">Historico Individual</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="EstadoGeneral" asp-action="Index" >
+                                    <span class="sub-item">Estado General</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="AlertaGeneral" asp-action="Index" >
+                                    <span class="sub-item">Alerta General</span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </li>
+
+
+
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+{
+  "defaultAssembly": "SRDP.Persitence",
+  "modules": [
+    {
+      "type": "SRDP.WebApp.Module, SRDP.WebApp",
+      "properties": {
+      }
+    },
+    {
+      "type": "SRDP.Persitence.ApplicationModule",
+      "properties": {
+      }
+    },
+    {
+      "type": "SRDP.Persitence.DapperDataAccess.Module",
+      "properties": {
+        "ConnectionString": "Server=GUIDOCABALLERO\\SQL2012;Database=SRDP;Integrated Security=true;"
+      }
+    }
+  ]
+}

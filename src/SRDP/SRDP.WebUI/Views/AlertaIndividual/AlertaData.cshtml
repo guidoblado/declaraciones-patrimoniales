@@ -1,0 +1,129 @@
+﻿@model IEnumerable<SRDP.WebUI.Models.AlertaGeneralModel>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FuncionarioID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreCompleto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodCargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodArea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Area)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodUbicacionGeografica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UbicacionGeografica)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodCentroDeCosto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CentroDeCosto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoRol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoDeclaracion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatrimonioActual)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatrimonioGestionAnterior)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiferenciaPatrimonio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VariacionPorcentual)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeclaracionAnteriorID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FuncionarioID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreCompleto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodCargo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cargo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodArea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Area)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodUbicacionGeografica)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UbicacionGeografica)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodCentroDeCosto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CentroDeCosto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoRol)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rol)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstadoDeclaracion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatrimonioActual)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatrimonioGestionAnterior)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiferenciaPatrimonio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VariacionPorcentual)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeclaracionAnteriorID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DeclaracionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DeclaracionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DeclaracionID })
+        </td>
+    </tr>
+}
+
+</table>

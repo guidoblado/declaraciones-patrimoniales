@@ -1,0 +1,86 @@
+﻿@model IEnumerable<SRDP.WebUI.Models.DeclaracionModel>
+
+@{
+    ViewBag.Title = "Index";
+
+}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table id="declaracionesTable" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Gestion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.NombreCompleto)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CedulaIdentidad)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FechaNacimiento)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EstadoCivil)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FechaLlenado)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Gestion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NombreCompleto)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CedulaIdentidad)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EstadoCivil)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FechaLlenado)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Detalles", "Details", new { id = item.DeclaracionID })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        var dataTable;
+        $(document).ready(function () {
+            dataTable = $("#declaracionesTable").DataTable({
+                //dom: "tip",
+                //searching: false,
+                //language: {
+
+                //    "emptyTable": "No data found, Please click on <b>Add New</b> Button"
+                //}
+            })
+        });
+    </script>
+}
