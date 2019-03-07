@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SRDP.Application.Repositories;
+using SRDP.Application.UseCases.GetGestiones;
 using SRDP.Domain.ValueObjects;
 
 namespace SRDP.Application.UseCases.GetProfile
@@ -12,11 +13,14 @@ namespace SRDP.Application.UseCases.GetProfile
     {
         private IFuncionarioReadOnlyRepository _funcionarioReadOnlyRepository;
         private IRolesUsuarioReadOnlyRepository _rolesUsuarioReadOnlyRepository;
+        private IGetGestionesUserCase _getGestionesUserCase;
 
-        public GetProfileUserCase(IFuncionarioReadOnlyRepository funcionarioReadOnlyRepository, IRolesUsuarioReadOnlyRepository rolesUsuarioReadOnlyRepository)
+        public GetProfileUserCase(IFuncionarioReadOnlyRepository funcionarioReadOnlyRepository, IRolesUsuarioReadOnlyRepository rolesUsuarioReadOnlyRepository,
+            IGetGestionesUserCase getGestionesUserCase)
         {
             _funcionarioReadOnlyRepository = funcionarioReadOnlyRepository;
             _rolesUsuarioReadOnlyRepository = rolesUsuarioReadOnlyRepository;
+            _getGestionesUserCase = getGestionesUserCase;
         }
 
         public UserProfileOutput Execute(string adAccount)
@@ -31,8 +35,14 @@ namespace SRDP.Application.UseCases.GetProfile
             {
                 return await _rolesUsuarioReadOnlyRepository.Get(adUser.Name);
             });
+            var gestionVigente = Task.Run(async () =>
+             {
+                 return await _getGestionesUserCase.GestionVigente();
+             });
+            if (gestionVigente == null)
+                throw new ApplicationException("No se ha encontrado ninguna gestion vigente.");
 
-            return new UserProfileOutput(adUser.Name, funcionarioID.Result, 2018, roles.Result);
+            return new UserProfileOutput(adUser.Name, funcionarioID.Result, gestionVigente.Result.Gestion, roles.Result);
         }
     }
 }

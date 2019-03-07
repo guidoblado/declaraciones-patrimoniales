@@ -18,7 +18,6 @@ namespace SRDP.WebUI.Controllers
         private readonly IGetDeclaracionUserCase _getDeclaracionUserCase;
         private readonly IGetProfileUserCase _getProfileUserCase;
 
-
         public DeclaracionesController(IGetDeclaracionUserCase getDeclaracionUserCase, IGetProfileUserCase getProfileUserCase)
         {
             _getDeclaracionUserCase = getDeclaracionUserCase;

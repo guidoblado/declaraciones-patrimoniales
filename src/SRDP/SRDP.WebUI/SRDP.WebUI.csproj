@@ -238,6 +238,7 @@
     <Compile Include="Controllers\DepositosController.cs" />
     <Compile Include="Controllers\DeudasBancariasController.cs" />
     <Compile Include="Controllers\EstadoGeneralController.cs" />
+    <Compile Include="Controllers\GestionesController.cs" />
     <Compile Include="Controllers\HistoricoIndividualController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InmueblesController.cs" />
@@ -254,6 +255,7 @@
     <Compile Include="Models\DepositoModel.cs" />
     <Compile Include="Models\DeudaBancariaModel.cs" />
     <Compile Include="Models\EstadoGeneralModel.cs" />
+    <Compile Include="Models\GestionModel.cs" />
     <Compile Include="Models\HistoricoIndividualModel.cs" />
     <Compile Include="Models\InmuebleModel.cs" />
     <Compile Include="Models\OtroIngresoModel.cs" />
@@ -358,6 +360,8 @@
     <Content Include="Views\AlertaIndividual\AlertaData.cshtml" />
     <Content Include="Views\Home\Empty.cshtml" />
     <Content Include="Views\Declaraciones\DetailsPdf.cshtml" />
+    <Content Include="Views\Gestiones\Index.cshtml" />
+    <Content Include="Views\Gestiones\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

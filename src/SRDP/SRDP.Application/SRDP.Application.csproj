@@ -57,6 +57,8 @@
     <Compile Include="Repositories\IEstadoGeneralReadOnlyRepository.cs" />
     <Compile Include="Repositories\IFuncionarioReadOnlyRepository.cs" />
     <Compile Include="Repositories\IFuncionarioWriteOnlyRepository.cs" />
+    <Compile Include="Repositories\IGestionReadOnlyRepository.cs" />
+    <Compile Include="Repositories\IGestionWriteOnlyRepository.cs" />
     <Compile Include="Repositories\IHistoricoIndividualReadOnlyRepository.cs" />
     <Compile Include="Repositories\IInmuebleReadOnlyRepository.cs" />
     <Compile Include="Repositories\IInmuebleWriteOnlyRepository.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="UseCases\DeclaracionOutput.cs" />
     <Compile Include="UseCases\DepositoOutput.cs" />
     <Compile Include="UseCases\DeudaBancariaOutput.cs" />
+    <Compile Include="UseCases\GestionOutput.cs" />
     <Compile Include="UseCases\GetAlertaGeneral\GetAlertaGeneralUserCase.cs" />
     <Compile Include="UseCases\GetAlertaGeneral\IGetAlertaGeneralUserCase.cs" />
     <Compile Include="UseCases\GetCatalogos\GetCatalogosUserCase.cs" />
@@ -86,6 +89,8 @@
     <Compile Include="UseCases\GetDeudasBancarias\IGetDeudasBancariasUserCase.cs" />
     <Compile Include="UseCases\GetEstadoGeneral\GetEstadoGeneralUserCase.cs" />
     <Compile Include="UseCases\GetEstadoGeneral\IGetEstadoGeneralUserCase.cs" />
+    <Compile Include="UseCases\GetGestiones\GetGestionesUserCase.cs" />
+    <Compile Include="UseCases\GetGestiones\IGetGestionesUserCase.cs" />
     <Compile Include="UseCases\GetHistoricoIndividual\GetHistoricoIndividualUserCase.cs" />
     <Compile Include="UseCases\GetHistoricoIndividual\IGetHistoricoIndividualUserCase.cs" />
     <Compile Include="UseCases\GetInmuebles\GetInmueblesUserCase.cs" />
@@ -119,6 +124,8 @@
     <Compile Include="UseCases\SaveValoresNegociables\SaveValoresNegociablesUserCase.cs" />
     <Compile Include="UseCases\SaveVehiculos\ISaveVehiculoUserCase.cs" />
     <Compile Include="UseCases\SaveVehiculos\SaveVehiculoUserCase.cs" />
+    <Compile Include="UseCases\UpdateGestiones\IUpdateGestionesUserCase.cs" />
+    <Compile Include="UseCases\UpdateGestiones\UpdateGestionesUserCase.cs" />
     <Compile Include="UseCases\UserProfileOutput.cs" />
     <Compile Include="UseCases\ValorNegociableOutput.cs" />
     <Compile Include="UseCases\VehiculoOutput.cs" />
