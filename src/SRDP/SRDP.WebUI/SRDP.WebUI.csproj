@@ -361,6 +361,7 @@
     <Content Include="Views\Home\Empty.cshtml" />
     <Content Include="Views\Declaraciones\DetailsPdf.cshtml" />
     <Content Include="Views\Gestiones\Index.cshtml" />
+    <Content Include="Views\Gestiones\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
