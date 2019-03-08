@@ -21,6 +21,7 @@ namespace SRDP.WebUI.Models
 
         [Display(Name = "% Participación")]
         [DisplayFormat(DataFormatString = "{0:P1}")]
+        [RegularExpression(@"^\d+[.]?\d*%?$", ErrorMessage = "El valor de porcentaje introducido ne es válido")]
         public decimal PorcentajeParticipacion { get; set; }
 
         [Display(Name ="Valor Comercial $us")]
