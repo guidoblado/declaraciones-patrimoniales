@@ -11,12 +11,14 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Direccion, new { @class = "control-label" })
         @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.Direccion)
+        @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.TipoDeInmueble, new { @class = "control-label" })
-        @Html.DropDownListFor(model => model.TipoDeInmueble, Model.TiposDeInmuebles, "-Seleccionar-", new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.TipoDeInmueble)
+        <div>
+            @Html.DropDownListFor(model => model.TipoDeInmueble, Model.TiposDeInmuebles, "-Seleccionar-", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.TipoDeInmueble, "", new { @class = "text-danger" })
+        </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.PorcentajeParticipacion, new { @class = "control-label" })
@@ -26,9 +28,8 @@
                     <span class="input-group-text">%</span>
                 </div>
                 @Html.EditorFor(model => model.PorcentajeParticipacion, new { htmlAttributes = new { @class = "form-control mb-9" } })
-                @Html.ValidationMessageFor(model => model.PorcentajeParticipacion)
             </div>
-
+            @Html.ValidationMessageFor(model => model.PorcentajeParticipacion, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
@@ -39,7 +40,7 @@
                     <span class="input-group-text">$</span>
                 </div>
                 @Html.EditorFor(model => model.ValorComercial, new { htmlAttributes = new { @class = "form-control mb-9" } })
-                @Html.ValidationMessageFor(model => model.ValorComercial)
+                @Html.ValidationMessageFor(model => model.ValorComercial, "", new { @class = "text-danger" })
             </div>
 
         </div>
@@ -52,7 +53,7 @@
                     <span class="input-group-text">$</span>
                 </div>
                 @Html.EditorFor(model => model.SaldoHipoteca, new { htmlAttributes = new { @class = "form-control mb-9" } })
-                @Html.ValidationMessageFor(model => model.SaldoHipoteca)
+                @Html.ValidationMessageFor(model => model.SaldoHipoteca, "", new { @class = "text-danger" })
             </div>
 
         </div>
@@ -60,7 +61,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Banco, new { @class = "control-label" })
         @Html.EditorFor(model => model.Banco, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.Banco)
+        @Html.ValidationMessageFor(model => model.Banco, "", new { @class = "text-danger" })
     </div>
 
     <div class="form-group">

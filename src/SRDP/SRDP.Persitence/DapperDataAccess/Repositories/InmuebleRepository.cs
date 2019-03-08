@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using SRDP.Application.Repositories;
 using SRDP.Domain.Inmuebles;
+using SRDP.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -30,7 +31,7 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
                 inmuebleParameters.Add("@DeclaracionID", inmueble.DeclaracionID);
                 inmuebleParameters.Add("@Direccion", inmueble.Direccion, DbType.AnsiString);
                 inmuebleParameters.Add("@TipoDeInmueble", inmueble.TipoDeInmueble, DbType.AnsiString);
-                inmuebleParameters.Add("@PorcentajeParticipacion", inmueble.PorcentajeParticipacion, DbType.Decimal);
+                inmuebleParameters.Add("@PorcentajeParticipacion", inmueble.PorcentajeParticipacion.Valor, DbType.Decimal);
                 inmuebleParameters.Add("@ValorComercial", inmueble.ValorComercial, DbType.Decimal);
                 inmuebleParameters.Add("@SaldoHipoteca", inmueble.SaldoHipoteca, DbType.Decimal);
                 inmuebleParameters.Add("@Banco", inmueble.Banco, DbType.AnsiString);
@@ -50,7 +51,7 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
                 inmuebleParameters.Add("@DeclaracionID", inmueble.DeclaracionID);
                 inmuebleParameters.Add("@Direccion", inmueble.Direccion, DbType.AnsiString);
                 inmuebleParameters.Add("@TipoDeInmueble", inmueble.TipoDeInmueble, DbType.AnsiString);
-                inmuebleParameters.Add("@PorcentajeParticipacion", inmueble.PorcentajeParticipacion, DbType.Decimal);
+                inmuebleParameters.Add("@PorcentajeParticipacion", inmueble.PorcentajeParticipacion.Valor, DbType.Decimal);
                 inmuebleParameters.Add("@ValorComercial", inmueble.ValorComercial, DbType.Decimal);
                 inmuebleParameters.Add("@SaldoHipoteca", inmueble.SaldoHipoteca, DbType.Decimal);
                 inmuebleParameters.Add("@Banco", inmueble.Banco, DbType.AnsiString);
@@ -80,7 +81,7 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
                 var inmueble = await db.QueryFirstOrDefaultAsync<Entities.Inmueble>(sqlCommand, new { inmuebleID });
 
                 if (inmueble == null) return null;
-                return Inmueble.Load(inmueble.ID, inmueble.DeclaracionID, inmueble.Direccion, inmueble.TipoDeInmueble, inmueble.PorcentajeParticipacion, 
+                return Inmueble.Load(inmueble.ID, inmueble.DeclaracionID, inmueble.Direccion, inmueble.TipoDeInmueble, Porcentaje.For(inmueble.PorcentajeParticipacion), 
                     inmueble.ValorComercial, inmueble.SaldoHipoteca, inmueble.Banco);
             }
         }
@@ -98,7 +99,7 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
 
                 foreach (var inmueble in inmuebles)
                 {
-                    outputResult.Add(Inmueble.Load(inmueble.ID, inmueble.DeclaracionID, inmueble.Direccion, inmueble.TipoDeInmueble, inmueble.PorcentajeParticipacion,
+                    outputResult.Add(Inmueble.Load(inmueble.ID, inmueble.DeclaracionID, inmueble.Direccion, inmueble.TipoDeInmueble, Porcentaje.For(inmueble.PorcentajeParticipacion),
                         inmueble.ValorComercial, inmueble.SaldoHipoteca, inmueble.Banco));
                 }
                 return outputResult;
