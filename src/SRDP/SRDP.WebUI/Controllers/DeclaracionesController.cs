@@ -2,6 +2,7 @@
 using SRDP.Application.UseCases;
 using SRDP.Application.UseCases.GetDeclaracion;
 using SRDP.Application.UseCases.GetProfile;
+using SRDP.WebUI.App_Start;
 using SRDP.WebUI.Models;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace SRDP.WebUI.Controllers
             _getProfileUserCase = getProfileUserCase;
         }
         // GET: Declaraciones
+        [RoleAuthorize(Roles.Administrador)]
         public async Task<ActionResult> Index()
         {
             var profile = _getProfileUserCase.Execute(User.Identity.Name);

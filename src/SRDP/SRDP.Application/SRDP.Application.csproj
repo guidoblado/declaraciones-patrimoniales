@@ -67,6 +67,7 @@
     <Compile Include="Repositories\IReglaAlertaReadOnlyRepository.cs" />
     <Compile Include="Repositories\IReglaAlertaWriteOnlyRepository.cs" />
     <Compile Include="Repositories\IRolesUsuarioReadOnlyRepository.cs" />
+    <Compile Include="Repositories\IRolesUsuarioWriteOnlyRepository.cs" />
     <Compile Include="Repositories\IValorNegociableReadOnlyRepository.cs" />
     <Compile Include="Repositories\IValorNegociableWriteOnlyRepository.cs" />
     <Compile Include="Repositories\IVehiculoReadOnlyRepository.cs" />

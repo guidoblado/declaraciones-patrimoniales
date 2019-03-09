@@ -4,6 +4,7 @@ using SRDP.Application.SearchParameters;
 using SRDP.Application.UseCases.GetCatalogos;
 using SRDP.Application.UseCases.GetHistoricoIndividual;
 using SRDP.Application.UseCases.GetProfile;
+using SRDP.WebUI.App_Start;
 using SRDP.WebUI.Models;
 using SRDP.WebUI.ModelViews;
 using System;
@@ -15,6 +16,7 @@ using System.Web.Mvc;
 
 namespace SRDP.WebUI.Controllers
 {
+    [RoleAuthorize(Roles.Administrador)]
     public class HistoricoIndividualController : Controller
     {
         private readonly IGetHistoricoIndividualUserCase _getHistoricoIndividualUserCase;

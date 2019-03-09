@@ -2,6 +2,7 @@
 using SRDP.Application.UseCases;
 using SRDP.Application.UseCases.GetGestiones;
 using SRDP.Application.UseCases.UpdateGestiones;
+using SRDP.WebUI.App_Start;
 using SRDP.WebUI.Models;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.Web.Mvc;
 
 namespace SRDP.WebUI.Controllers
 {
+    [RoleAuthorize(Roles.Administrador)]
     public class GestionesController : Controller
     {
         private readonly IGetGestionesUserCase _getGestionesUserCase;

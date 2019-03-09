@@ -3,6 +3,7 @@ using SRDP.Application.UseCases;
 using SRDP.Application.UseCases.GetProfile;
 using SRDP.Application.UseCases.GetReglasAlerta;
 using SRDP.Application.UseCases.SaveReglasAlerta;
+using SRDP.WebUI.App_Start;
 using SRDP.WebUI.Models;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ using System.Web.Mvc;
 
 namespace SRDP.WebUI.Controllers
 {
+    [RoleAuthorize(Roles.Administrador)]
     public class ReglasAlertaController : Controller
     {
         private IGetReglasAlertaUserCase _getReglasAlertaUserCase;
