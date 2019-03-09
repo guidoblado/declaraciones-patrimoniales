@@ -41,7 +41,7 @@ namespace SRDP.Application.UseCases.GetProfile
                 funcionario.Result.EstadoID, funcionario.Result.Estado, roles.Result);
         }
 
-        public async Task<ICollection<UserProfileOutput>> ExecuteList()
+        public async Task<ICollection<UserProfileOutput>> ExecuteList(bool soloAdmin)
         {
             var adminUsers = await _rolesUsuarioReadOnlyRepository.GetAdminUsers();
             var funcionarios = await _funcionarioUsuarioReadOnlyRepository.GetAll();
@@ -49,6 +49,13 @@ namespace SRDP.Application.UseCases.GetProfile
             var outputResult = new List<UserProfileOutput>();
 
             if (funcionarios == null) return outputResult;
+
+
+            if (soloAdmin)
+            {
+                funcionarios = funcionarios.Where(c => adminUsers.Contains(c.NombreUsuario)).ToList();
+            }
+
 
             foreach (var funcionario in funcionarios)
             {

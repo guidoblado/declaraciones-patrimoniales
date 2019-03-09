@@ -246,6 +246,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InmueblesController.cs" />
     <Compile Include="Controllers\OtrosIngresosController.cs" />
+    <Compile Include="Controllers\UserProfilesController.cs" />
     <Compile Include="Controllers\ReglasAlertaController.cs" />
     <Compile Include="Controllers\ValoresNegociablesController.cs" />
     <Compile Include="Controllers\VehiculosController.cs" />
@@ -272,6 +273,7 @@
     <Compile Include="ModelViews\AlertaIndividualModelView.cs" />
     <Compile Include="ModelViews\EstadoGeneralModelView.cs" />
     <Compile Include="ModelViews\HistoricoIndividualModelView.cs" />
+    <Compile Include="ModelViews\UserProfileModelView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -366,6 +368,7 @@
     <Content Include="Views\Gestiones\Index.cshtml" />
     <Content Include="Views\Gestiones\Add.cshtml" />
     <Content Include="Views\Error\AccessDenied.cshtml" />
+    <Content Include="Views\UserProfiles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
