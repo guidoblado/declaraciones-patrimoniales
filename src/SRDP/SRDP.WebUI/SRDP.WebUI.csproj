@@ -262,6 +262,7 @@
     <Compile Include="Models\GestionModel.cs" />
     <Compile Include="Models\HistoricoIndividualModel.cs" />
     <Compile Include="Models\InmuebleModel.cs" />
+    <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\OtroIngresoModel.cs" />
     <Compile Include="Models\ReglaAlertaModel.cs" />
     <Compile Include="Models\ReglaAlertaParameterModel.cs" />
