@@ -67,6 +67,7 @@
     <Compile Include="Enumerations\OperadorAlerta.cs" />
     <Compile Include="Enumerations\RubroDeclaracion.cs" />
     <Compile Include="Funcionarios\Funcionario.cs" />
+    <Compile Include="Funcionarios\FuncionarioUsuario.cs" />
     <Compile Include="IAggregateRoot.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="IGuidCollection.cs" />

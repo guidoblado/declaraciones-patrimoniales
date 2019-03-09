@@ -56,6 +56,7 @@
     <Compile Include="Repositories\IDeudaBancariaWriteOnlyRepository.cs" />
     <Compile Include="Repositories\IEstadoGeneralReadOnlyRepository.cs" />
     <Compile Include="Repositories\IFuncionarioReadOnlyRepository.cs" />
+    <Compile Include="Repositories\IFuncionarioUsuarioReadOnlyRepository.cs" />
     <Compile Include="Repositories\IFuncionarioWriteOnlyRepository.cs" />
     <Compile Include="Repositories\IGestionReadOnlyRepository.cs" />
     <Compile Include="Repositories\IGestionWriteOnlyRepository.cs" />

@@ -9,5 +9,6 @@ namespace SRDP.Application.UseCases.GetProfile
     public interface IGetProfileUserCase
     {
         UserProfileOutput Execute(string adAccount);
+        Task<ICollection<UserProfileOutput>> ExecuteList();
     }
 }
