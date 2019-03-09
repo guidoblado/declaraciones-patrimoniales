@@ -2,6 +2,7 @@
 using SRDP.Application;
 using SRDP.Application.SearchParameters;
 using SRDP.Application.UseCases.GetCatalogos;
+using SRDP.Application.UseCases.GetGestiones;
 using SRDP.Application.UseCases.GetHistoricoIndividual;
 using SRDP.Application.UseCases.GetProfile;
 using SRDP.WebUI.App_Start;
@@ -21,14 +22,14 @@ namespace SRDP.WebUI.Controllers
     {
         private readonly IGetHistoricoIndividualUserCase _getHistoricoIndividualUserCase;
         private readonly IGetCatalogosUserCase _getCatalogosUserCase;
-        private readonly IGetProfileUserCase _getProfileUserCase;
+        private readonly IGetGestionesUserCase _getGestionesUserCase;
 
         public HistoricoIndividualController(IGetHistoricoIndividualUserCase getHistoricoIndividualUserCase,
-            IGetCatalogosUserCase getCatalogosUserCase, IGetProfileUserCase getProfileUserCase)
+            IGetCatalogosUserCase getCatalogosUserCase, IGetGestionesUserCase getGestionesUserCase)
         {
             _getHistoricoIndividualUserCase = getHistoricoIndividualUserCase;
             _getCatalogosUserCase = getCatalogosUserCase;
-            _getProfileUserCase = getProfileUserCase;
+            _getGestionesUserCase = getGestionesUserCase;
         }
 
         // GET: HistoricoIndividual
@@ -42,9 +43,9 @@ namespace SRDP.WebUI.Controllers
                 searchParameters.CodCargo,
                 searchParameters.TipoRol
             );
-            var profile = _getProfileUserCase.Execute(User.Identity.Name);
+            var gestionActual = await _getGestionesUserCase.GestionVigente();
 
-            var reporte = await _getHistoricoIndividualUserCase.ExecuteList(profile.GestionActual, filtro);
+            var reporte = await _getHistoricoIndividualUserCase.ExecuteList(gestionActual.Gestion, filtro);
             var catalogos = await _getCatalogosUserCase.Execute();
 
             var modelView = new HistoricoIndividualModelView

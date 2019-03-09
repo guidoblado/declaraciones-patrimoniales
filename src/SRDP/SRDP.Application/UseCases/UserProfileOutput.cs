@@ -10,14 +10,12 @@ namespace SRDP.Application.UseCases
     {
         public string UserName { get; private set; }
         public int FuncionarioID { get; private set; }
-        public int GestionActual { get; private set; }
         public List<string> Roles { get; private set; }
 
-        public UserProfileOutput(string userName, int funcionarioID, int gestionActual, List<string> roles)
+        public UserProfileOutput(string userName, int funcionarioID, List<string> roles)
         {
             UserName = userName;
             FuncionarioID = funcionarioID;
-            GestionActual = gestionActual;
             Roles = roles;
         }
     }

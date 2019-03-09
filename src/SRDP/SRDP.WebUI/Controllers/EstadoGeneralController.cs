@@ -2,7 +2,7 @@
 using SRDP.Application;
 using SRDP.Application.UseCases.GetCatalogos;
 using SRDP.Application.UseCases.GetEstadoGeneral;
-using SRDP.Application.UseCases.GetProfile;
+using SRDP.Application.UseCases.GetGestiones;
 using SRDP.WebUI.App_Start;
 using SRDP.WebUI.Models;
 using SRDP.WebUI.ModelViews;
@@ -20,24 +20,21 @@ namespace SRDP.WebUI.Controllers
     {
         private readonly IGetEstadoGeneralUserCase _GetEstadoGeneralUserCase;
         private readonly IGetCatalogosUserCase _getCatalogosUserCase;
-        private readonly IGetProfileUserCase _getProfileUserCase;
+        private readonly IGetGestionesUserCase _getGestionesUserCase;
 
-        public EstadoGeneralController(IGetEstadoGeneralUserCase getEstadoGeneralUserCase, IGetCatalogosUserCase getCatalogosUserCase, IGetProfileUserCase getProfileUserCase)
+        public EstadoGeneralController(IGetEstadoGeneralUserCase getEstadoGeneralUserCase, IGetCatalogosUserCase getCatalogosUserCase, IGetGestionesUserCase getGestionesUserCase)
         {
             _GetEstadoGeneralUserCase = getEstadoGeneralUserCase;
             _getCatalogosUserCase = getCatalogosUserCase;
-            _getProfileUserCase = getProfileUserCase;
+            _getGestionesUserCase = getGestionesUserCase;
         }
 
         public async Task<ActionResult> Index(int? estadoDeclaracion, SearchParametersModel searchParameters)
         {
-            var profile = _getProfileUserCase.Execute(User.Identity.Name);
-
-            if (!profile.Roles.Contains("Administrador"))
-                return View("Error");
+            var gestionActual = await _getGestionesUserCase.GestionVigente();
 
             var estado = estadoDeclaracion == null ? 0 : estadoDeclaracion.Value;
-            var outputModel = await _GetEstadoGeneralUserCase.ExecuteList(profile.GestionActual, estado, new Application.SearchParameters.FiltroFuncionario(
+            var outputModel = await _GetEstadoGeneralUserCase.ExecuteList(gestionActual.Gestion, estado, new Application.SearchParameters.FiltroFuncionario(
                 searchParameters.CodArea,
                 searchParameters.CodGeog,
                 searchParameters.CodCentroCosto,

@@ -8,7 +8,7 @@ namespace SRDP.WebUI.Models
 {
     public class GestionModel
     {
-        [Display(Name = "Gestíón")]
+        [Display(Name = "Gestión")]
         [Required(ErrorMessage = "Debe ingresar la gestión")]
         public int Gestion { get; set; }
 

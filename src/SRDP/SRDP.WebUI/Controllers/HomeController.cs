@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SRDP.Application.UseCases.GetDeclaracion;
+using SRDP.Application.UseCases.GetGestiones;
 using SRDP.Application.UseCases.GetProfile;
 using SRDP.WebUI.Models;
 using System;
@@ -15,16 +16,20 @@ namespace SRDP.WebUI.Controllers
     {
         private readonly IGetDeclaracionUserCase _getDeclaracionUserCase;
         private readonly IGetProfileUserCase _getProfileUserCase;
+        private readonly IGetGestionesUserCase _getGestionesUserCase;
 
-        public HomeController(IGetDeclaracionUserCase getDeclaracionUserCase, IGetProfileUserCase getProfileUserCase)
+        public HomeController(IGetDeclaracionUserCase getDeclaracionUserCase, IGetProfileUserCase getProfileUserCase, IGetGestionesUserCase getGestionesUserCase)
         {
             _getDeclaracionUserCase = getDeclaracionUserCase;
             _getProfileUserCase = getProfileUserCase;
+            _getGestionesUserCase = getGestionesUserCase;
         }
+
         public async Task<ActionResult> Index()
         {
             var profile = _getProfileUserCase.Execute(User.Identity.Name);
-            var declaracion = await _getDeclaracionUserCase.Execute(profile.GestionActual, profile.FuncionarioID);
+            var gestionActual = await _getGestionesUserCase.GestionVigente();
+            var declaracion = await _getDeclaracionUserCase.Execute(gestionActual.Gestion, profile.FuncionarioID);
             var viewModel = Mapper.Map<DeclaracionModel>(declaracion);
             return View(viewModel);
         }

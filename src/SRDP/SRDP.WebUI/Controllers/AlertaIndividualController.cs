@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using SRDP.Application.UseCases;
 using SRDP.Application.UseCases.GetAlertaGeneral;
-using SRDP.Application.UseCases.GetProfile;
+using SRDP.Application.UseCases.GetGestiones;
 using SRDP.Application.UseCases.GetReglasAlerta;
 using SRDP.WebUI.App_Start;
 using SRDP.WebUI.Models;
@@ -19,26 +19,26 @@ namespace SRDP.WebUI.Controllers
     public class AlertaIndividualController : Controller
     {
         private readonly IGetAlertaGeneralUserCase _getAlertaGeneralUserCase;
-        private readonly IGetProfileUserCase _getProfileUserCase;
+        private readonly IGetGestionesUserCase _getGestionesUserCase;
         private readonly IGetReglasAlertaUserCase _getReglasAlertaUserCase;
 
-        public AlertaIndividualController(IGetAlertaGeneralUserCase getAlertaGeneralUserCase, IGetProfileUserCase getProfileUserCase,
+        public AlertaIndividualController(IGetAlertaGeneralUserCase getAlertaGeneralUserCase, IGetGestionesUserCase getGestionesUserCase,
             IGetReglasAlertaUserCase getReglasAlertaUserCase)
         {
             _getAlertaGeneralUserCase = getAlertaGeneralUserCase;
-            _getProfileUserCase = getProfileUserCase;
+            _getGestionesUserCase = getGestionesUserCase;
             _getReglasAlertaUserCase = getReglasAlertaUserCase;
         }
         // GET: AlertaIndividual
 
         public async Task<ActionResult> Index(ReglaAlertaParameterModel parameterModel = null)
         {
-            var profile = _getProfileUserCase.Execute(User.Identity.Name);
-            var reglasAlerta = await _getReglasAlertaUserCase.ExecuteList(profile.GestionActual);
+            var gestionActual = await _getGestionesUserCase.GestionVigente();
+            var reglasAlerta = await _getReglasAlertaUserCase.ExecuteList(gestionActual.Gestion);
 
             if (reglasAlerta == null || reglasAlerta.Count == 0)
             {
-                ViewBag.Message = "No se han declarado alertas para la gestión " + profile.GestionActual.ToString() + "  " + Profile.UserName;
+                ViewBag.Message = "No se han declarado alertas para la gestión " + gestionActual.Gestion.ToString();
                 return RedirectToAction("Empty", "Home");
             }
             ReglaAlertaModel currentRegla = null;
@@ -47,7 +47,7 @@ namespace SRDP.WebUI.Controllers
             else
                 currentRegla = parameterModel.ReglaAlerta;
 
-            var outputList = await _getAlertaGeneralUserCase.ExecuteList(profile.GestionActual, currentRegla.Monto, currentRegla.Operador, currentRegla.Porcentaje);
+            var outputList = await _getAlertaGeneralUserCase.ExecuteList(gestionActual.Gestion, currentRegla.Monto, currentRegla.Operador, currentRegla.Porcentaje);
 
             var parameters = new ReglaAlertaParameterModel
             {

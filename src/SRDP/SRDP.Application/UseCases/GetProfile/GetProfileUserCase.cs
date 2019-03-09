@@ -35,14 +35,8 @@ namespace SRDP.Application.UseCases.GetProfile
             {
                 return await _rolesUsuarioReadOnlyRepository.Get(adUser.Name);
             });
-            var gestionVigente = Task.Run(async () =>
-             {
-                 return await _getGestionesUserCase.GestionVigente();
-             });
-            if (gestionVigente == null)
-                throw new ApplicationException("No se ha encontrado ninguna gestion vigente.");
-
-            return new UserProfileOutput(adUser.Name, funcionarioID.Result, gestionVigente.Result.Gestion, roles.Result);
+            
+            return new UserProfileOutput(adUser.Name, funcionarioID.Result, roles.Result);
         }
     }
 }
