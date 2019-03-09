@@ -24,7 +24,7 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                string sqlCommand = "INSERT INTO DeudasBancarias (ID, DeclaracionID, InstitucionFinanciera, Tipo, PorcentajeParticipacion, Monto) VALUES (@ID, @DeclaracionID, @InstitucionFinanciera, @Tipo, @Monto)";
+                string sqlCommand = "INSERT INTO DeudasBancarias (ID, DeclaracionID, InstitucionFinanciera, Tipo, Monto) VALUES (@ID, @DeclaracionID, @InstitucionFinanciera, @Tipo, @Monto)";
                 DynamicParameters deudaParameters = new DynamicParameters();
                 deudaParameters.Add("@ID", deudaBancaria.ID);
                 deudaParameters.Add("@DeclaracionID", deudaBancaria.DeclaracionID);

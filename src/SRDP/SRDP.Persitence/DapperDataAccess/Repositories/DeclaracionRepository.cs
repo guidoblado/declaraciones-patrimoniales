@@ -14,6 +14,7 @@ using SRDP.Domain.Inmuebles;
 using SRDP.Domain.OtrosIngresos;
 using SRDP.Domain.ValoresNegociables;
 using SRDP.Domain.Vehiculos;
+using SRDP.Domain.ValueObjects;
 
 namespace SRDP.Persitence.DapperDataAccess.Repositories
 {
@@ -63,7 +64,7 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
 
                 foreach (var item in inmuebles.ToList())
                 {
-                    inmueblesCollection.AddItem(Inmueble.Load(item.ID, item.DeclaracionID, item.Direccion, item.TipoDeInmueble, item.PorcentajeParticipacion, item.ValorComercial, item.SaldoHipoteca, item.Banco));
+                    inmueblesCollection.AddItem(Inmueble.Load(item.ID, item.DeclaracionID, item.Direccion, item.TipoDeInmueble, Porcentaje.For(item.PorcentajeParticipacion), item.ValorComercial, item.SaldoHipoteca, item.Banco));
                 }
 
                 var otrosIngresosSQL = "SELECT * FROM OtrosIngresos WHERE DeclaracionID = @declaracionID";
@@ -134,7 +135,7 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
 
                 foreach (var item in inmuebles.ToList())
                 {
-                    inmueblesCollection.AddItem(Inmueble.Load(item.ID, item.DeclaracionID, item.Direccion, item.TipoDeInmueble, item.PorcentajeParticipacion, item.ValorComercial, item.SaldoHipoteca, item.Banco));
+                    inmueblesCollection.AddItem(Inmueble.Load(item.ID, item.DeclaracionID, item.Direccion, item.TipoDeInmueble, Porcentaje.For(item.PorcentajeParticipacion), item.ValorComercial, item.SaldoHipoteca, item.Banco));
                 }
 
                 var otrosIngresosSQL = "SELECT * FROM OtrosIngresos WHERE DeclaracionID = @declaracionID";

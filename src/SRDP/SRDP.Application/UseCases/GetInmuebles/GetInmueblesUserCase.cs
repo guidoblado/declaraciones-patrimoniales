@@ -21,7 +21,7 @@ namespace SRDP.Application.UseCases.GetInmuebles
             var inmueble = await _inmuebleReadOnlyRepository.Get(inmuebleID);
             if (inmueble == null) return null;
 
-            return new InmuebleOutput(inmueble.ID, inmueble.DeclaracionID, inmueble.Direccion, inmueble.TipoDeInmueble, inmueble.PorcentajeParticipacion,
+            return new InmuebleOutput(inmueble.ID, inmueble.DeclaracionID, inmueble.Direccion, inmueble.TipoDeInmueble, inmueble.PorcentajeParticipacion.Valor,
                 inmueble.ValorComercial, inmueble.SaldoHipoteca, inmueble.Banco);
         }
 
@@ -35,7 +35,7 @@ namespace SRDP.Application.UseCases.GetInmuebles
 
             foreach (var inmueble in inmuebles)
             {
-                outputList.Add(new InmuebleOutput(inmueble.ID, inmueble.DeclaracionID, inmueble.Direccion, inmueble.TipoDeInmueble, inmueble.PorcentajeParticipacion,
+                outputList.Add(new InmuebleOutput(inmueble.ID, inmueble.DeclaracionID, inmueble.Direccion, inmueble.TipoDeInmueble, inmueble.PorcentajeParticipacion.Valor,
                     inmueble.ValorComercial, inmueble.SaldoHipoteca, inmueble.Banco));
             }
             return outputList;

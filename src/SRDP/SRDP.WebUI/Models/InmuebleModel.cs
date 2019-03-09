@@ -13,14 +13,17 @@ namespace SRDP.WebUI.Models
         public Guid DeclaracionID { get; set; }
 
         [Display(Name = "Dirección")]
+        [Required(ErrorMessage = "Debe introducir la dirección del Inmueble")]
         public string Direccion { get; set; }
 
         [Display(Name = "Tipo de Inmueble")]
+        [Required(ErrorMessage = "Seleccione un tipo de inmueble")]
         public string TipoDeInmueble { get; set; }
         public IEnumerable<SelectListItem> TiposDeInmuebles { get; set; }
 
         [Display(Name = "% Participación")]
         [DisplayFormat(DataFormatString = "{0:P1}")]
+        [RegularExpression(@"^(0*100{1,1}\.?((?<=\.)0*)?%?$)|(^0*\d{0,2}\.?((?<=\.)\d*)?%?)$", ErrorMessage = "El valor de porcentaje introducido no es válido")]
         public decimal PorcentajeParticipacion { get; set; }
 
         [Display(Name ="Valor Comercial $us")]

@@ -48,6 +48,8 @@ namespace SRDP.WebUI.Controllers
                 ID = Guid.Empty,
                 DeclaracionID = declaracionID,
                 InstitucionFinanciera = String.Empty,
+                Tipo = String.Empty,
+                TiposDeDeuda = DeudaBancariaModel.GetTiposDeuda(),
                 Monto = 0
             }
             );

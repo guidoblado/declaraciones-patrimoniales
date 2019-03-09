@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SRDP.Domain.ValueObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,13 +13,13 @@ namespace SRDP.Domain.Inmuebles
         public Guid DeclaracionID { get; private set; }
         public string Direccion { get; private set; }
         public string TipoDeInmueble { get; private set; }
-        public decimal PorcentajeParticipacion { get; private set; }
+        public Porcentaje PorcentajeParticipacion { get; private set; }
         public decimal ValorComercial { get; private set; }
         public decimal SaldoHipoteca { get; private set; }
         public string Banco { get; private set; }
 
         #region Constructors
-        public Inmueble(Guid declaracionID, string direccion, string tipoDeInmueble, decimal porcentajeParticipacion, decimal valorComercial, decimal saldoHipoteca, string banco)
+        public Inmueble(Guid declaracionID, string direccion, string tipoDeInmueble, Porcentaje porcentajeParticipacion, decimal valorComercial, decimal saldoHipoteca, string banco)
         {
             ID = Guid.NewGuid();
             DeclaracionID = declaracionID;
@@ -33,7 +34,7 @@ namespace SRDP.Domain.Inmuebles
         private Inmueble() { }
         #endregion
 
-        public static Inmueble Load(Guid id, Guid declaracionID, string direccion, string tipoDeInmueble, decimal porcentajeParticipacion, decimal valorComercial, decimal saldoHipoteca, string banco)
+        public static Inmueble Load(Guid id, Guid declaracionID, string direccion, string tipoDeInmueble, Porcentaje porcentajeParticipacion, decimal valorComercial, decimal saldoHipoteca, string banco)
         {
             var inmueble = new Inmueble
             {

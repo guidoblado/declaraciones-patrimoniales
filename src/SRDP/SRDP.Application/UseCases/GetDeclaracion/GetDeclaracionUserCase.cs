@@ -40,7 +40,7 @@ namespace SRDP.Application.UseCases.GetDeclaracion
             var inmuebles = new List<InmuebleOutput>();
             foreach (var item in declaracion.Inmuebles.Items)
             {
-                inmuebles.Add(new InmuebleOutput(item.ID, item.DeclaracionID, item.Direccion, item.TipoDeInmueble, item.PorcentajeParticipacion, item.ValorComercial, item.SaldoHipoteca, item.Banco));
+                inmuebles.Add(new InmuebleOutput(item.ID, item.DeclaracionID, item.Direccion, item.TipoDeInmueble, item.PorcentajeParticipacion.Valor, item.ValorComercial, item.SaldoHipoteca, item.Banco));
             }
 
             var otrosIngresos = new List<OtroIngresoOutput>();
@@ -85,7 +85,7 @@ namespace SRDP.Application.UseCases.GetDeclaracion
             var inmuebles = new List<InmuebleOutput>();
             foreach (var item in declaracion.Inmuebles.Items)
             {
-                inmuebles.Add(new InmuebleOutput(item.ID, item.DeclaracionID, item.Direccion, item.TipoDeInmueble, item.PorcentajeParticipacion, item.ValorComercial, item.SaldoHipoteca, item.Banco));
+                inmuebles.Add(new InmuebleOutput(item.ID, item.DeclaracionID, item.Direccion, item.TipoDeInmueble, item.PorcentajeParticipacion.Valor, item.ValorComercial, item.SaldoHipoteca, item.Banco));
             }
 
             var otrosIngresos = new List<OtroIngresoOutput>();

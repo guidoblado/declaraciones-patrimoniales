@@ -50,7 +50,7 @@ namespace SRDP.Domain.Declaraciones
             decimal result = 0;
             foreach (var item in Items)
             {
-                result += (item.ValorComercial - item.SaldoHipoteca) * item.PorcentajeParticipacion;
+                result += (item.ValorComercial - item.SaldoHipoteca) * item.PorcentajeParticipacion.Valor;
             }
             return result;
         }
