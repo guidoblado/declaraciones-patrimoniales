@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SRDP.Application.Repositories
 {
-    public interface IRolesUsuarioReadOnlyRepository
+    public interface IRolesUsuarioWriteOnlyRepository
     {
-        Task<List<string>> Get(string username);
-        Task<List<string>> GetAdminUsers();
+        Task Add(string userName, int funcionarioID);
+        Task Delete(string username);
     }
 }

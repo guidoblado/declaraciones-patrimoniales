@@ -226,23 +226,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AuthorizeRolesEnums.cs" />
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\CustomRoleProvider.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IoCConfig.cs" />
+    <Compile Include="App_Start\RoleAuthorizeAttribute.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AlertaGeneralController.cs" />
     <Compile Include="Controllers\AlertaIndividualController.cs" />
     <Compile Include="Controllers\DeclaracionesController.cs" />
     <Compile Include="Controllers\DepositosController.cs" />
     <Compile Include="Controllers\DeudasBancariasController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\EstadoGeneralController.cs" />
     <Compile Include="Controllers\GestionesController.cs" />
     <Compile Include="Controllers\HistoricoIndividualController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InmueblesController.cs" />
     <Compile Include="Controllers\OtrosIngresosController.cs" />
+    <Compile Include="Controllers\UserProfilesController.cs" />
     <Compile Include="Controllers\ReglasAlertaController.cs" />
     <Compile Include="Controllers\ValoresNegociablesController.cs" />
     <Compile Include="Controllers\VehiculosController.cs" />
@@ -269,6 +273,7 @@
     <Compile Include="ModelViews\AlertaIndividualModelView.cs" />
     <Compile Include="ModelViews\EstadoGeneralModelView.cs" />
     <Compile Include="ModelViews\HistoricoIndividualModelView.cs" />
+    <Compile Include="ModelViews\UserProfileModelView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -362,6 +367,8 @@
     <Content Include="Views\Declaraciones\DetailsPdf.cshtml" />
     <Content Include="Views\Gestiones\Index.cshtml" />
     <Content Include="Views\Gestiones\Add.cshtml" />
+    <Content Include="Views\Error\AccessDenied.cshtml" />
+    <Content Include="Views\UserProfiles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

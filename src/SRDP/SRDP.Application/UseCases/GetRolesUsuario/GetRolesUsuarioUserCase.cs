@@ -27,8 +27,10 @@ namespace SRDP.Application.UseCases.GetRolesUsuario
 
         public List<string> ExecuteSync(string username)
         {
+            var adUser = AdAccount.For(username).Name;
+
             var task = Task.Run(async () => {
-                return await _rolesUsuarioReadOnlyRepository.Get(username);
+                return await _rolesUsuarioReadOnlyRepository.Get(adUser);
             });
             return task.Result;
         }

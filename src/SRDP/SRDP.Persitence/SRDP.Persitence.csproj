@@ -70,6 +70,7 @@
     <Compile Include="DapperDataAccess\Repositories\DeudaBancariaRepository.cs" />
     <Compile Include="DapperDataAccess\Repositories\EstadoGeneralRepository.cs" />
     <Compile Include="DapperDataAccess\Repositories\FuncionarioRepository.cs" />
+    <Compile Include="DapperDataAccess\Repositories\FuncionarioUsuarioRepository.cs" />
     <Compile Include="DapperDataAccess\Repositories\GestionRepository.cs" />
     <Compile Include="DapperDataAccess\Repositories\HistoricoIndividualRepository.cs" />
     <Compile Include="DapperDataAccess\Repositories\InmuebleRepository.cs" />

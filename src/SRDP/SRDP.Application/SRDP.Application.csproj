@@ -56,6 +56,7 @@
     <Compile Include="Repositories\IDeudaBancariaWriteOnlyRepository.cs" />
     <Compile Include="Repositories\IEstadoGeneralReadOnlyRepository.cs" />
     <Compile Include="Repositories\IFuncionarioReadOnlyRepository.cs" />
+    <Compile Include="Repositories\IFuncionarioUsuarioReadOnlyRepository.cs" />
     <Compile Include="Repositories\IFuncionarioWriteOnlyRepository.cs" />
     <Compile Include="Repositories\IGestionReadOnlyRepository.cs" />
     <Compile Include="Repositories\IGestionWriteOnlyRepository.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Repositories\IReglaAlertaReadOnlyRepository.cs" />
     <Compile Include="Repositories\IReglaAlertaWriteOnlyRepository.cs" />
     <Compile Include="Repositories\IRolesUsuarioReadOnlyRepository.cs" />
+    <Compile Include="Repositories\IRolesUsuarioWriteOnlyRepository.cs" />
     <Compile Include="Repositories\IValorNegociableReadOnlyRepository.cs" />
     <Compile Include="Repositories\IValorNegociableWriteOnlyRepository.cs" />
     <Compile Include="Repositories\IVehiculoReadOnlyRepository.cs" />

@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using SRDP.Application.UseCases;
+using SRDP.Application.UseCases.GetGestiones;
 using SRDP.Application.UseCases.GetProfile;
 using SRDP.Application.UseCases.GetReglasAlerta;
 using SRDP.Application.UseCases.SaveReglasAlerta;
+using SRDP.WebUI.App_Start;
 using SRDP.WebUI.Models;
 using System;
 using System.Collections.Generic;
@@ -13,24 +15,25 @@ using System.Web.Mvc;
 
 namespace SRDP.WebUI.Controllers
 {
+    [RoleAuthorize(Roles.Administrador)]
     public class ReglasAlertaController : Controller
     {
-        private IGetReglasAlertaUserCase _getReglasAlertaUserCase;
-        private ISaveReglasAlertaUserCase _saveReglasAlertaUserCase;
-        private IGetProfileUserCase _profileUserCase;
+        private readonly IGetReglasAlertaUserCase _getReglasAlertaUserCase;
+        private readonly ISaveReglasAlertaUserCase _saveReglasAlertaUserCase;
+        private readonly IGetGestionesUserCase _getGestionesUserCase;
 
-        public ReglasAlertaController(IGetReglasAlertaUserCase getReglasAlertaUserCase, ISaveReglasAlertaUserCase saveReglasAlertaUserCase, IGetProfileUserCase profileUserCase)
+        public ReglasAlertaController(IGetReglasAlertaUserCase getReglasAlertaUserCase, ISaveReglasAlertaUserCase saveReglasAlertaUserCase, IGetGestionesUserCase getGestionesUserCase)
         {
             _getReglasAlertaUserCase = getReglasAlertaUserCase;
             _saveReglasAlertaUserCase = saveReglasAlertaUserCase;
-            _profileUserCase = profileUserCase;
+            _getGestionesUserCase = getGestionesUserCase;
         }
 
         // GET: ReglasAlerta
         public async Task<ActionResult> Index()
         {
-            var profile = _profileUserCase.Execute(User.Identity.Name);
-            var outputList = await _getReglasAlertaUserCase.ExecuteList(profile.GestionActual);
+            var gestionActual = await _getGestionesUserCase.GestionVigente();
+            var outputList = await _getReglasAlertaUserCase.ExecuteList(gestionActual.Gestion);
             var viewModel = Mapper.Map<ICollection<ReglaAlertaOutput>, List<ReglaAlertaModel>>(outputList);
             return View(viewModel);
         }
@@ -39,7 +42,7 @@ namespace SRDP.WebUI.Controllers
         public async Task<ActionResult> Save(Guid id)
         {
             if (id == null) return PartialView(new ReglaAlertaModel());
-            var profile = _profileUserCase.Execute(User.Identity.Name);
+            var gestionActual = await _getGestionesUserCase.GestionVigente();
             var reglaAlerta = await _getReglasAlertaUserCase.Execute(id);
 
             if (reglaAlerta == null) return PartialView(new ReglaAlertaModel
@@ -47,7 +50,7 @@ namespace SRDP.WebUI.Controllers
                 ID = Guid.Empty,
                 Descripcion = String.Empty,
                 Monto = 0,
-                Gestion = profile.GestionActual,
+                Gestion = gestionActual.Gestion,
             });
 
             var modelView = Mapper.Map<ReglaAlertaOutput, ReglaAlertaModel>(reglaAlerta);

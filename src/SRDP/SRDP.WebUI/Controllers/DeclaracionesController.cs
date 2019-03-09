@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using SRDP.Application.UseCases;
 using SRDP.Application.UseCases.GetDeclaracion;
-using SRDP.Application.UseCases.GetProfile;
+using SRDP.Application.UseCases.GetGestiones;
+using SRDP.WebUI.App_Start;
 using SRDP.WebUI.Models;
 using System;
 using System.Collections.Generic;
@@ -16,18 +17,19 @@ namespace SRDP.WebUI.Controllers
     public class DeclaracionesController : Controller
     {
         private readonly IGetDeclaracionUserCase _getDeclaracionUserCase;
-        private readonly IGetProfileUserCase _getProfileUserCase;
+        private readonly IGetGestionesUserCase _getGestionesUserCase;
 
-        public DeclaracionesController(IGetDeclaracionUserCase getDeclaracionUserCase, IGetProfileUserCase getProfileUserCase)
+        public DeclaracionesController(IGetDeclaracionUserCase getDeclaracionUserCase, IGetGestionesUserCase getGestionesUserCase)
         {
             _getDeclaracionUserCase = getDeclaracionUserCase;
-            _getProfileUserCase = getProfileUserCase;
+            _getGestionesUserCase = getGestionesUserCase;
         }
         // GET: Declaraciones
+        [RoleAuthorize(Roles.Administrador)]
         public async Task<ActionResult> Index()
         {
-            var profile = _getProfileUserCase.Execute(User.Identity.Name);
-            var outputList = await _getDeclaracionUserCase.ExecuteList(profile.GestionActual);
+            var gestionActual = await _getGestionesUserCase.GestionVigente();
+            var outputList = await _getDeclaracionUserCase.ExecuteList(gestionActual.Gestion);
             var viewModel = Mapper.Map<ICollection<DeclaracionOutput>, List<DeclaracionModel>> (outputList);
             return View(viewModel);
         }
