@@ -10,6 +10,14 @@
 <body>
     @Html.Partial("_NavBar")
     <div class="container body-content">
+        @if (TempData["UserMessage"] != null)
+        {
+            var message = (SRDP.WebUI.Models.MessageModel)TempData["UserMessage"];
+            <div class="alert @message.CssClassName">
+                <strong>@message.Title</strong>
+                @message.Message
+            </div>
+        }
         @RenderBody()
         <hr />
         <footer>

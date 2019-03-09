@@ -39,7 +39,7 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
                 string sqlCommand = "DELETE UsuariosAdministrador WHERE NombreUsuario = @username";
 
                 DynamicParameters usuarioAdminParameters = new DynamicParameters();
-                usuarioAdminParameters.Add("@NombreUsuario", username);
+                usuarioAdminParameters.Add("@username", username);
 
                 int rows = await db.ExecuteAsync(sqlCommand, usuarioAdminParameters);
             }

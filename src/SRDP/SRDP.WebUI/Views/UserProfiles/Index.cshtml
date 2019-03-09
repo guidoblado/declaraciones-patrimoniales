@@ -69,7 +69,14 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.IsAdmin)
                                     </td>
-                                    <td></td>
+                                    <td>
+                                        @if (item.IsAdmin)
+                                        {
+                                            @Html.ActionLink("Eliminar de Admin", "DeleteFromAdmin", new { soloAdmin = Model.SoloAdmin, userName = item.UserName }, new { @class = "btn btn-danger" })
+                                        } else { 
+                                            @Html.ActionLink("Adicionar a Admin", "AddToAdmin", new { soloAdmin = Model.SoloAdmin, userName = item.UserName, funcionarioID = item.FuncionarioID }, new { @class = "btn btn-success" } )
+                                        }
+                                    </td>
                                 </tr>
                             }
                         </tbody>
