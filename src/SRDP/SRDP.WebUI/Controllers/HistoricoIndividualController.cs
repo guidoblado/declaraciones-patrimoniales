@@ -35,9 +35,9 @@ namespace SRDP.WebUI.Controllers
             var filtro = new FiltroFuncionario
             (
                 searchParameters.CodArea,
-                searchParameters.CodCargo,
                 searchParameters.CodGeog,
                 searchParameters.CodCentroCosto,
+                searchParameters.CodCargo,
                 searchParameters.TipoRol
             );
             var profile = _getProfileUserCase.Execute(User.Identity.Name);
