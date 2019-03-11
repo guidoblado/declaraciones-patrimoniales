@@ -15,6 +15,7 @@ using SRDP.Domain.OtrosIngresos;
 using SRDP.Domain.ValoresNegociables;
 using SRDP.Domain.Vehiculos;
 using SRDP.Domain.ValueObjects;
+using SRDP.Domain.Enumerations;
 
 namespace SRDP.Persitence.DapperDataAccess.Repositories
 {
@@ -32,11 +33,14 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
             using (IDbConnection db = new SqlConnection(connectionString))
             {
                 string declaracionSQL = "SELECT * FROM Declaraciones WHERE ID = @declaracionID";
-                Entities.DeclaracionPatrimonial declaracion = await db
+                var declaracion = await db
                     .QueryFirstOrDefaultAsync<Entities.DeclaracionPatrimonial>(declaracionSQL, new { declaracionID });
 
                 if (declaracion == null) return null;
 
+                string gestionSql = "SELECT * FROM Gestiones WHERE Gestion = @gestion";
+                var gestion = await db.QueryFirstOrDefaultAsync<Entities.GestionSchema>(gestionSql, new { declaracion.Gestion });
+                
                 var depositosCollection = new DepositoCollection();
                 var deudasCollection = new DeudaBancariaCollection();
                 var inmueblesCollection = new InmuebleCollection();
@@ -90,19 +94,20 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
                 {
                     vehiculosCollection.AddItem(Vehiculo.Load(item.ID, item.DeclaracionID, item.Marca, item.TipoVehiculo, Convert.ToString(item.Anio), item.ValorAproximado, item.SaldoDeudor, item.Banco));
                 }
-                Declaracion result = Declaracion.Load(declaracion.ID, declaracion.FuncionarioID, declaracion.Gestion, declaracion.FechaLlenado,
+                Declaracion result = Declaracion.Load(declaracion.ID, declaracion.FuncionarioID, Gestion.For(gestion.Gestion,
+                    gestion.FechaInicio, gestion.FechaFinal, gestion.Vigente), declaracion.FechaLlenado, (EstadoDeclaracion)Enum.Parse(typeof(EstadoDeclaracion), declaracion.Estado),
                     depositosCollection, deudasCollection, inmueblesCollection, otrosIngresosCollection, valoresNegociablesCollection, vehiculosCollection, null);
                 return result;
             }
         }
 
-        public async Task<Declaracion> Get(int gestion, int funcionarioID)
+        public async Task<Declaracion> Get(Gestion gestion, int funcionarioID)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                string declaracionSQL = "SELECT * FROM Declaraciones WHERE Gestion = @gestion AND FuncionarioID = @funcionarioID";
+                string declaracionSQL = "SELECT * FROM Declaraciones WHERE Gestion = @Anio AND FuncionarioID = @funcionarioID";
                 Entities.DeclaracionPatrimonial declaracion = await db
-                    .QueryFirstOrDefaultAsync<Entities.DeclaracionPatrimonial>(declaracionSQL, new { gestion, funcionarioID });
+                    .QueryFirstOrDefaultAsync<Entities.DeclaracionPatrimonial>(declaracionSQL, new { gestion.Anio, funcionarioID });
 
                 if (declaracion == null) return null;
 
@@ -162,18 +167,18 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
                     vehiculosCollection.AddItem(Vehiculo.Load(item.ID, item.DeclaracionID, item.Marca, item.TipoVehiculo, Convert.ToString(item.Anio), item.ValorAproximado, item.SaldoDeudor, item.Banco));
                 }
 
-                Declaracion result = Declaracion.Load(declaracion.ID, declaracion.FuncionarioID, declaracion.Gestion, declaracion.FechaLlenado,
+                Declaracion result = Declaracion.Load(declaracion.ID, declaracion.FuncionarioID, gestion, declaracion.FechaLlenado, (EstadoDeclaracion)Enum.Parse(typeof(EstadoDeclaracion), declaracion.Estado),
                     depositosCollection, deudasCollection, inmueblesCollection, otrosIngresosCollection, valoresNegociablesCollection, vehiculosCollection, null);
                 return result;
             }
         }
 
-        public async Task<ICollection<Declaracion>> GetByGestion(int gestion)
+        public async Task<ICollection<Declaracion>> GetByGestion(Gestion gestion)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                string declaracionSQL = "SELECT * FROM Declaraciones WHERE Gestion = @gestion";
-                var declaraciones = await db.QueryAsync<Entities.DeclaracionPatrimonial>(declaracionSQL, new { gestion });
+                string declaracionSQL = "SELECT * FROM Declaraciones WHERE Gestion = @Anio";
+                var declaraciones = await db.QueryAsync<Entities.DeclaracionPatrimonial>(declaracionSQL, new { gestion.Anio });
 
                 var outputResult = new List<Declaracion>();
 
@@ -181,7 +186,8 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
 
                 foreach (var declaracion in declaraciones)
                 {
-                    outputResult.Add(Declaracion.Load(declaracion.ID, declaracion.FuncionarioID, declaracion.Gestion, declaracion.FechaLlenado,
+                    outputResult.Add(Declaracion.Load(declaracion.ID, declaracion.FuncionarioID, gestion, declaracion.FechaLlenado,
+                        (EstadoDeclaracion)Enum.Parse(typeof(EstadoDeclaracion), declaracion.Estado),
                         new DepositoCollection(), new DeudaBancariaCollection(), new InmuebleCollection(), new OtroIngresoCollection(),
                         new ValorNegociableCollection(), new VehiculoCollection(), null));
                 }

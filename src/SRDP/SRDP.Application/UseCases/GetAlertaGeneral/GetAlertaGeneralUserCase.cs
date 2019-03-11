@@ -30,7 +30,7 @@ namespace SRDP.Application.UseCases.GetAlertaGeneral
                 var declaracionActual = await _declaracionReadOnlyRepository.Get(item.DeclaracionID);
                 var declaracionAnterior = await _declaracionReadOnlyRepository.Get(item.DeclaracionAnteriorID);
                 var declaracion = Declaracion.Load(declaracionActual.ID, declaracionActual.FuncionarioID, declaracionActual.Gestion,
-                    declaracionActual.FechaLlenado, declaracionActual.Depositos, declaracionActual.DeudasBancarias, declaracionActual.Inmuebles,
+                    declaracionActual.FechaLlenado, declaracionActual.Estado, declaracionActual.Depositos, declaracionActual.DeudasBancarias, declaracionActual.Inmuebles,
                     declaracionActual.OtrosIngresos, declaracionActual.ValoresNegociables, declaracionActual.Vehiculos, declaracionAnterior);
 
                 item.SetMontosPatrimonio(declaracion.PatrimonioNeto, declaracion.PatrimonioNetoGestionAnterior,

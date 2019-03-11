@@ -34,6 +34,10 @@ namespace SRDP.WebUI.Models
         [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal PatrimonioNeto { get; set; }
 
+        public string Estado { get; set; }
+
+        public bool EsEditable { get; set; }
+
         public IList<DepositoModel> Depositos { get; set; }
         public IList<DeudaBancariaModel> DeudasBancarias { get; set; }
         public IList<InmuebleModel> Inmuebles { get; set; }

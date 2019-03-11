@@ -11,6 +11,19 @@ using System.Threading.Tasks;
 
 namespace SRDP.Persitence.DapperDataAccess.Repositories
 {
+    public class DateTimeHandler : SqlMapper.TypeHandler<DateTime>
+    {
+        public override DateTime Parse(object value)
+        {
+            return DateTime.SpecifyKind((DateTime)value, DateTimeKind.Utc);
+        }
+
+        public override void SetValue(IDbDataParameter parameter, DateTime value)
+        {
+            parameter.Value = value;
+        }
+    }
+
     public class GestionRepository : IGestionReadOnlyRepository, IGestionWriteOnlyRepository
     {
         private readonly string connectionString;
@@ -68,7 +81,6 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
             using (IDbConnection db = new SqlConnection(connectionString))
             {
                 string sqlCommand = "SELECT * FROM Gestiones WHERE Gestion = @gestion";
-
                 var gestionSchema = await db.QueryFirstOrDefaultAsync<Entities.GestionSchema>(sqlCommand, new { gestion });
 
                 if (gestionSchema == null) return null;
@@ -81,7 +93,7 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
             using (IDbConnection db = new SqlConnection(connectionString))
             {
                 string sqlCommand = "SELECT * FROM Gestiones";
-
+                
                 var gestiones = await db.QueryAsync<Entities.GestionSchema>(sqlCommand);
                 var outputResult = new List<GestionOutput>();
 

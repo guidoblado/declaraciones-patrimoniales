@@ -1,5 +1,6 @@
 ﻿using SRDP.Application.Repositories;
 using SRDP.Domain.Declaraciones;
+using SRDP.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,12 +33,12 @@ namespace SRDP.Persitence.InMemoryDataAccess.Repositories
             return await Task.FromResult<Declaracion>(declaracion);
         }
 
-        public Task<Declaracion> Get(int gestion, int funcionarioID)
+        public Task<Declaracion> Get(Gestion gestion, int funcionarioID)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<ICollection<Declaracion>> GetByGestion(int gestion)
+        public async Task<ICollection<Declaracion>> GetByGestion(Gestion gestion)
         {
             var declaraciones = _context.Declaraciones
                 .Where(c => c.Gestion == gestion)
