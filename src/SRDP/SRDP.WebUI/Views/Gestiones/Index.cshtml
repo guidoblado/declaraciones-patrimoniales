@@ -17,7 +17,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <table class="table table-bordered table-striped" id="gestionseTable">
+            <table class="table table-bordered table-striped" id="gestionesTable">
                 <thead>
                     <tr>
                         <th>
@@ -52,7 +52,10 @@
                                 @Html.DisplayFor(modelItem => item.Vigente)
                             </td>
                             <td>
-                                <a class="btn btn-primary btn-sm" onclick=PopupForm('@Url.Action("Update", "ReglasAlerta" , new { id=item.Gestion })')> <i class='fa fa-pencil'></i> Editar</a>
+                                @if(item.Vigente)
+                                { 
+                                    <a class="btn btn-primary btn-sm text-white" onclick=PopupForm('@Url.Action("Edit", "Gestiones" , new { anio=item.Gestion })')> <i class='fa fa-pencil'></i> Modificar Fechas</a>
+                                }
                             </td>
                         </tr>
                     }
@@ -67,13 +70,25 @@
 
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-    <script src="~/Scripts/jquery-ui.js"></script>
 
+    <script src="~/Scripts/jquery-ui.js"></script>
+    @*<script>
+        $(function () {
+            $(".datefield").datepicker({
+                dateFormat: "dd/MM/yyyy",
+                showOn: 'button',
+                changeMonth: true,
+                changeYear: true,
+                showOn: "both",
+                buttonText: "<i class='fa fa-calendar></i>'"
+            });
+        });
+    </script>*@
     <script>
-        var Popup, dataTable;
         var dataTable;
+          var Popup, dataTable;
         $(document).ready(function () {
-            dataTable = $("#gestionseTable").DataTable({
+            dataTable = $("#gestionesTable").DataTable({
                 dom: 'tip',
                 lengthChange: false,
                 searching: false,
@@ -95,8 +110,6 @@
                         autoOpen: true,
                         resizable: false,
                         title: 'Ingrese los datos',
-                        height: 500,
-                        width: 550,
                         close: function () {
                             Popup.dialog('destroy').remove();
                         }
@@ -133,7 +146,7 @@
             }
             return false;
         }
-        
+
 
     </script>
 }

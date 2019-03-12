@@ -1,5 +1,6 @@
 ﻿using SRDP.Application.Repositories;
 using SRDP.Domain.Declaraciones;
+using SRDP.Domain.Enumerations;
 using SRDP.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,11 @@ namespace SRDP.Persitence.InMemoryDataAccess.Repositories
                 .SingleOrDefault();
             declaracionAnterior = declaracion;
             await Task.CompletedTask;
+        }
+
+        public Task UpdateEstado(Guid declaracionID, EstadoDeclaracion estado)
+        {
+            throw new NotImplementedException();
         }
     }
 }

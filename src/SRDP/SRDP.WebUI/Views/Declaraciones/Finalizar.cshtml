@@ -1,0 +1,22 @@
+﻿@model SRDP.WebUI.Models.FinalizarDeclaracionModel
+@using (Html.BeginForm("Finalizar", "Declaraciones", FormMethod.Post, new { onSubmit = "return SubmitForm(this)" }))
+{
+    @Html.HiddenFor(model => model.DeclaracionID)
+    @Html.HiddenFor(model => model.Mensaje)
+
+    <div class="alert alert-warning">
+        <span class="glyphicon glyphicon-warning-sign"></span>
+        <p>
+            Al presionar finalizar usted declara que los datos del formulario son verdaderos.
+        </p>
+        <p>@Model.Mensaje</p>
+    </div>
+    <div class="row">
+        &nbsp;
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Finalizar" class="btn btn-danger" />
+        <div class="btn btn-secondary" onclick="return CloseForm()">Cancelar</div>
+    </div>
+}

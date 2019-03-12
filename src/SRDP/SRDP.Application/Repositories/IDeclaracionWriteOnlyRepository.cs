@@ -1,5 +1,6 @@
 ﻿using SRDP.Domain.Declaraciones;
 using SRDP.Domain.Depositos;
+using SRDP.Domain.Enumerations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace SRDP.Application.Repositories
     {
         Task Add(Declaracion declaracion);
         Task Update(Declaracion declaracion);
+        Task UpdateEstado(Guid declaracionID, EstadoDeclaracion estado);
     }
 }

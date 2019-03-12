@@ -259,6 +259,7 @@
     <Compile Include="Models\DepositoModel.cs" />
     <Compile Include="Models\DeudaBancariaModel.cs" />
     <Compile Include="Models\EstadoGeneralModel.cs" />
+    <Compile Include="Models\FinalizarDeclaracionModel.cs" />
     <Compile Include="Models\GestionModel.cs" />
     <Compile Include="Models\HistoricoIndividualModel.cs" />
     <Compile Include="Models\InmuebleModel.cs" />
@@ -370,6 +371,8 @@
     <Content Include="Views\Gestiones\Add.cshtml" />
     <Content Include="Views\Error\AccessDenied.cshtml" />
     <Content Include="Views\UserProfiles\Index.cshtml" />
+    <Content Include="Views\Declaraciones\Finalizar.cshtml" />
+    <Content Include="Views\Gestiones\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

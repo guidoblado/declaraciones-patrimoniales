@@ -2,6 +2,7 @@
 using SRDP.Application.UseCases;
 using SRDP.Application.UseCases.GetDeclaracion;
 using SRDP.Application.UseCases.GetGestiones;
+using SRDP.Application.UseCases.UpdateDeclaracion;
 using SRDP.WebUI.App_Start;
 using SRDP.WebUI.Models;
 using System;
@@ -18,11 +19,14 @@ namespace SRDP.WebUI.Controllers
     {
         private readonly IGetDeclaracionUserCase _getDeclaracionUserCase;
         private readonly IGetGestionesUserCase _getGestionesUserCase;
+        private readonly IUpdateDeclaracionUserCase _updateDeclaracionUserCase;
 
-        public DeclaracionesController(IGetDeclaracionUserCase getDeclaracionUserCase, IGetGestionesUserCase getGestionesUserCase)
+        public DeclaracionesController(IGetDeclaracionUserCase getDeclaracionUserCase, IGetGestionesUserCase getGestionesUserCase,
+            IUpdateDeclaracionUserCase updateDeclaracionUserCase)
         {
             _getDeclaracionUserCase = getDeclaracionUserCase;
             _getGestionesUserCase = getGestionesUserCase;
+            _updateDeclaracionUserCase = updateDeclaracionUserCase;
         }
         // GET: Declaraciones
         [RoleAuthorize(Roles.Administrador)]
@@ -47,6 +51,25 @@ namespace SRDP.WebUI.Controllers
             var modelView = Mapper.Map<DeclaracionModel>(output);
             var report = new Rotativa.PartialViewAsPdf("DetailsPdf", modelView);
             return report;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Finalizar(Guid id)
+        {
+            var viewModel = new FinalizarDeclaracionModel
+            {
+                DeclaracionID = id,
+                //TODO: Get message from Data Base
+                Mensaje = "Esta es una declaracion jurada"
+            };
+            return PartialView(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Finalizar(FinalizarDeclaracionModel finalizarDeclaracion)
+        {
+            await _updateDeclaracionUserCase.CloseDeclaracion(finalizarDeclaracion.DeclaracionID);
+            return Json(new { success = true, message = finalizarDeclaracion.DeclaracionID.ToString() }, JsonRequestBehavior.AllowGet);
         }
     }
 }

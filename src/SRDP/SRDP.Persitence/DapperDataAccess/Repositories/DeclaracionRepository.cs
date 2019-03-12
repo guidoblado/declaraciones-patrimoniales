@@ -19,13 +19,18 @@ using SRDP.Domain.Enumerations;
 
 namespace SRDP.Persitence.DapperDataAccess.Repositories
 {
-    public class DeclaracionRepository : IDeclaracionReadOnlyRepository
+    public class DeclaracionRepository : IDeclaracionReadOnlyRepository, IDeclaracionWriteOnlyRepository
     {
         private readonly string connectionString;
 
         public DeclaracionRepository(string connectionString)
         {
             this.connectionString = connectionString;
+        }
+
+        public Task Add(Declaracion declaracion)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<Declaracion> Get(Guid declaracionID)
@@ -192,6 +197,26 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
                         new ValorNegociableCollection(), new VehiculoCollection(), null));
                 }
                 return outputResult;
+            }
+        }
+
+        public Task Update(Declaracion declaracion)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task UpdateEstado(Guid declaracionID, EstadoDeclaracion estado)
+        {
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                string sqlCommand = "UPDATE Declaraciones SET Estado = @estado, FechaLlenado = @fechaLlenado WHERE ID = @declaracionID";
+
+                DynamicParameters declaracionParameters = new DynamicParameters();
+                declaracionParameters.Add("@estado", (int)estado, DbType.Int32);
+                declaracionParameters.Add("@fechaLlenado", DateTime.Now, DbType.DateTime);
+                declaracionParameters.Add("@declaracionID", declaracionID);
+
+                int rows = await db.ExecuteAsync(sqlCommand, declaracionParameters);
             }
         }
     }

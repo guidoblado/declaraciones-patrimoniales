@@ -52,5 +52,23 @@ namespace SRDP.WebUI.Controllers
             await _updateGestionesUserCase.Add(gestion.Gestion, gestion.FechaInicio, gestion.FechaFinal, gestion.Vigente);
             return Json(new { success = true, message = "Nueva gestión creada correctamente" }, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public async Task<ActionResult> Edit(int anio)
+        {
+            var gestion = await _getGestionesUserCase.Execute(anio);
+            var viewModel = Mapper.Map<GestionOutput, GestionModel>(gestion);
+
+            return PartialView(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Edit(GestionModel gestion)
+        {
+            
+            await _updateGestionesUserCase.Update(gestion.Gestion, gestion.FechaInicio, gestion.FechaFinal, gestion.Vigente);
+            return Json(new { success = true, message = "Gestión actualizada correctamente" }, JsonRequestBehavior.AllowGet);
+
+        }
     }
 }
