@@ -17,7 +17,7 @@ namespace SRDP.Application.UseCases
         {
             Gestion = gestion;
             FechaInicio = fechaInicio;
-            FechaFinal = FechaFinal;
+            FechaFinal = fechaFinal;
             Vigente = vigente;
         }
     }

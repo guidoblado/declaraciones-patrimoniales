@@ -2,10 +2,21 @@
 
 @{
     ViewBag.Title = "Declaracion patrimonial";
+    string Disabled = "disabled";
+    if (Model.EsEditable)
+    {
+        Disabled = "";
+    }
 }
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
 <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<style>
+    .modal-content {
+        width: 600px !important;
+        margin: 30px auto !important;
+    }
+</style>
 <div class="container">
     <h2>Formulario de Declaración Patrimonial</h2>
     @*Datos Personales*@
@@ -17,8 +28,14 @@
                         <div class="col-md-10">
                             <div class="card-title">Datos Personales</div>
                         </div>
-                        <div class="col-md-2">
-                            @Html.ActionLink("PDF", "GeneratePdf", new { id = Model.DeclaracionID }, new { @class = "btn btn-toolbar btn-round pull-right" })
+                        <div class="col-md-1">
+                            @if (Model.EsEditable)
+                            {
+                                <a id="closeDeclaracionButton" class="btn btn-info btn-round pull-right text-white" onclick=PopupForm('@Url.Action("Finalizar", "Declaraciones" , new { id=Model.DeclaracionID } )')> Finalizar Declaracion</a>
+                            }
+                        </div>
+                        <div class="col-md-1">
+                            @Html.ActionLink("PDF", "GeneratePdf", new { id = Model.DeclaracionID }, new { @class = "btn btn-info btn-round pull-right" })
                         </div>
                     </div>
                 </div>
@@ -81,7 +98,7 @@
                         </div>
                         <div class="col-md-2">
                             <p class="demo">
-                                <a id="addDeposito" class="btn btn-primary btn-round pull-right" onclick=PopupForm('@Url.Action("Save", "Depositos" , new { id=Guid.Empty, declaracionID=Model.DeclaracionID } )')><i class="fa fa-plus"></i> Nuevo</a>
+                                <a id="addDeposito" class="btn btn-primary btn-round pull-right @Disabled" onclick=PopupForm('@Url.Action("Save", "Depositos" , new { id=Guid.Empty, declaracionID=Model.DeclaracionID } )')><i class="fa fa-plus"></i> Nuevo</a>
                             </p>
                         </div>
                     </div>
@@ -116,8 +133,8 @@
                                         @Html.DisplayFor(modelItem => item.Saldo)
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary btn-sm" onclick=PopupForm('@Url.Action("Save", "Depositos" , new { id=item.ID, declaracionID=Model.DeclaracionID })')> <i class='fa fa-pencil'></i> Editar</a>
-                                        <a class='btn btn-danger btn-sm' onclick=Delete('@Url.Action("Delete", "Depositos" , new { id=item.ID })')><i class='fa fa-trash'></i> Eliminar</a>
+                                        <a class="btn btn-primary btn-sm @Disabled" onclick=PopupForm('@Url.Action("Save", "Depositos" , new { id=item.ID, declaracionID=Model.DeclaracionID })')> <i class='fa fa-pencil'></i> Editar</a>
+                                        <a class='btn btn-danger btn-sm @Disabled' onclick=Delete('@Url.Action("Delete", "Depositos" , new { id=item.ID })')><i class='fa fa-trash'></i> Eliminar</a>
                                     </td>
                                 </tr>
                             }
@@ -139,7 +156,7 @@
                         </div>
                         <div class="col-md-2">
                             <p class="demo">
-                                <a id="addInmueble" class="btn btn-primary btn-round pull-right" onclick=PopupForm('@Url.Action("Save", "Inmuebles" , new { id=Guid.Empty, declaracionID=Model.DeclaracionID } )')><i class="fa fa-plus"></i> Nuevo</a>
+                                <a id="addInmueble" class="btn btn-primary btn-round pull-right @Disabled" onclick=PopupForm('@Url.Action("Save", "Inmuebles" , new { id=Guid.Empty, declaracionID=Model.DeclaracionID } )')><i class="fa fa-plus"></i> Nuevo</a>
                             </p>
                         </div>
                     </div>
@@ -187,8 +204,8 @@
                                         @Html.DisplayFor(modelItem => item.SaldoHipoteca)
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary btn-sm" onclick=PopupForm('@Url.Action("Save", "Inmuebles" , new { id=item.ID, declaracionID=Model.DeclaracionID })')> <i class='fa fa-pencil'></i> Editar</a>
-                                        <a class='btn btn-danger btn-sm' onclick=Delete('@Url.Action("Delete", "Inmuebles" , new { id=item.ID})')><i class='fa fa-trash'></i> Eliminar</a>
+                                        <a class="btn btn-primary btn-sm @Disabled" onclick=PopupForm('@Url.Action("Save", "Inmuebles" , new { id=item.ID, declaracionID=Model.DeclaracionID })')> <i class='fa fa-pencil'></i> Editar</a>
+                                        <a class='btn btn-danger btn-sm @Disabled' onclick=Delete('@Url.Action("Delete", "Inmuebles" , new { id=item.ID})')><i class='fa fa-trash'></i> Eliminar</a>
                                     </td>
                                 </tr>
                             }
@@ -210,7 +227,7 @@
                         </div>
                         <div class="col-md-2">
                             <p class="demo">
-                                <a id="addInmueble" class="btn btn-primary btn-round pull-right" onclick=PopupForm('@Url.Action("Save", "Vehiculos" , new { id=Guid.Empty, declaracionID=Model.DeclaracionID } )')><i class="fa fa-plus"></i> Nuevo</a>
+                                <a id="addInmueble" class="btn btn-primary btn-round pull-right @Disabled" onclick=PopupForm('@Url.Action("Save", "Vehiculos" , new { id=Guid.Empty, declaracionID=Model.DeclaracionID } )')><i class="fa fa-plus"></i> Nuevo</a>
                             </p>
                         </div>
                     </div>
@@ -264,8 +281,8 @@
                                         @Html.DisplayFor(modelItem => item.Banco)
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary btn-sm" onclick=PopupForm('@Url.Action("Save", "Vehiculos" , new { id=item.ID, declaracionID=Model.DeclaracionID })')> <i class='fa fa-pencil'></i> Editar</a>
-                                        <a class='btn btn-danger btn-sm' onclick=Delete('@Url.Action("Delete", "Vehiculos" , new { id=item.ID})')><i class='fa fa-trash'></i> Eliminar</a>
+                                        <a class="btn btn-primary btn-sm @Disabled" onclick=PopupForm('@Url.Action("Save", "Vehiculos" , new { id=item.ID, declaracionID=Model.DeclaracionID })')> <i class='fa fa-pencil'></i> Editar</a>
+                                        <a class='btn btn-danger btn-sm @Disabled' onclick=Delete('@Url.Action("Delete", "Vehiculos" , new { id=item.ID})')><i class='fa fa-trash'></i> Eliminar</a>
                                     </td>
                                 </tr>
                             }
@@ -287,7 +304,7 @@
                         </div>
                         <div class="col-md-2">
                             <p class="demo">
-                                <a id="addInmueble" class="btn btn-primary btn-round pull-right" onclick=PopupForm('@Url.Action("Save", "OtrosIngresos" , new { id=Guid.Empty, declaracionID=Model.DeclaracionID } )')><i class="fa fa-plus"></i> Nuevo</a>
+                                <a id="addInmueble" class="btn btn-primary btn-round pull-right @Disabled" onclick=PopupForm('@Url.Action("Save", "OtrosIngresos" , new { id=Guid.Empty, declaracionID=Model.DeclaracionID } )')><i class="fa fa-plus"></i> Nuevo</a>
                             </p>
                         </div>
                     </div>
@@ -316,8 +333,8 @@
                                         @Html.DisplayFor(modelItem => item.IngresoMensual)
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary btn-sm" onclick=PopupForm('@Url.Action("Save", "OtrosIngresos" , new { id=item.ID, declaracionID=Model.DeclaracionID })')> <i class='fa fa-pencil'></i> Editar</a>
-                                        <a class='btn btn-danger btn-sm' onclick=Delete('@Url.Action("Delete", "OtrosIngresos" , new { id=item.ID})')><i class='fa fa-trash'></i> Eliminar</a>
+                                        <a class="btn btn-primary btn-sm @Disabled" onclick=PopupForm('@Url.Action("Save", "OtrosIngresos" , new { id=item.ID, declaracionID=Model.DeclaracionID })')> <i class='fa fa-pencil'></i> Editar</a>
+                                        <a class='btn btn-danger btn-sm @Disabled' onclick=Delete('@Url.Action("Delete", "OtrosIngresos" , new { id=item.ID})')><i class='fa fa-trash'></i> Eliminar</a>
                                     </td>
                                 </tr>
                             }
@@ -338,7 +355,7 @@
                         </div>
                         <div class="col-md-2">
                             <p class="demo">
-                                <a id="addInmueble" class="btn btn-primary btn-round pull-right" onclick=PopupForm('@Url.Action("Save", "ValoresNegociables" , new { id=Guid.Empty, declaracionID=Model.DeclaracionID } )')><i class="fa fa-plus"></i> Nuevo</a>
+                                <a id="addInmueble" class="btn btn-primary btn-round pull-right @Disabled" onclick=PopupForm('@Url.Action("Save", "ValoresNegociables" , new { id=Guid.Empty, declaracionID=Model.DeclaracionID } )')><i class="fa fa-plus"></i> Nuevo</a>
                             </p>
                         </div>
                     </div>
@@ -373,8 +390,8 @@
                                         @Html.DisplayFor(modelItem => item.ValorAproximado)
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary btn-sm" onclick=PopupForm('@Url.Action("Save", "ValoresNegociables" , new { id=item.ID, declaracionID=Model.DeclaracionID })')> <i class='fa fa-pencil'></i> Editar</a>
-                                        <a class='btn btn-danger btn-sm' onclick=Delete('@Url.Action("Delete", "ValoresNegociables" , new { id=item.ID})')><i class='fa fa-trash'></i> Eliminar</a>
+                                        <a class="btn btn-primary btn-sm @Disabled" onclick=PopupForm('@Url.Action("Save", "ValoresNegociables" , new { id=item.ID, declaracionID=Model.DeclaracionID })')> <i class='fa fa-pencil'></i> Editar</a>
+                                        <a class='btn btn-danger btn-sm @Disabled' onclick=Delete('@Url.Action("Delete", "ValoresNegociables" , new { id=item.ID})')><i class='fa fa-trash'></i> Eliminar</a>
                                     </td>
                                 </tr>
                             }
@@ -396,7 +413,7 @@
                         </div>
                         <div class="col-md-2">
                             <p class="demo">
-                                <a id="addInmueble" class="btn btn-primary btn-round pull-right" onclick=PopupForm('@Url.Action("Save", "DeudasBancarias" , new { id=Guid.Empty, declaracionID=Model.DeclaracionID } )')><i class="fa fa-plus"></i> Nuevo</a>
+                                <a id="addInmueble" class="btn btn-primary btn-round pull-right @Disabled" onclick=PopupForm('@Url.Action("Save", "DeudasBancarias" , new { id=Guid.Empty, declaracionID=Model.DeclaracionID } )')><i class="fa fa-plus"></i> Nuevo</a>
                             </p>
                         </div>
                     </div>
@@ -431,8 +448,8 @@
                                         @Html.DisplayFor(modelItem => item.Monto)
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary btn-sm" onclick=PopupForm('@Url.Action("Save", "DeudasBancarias" , new { id=item.ID, declaracionID=Model.DeclaracionID })')> <i class='fa fa-pencil'></i> Editar</a>
-                                        <a class='btn btn-danger btn-sm' onclick=Delete('@Url.Action("Delete", "DeudasBancarias" , new { id=item.ID})')><i class='fa fa-trash'></i> Eliminar</a>
+                                        <a class="btn btn-primary btn-sm @Disabled" onclick=PopupForm('@Url.Action("Save", "DeudasBancarias" , new { id=item.ID, declaracionID=Model.DeclaracionID })')> <i class='fa fa-pencil'></i> Editar</a>
+                                        <a class='btn btn-danger btn-sm @Disabled' onclick=Delete('@Url.Action("Delete", "DeudasBancarias" , new { id=item.ID})')><i class='fa fa-trash'></i> Eliminar</a>
                                     </td>
                                 </tr>
                             }
@@ -453,13 +470,40 @@
 
     </dl>
 </div>
-
+<div id="modal-container" class="modal fade" tabindex="-1" role="dialog">
+    here
+    <div class="modal-content"></div>
+</div>
 @section scripts{
 
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/jquery-ui.js"></script>
-
+    <script type="text/javascript">
+        $(function () {
+            // Initialize numeric spinner input boxes
+            //$(".numeric-spinner").spinedit();
+            // Initialize modal dialog
+            // attach modal-container bootstrap attributes to links with .modal-link class.
+            // when a link is clicked with these attributes, bootstrap will display the href content in a modal dialog.
+            $('div.container.body-content').on('click', '.modal-link', function (e) {
+                e.preventDefault();
+                $(this).attr('data-target', '#modal-container');
+                $(this).attr('data-toggle', 'modal');
+            });
+            // Attach listener to .modal-close-btn's so that when the button is pressed the modal dialog disappears
+            $('div.container.body-content').on('click', '.modal-close-btn', function () {
+                $('#modal-container').modal('hide');
+            });
+            //clear modal cache, so that new content can be loaded
+            $('#modal-container').on('hidden.bs.modal', function () {
+                $(this).removeData('bs.modal');
+            });
+            $('#CancelModal').on('click', function () {
+                return false;
+            });
+        });
+    </script>
     <script>
         var Popup, dataTable;
         @*$(document).ready(function () {
@@ -500,8 +544,6 @@
                         autoOpen: true,
                         resizable: false,
                         title: 'Ingrese los datos',
-                        height: 500,
-                        width: 550,
                         close: function () {
                             Popup.dialog('destroy').remove();
                         }
@@ -530,6 +572,9 @@
                 });
             }
             return false;
+        }
+        function CloseForm(form) {
+            Popup.dialog('close');
         }
         function Delete(url) {
             if(confirm('¿Está seguro que desea eliminar el registro?'))

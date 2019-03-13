@@ -25,6 +25,8 @@ namespace SRDP.Application.UseCases
         public IReadOnlyList <ValorNegociableOutput> ValoresNegociables { get; }
         public IReadOnlyList <VehiculoOutput> Vehiculos { get; }
         public decimal PatrimonioNeto { get; }
+        public string Estado { get; }
+        public bool EsEditable { get; }
 
         private DeclaracionOutput()
         {
@@ -40,7 +42,7 @@ namespace SRDP.Application.UseCases
             List<ValorNegociableOutput> valoresNegociables, List<VehiculoOutput> vehiculos, decimal patrimonioNeto)
         {
             DeclaracionID = declaracion.ID;
-            Gestion = declaracion.Gestion;
+            Gestion = declaracion.Gestion.Anio;
             NombreCompleto = funcionario.NombreFuncionario.ToString();
             CedulaIdentidad = funcionario.CI.ToString();
             FechaNacimiento = funcionario.FechaNacimiento;
@@ -53,6 +55,8 @@ namespace SRDP.Application.UseCases
             ValoresNegociables = valoresNegociables;
             Vehiculos = vehiculos;
             PatrimonioNeto = patrimonioNeto;
+            Estado = declaracion.Estado.ToString();
+            EsEditable = declaracion.EsEditable;
         }
     }
 }

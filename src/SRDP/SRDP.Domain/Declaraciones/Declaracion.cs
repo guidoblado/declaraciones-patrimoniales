@@ -1,4 +1,5 @@
 ﻿using SRDP.Domain.Enumerations;
+using SRDP.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace SRDP.Domain.Declaraciones
     {
         #region Public Properties
         public Guid ID { get; private set; }
-        public int Gestion { get; private set; }
+        public Gestion Gestion { get; private set; }
         public int FuncionarioID { get; private set; }
         public DateTime FechaLlenado { get; private set; }
         public EstadoDeclaracion Estado { get; private set; }
@@ -47,16 +48,21 @@ namespace SRDP.Domain.Declaraciones
             get { return GetVariacionPorcentual(); }
         }
 
+        public bool EsEditable
+        {
+            get { return GetEsEditableFlag();  }
+        }
+
         #endregion
 
         #region Constructors
-        public Declaracion(int funcionarioID, int gestion, DateTime fechaLlenado)
+        public Declaracion(int funcionarioID, Gestion gestion, DateTime fechaLlenado, EstadoDeclaracion estado)
         {
             ID = Guid.NewGuid();
             FuncionarioID = funcionarioID;
             Gestion = gestion;
             FechaLlenado = fechaLlenado;
-            Estado = EstadoDeclaracion.Nueva;
+            Estado = estado;
             Depositos = new DepositoCollection();
             DeudasBancarias = new DeudaBancariaCollection();
             Inmuebles = new InmuebleCollection();
@@ -125,7 +131,7 @@ namespace SRDP.Domain.Declaraciones
             Estado = estado;
         }
 
-        public static Declaracion Load(Guid ID, int funcionarioID, int gestion, DateTime fechaLlenado,
+        public static Declaracion Load(Guid ID, int funcionarioID, Gestion gestion, DateTime fechaLlenado, EstadoDeclaracion estado,
             DepositoCollection depositos, DeudaBancariaCollection deudasBancarias,
             InmuebleCollection inmuebles, OtroIngresoCollection otrosIngresos,
             ValorNegociableCollection valoresNegociables, VehiculoCollection vehiculos, Declaracion declaracionAnterior)
@@ -136,6 +142,7 @@ namespace SRDP.Domain.Declaraciones
                 FuncionarioID = funcionarioID,
                 Gestion = gestion,
                 FechaLlenado = fechaLlenado,
+                Estado = estado,
                 Depositos = depositos,
                 DeudasBancarias = deudasBancarias,
                 Inmuebles = inmuebles,
@@ -147,6 +154,7 @@ namespace SRDP.Domain.Declaraciones
             };
         }
 
+        #region Private Functions
         private decimal GetPatrimonioNeto()
         {
             var activos = Depositos.ValorNeto + Inmuebles.ValorNeto + OtrosIngresos.ValorNeto + ValoresNegociables.ValorNeto + Vehiculos.ValorNeto;
@@ -170,5 +178,30 @@ namespace SRDP.Domain.Declaraciones
             return (GetPatrimonioNeto() - DeclaracionAnterior.GetPatrimonioNeto()) / 
                 (DeclaracionAnterior.GetPatrimonioNeto() / 100);
         }
+
+        private bool GetEsEditableFlag()
+        {
+            var editable = true;
+
+            switch (Estado)
+            {
+                case EstadoDeclaracion.Nueva:
+                    editable = Gestion.Vigente;
+                    break;
+                case EstadoDeclaracion.Pendiente:
+                    editable = Gestion.Habilitada && Gestion.Vigente;
+                    break;
+                case EstadoDeclaracion.Completado:
+                    editable = false;
+                    break;
+                default:
+                    editable = false;
+                    break;
+            }
+
+            return editable;
+
+        }
+        #endregion
     }
 }

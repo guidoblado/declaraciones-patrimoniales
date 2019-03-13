@@ -126,6 +126,8 @@
     <Compile Include="UseCases\SaveValoresNegociables\SaveValoresNegociablesUserCase.cs" />
     <Compile Include="UseCases\SaveVehiculos\ISaveVehiculoUserCase.cs" />
     <Compile Include="UseCases\SaveVehiculos\SaveVehiculoUserCase.cs" />
+    <Compile Include="UseCases\UpdateDeclaracion\IUpdateDeclaracionUserCase.cs" />
+    <Compile Include="UseCases\UpdateDeclaracion\UpdateDeclaracionUserCase.cs" />
     <Compile Include="UseCases\UpdateGestiones\IUpdateGestionesUserCase.cs" />
     <Compile Include="UseCases\UpdateGestiones\UpdateGestionesUserCase.cs" />
     <Compile Include="UseCases\UpdateProfile\IUpdateProfileUserCase.cs" />

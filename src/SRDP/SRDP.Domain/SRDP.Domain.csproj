@@ -85,6 +85,7 @@
     <Compile Include="ValoresNegociables\ValorNegociableMayor10K.cs" />
     <Compile Include="ValueObjects\AdAccount.cs" />
     <Compile Include="ValueObjects\CondicionAlerta.cs" />
+    <Compile Include="ValueObjects\Gestion.cs" />
     <Compile Include="ValueObjects\Porcentaje.cs" />
     <Compile Include="ValueObjects\ValueObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

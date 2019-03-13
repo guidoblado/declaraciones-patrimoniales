@@ -10,7 +10,7 @@ namespace SRDP.Application.UseCases.GetDeclaracion
     public interface IGetDeclaracionUserCase
     {
         Task<DeclaracionOutput> Execute(Guid declaracionID);
-        Task<DeclaracionOutput> Execute(int gestion, int funcionarioID);
-        Task<ICollection<DeclaracionOutput>> ExecuteList(int gestion);
+        Task<DeclaracionOutput> Execute(int anioGestion, int funcionarioID);
+        Task<ICollection<DeclaracionOutput>> ExecuteList(int anioGestion);
     }
 }
