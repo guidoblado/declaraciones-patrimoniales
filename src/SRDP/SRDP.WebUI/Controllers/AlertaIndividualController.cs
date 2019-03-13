@@ -34,11 +34,11 @@ namespace SRDP.WebUI.Controllers
         public async Task<ActionResult> Index(ReglaAlertaParameterModel parameterModel = null)
         {
             var gestionActual = await _getGestionesUserCase.GestionVigente();
-            var reglasAlerta = await _getReglasAlertaUserCase.ExecuteList(gestionActual.Gestion);
+            var reglasAlerta = await _getReglasAlertaUserCase.ExecuteList(gestionActual.Anio);
 
             if (reglasAlerta == null || reglasAlerta.Count == 0)
             {
-                ViewBag.Message = "No se han declarado alertas para la gestión " + gestionActual.Gestion.ToString();
+                ViewBag.Message = "No se han declarado alertas para la gestión " + gestionActual.Anio.ToString();
                 return RedirectToAction("Empty", "Home");
             }
             ReglaAlertaModel currentRegla = null;
@@ -47,7 +47,7 @@ namespace SRDP.WebUI.Controllers
             else
                 currentRegla = parameterModel.ReglaAlerta;
 
-            var outputList = await _getAlertaGeneralUserCase.ExecuteList(gestionActual.Gestion, currentRegla.Monto, currentRegla.Operador, currentRegla.Porcentaje);
+            var outputList = await _getAlertaGeneralUserCase.ExecuteList(gestionActual.Anio, currentRegla.Monto, currentRegla.Operador, currentRegla.Porcentaje);
 
             var parameters = new ReglaAlertaParameterModel
             {

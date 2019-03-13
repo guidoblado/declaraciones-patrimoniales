@@ -45,7 +45,7 @@ namespace SRDP.WebUI.Controllers
             );
             var gestionActual = await _getGestionesUserCase.GestionVigente();
 
-            var reporte = await _getHistoricoIndividualUserCase.ExecuteList(gestionActual.Gestion, filtro);
+            var reporte = await _getHistoricoIndividualUserCase.ExecuteList(gestionActual.Anio, filtro);
             var catalogos = await _getCatalogosUserCase.Execute();
 
             var modelView = new HistoricoIndividualModelView

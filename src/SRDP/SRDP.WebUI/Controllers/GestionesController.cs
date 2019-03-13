@@ -35,12 +35,12 @@ namespace SRDP.WebUI.Controllers
         [HttpGet]
         public async Task<ActionResult> Add()
         {
-            var siguienteGestion = await _getGestionesUserCase.SiguienteGestion();
+            var anioSiguienteGestion = await _getGestionesUserCase.SiguienteGestion();
             var modelView = new GestionModel
             {
-                Gestion = siguienteGestion,
-                FechaInicio = new DateTime(siguienteGestion, 1, 1),
-                FechaFinal = new DateTime(siguienteGestion, 12, 31),
+                Anio = anioSiguienteGestion,
+                FechaInicio = new DateTime(anioSiguienteGestion, 1, 1),
+                FechaFinal = new DateTime(anioSiguienteGestion, 12, 31),
                 Vigente = false
             };
             return PartialView(modelView);
@@ -49,7 +49,7 @@ namespace SRDP.WebUI.Controllers
         [HttpPost]
         public async Task<ActionResult> Add(GestionModel gestion)
         {
-            await _updateGestionesUserCase.Add(gestion.Gestion, gestion.FechaInicio, gestion.FechaFinal, gestion.Vigente);
+            await _updateGestionesUserCase.Add(gestion.Anio, gestion.FechaInicio, gestion.FechaFinal, gestion.Vigente);
             return Json(new { success = true, message = "Nueva gestión creada correctamente" }, JsonRequestBehavior.AllowGet);
         }
 
@@ -66,9 +66,41 @@ namespace SRDP.WebUI.Controllers
         public async Task<ActionResult> Edit(GestionModel gestion)
         {
             
-            await _updateGestionesUserCase.Update(gestion.Gestion, gestion.FechaInicio, gestion.FechaFinal, gestion.Vigente);
+            await _updateGestionesUserCase.Update(gestion.Anio, gestion.FechaInicio, gestion.FechaFinal, gestion.Vigente);
             return Json(new { success = true, message = "Gestión actualizada correctamente" }, JsonRequestBehavior.AllowGet);
 
         }
+
+        [HttpGet]
+        public async Task<ActionResult> Editar(int anio)
+        {
+            var gestion = await _getGestionesUserCase.Execute(anio);
+            var viewModel = Mapper.Map<GestionOutput, GestionModel>(gestion);
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Editar(GestionModel gestion)
+        {
+
+            if (ModelState.IsValid)
+            { 
+                await _updateGestionesUserCase.Update(gestion.Anio, gestion.FechaInicio, gestion.FechaFinal, gestion.Vigente);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        public async Task<ActionResult> CambiarVigencia(int anio)
+        {
+            await _updateGestionesUserCase.SetAsActive(anio);
+            return RedirectToAction("Index");
+
+        }
+
     }
 }

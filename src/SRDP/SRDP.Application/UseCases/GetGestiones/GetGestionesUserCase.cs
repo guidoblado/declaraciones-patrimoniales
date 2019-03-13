@@ -16,9 +16,9 @@ namespace SRDP.Application.UseCases.GetGestiones
             _gestionReadOnlyRepository = gestionReadOnlyRepository;
         }
 
-        public async Task<GestionOutput> Execute(int gestion)
+        public async Task<GestionOutput> Execute(int anio)
         {
-            var result = await _gestionReadOnlyRepository.Get(gestion);
+            var result = await _gestionReadOnlyRepository.Get(anio);
             return result;
         }
 
@@ -39,7 +39,7 @@ namespace SRDP.Application.UseCases.GetGestiones
         public async Task<int> SiguienteGestion()
         {
             var resultList = await _gestionReadOnlyRepository.GetAll();
-            var siguiente = resultList.Max(c => c.Gestion) + 1;
+            var siguiente = resultList.Max(c => c.Anio) + 1;
             return siguiente;
         }
     }

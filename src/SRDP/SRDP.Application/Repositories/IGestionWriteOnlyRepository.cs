@@ -11,7 +11,7 @@ namespace SRDP.Application.Repositories
     {
         Task Add(GestionOutput gestion);
         Task Update(GestionOutput gestion);
-        Task Delete(int gestion);
-        Task SetAsVigente(int gestion);
+        Task Delete(int anio);
+        Task SetAsVigente(int anio);
     }
 }

@@ -39,7 +39,7 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
             {
                 string sqlCommand = "INSERT INTO Gestiones (Gestion, FechaInicio, FechaFinal, Vigente) VALUES (@Gestion, @FechaInicio, @FechaFinal, @Vigente)";
                 DynamicParameters gestionParameters = new DynamicParameters();
-                gestionParameters.Add("@Gestion", gestion.Gestion, DbType.Int32);
+                gestionParameters.Add("@Gestion", gestion.Anio);
                 gestionParameters.Add("@FechaInicio", gestion.FechaInicio, DbType.DateTime);
                 gestionParameters.Add("@FechaFinal", gestion.FechaFinal, DbType.DateTime);
                 gestionParameters.Add("@Vigente", gestion.Vigente, DbType.Boolean);
@@ -52,9 +52,9 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                string sqlCommand = "UPDATE Gestiones  SET FechaInicio = @FechaInicio, FechaFinal = @FechaFinal, Vigente=@Vigente WHERE Gestion = @Gestion";
+                string sqlCommand = "UPDATE Gestiones  SET FechaInicio = @FechaInicio, FechaFinal = @FechaFinal, Vigente=@Vigente WHERE Gestion = @anio";
                 DynamicParameters gestionParameters = new DynamicParameters();
-                gestionParameters.Add("@Gestion", gestion.Gestion, DbType.Int32);
+                gestionParameters.Add("@anio", gestion.Anio);
                 gestionParameters.Add("@FechaInicio", gestion.FechaInicio, DbType.DateTime);
                 gestionParameters.Add("@FechaFinal", gestion.FechaFinal, DbType.DateTime);
                 gestionParameters.Add("@Vigente", gestion.Vigente, DbType.Boolean);
@@ -63,25 +63,25 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
             }
         }
 
-        public async Task Delete(int gestion)
+        public async Task Delete(int anio)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                string sqlCommand = "DELETE Gestiones WHERE Gestion = @Gestion";
+                string sqlCommand = "DELETE Gestiones WHERE Gestion = @anio";
 
                 DynamicParameters gestionParameters = new DynamicParameters();
-                gestionParameters.Add("@Gestion", gestion);
+                gestionParameters.Add("@anio", anio);
 
                 int rows = await db.ExecuteAsync(sqlCommand, gestionParameters);
             }
         }
 
-        public async Task<GestionOutput> Get(int gestion)
+        public async Task<GestionOutput> Get(int anio)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                string sqlCommand = "SELECT * FROM Gestiones WHERE Gestion = @gestion";
-                var gestionSchema = await db.QueryFirstOrDefaultAsync<Entities.GestionSchema>(sqlCommand, new { gestion });
+                string sqlCommand = "SELECT * FROM Gestiones WHERE Gestion = @anio";
+                var gestionSchema = await db.QueryFirstOrDefaultAsync<Entities.GestionSchema>(sqlCommand, new { anio });
 
                 if (gestionSchema == null) return null;
                 return new GestionOutput(gestionSchema.Gestion, gestionSchema.FechaInicio, gestionSchema.FechaFinal, gestionSchema.Vigente);
@@ -107,21 +107,21 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
             }
         }
 
-        public async Task SetAsVigente(int gestion)
+        public async Task SetAsVigente(int anio)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                string sqlCommand = "UPDATE Gestiones  SET Vigente=@Vigente WHERE Gestion = @Gestion";
+                string sqlCommand = "UPDATE Gestiones  SET Vigente=@Vigente WHERE Gestion = @anio";
                 DynamicParameters gestionParameters = new DynamicParameters();
                 gestionParameters.Add("@Vigente", true, DbType.Boolean);
-                gestionParameters.Add("@Gestion", gestion);
+                gestionParameters.Add("@anio", anio);
 
                 int rows = await db.ExecuteAsync(sqlCommand, gestionParameters);
 
-                sqlCommand = "UPDATE Gestiones  SET Vigente=@Vigente WHERE Gestion <> @Gestion";
+                sqlCommand = "UPDATE Gestiones  SET Vigente=@Vigente WHERE Gestion <> @anio";
                 DynamicParameters gestionNoVigenteParameters = new DynamicParameters();
                 gestionNoVigenteParameters.Add("@Vigente", false, DbType.Boolean);
-                gestionNoVigenteParameters.Add("@Gestion", gestion);
+                gestionNoVigenteParameters.Add("@anio", anio);
 
                 rows = await db.ExecuteAsync(sqlCommand, gestionNoVigenteParameters);
             }

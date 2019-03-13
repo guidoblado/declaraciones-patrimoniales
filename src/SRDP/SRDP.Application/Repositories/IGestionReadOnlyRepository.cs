@@ -9,7 +9,7 @@ namespace SRDP.Application.Repositories
 {
     public interface IGestionReadOnlyRepository
     {
-        Task<GestionOutput> Get(int gestion);
+        Task<GestionOutput> Get(int anio);
         Task<ICollection<GestionOutput>> GetAll();
     }
 }

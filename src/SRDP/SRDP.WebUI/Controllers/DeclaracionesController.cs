@@ -33,7 +33,7 @@ namespace SRDP.WebUI.Controllers
         public async Task<ActionResult> Index()
         {
             var gestionActual = await _getGestionesUserCase.GestionVigente();
-            var outputList = await _getDeclaracionUserCase.ExecuteList(gestionActual.Gestion);
+            var outputList = await _getDeclaracionUserCase.ExecuteList(gestionActual.Anio);
             var viewModel = Mapper.Map<ICollection<DeclaracionOutput>, List<DeclaracionModel>> (outputList);
             return View(viewModel);
         }

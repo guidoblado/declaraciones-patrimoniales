@@ -77,7 +77,7 @@ namespace SRDP.Application.UseCases.GetDeclaracion
             if (gestion == null)
                 throw new ApplicationException("La gestión '" + anioGestion.ToString() + "' no existe.");
 
-            var declaracion = await _declaracionReadOnlyRepository.Get(Gestion.For(gestion.Gestion, gestion.FechaInicio, gestion.FechaFinal, gestion.Vigente), funcionarioID);
+            var declaracion = await _declaracionReadOnlyRepository.Get(Gestion.For(gestion.Anio, gestion.FechaInicio, gestion.FechaFinal, gestion.Vigente), funcionarioID);
             var funcionario = await _funcionarioReadOnlyRepository.GetByCodigo(declaracion.FuncionarioID);
             var depositos = new List<DepositoOutput>();
             foreach (var item in declaracion.Depositos.Items)
@@ -127,7 +127,7 @@ namespace SRDP.Application.UseCases.GetDeclaracion
             if (gestion == null)
                 throw new ApplicationException("La gestión '" + anioGestion.ToString() + "' no existe.");
 
-            var declaraciones = await _declaracionReadOnlyRepository.GetByGestion(Gestion.For(gestion.Gestion, gestion.FechaInicio, gestion.FechaFinal, gestion.Vigente));
+            var declaraciones = await _declaracionReadOnlyRepository.GetByGestion(Gestion.For(gestion.Anio, gestion.FechaInicio, gestion.FechaFinal, gestion.Vigente));
             var output = new List<DeclaracionOutput>();
 
             foreach (var declaracion in declaraciones)
