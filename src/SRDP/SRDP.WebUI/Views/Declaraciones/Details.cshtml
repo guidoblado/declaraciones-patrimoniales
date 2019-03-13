@@ -11,12 +11,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
 <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-<style>
-    .modal-content {
-        width: 600px !important;
-        margin: 30px auto !important;
-    }
-</style>
+
 <div class="container">
     <h2>Formulario de Declaración Patrimonial</h2>
     @*Datos Personales*@
@@ -32,6 +27,9 @@
                             @if (Model.EsEditable)
                             {
                                 <a id="closeDeclaracionButton" class="btn btn-info btn-round pull-right text-white" onclick=PopupForm('@Url.Action("Finalizar", "Declaraciones" , new { id=Model.DeclaracionID } )')> Finalizar Declaracion</a>
+                            } else 
+                            {
+                                <h5><span class="badge badge-pill badge-warning">- @Model.Estado -</span></h5>
                             }
                         </div>
                         <div class="col-md-1">
@@ -44,41 +42,41 @@
                         <div class="col-sm-2 font-weight-bold col-form-label-sm">
                             @Html.DisplayNameFor(model => model.NombreCompleto)
                         </div>
-                        <div class="col-sm-4 form-control-sm">
+                        <div class="col-md-4 form-control-sm">
                             @Html.DisplayFor(model => model.NombreCompleto)
                         </div>
-                        <div class="col-sm-2 font-weight-bold col-form-label-sm">
+                        <div class="col-md-2 font-weight-bold col-form-label-sm">
                             @Html.DisplayNameFor(model => model.CedulaIdentidad)
                         </div>
-                        <div class="col-sm-4 form-control-sm">
+                        <div class="col-md-4 form-control-sm">
                             @Html.DisplayFor(model => model.CedulaIdentidad)
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-2 font-weight-bold col-form-label-sm">
+                        <div class="col-md-2 font-weight-bold col-form-label-sm">
                             @Html.DisplayNameFor(model => model.FechaNacimiento)
                         </div>
-                        <div class="col-sm-4 form-control-sm">
+                        <div class="col-md-4 form-control-sm">
                             @Html.DisplayFor(model => model.FechaNacimiento)
                         </div>
-                        <div class="col-sm-2 font-weight-bold col-form-label-sm">
+                        <div class="col-md-2 font-weight-bold col-form-label-sm">
                             @Html.DisplayNameFor(model => model.EstadoCivil)
                         </div>
-                        <div class="col-sm-4 form-control-sm">
+                        <div class="col-md-4 form-control-sm">
                             @Html.DisplayFor(model => model.EstadoCivil)
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-2 font-weight-bold col-form-label-sm">
+                        <div class="col-md-2 font-weight-bold col-form-label-sm">
                             @Html.DisplayNameFor(model => model.Gestion)
                         </div>
-                        <div class="col-sm-4 form-control-sm">
+                        <div class="col-md-4 form-control-sm">
                             @Html.DisplayFor(model => model.Gestion)
                         </div>
-                        <div class="col-sm-2 font-weight-bold col-form-label-sm">
+                        <div class="col-md-2 font-weight-bold col-form-label-sm">
                             @Html.DisplayNameFor(model => model.PatrimonioNeto)
                         </div>
-                        <div class="col-sm-4 form-control-sm">
+                        <div class="col-md-4 form-control-sm">
                             @Html.DisplayFor(model => model.PatrimonioNeto)
                         </div>
                     </div>
@@ -132,7 +130,7 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Saldo)
                                     </td>
-                                    <td>
+                                    <td width="130px">
                                         <a class="btn btn-primary btn-sm @Disabled" onclick=PopupForm('@Url.Action("Save", "Depositos" , new { id=item.ID, declaracionID=Model.DeclaracionID })')> <i class='fa fa-pencil'></i> Editar</a>
                                         <a class='btn btn-danger btn-sm @Disabled' onclick=Delete('@Url.Action("Delete", "Depositos" , new { id=item.ID })')><i class='fa fa-trash'></i> Eliminar</a>
                                     </td>
@@ -203,7 +201,7 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.SaldoHipoteca)
                                     </td>
-                                    <td>
+                                    <td width="130px">
                                         <a class="btn btn-primary btn-sm @Disabled" onclick=PopupForm('@Url.Action("Save", "Inmuebles" , new { id=item.ID, declaracionID=Model.DeclaracionID })')> <i class='fa fa-pencil'></i> Editar</a>
                                         <a class='btn btn-danger btn-sm @Disabled' onclick=Delete('@Url.Action("Delete", "Inmuebles" , new { id=item.ID})')><i class='fa fa-trash'></i> Eliminar</a>
                                     </td>
@@ -280,7 +278,7 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Banco)
                                     </td>
-                                    <td>
+                                    <td width="130px">
                                         <a class="btn btn-primary btn-sm @Disabled" onclick=PopupForm('@Url.Action("Save", "Vehiculos" , new { id=item.ID, declaracionID=Model.DeclaracionID })')> <i class='fa fa-pencil'></i> Editar</a>
                                         <a class='btn btn-danger btn-sm @Disabled' onclick=Delete('@Url.Action("Delete", "Vehiculos" , new { id=item.ID})')><i class='fa fa-trash'></i> Eliminar</a>
                                     </td>
@@ -332,7 +330,7 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.IngresoMensual)
                                     </td>
-                                    <td>
+                                    <td width="130px">
                                         <a class="btn btn-primary btn-sm @Disabled" onclick=PopupForm('@Url.Action("Save", "OtrosIngresos" , new { id=item.ID, declaracionID=Model.DeclaracionID })')> <i class='fa fa-pencil'></i> Editar</a>
                                         <a class='btn btn-danger btn-sm @Disabled' onclick=Delete('@Url.Action("Delete", "OtrosIngresos" , new { id=item.ID})')><i class='fa fa-trash'></i> Eliminar</a>
                                     </td>
@@ -389,7 +387,7 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.ValorAproximado)
                                     </td>
-                                    <td>
+                                    <td width="130px">
                                         <a class="btn btn-primary btn-sm @Disabled" onclick=PopupForm('@Url.Action("Save", "ValoresNegociables" , new { id=item.ID, declaracionID=Model.DeclaracionID })')> <i class='fa fa-pencil'></i> Editar</a>
                                         <a class='btn btn-danger btn-sm @Disabled' onclick=Delete('@Url.Action("Delete", "ValoresNegociables" , new { id=item.ID})')><i class='fa fa-trash'></i> Eliminar</a>
                                     </td>
@@ -447,7 +445,7 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Monto)
                                     </td>
-                                    <td>
+                                    <td width="130px">
                                         <a class="btn btn-primary btn-sm @Disabled" onclick=PopupForm('@Url.Action("Save", "DeudasBancarias" , new { id=item.ID, declaracionID=Model.DeclaracionID })')> <i class='fa fa-pencil'></i> Editar</a>
                                         <a class='btn btn-danger btn-sm @Disabled' onclick=Delete('@Url.Action("Delete", "DeudasBancarias" , new { id=item.ID})')><i class='fa fa-trash'></i> Eliminar</a>
                                     </td>
@@ -479,31 +477,6 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Scripts/jquery-ui.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            // Initialize numeric spinner input boxes
-            //$(".numeric-spinner").spinedit();
-            // Initialize modal dialog
-            // attach modal-container bootstrap attributes to links with .modal-link class.
-            // when a link is clicked with these attributes, bootstrap will display the href content in a modal dialog.
-            $('div.container.body-content').on('click', '.modal-link', function (e) {
-                e.preventDefault();
-                $(this).attr('data-target', '#modal-container');
-                $(this).attr('data-toggle', 'modal');
-            });
-            // Attach listener to .modal-close-btn's so that when the button is pressed the modal dialog disappears
-            $('div.container.body-content').on('click', '.modal-close-btn', function () {
-                $('#modal-container').modal('hide');
-            });
-            //clear modal cache, so that new content can be loaded
-            $('#modal-container').on('hidden.bs.modal', function () {
-                $(this).removeData('bs.modal');
-            });
-            $('#CancelModal').on('click', function () {
-                return false;
-            });
-        });
-    </script>
     <script>
         var Popup, dataTable;
         @*$(document).ready(function () {
