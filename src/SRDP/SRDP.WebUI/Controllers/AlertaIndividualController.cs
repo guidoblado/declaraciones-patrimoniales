@@ -29,9 +29,8 @@ namespace SRDP.WebUI.Controllers
             _getGestionesUserCase = getGestionesUserCase;
             _getReglasAlertaUserCase = getReglasAlertaUserCase;
         }
-        // GET: AlertaIndividual
 
-        public async Task<ActionResult> Index(ReglaAlertaParameterModel parameterModel = null)
+        public async Task<ActionResult> Index(Guid id)
         {
             var gestionActual = await _getGestionesUserCase.GestionVigente();
             var reglasAlerta = await _getReglasAlertaUserCase.ExecuteList(gestionActual.Anio);
@@ -41,23 +40,26 @@ namespace SRDP.WebUI.Controllers
                 ViewBag.Message = "No se han declarado alertas para la gestión " + gestionActual.Anio.ToString();
                 return RedirectToAction("Empty", "Home");
             }
+
+            
             ReglaAlertaModel currentRegla = null;
-            if (parameterModel.ReglaAlerta == null)
+            if (id == null || id == Guid.Empty)
                 currentRegla = Mapper.Map<ReglaAlertaOutput, ReglaAlertaModel>(reglasAlerta.First());
             else
-                currentRegla = parameterModel.ReglaAlerta;
+                currentRegla = Mapper.Map<ReglaAlertaOutput, ReglaAlertaModel>(reglasAlerta.Where(c => c.ID == id).First());
 
             var outputList = await _getAlertaGeneralUserCase.ExecuteList(gestionActual.Anio, currentRegla.Monto, currentRegla.Operador, currentRegla.Porcentaje);
 
             var parameters = new ReglaAlertaParameterModel
             {
                 ReglaAlerta = currentRegla,
-                ReglaID = currentRegla.ID,
+                ID = currentRegla.ID,
                 Reglas = ReglaAlertaParameterModel.GetSelectList(reglasAlerta),
             };
 
             var modelView = new AlertaIndividualModelView
             {
+                ID = currentRegla.ID,
                 Data = Mapper.Map<ICollection<AlertaGeneralOutput>, List<AlertaGeneralModel>>(outputList),
                 ReglaAlertaParameters = parameters,
             };
