@@ -33,7 +33,7 @@ namespace SRDP.WebUI.Controllers
         public async Task<ActionResult> Index()
         {
             var gestionActual = await _getGestionesUserCase.GestionVigente();
-            var outputList = await _getReglasAlertaUserCase.ExecuteList(gestionActual.Gestion);
+            var outputList = await _getReglasAlertaUserCase.ExecuteList(gestionActual.Anio);
             var viewModel = Mapper.Map<ICollection<ReglaAlertaOutput>, List<ReglaAlertaModel>>(outputList);
             return View(viewModel);
         }
@@ -50,7 +50,7 @@ namespace SRDP.WebUI.Controllers
                 ID = Guid.Empty,
                 Descripcion = String.Empty,
                 Monto = 0,
-                Gestion = gestionActual.Gestion,
+                Gestion = gestionActual.Anio,
             });
 
             var modelView = Mapper.Map<ReglaAlertaOutput, ReglaAlertaModel>(reglaAlerta);

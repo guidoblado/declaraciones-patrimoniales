@@ -29,7 +29,7 @@ namespace SRDP.WebUI.Controllers
         {
             var profile = _getProfileUserCase.Execute(User.Identity.Name);
             var gestionActual = await _getGestionesUserCase.GestionVigente();
-            var declaracion = await _getDeclaracionUserCase.Execute(gestionActual.Gestion, profile.FuncionarioID);
+            var declaracion = await _getDeclaracionUserCase.Execute(gestionActual.Anio, profile.FuncionarioID);
             var viewModel = Mapper.Map<DeclaracionModel>(declaracion);
             return View(viewModel);
         }

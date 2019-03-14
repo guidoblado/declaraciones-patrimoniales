@@ -18,6 +18,7 @@ namespace SRDP.WebUI.Models
 
         [Required]
         [DisplayFormat(DataFormatString = "{0:C}")]
+        [Display(Name = "Monto $us (Monto actual de saldo adeudado)")]
         public decimal Monto { get; set; }
 
         public string Tipo { get; set; }

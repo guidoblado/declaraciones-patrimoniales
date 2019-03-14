@@ -30,7 +30,7 @@ namespace SRDP.WebUI.Controllers
         public async Task<ActionResult> Index(AlertaParametersModel alertaParameters)
         {
             var gestionActual = await _getGestionesUserCase.GestionVigente();
-            var outputList = await _getAlertaGeneralUserCase.ExecuteList(gestionActual.Gestion, alertaParameters.Monto, alertaParameters.Operador, alertaParameters.Porcentaje);
+            var outputList = await _getAlertaGeneralUserCase.ExecuteList(gestionActual.Anio, alertaParameters.Monto, alertaParameters.Operador, alertaParameters.Porcentaje);
 
             var viewModel = new AlertaGeneralModelView
             {

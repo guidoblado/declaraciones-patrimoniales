@@ -34,7 +34,7 @@ namespace SRDP.WebUI.Controllers
             var gestionActual = await _getGestionesUserCase.GestionVigente();
 
             var estado = estadoDeclaracion == null ? 0 : estadoDeclaracion.Value;
-            var outputModel = await _GetEstadoGeneralUserCase.ExecuteList(gestionActual.Gestion, estado, new Application.SearchParameters.FiltroFuncionario(
+            var outputModel = await _GetEstadoGeneralUserCase.ExecuteList(gestionActual.Anio, estado, new Application.SearchParameters.FiltroFuncionario(
                 searchParameters.CodArea,
                 searchParameters.CodGeog,
                 searchParameters.CodCentroCosto,

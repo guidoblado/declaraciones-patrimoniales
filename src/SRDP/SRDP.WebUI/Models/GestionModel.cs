@@ -8,8 +8,8 @@ namespace SRDP.WebUI.Models
 {
     public class GestionModel
     {
-        [Display(Name = "Gestión")]
-        public int Gestion { get; set; }
+        [Display(Name = "Año de la Gestión")]
+        public int Anio { get; set; }
 
         [Display(Name = "Fecha Inicio")]
         [Required(ErrorMessage = "Debe ingresar la fecha inicio")]

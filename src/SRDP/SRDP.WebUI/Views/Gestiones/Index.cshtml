@@ -21,7 +21,7 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.Gestion)
+                            @Html.DisplayNameFor(model => model.Anio)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.FechaInicio)
@@ -40,7 +40,7 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Gestion)
+                                @Html.DisplayFor(modelItem => item.Anio)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.FechaInicio)
@@ -54,8 +54,12 @@
                             <td>
                                 @if(item.Vigente)
                                 { 
-                                    <a class="btn btn-primary btn-sm text-white" onclick=PopupForm('@Url.Action("Edit", "Gestiones" , new { anio=item.Gestion })')> <i class='fa fa-pencil'></i> Modificar Fechas</a>
+                                    <a class="btn btn-primary btn-sm text-white" onclick=PopupForm('@Url.Action("Edit", "Gestiones" , new { anio=item.Anio })')> <i class='fa fa-calendar'></i> Modificar Fechas</a>
+                                } else
+                                {
+                                    @Html.ActionLink("Cambiar a Vigente", "CambiarVigencia", new { anio = item.Anio })
                                 }
+
                             </td>
                         </tr>
                     }
@@ -100,6 +104,9 @@
                 //}
             })
         });
+        function CloseForm(form) {
+            Popup.dialog('close');
+        }
         function PopupForm(url) {
             var formDiv = $('<div/>');
             $.get(url)

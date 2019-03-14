@@ -20,7 +20,7 @@
                             @Html.ActionLink("Alerta general", "Index", "AlertaGeneral")
                         </div>
                         <div class="dropdown-item">
-                            @Html.ActionLink("Alerta Individual", "Index", "AlertaIndividual")
+                            <a href="~/AlertaIndividual?id=@Guid.Empty">Alerta Individual</a>
                         </div>
                         <div class="dropdown-item">
                             @Html.ActionLink("Historico individual", "Index", "HistoricoIndividual")
@@ -38,6 +38,9 @@
                         </div>
                         <div class="dropdown-item">
                             @Html.ActionLink("Usuarios", "Index", "UserProfiles")
+                        </div>
+                        <div class="dropdown-item">
+                            @Html.ActionLink("Gestiones", "Index", "Gestiones")
                         </div>
                     </div>
                 </li>

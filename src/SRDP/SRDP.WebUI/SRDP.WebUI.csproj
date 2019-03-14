@@ -373,6 +373,7 @@
     <Content Include="Views\UserProfiles\Index.cshtml" />
     <Content Include="Views\Declaraciones\Finalizar.cshtml" />
     <Content Include="Views\Gestiones\Edit.cshtml" />
+    <Content Include="Views\Gestiones\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

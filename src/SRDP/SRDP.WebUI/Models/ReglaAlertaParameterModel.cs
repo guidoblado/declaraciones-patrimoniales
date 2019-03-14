@@ -9,7 +9,7 @@ namespace SRDP.WebUI.Models
 {
     public class ReglaAlertaParameterModel
     {
-        public Guid ReglaID { get; set; }
+        public Guid ID { get; set; }
         public ReglaAlertaModel ReglaAlerta { get; set; }
         public IEnumerable<SelectListItem> Reglas { get; set; }
 
