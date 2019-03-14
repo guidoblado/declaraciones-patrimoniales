@@ -179,33 +179,39 @@
                                     @Html.LabelFor(model => model.Inmuebles[0].SaldoHipoteca)
                                     <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="Monto actual del Saldo del Prestamo hipotecario">?</span>
                                 </th>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.Inmuebles[0].Banco)
+                                </th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model.Inmuebles)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Direccion)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.TipoDeInmueble)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.PorcentajeParticipacion)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.ValorComercial)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.SaldoHipoteca)
-                                    </td>
-                                    <td width="130px">
-                                        <a class="btn btn-primary btn-sm @Disabled" onclick=PopupForm('@Url.Action("Save", "Inmuebles" , new { id=item.ID, declaracionID=Model.DeclaracionID })')> <i class='fa fa-pencil'></i> Editar</a>
-                                        <a class='btn btn-danger btn-sm @Disabled' onclick=Delete('@Url.Action("Delete", "Inmuebles" , new { id=item.ID})')><i class='fa fa-trash'></i> Eliminar</a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Direccion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TipoDeInmueble)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PorcentajeParticipacion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ValorComercial)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SaldoHipoteca)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Banco)
+                                </td>
+                                <td width="130px">
+                                    <a class="btn btn-primary btn-sm @Disabled" onclick=PopupForm('@Url.Action("Save", "Inmuebles" , new { id=item.ID, declaracionID=Model.DeclaracionID })')> <i class='fa fa-pencil'></i> Editar</a>
+                                    <a class='btn btn-danger btn-sm @Disabled' onclick=Delete('@Url.Action("Delete", "Inmuebles" , new { id=item.ID})')><i class='fa fa-trash'></i> Eliminar</a>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
@@ -458,6 +464,10 @@
         </div>
     </div>
     <dl class="dl-horizontal">
+        <dd>
+            <h4>@Model.Importante</h4>
+        </dd>
+        
         <dt>
             @Html.DisplayNameFor(model => model.FechaLlenado)
         </dt>

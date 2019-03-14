@@ -38,6 +38,8 @@ namespace SRDP.WebUI.Models
 
         public bool EsEditable { get; set; }
 
+        public string Importante { get; set; }
+
         public IList<DepositoModel> Depositos { get; set; }
         public IList<DeudaBancariaModel> DeudasBancarias { get; set; }
         public IList<InmuebleModel> Inmuebles { get; set; }

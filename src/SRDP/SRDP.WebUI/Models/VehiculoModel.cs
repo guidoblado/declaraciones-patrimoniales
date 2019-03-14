@@ -20,7 +20,7 @@ namespace SRDP.WebUI.Models
         [Display(Name = "Año")]
         public int Anio { get; set; }
 
-        [Display(Name = "Valor Aproximado $us")]
+        [Display(Name = "Valor Comercial Actual $us")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal ValorAproximado { get; set; }
 

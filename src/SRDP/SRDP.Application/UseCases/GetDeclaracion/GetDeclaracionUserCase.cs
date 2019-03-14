@@ -15,6 +15,7 @@ namespace SRDP.Application.UseCases.GetDeclaracion
         private readonly IDeclaracionReadOnlyRepository _declaracionReadOnlyRepository;
         private readonly IGestionReadOnlyRepository _gestionReadOnlyRepository;
         private readonly IFuncionarioReadOnlyRepository _funcionarioReadOnlyRepository;
+        private readonly string MENSAJE_IMPORTANTE = "Importante: Declaro que la información contenida es cierta y fidedigna.";
 
         public GetDeclaracionUserCase(IDeclaracionReadOnlyRepository declaracionReadOnlyRepository, IGestionReadOnlyRepository gestionReadOnlyRepository,
             IFuncionarioReadOnlyRepository funcionarioReadOnlyRepository)
@@ -65,7 +66,7 @@ namespace SRDP.Application.UseCases.GetDeclaracion
                 vehiculos.Add(new VehiculoOutput(item.ID, item.DeclaracionID, item.Marca, item.TipoVehiculo, item.Anio, item.ValorAproximado, item.SaldoDeudor, item.Banco));
             }
             var output = new DeclaracionOutput(declaracion, funcionario, depositos, deudasBancarias, inmuebles, otrosIngresos,
-                valoresNegociables, vehiculos, declaracion.PatrimonioNeto);
+                valoresNegociables, vehiculos, declaracion.PatrimonioNeto, MENSAJE_IMPORTANTE);
 
             return output;
         }
@@ -115,7 +116,7 @@ namespace SRDP.Application.UseCases.GetDeclaracion
                 vehiculos.Add(new VehiculoOutput(item.ID, item.DeclaracionID, item.Marca, item.TipoVehiculo, item.Anio, item.ValorAproximado, item.SaldoDeudor, item.Banco));
             }
             var output = new DeclaracionOutput(declaracion, funcionario, depositos, deudasBancarias, inmuebles, otrosIngresos,
-                valoresNegociables, vehiculos, declaracion.PatrimonioNeto);
+                valoresNegociables, vehiculos, declaracion.PatrimonioNeto, MENSAJE_IMPORTANTE);
 
             return output;
         }
@@ -139,7 +140,7 @@ namespace SRDP.Application.UseCases.GetDeclaracion
 
                 output.Add(new DeclaracionOutput(declaracion, funcionario, new List<DepositoOutput>(), new List<DeudaBancariaOutput>(),
                     new List<InmuebleOutput>(), new List<OtroIngresoOutput>(), new List<ValorNegociableOutput>(), new List<VehiculoOutput>(), 
-                    declaracion.PatrimonioNeto));
+                    declaracion.PatrimonioNeto, MENSAJE_IMPORTANTE));
 
             }
             
