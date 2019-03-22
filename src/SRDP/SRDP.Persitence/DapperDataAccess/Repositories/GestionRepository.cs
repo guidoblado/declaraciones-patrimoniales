@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using SRDP.Application.Repositories;
 using SRDP.Application.UseCases;
+using SRDP.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -127,6 +128,32 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
             }
         }
 
-        
+        public async Task<int> ImportDeclaraciones(int gestionAnterior, int gestionNueva)
+        {
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                string sqlCommand = "Exec dbo.CreaGestion_Step1 @GestionAnterior, @GestionNueva";
+                var queryResult = await db.QueryAsync<int>(sqlCommand, new { gestionAnterior, gestionNueva});
+
+                var result = queryResult.First();
+                return result;
+            }
+        }
+
+        public async Task<IDictionary<string, int>> ImportDeclaracionesDetails(int gestionNueva)
+        {
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                string sqlCommand = "Exec dbo.CreaGestion_Step2 @GestionNueva";
+                var queryResult = await db.QueryAsync<Entities.NroRegistros>(sqlCommand, new { gestionNueva });
+
+                var result = new Dictionary<string, int>();
+                foreach (var item in queryResult)
+                {
+                    result.Add(item.Detalle, item.Nro);
+                }
+                return result;
+            }
+        }
     }
 }

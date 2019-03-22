@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using SRDP.Application.UseCases;
+using SRDP.Application.UseCases.CreateGestion;
 using SRDP.Application.UseCases.GetGestiones;
 using SRDP.Application.UseCases.UpdateGestiones;
 using SRDP.WebUI.App_Start;
 using SRDP.WebUI.Models;
+using SRDP.WebUI.ModelViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +20,13 @@ namespace SRDP.WebUI.Controllers
     {
         private readonly IGetGestionesUserCase _getGestionesUserCase;
         private readonly IUpdateGestionesUserCase _updateGestionesUserCase;
+        private readonly ICreateGestionUserCase _createGestionUserCase;
 
-        public GestionesController(IGetGestionesUserCase getGestionesUserCase, IUpdateGestionesUserCase updateGestionesUserCase)
+        public GestionesController(IGetGestionesUserCase getGestionesUserCase, IUpdateGestionesUserCase updateGestionesUserCase, ICreateGestionUserCase createGestionUserCase)
         {
             _getGestionesUserCase = getGestionesUserCase;
             _updateGestionesUserCase = updateGestionesUserCase;
+            _createGestionUserCase = createGestionUserCase;
         }
         // GET: Gestiones
         public async Task<ActionResult> Index()
@@ -36,20 +40,25 @@ namespace SRDP.WebUI.Controllers
         public async Task<ActionResult> Add()
         {
             var anioSiguienteGestion = await _getGestionesUserCase.SiguienteGestion();
-            var modelView = new GestionModel
+            var gestionsVigente = await _getGestionesUserCase.GestionVigente();
+            var modelView = new NuevaGestionModelView
             {
-                Anio = anioSiguienteGestion,
-                FechaInicio = new DateTime(anioSiguienteGestion, 1, 1),
-                FechaFinal = new DateTime(anioSiguienteGestion, 12, 31),
-                Vigente = false
+                AnioVigente = gestionsVigente.Anio,
+                GestionNueva =  new GestionModel { 
+                    Anio = anioSiguienteGestion,
+                    FechaInicio = new DateTime(anioSiguienteGestion, 1, 1),
+                    FechaFinal = new DateTime(anioSiguienteGestion, 12, 31),
+                    Vigente = false
+                }
             };
             return PartialView(modelView);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Add(GestionModel gestion)
+        public async Task<ActionResult> Add(NuevaGestionModelView gestion)
         {
-            await _updateGestionesUserCase.Add(gestion.Anio, gestion.FechaInicio, gestion.FechaFinal, gestion.Vigente);
+            await _createGestionUserCase.Add(gestion.GestionNueva.Anio, gestion.GestionNueva.FechaInicio, gestion.GestionNueva.FechaFinal, gestion.GestionNueva.Vigente);
+            var counts = await _createGestionUserCase.ImportFromPreviousGestion(gestion.AnioVigente, gestion.GestionNueva.Anio);
             return Json(new { success = true, message = "Nueva gestión creada correctamente" }, JsonRequestBehavior.AllowGet);
         }
 
