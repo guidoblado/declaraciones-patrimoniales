@@ -13,5 +13,7 @@ namespace SRDP.Application.Repositories
         Task Update(GestionOutput gestion);
         Task Delete(int anio);
         Task SetAsVigente(int anio);
+        Task<int> ImportDeclaraciones(int gestionAnterior, int gestionNueva);
+        Task<IDictionary<string, int>> ImportDeclaracionesDetails(int gestionNueva);
     }
 }

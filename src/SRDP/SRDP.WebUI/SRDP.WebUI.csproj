@@ -277,6 +277,7 @@
     <Compile Include="ModelViews\AlertaIndividualModelView.cs" />
     <Compile Include="ModelViews\EstadoGeneralModelView.cs" />
     <Compile Include="ModelViews\HistoricoIndividualModelView.cs" />
+    <Compile Include="ModelViews\NuevaGestionModelView.cs" />
     <Compile Include="ModelViews\UserProfileModelView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

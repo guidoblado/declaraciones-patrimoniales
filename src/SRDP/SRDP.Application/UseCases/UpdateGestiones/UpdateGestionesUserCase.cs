@@ -16,13 +16,6 @@ namespace SRDP.Application.UseCases.UpdateGestiones
             _gestionWriteOnlyRepository = gestionWriteOnlyRepository;
         }
 
-        public async Task<GestionOutput> Add(int gestion, DateTime fechaInicio, DateTime fechaFinal, bool vigente)
-        {
-            var nuevaGestion = new GestionOutput(gestion, fechaInicio, fechaFinal, vigente);
-            await _gestionWriteOnlyRepository.Add(nuevaGestion);
-            return nuevaGestion;
-        }
-
         public async Task Delete(int gestion)
         {
             await _gestionWriteOnlyRepository.Delete(gestion);
