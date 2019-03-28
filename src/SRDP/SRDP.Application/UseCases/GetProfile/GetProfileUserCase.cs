@@ -38,7 +38,7 @@ namespace SRDP.Application.UseCases.GetProfile
             });
 
             return UserProfileOutput.LoadRoles(adUser.Name, funcionario.Result.FuncionarioID, funcionario.Result.NombreCompleto.ToString(),
-                funcionario.Result.EstadoID, funcionario.Result.Estado, roles.Result);
+                funcionario.Result.EstadoID, funcionario.Result.Estado, funcionario.Result.Email,  roles.Result);
         }
 
         public async Task<ICollection<UserProfileOutput>> ExecuteList(bool soloAdmin)
@@ -66,7 +66,7 @@ namespace SRDP.Application.UseCases.GetProfile
                     roles.Add("Administrador");
 
                 outputResult.Add(UserProfileOutput.LoadRoles(funcionario.NombreUsuario, funcionario.FuncionarioID, funcionario.NombreCompleto.ToString(),
-                    funcionario.EstadoID, funcionario.Estado, roles));
+                    funcionario.EstadoID, funcionario.Estado, funcionario.Email, roles));
             }
             return outputResult;
         }

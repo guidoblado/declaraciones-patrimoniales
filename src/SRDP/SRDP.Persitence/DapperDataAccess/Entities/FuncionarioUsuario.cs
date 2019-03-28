@@ -14,5 +14,6 @@ namespace SRDP.Persitence.Entities
         public string Apellido { get; set; }
         public int EstadoID { get; set; }
         public string Estado { get; set; }
+        public string Email { get; set; }
     }
 }

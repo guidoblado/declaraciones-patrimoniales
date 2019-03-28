@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -63,6 +67,10 @@
     <Compile Include="Repositories\IHistoricoIndividualReadOnlyRepository.cs" />
     <Compile Include="Repositories\IInmuebleReadOnlyRepository.cs" />
     <Compile Include="Repositories\IInmuebleWriteOnlyRepository.cs" />
+    <Compile Include="Repositories\INotificacionQueueReadOnlyRepository.cs" />
+    <Compile Include="Repositories\INotificacionQueueWriteOnlyRepository.cs" />
+    <Compile Include="Repositories\INotificacionReadOnlyRepository.cs" />
+    <Compile Include="Repositories\INotificacionWriteOnlyRepository.cs" />
     <Compile Include="Repositories\IOtroIngresoReadOnlyRepository.cs" />
     <Compile Include="Repositories\IOtroIngresoWriteOnlyRepository.cs" />
     <Compile Include="Repositories\IReglaAlertaReadOnlyRepository.cs" />
@@ -75,6 +83,7 @@
     <Compile Include="Repositories\IVehiculoWriteOnlyRepository.cs" />
     <Compile Include="SearchParameters\FiltroFuncionario.cs" />
     <Compile Include="UseCases\AlertaGeneralOutput.cs" />
+    <Compile Include="UseCases\CabeceraEmailOutput.cs" />
     <Compile Include="UseCases\DeclaracionOutput.cs" />
     <Compile Include="UseCases\DepositoOutput.cs" />
     <Compile Include="UseCases\DeudaBancariaOutput.cs" />
@@ -97,6 +106,9 @@
     <Compile Include="UseCases\GetHistoricoIndividual\IGetHistoricoIndividualUserCase.cs" />
     <Compile Include="UseCases\GetInmuebles\GetInmueblesUserCase.cs" />
     <Compile Include="UseCases\GetInmuebles\IGetInmueblesUserCase.cs" />
+    <Compile Include="UseCases\GetNotificacion\GetNotificacionUserCase.cs" />
+    <Compile Include="UseCases\GetNotificacion\IGetNotificacionUserCase.cs" />
+    <Compile Include="UseCases\GetNotificationQ\IGetNotificationQUserCase.cs" />
     <Compile Include="UseCases\GetOtrosIngresos\GetOtrosIngresosUserCase.cs" />
     <Compile Include="UseCases\GetOtrosIngresos\IGetOtrosIngresosUserCase.cs" />
     <Compile Include="UseCases\GetProfile\GetProfileUserCase.cs" />
@@ -110,7 +122,11 @@
     <Compile Include="UseCases\GetVehiculos\GetVehiculosUserCase.cs" />
     <Compile Include="UseCases\GetVehiculos\IGetVehiculosUserCase.cs" />
     <Compile Include="UseCases\InmuebleOutput.cs" />
+    <Compile Include="UseCases\NotificacionOutput.cs" />
+    <Compile Include="UseCases\NotificationQOutput.cs" />
     <Compile Include="UseCases\OtroIngresoOutput.cs" />
+    <Compile Include="UseCases\ProcessNotificationQueue\IProcessNotificationQueueUserCase.cs" />
+    <Compile Include="UseCases\ProcessNotificationQueue\ProcessNotificationQueueUserCase.cs" />
     <Compile Include="UseCases\ReglaAlertaOutput.cs" />
     <Compile Include="UseCases\SaveDeposito\ISaveDepositoUserCase.cs" />
     <Compile Include="UseCases\SaveDeposito\SaveDepositoUserCase.cs" />
@@ -126,10 +142,13 @@
     <Compile Include="UseCases\SaveValoresNegociables\SaveValoresNegociablesUserCase.cs" />
     <Compile Include="UseCases\SaveVehiculos\ISaveVehiculoUserCase.cs" />
     <Compile Include="UseCases\SaveVehiculos\SaveVehiculoUserCase.cs" />
+    <Compile Include="UseCases\SendNotificacion\ISendNotificacionUserCase.cs" />
     <Compile Include="UseCases\UpdateDeclaracion\IUpdateDeclaracionUserCase.cs" />
     <Compile Include="UseCases\UpdateDeclaracion\UpdateDeclaracionUserCase.cs" />
     <Compile Include="UseCases\UpdateGestiones\IUpdateGestionesUserCase.cs" />
     <Compile Include="UseCases\UpdateGestiones\UpdateGestionesUserCase.cs" />
+    <Compile Include="UseCases\UpdateNotificacion\IUpdateNotificacionUserCase.cs" />
+    <Compile Include="UseCases\UpdateNotificationQ\IUpdateNotificationQUserCase.cs" />
     <Compile Include="UseCases\UpdateProfile\IUpdateProfileUserCase.cs" />
     <Compile Include="UseCases\UpdateProfile\UpdateProfileUserCase.cs" />
     <Compile Include="UseCases\UserProfileOutput.cs" />

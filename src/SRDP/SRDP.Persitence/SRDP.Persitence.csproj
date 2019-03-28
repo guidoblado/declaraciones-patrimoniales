@@ -57,6 +57,8 @@
     <Compile Include="DapperDataAccess\Entities\FuncionarioUsuario.cs" />
     <Compile Include="DapperDataAccess\Entities\GestionSchema.cs" />
     <Compile Include="DapperDataAccess\Entities\HistoricoIndividualSchema.cs" />
+    <Compile Include="DapperDataAccess\Entities\Notificacion.cs" />
+    <Compile Include="DapperDataAccess\Entities\NotificationQ.cs" />
     <Compile Include="DapperDataAccess\Entities\OtroIngreso.cs" />
     <Compile Include="DapperDataAccess\Entities\ReglaAlerta.cs" />
     <Compile Include="DapperDataAccess\Entities\UsuarioAdministrador.cs" />
@@ -74,6 +76,8 @@
     <Compile Include="DapperDataAccess\Repositories\GestionRepository.cs" />
     <Compile Include="DapperDataAccess\Repositories\HistoricoIndividualRepository.cs" />
     <Compile Include="DapperDataAccess\Repositories\InmuebleRepository.cs" />
+    <Compile Include="DapperDataAccess\Repositories\NotificacionQueueRepository.cs" />
+    <Compile Include="DapperDataAccess\Repositories\NotificacionRepository.cs" />
     <Compile Include="DapperDataAccess\Repositories\OtroIngresoRepository.cs" />
     <Compile Include="DapperDataAccess\Repositories\ReglaAlertaRepository.cs" />
     <Compile Include="DapperDataAccess\Repositories\RolesUsuarioRepository.cs" />

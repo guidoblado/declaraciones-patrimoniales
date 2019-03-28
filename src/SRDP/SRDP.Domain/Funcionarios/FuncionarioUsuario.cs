@@ -14,21 +14,23 @@ namespace SRDP.Domain.Funcionarios
         public NombreCompleto NombreCompleto { get; private set; }
         public int EstadoID { get; private set; }
         public string Estado { get; private set; }
+        public string Email { get; private set; }
 
         #region Constructors
         private FuncionarioUsuario() { }
 
-        public FuncionarioUsuario(int funcionarioID, string nombreUsuario, NombreCompleto nombreCompleto, int estadoID, string estado)
+        public FuncionarioUsuario(int funcionarioID, string nombreUsuario, NombreCompleto nombreCompleto, int estadoID, string estado, string email)
         {
             FuncionarioID = funcionarioID;
             NombreUsuario = nombreUsuario;
             NombreCompleto = nombreCompleto;
             EstadoID = estadoID;
             Estado = estado;
+            Email = email;
         }
         #endregion
 
-        public static FuncionarioUsuario Load(int funcionarioID, string nombreUsuario, NombreCompleto nombreCompleto, int estadoID, string estado)
+        public static FuncionarioUsuario Load(int funcionarioID, string nombreUsuario, NombreCompleto nombreCompleto, int estadoID, string estado, string email)
         {
             return new FuncionarioUsuario
             {
@@ -37,6 +39,7 @@ namespace SRDP.Domain.Funcionarios
                 NombreCompleto = nombreCompleto,
                 EstadoID = estadoID,
                 Estado = estado,
+                Email = email,
             };
         }
     }
