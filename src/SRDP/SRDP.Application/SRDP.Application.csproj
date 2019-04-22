@@ -108,6 +108,7 @@
     <Compile Include="UseCases\GetInmuebles\IGetInmueblesUserCase.cs" />
     <Compile Include="UseCases\GetNotificacion\GetNotificacionUserCase.cs" />
     <Compile Include="UseCases\GetNotificacion\IGetNotificacionUserCase.cs" />
+    <Compile Include="UseCases\GetNotificationQ\GetNotificationQUserCase.cs" />
     <Compile Include="UseCases\GetNotificationQ\IGetNotificationQUserCase.cs" />
     <Compile Include="UseCases\GetOtrosIngresos\GetOtrosIngresosUserCase.cs" />
     <Compile Include="UseCases\GetOtrosIngresos\IGetOtrosIngresosUserCase.cs" />
@@ -148,7 +149,9 @@
     <Compile Include="UseCases\UpdateGestiones\IUpdateGestionesUserCase.cs" />
     <Compile Include="UseCases\UpdateGestiones\UpdateGestionesUserCase.cs" />
     <Compile Include="UseCases\UpdateNotificacion\IUpdateNotificacionUserCase.cs" />
+    <Compile Include="UseCases\UpdateNotificacion\UpdateNotificacionUserCase.cs" />
     <Compile Include="UseCases\UpdateNotificationQ\IUpdateNotificationQUserCase.cs" />
+    <Compile Include="UseCases\UpdateNotificationQ\UpdateNotificationQUserCase.cs" />
     <Compile Include="UseCases\UpdateProfile\IUpdateProfileUserCase.cs" />
     <Compile Include="UseCases\UpdateProfile\UpdateProfileUserCase.cs" />
     <Compile Include="UseCases\UserProfileOutput.cs" />

@@ -8,6 +8,6 @@ namespace SRDP.Application.UseCases.SendNotificacion
 {
     public interface ISendNotificacionUserCase
     {
-        Task<bool> Execute(NotificacionOutput notificacion);
+        Task Execute(NotificacionOutput notificacion);
     }
 }

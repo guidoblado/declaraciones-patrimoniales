@@ -8,6 +8,6 @@ namespace SRDP.Application.UseCases.ProcessNotificationQueue
 {
     public interface IProcessNotificationQueueUserCase
     {
-        Task<bool> Execute(string serverPath, string fromAddress);
+        Task<bool> Execute(string webServerURL, string fromAddress);
     }
 }

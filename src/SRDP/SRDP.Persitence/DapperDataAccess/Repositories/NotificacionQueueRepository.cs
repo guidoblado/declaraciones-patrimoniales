@@ -42,7 +42,7 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                string sqlCommand = "SELECT * FROM dbo.NotificationQ WHERE Status = @status AND Leido = @leido";
+                string sqlCommand = "SELECT * FROM dbo.NotificationQ WHERE Status = @status";
                 string status = queueStatus.ToString();
                 var notificationQList = await db.QueryAsync<Entities.NotificationQ>(sqlCommand, new { status });
                 var outputResult = new List<NotificacionQueueItem>();
