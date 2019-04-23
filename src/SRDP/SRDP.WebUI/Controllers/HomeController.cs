@@ -28,7 +28,11 @@ namespace SRDP.WebUI.Controllers
         public async Task<ActionResult> Index()
         {
             var profile = _getProfileUserCase.Execute(User.Identity.Name);
+            if (profile == null)
+                throw new Exception("El Perfil del Usuario '" + User.Identity.Name + "' no fue encontrado.");
             var gestionActual = await _getGestionesUserCase.GestionVigente();
+            if (gestionActual == null)
+                throw new Exception("No hay ninguna gestión Vigente");
             var declaracion = await _getDeclaracionUserCase.Execute(gestionActual.Anio, profile.FuncionarioID);
             var viewModel = Mapper.Map<DeclaracionModel>(declaracion);
             return View(viewModel);

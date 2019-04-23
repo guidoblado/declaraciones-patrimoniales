@@ -13,6 +13,7 @@ namespace SRDP.Application.UseCases
         public string NombreCompleto { get; private set; }
         public int EstadoID { get; private set; }
         public string Estado { get; private set; }
+        public string Email { get; private set; }
         public List<string> Roles { get; private set; }
         public bool IsAdmin
         {
@@ -27,17 +28,18 @@ namespace SRDP.Application.UseCases
             Roles = new List<string>();
         }
 
-        public UserProfileOutput(string userName, int funcionarioID, string nombreCompleto, int estadoID, string estado)
+        public UserProfileOutput(string userName, int funcionarioID, string nombreCompleto, int estadoID, string estado, string email)
         {
             UserName = userName;
             FuncionarioID = funcionarioID;
             NombreCompleto = nombreCompleto;
             EstadoID = estadoID;
             Estado = estado;
+            Email = email;
             Roles = new List<string>();
         }
 
-        public static UserProfileOutput LoadRoles(string userName, int funcionarioID, string nombreCompleto, int estadoID, string estado, List<string> roles)
+        public static UserProfileOutput LoadRoles(string userName, int funcionarioID, string nombreCompleto, int estadoID, string estado, string email, List<string> roles)
         {
             return new UserProfileOutput()
             {
@@ -46,6 +48,7 @@ namespace SRDP.Application.UseCases
                 NombreCompleto = nombreCompleto,
                 EstadoID = estadoID,
                 Estado = estado,
+                Email = email,
                 Roles = roles,
             };
         }

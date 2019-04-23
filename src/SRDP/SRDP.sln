@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SRDP.WebUI", "SRDP.WebUI\SR
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SRDP.WebApp", "SRDP.WebApp\SRDP.WebApp.csproj", "{EC72A945-96C6-418C-9D52-C5F619EC9730}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SRDP.NotificationService", "SRDP.NotificationService\SRDP.NotificationService.csproj", "{42FBEEB0-B1BF-404C-97DE-E93404C9E453}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{EC72A945-96C6-418C-9D52-C5F619EC9730}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC72A945-96C6-418C-9D52-C5F619EC9730}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC72A945-96C6-418C-9D52-C5F619EC9730}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42FBEEB0-B1BF-404C-97DE-E93404C9E453}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42FBEEB0-B1BF-404C-97DE-E93404C9E453}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42FBEEB0-B1BF-404C-97DE-E93404C9E453}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42FBEEB0-B1BF-404C-97DE-E93404C9E453}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

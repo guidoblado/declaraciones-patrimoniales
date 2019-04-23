@@ -25,13 +25,13 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                string sqlCommand = "Exec FuncionarioUsuario_Seleccionar @usuario";
+                string sqlCommand = "Exec dbo.FuncionarioUsuario_Seleccionar @usuario";
                 var funcionario = await db.QueryFirstOrDefaultAsync<Entities.FuncionarioUsuario>(sqlCommand, new { usuario });
 
                 if (funcionario == null) return null;
 
                 return FuncionarioUsuario.Load(funcionario.FuncionarioID, funcionario.NombreUsuario, 
-                    new NombreCompleto( funcionario.Nombre, funcionario.Apellido), funcionario.EstadoID, funcionario.Estado);
+                    new NombreCompleto( funcionario.Nombre, funcionario.Apellido), funcionario.EstadoID, funcionario.Estado, funcionario.Email);
             }
         }
 
@@ -39,7 +39,7 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                string sqlCommand = "Exec FuncionarioUsuario_Seleccionar";
+                string sqlCommand = "Exec dbo.FuncionarioUsuario_Seleccionar";
                 var funcionarios = await db.QueryAsync<Entities.FuncionarioUsuario>(sqlCommand);
 
                 var outputResult = new List<FuncionarioUsuario>();
@@ -48,7 +48,7 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
                 foreach (var funcionario in funcionarios)
                 {
                     outputResult.Add(FuncionarioUsuario.Load(funcionario.FuncionarioID, funcionario.NombreUsuario,
-                    new NombreCompleto(funcionario.Nombre, funcionario.Apellido), funcionario.EstadoID, funcionario.Estado));
+                    new NombreCompleto(funcionario.Nombre, funcionario.Apellido), funcionario.EstadoID, funcionario.Estado, funcionario.Email));
                 }
                 return outputResult;
             }

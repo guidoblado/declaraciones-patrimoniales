@@ -28,11 +28,7 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
             this.connectionString = connectionString;
         }
 
-        public Task Add(Declaracion declaracion)
-        {
-            throw new NotImplementedException();
-        }
-
+        #region Select
         public async Task<Declaracion> Get(Guid declaracionID)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
@@ -199,6 +195,28 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
                 return outputResult;
             }
         }
+        #endregion
+
+        #region Update
+
+        public async Task Add(Declaracion declaracion)
+        {
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                string sqlCommand = "INSERT INTO [dbo].[Declaraciones] ([ID],[Gestion],[FuncionarioID],[FechaLlenado],[Estado],[FechaCreacion],[FechaActualización])";
+                sqlCommand = sqlCommand + " VALUES(@ID, @Gestion, @FuncionarioID, @FechaLlenado, @Estado, @FechaCreacion, @FechaActualizacion)";
+                DynamicParameters declaracionParameters = new DynamicParameters();
+                declaracionParameters.Add("@ID", declaracion.ID);
+                declaracionParameters.Add("@Gestion", declaracion.Gestion.Anio, DbType.Int32);
+                declaracionParameters.Add("@FuncionarioID", declaracion.FuncionarioID, DbType.Int32);
+                declaracionParameters.Add("@FechaLlenado", declaracion.FechaLlenado, DbType.DateTime);
+                declaracionParameters.Add("@Estado", declaracion.Estado, DbType.Int32);
+                declaracionParameters.Add("@FechaCreacion", DateTime.Now, DbType.DateTime);
+                declaracionParameters.Add("@FechaActualizacion", DateTime.Now, DbType.DateTime);
+
+                int rows = await db.ExecuteAsync(sqlCommand, declaracionParameters);
+            }
+        }
 
         public Task Update(Declaracion declaracion)
         {
@@ -219,5 +237,6 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
                 int rows = await db.ExecuteAsync(sqlCommand, declaracionParameters);
             }
         }
+        #endregion
     }
 }
