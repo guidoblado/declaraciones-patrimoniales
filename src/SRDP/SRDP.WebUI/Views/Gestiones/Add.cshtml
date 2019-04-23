@@ -1,39 +1,52 @@
-﻿@model SRDP.WebUI.Models.GestionModel
+﻿@model SRDP.WebUI.ModelViews.NuevaGestionModelView
 
 @using (Html.BeginForm("Add", "Gestiones", FormMethod.Post, new { onSubmit = "return SubmitForm(this)" }))
 {
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.Gestion)
+    @Html.HiddenFor(model => model.GestionNueva.Anio)
+    @Html.HiddenFor(model => model.AnioVigente)
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Gestion)
+        @Html.LabelFor(model => model.AnioVigente)
         <div>
-            @Html.DisplayFor(model => model.Gestion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.DisplayFor(model => model.AnioVigente, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.GestionNueva.Anio)
+        <div>
+            @Html.DisplayFor(model => model.GestionNueva.Anio, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.GestionNueva.Anio)
+        <div>
+            @Html.DisplayFor(model => model.GestionNueva.Anio, new { htmlAttributes = new { @class = "form-control" } })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.FechaInicio)
+        @Html.LabelFor(model => model.GestionNueva.FechaInicio)
         <div>
-            @Html.EditorFor(model => model.FechaInicio, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.FechaInicio, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.GestionNueva.FechaInicio, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.GestionNueva.FechaInicio, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.FechaFinal, htmlAttributes: new { @class = "control-label" })
+        @Html.LabelFor(model => model.GestionNueva.FechaFinal, htmlAttributes: new { @class = "control-label" })
         <div>
-            @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.FechaFinal, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.GestionNueva.FechaFinal, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.GestionNueva.FechaFinal, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Vigente, htmlAttributes: new { @class = "control-label" })
+        @Html.LabelFor(model => model.GestionNueva.Vigente, htmlAttributes: new { @class = "control-label" })
         <div>
             <div class="checkbox">
-                @Html.EditorFor(model => model.Vigente)
-                @Html.ValidationMessageFor(model => model.Vigente, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.GestionNueva.Vigente)
+                @Html.ValidationMessageFor(model => model.GestionNueva.Vigente, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>
