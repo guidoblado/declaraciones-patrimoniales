@@ -84,6 +84,8 @@
     <Compile Include="SearchParameters\FiltroFuncionario.cs" />
     <Compile Include="UseCases\AlertaGeneralOutput.cs" />
     <Compile Include="UseCases\CabeceraEmailOutput.cs" />
+    <Compile Include="UseCases\CreateGestion\CreateGestionUserCase.cs" />
+    <Compile Include="UseCases\CreateGestion\ICreateGestionUserCase.cs" />
     <Compile Include="UseCases\DeclaracionOutput.cs" />
     <Compile Include="UseCases\DepositoOutput.cs" />
     <Compile Include="UseCases\DeudaBancariaOutput.cs" />
