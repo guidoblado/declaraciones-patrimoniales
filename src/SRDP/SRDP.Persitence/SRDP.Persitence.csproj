@@ -59,6 +59,7 @@
     <Compile Include="DapperDataAccess\Entities\HistoricoIndividualSchema.cs" />
     <Compile Include="DapperDataAccess\Entities\Notificacion.cs" />
     <Compile Include="DapperDataAccess\Entities\NotificationQ.cs" />
+    <Compile Include="DapperDataAccess\Entities\NroRegistros.cs" />
     <Compile Include="DapperDataAccess\Entities\OtroIngreso.cs" />
     <Compile Include="DapperDataAccess\Entities\ReglaAlerta.cs" />
     <Compile Include="DapperDataAccess\Entities\UsuarioAdministrador.cs" />
