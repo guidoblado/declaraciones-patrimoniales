@@ -14,6 +14,7 @@ namespace SRDP.WebUI.Models
         public Guid DeclaracionID { get; set; }
 
         [Display(Name = "Institución")]
+        [Required(ErrorMessage = "El nombre de la institución es requerido")]
         public string Institucion { get; set; }
 
         [Display(Name = "Tipo de Cuenta")]
@@ -24,7 +25,7 @@ namespace SRDP.WebUI.Models
         [Display(Name = "Saldo en $US.")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [Required(ErrorMessage = "El Saldo es requerido")]
-        [Range(10000, 10000000, ErrorMessage = "El saldo debe ser de minimo $ 10,000.00")]
+        [Range(1, int.MaxValue, ErrorMessage = "Debe ingresar un valor mayor a cero")]
         public decimal Saldo { get; set; }
 
         public static IEnumerable<SelectListItem> GetTipoDeCuenta()

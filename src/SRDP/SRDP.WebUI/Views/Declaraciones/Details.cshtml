@@ -464,10 +464,12 @@
         </div>
     </div>
     <dl class="dl-horizontal">
-        <dd>
-            <h4>@Model.Importante</h4>
-        </dd>
-        
+        @foreach (var item in Model.Importante)
+        {
+            <dd>
+                <h4>@item</h4>
+            </dd>
+        }
         <dt>
             @Html.DisplayNameFor(model => model.FechaLlenado)
         </dt>

@@ -17,8 +17,8 @@ namespace SRDP.Domain.Depositos
         #region Constructors
         public DepositoMayor10K(Guid  declaracionID, string institucionFinanciera, string tipoDeCuenta, decimal saldo)
         {
-            if (saldo < (decimal)10000.00)
-                throw new MontoDepositoException($"El saldo {saldo} debe ser mayor a 10,000.00 US");
+            //if (saldo < (decimal)10000.00)
+            //    throw new MontoDepositoException($"El saldo {saldo} debe ser mayor a 10,000.00 US");
             ID = Guid.NewGuid();
             DeclaracionID = declaracionID;
             InstitucionFinanciera = institucionFinanciera;

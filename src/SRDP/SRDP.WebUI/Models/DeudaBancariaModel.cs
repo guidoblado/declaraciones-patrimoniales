@@ -12,15 +12,17 @@ namespace SRDP.WebUI.Models
         public Guid ID { get; set; }
         public Guid DeclaracionID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Debe ingresar la Institución Financiera")]
         [Display(Name = "Institución Financiera")]
         public string InstitucionFinanciera { get; set; }
 
         [Required]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [Display(Name = "Monto $us (Monto actual de saldo adeudado)")]
+        [Range(1, int.MaxValue, ErrorMessage = "Debe ingresar un monto mayor a cero")]
         public decimal Monto { get; set; }
 
+        [Required(ErrorMessage = "Debe seleccionar un tipo de deuda")]
         public string Tipo { get; set; }
         public IEnumerable<SelectListItem> TiposDeDeuda { get; set; }
 

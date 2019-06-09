@@ -27,7 +27,7 @@ namespace SRDP.Application.UseCases
         public decimal PatrimonioNeto { get; }
         public string Estado { get; }
         public bool EsEditable { get; }
-        public string Importante { get; }
+        public List<string> Importante { get; }
 
         private DeclaracionOutput()
         {
@@ -37,10 +37,11 @@ namespace SRDP.Application.UseCases
             OtrosIngresos = new List<OtroIngresoOutput>();
             ValoresNegociables = new List<ValorNegociableOutput>();
             Vehiculos = new List<VehiculoOutput>();
+            Importante = new List<string>(); 
         }
         public DeclaracionOutput(Declaracion declaracion, Funcionario funcionario, List<DepositoOutput> depositos,
             List<DeudaBancariaOutput> deudasBancarias, List<InmuebleOutput> inmuebles, List<OtroIngresoOutput> otrosIngresos,
-            List<ValorNegociableOutput> valoresNegociables, List<VehiculoOutput> vehiculos, decimal patrimonioNeto, string importante)
+            List<ValorNegociableOutput> valoresNegociables, List<VehiculoOutput> vehiculos, decimal patrimonioNeto, List<string> importante)
         {
             DeclaracionID = declaracion.ID;
             Gestion = declaracion.Gestion.Anio;
