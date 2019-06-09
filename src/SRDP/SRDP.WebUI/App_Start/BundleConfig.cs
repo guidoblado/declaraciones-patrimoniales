@@ -26,6 +26,9 @@ namespace SRDP.WebUI
                       "~/Content/bootstrap.css",
                       "~/Content/jquery-ui.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
+               "~/Scripts/main.js"));
         }
     }
 }

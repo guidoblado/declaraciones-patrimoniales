@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using SRDP.WebUI.DataValidations;
 
 namespace SRDP.WebUI.Models
 {
@@ -22,12 +23,15 @@ namespace SRDP.WebUI.Models
         public IEnumerable<SelectListItem> TiposDeInmuebles { get; set; }
 
         [Display(Name = "% Participación")]
+        [Required(ErrorMessage = "el porcentaje de participación es requerido")]
         [DisplayFormat(DataFormatString = "{0:P1}")]
+        [Range(1, 100, ErrorMessage = "Debe ingresar un valor entre 1 y 100")]
         [RegularExpression(@"^(0*100{1,1}\.?((?<=\.)0*)?%?$)|(^0*\d{0,2}\.?((?<=\.)\d*)?%?)$", ErrorMessage = "El valor de porcentaje introducido no es válido")]
         public decimal PorcentajeParticipacion { get; set; }
 
         [Display(Name ="Valor Comercial $us")]
         [DisplayFormat(DataFormatString = "{0:C}")]
+        [Range(1, int.MaxValue, ErrorMessage = "Debe ingresar un valor mayor a cero")]
         public decimal ValorComercial { get; set; }
 
         [Display(Name ="Saldo Hipoteca $us")]
@@ -35,6 +39,7 @@ namespace SRDP.WebUI.Models
         public decimal SaldoHipoteca { get; set; }
 
         [Display(Name = "Banco")]
+        [RequiredOnDecimalPropertyValue("SaldoHipoteca", ErrorMessage = "El Banco es requerido cuando Saldo Hipoteca tiene valor")]
         public string Banco { get; set; }
 
         public static IEnumerable<SelectListItem> GetTiposDeInmuebles()

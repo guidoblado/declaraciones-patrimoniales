@@ -15,7 +15,8 @@ namespace SRDP.Application.UseCases.GetDeclaracion
         private readonly IDeclaracionReadOnlyRepository _declaracionReadOnlyRepository;
         private readonly IGestionReadOnlyRepository _gestionReadOnlyRepository;
         private readonly IFuncionarioReadOnlyRepository _funcionarioReadOnlyRepository;
-        private readonly string MENSAJE_IMPORTANTE = "Importante: Declaro que la información contenida es cierta y fidedigna.";
+        private readonly string MENSAJE_IMPORTANTE1 = "Confirmo haber actualizado este mes los datos personales solicitados en la plataforma E-Spyral.";
+        private readonly string MENSAJE_IMPORTANTE2 = "Declaro que la información contenida en la declaración patrimonial es cierta y fidedigna, por  lo que me comprometo a  poner a disposición de la compañía en caso de ser solicitados, los documentos que acrediten la autenticidad de la  información proporcionada.";
 
         public GetDeclaracionUserCase(IDeclaracionReadOnlyRepository declaracionReadOnlyRepository, IGestionReadOnlyRepository gestionReadOnlyRepository,
             IFuncionarioReadOnlyRepository funcionarioReadOnlyRepository)
@@ -66,7 +67,7 @@ namespace SRDP.Application.UseCases.GetDeclaracion
                 vehiculos.Add(new VehiculoOutput(item.ID, item.DeclaracionID, item.Marca, item.TipoVehiculo, item.Anio, item.ValorAproximado, item.SaldoDeudor, item.Banco));
             }
             var output = new DeclaracionOutput(declaracion, funcionario, depositos, deudasBancarias, inmuebles, otrosIngresos,
-                valoresNegociables, vehiculos, declaracion.PatrimonioNeto, MENSAJE_IMPORTANTE);
+                valoresNegociables, vehiculos, declaracion.PatrimonioNeto, new List<string> { MENSAJE_IMPORTANTE1, MENSAJE_IMPORTANTE2 });
 
             return output;
         }
@@ -116,7 +117,7 @@ namespace SRDP.Application.UseCases.GetDeclaracion
                 vehiculos.Add(new VehiculoOutput(item.ID, item.DeclaracionID, item.Marca, item.TipoVehiculo, item.Anio, item.ValorAproximado, item.SaldoDeudor, item.Banco));
             }
             var output = new DeclaracionOutput(declaracion, funcionario, depositos, deudasBancarias, inmuebles, otrosIngresos,
-                valoresNegociables, vehiculos, declaracion.PatrimonioNeto, MENSAJE_IMPORTANTE);
+                valoresNegociables, vehiculos, declaracion.PatrimonioNeto, new List<string> { MENSAJE_IMPORTANTE1, MENSAJE_IMPORTANTE2 });
 
             return output;
         }
@@ -140,7 +141,7 @@ namespace SRDP.Application.UseCases.GetDeclaracion
 
                 output.Add(new DeclaracionOutput(declaracion, funcionario, new List<DepositoOutput>(), new List<DeudaBancariaOutput>(),
                     new List<InmuebleOutput>(), new List<OtroIngresoOutput>(), new List<ValorNegociableOutput>(), new List<VehiculoOutput>(), 
-                    declaracion.PatrimonioNeto, MENSAJE_IMPORTANTE));
+                    declaracion.PatrimonioNeto, new List<string> { MENSAJE_IMPORTANTE1, MENSAJE_IMPORTANTE2 }));
 
             }
             

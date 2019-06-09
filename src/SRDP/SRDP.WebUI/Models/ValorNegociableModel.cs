@@ -12,15 +12,17 @@ namespace SRDP.WebUI.Models
         public Guid DeclaracionID { get; set; }
 
         [Display(Name = "Descripción")]
-        [Required]
+        [Required(ErrorMessage = "Debe ingresar la Descripción")]
         public string Descripcion { get; set; }
 
         [Display(Name = "Tipo Valor")]
-        [Required]
+        [Required(ErrorMessage = "Debe ingresar Tipo")]
         public string TipoValor { get; set; }
 
         [Display(Name = "Valor Aproximado $us")]
         [DisplayFormat(DataFormatString = "{0:C}")]
+        [Required]
+        [Range(1, int.MaxValue, ErrorMessage = "Debe ingresar un monto mayor a cero")]
         public decimal ValorAproximado { get; set; }
     }
 }
