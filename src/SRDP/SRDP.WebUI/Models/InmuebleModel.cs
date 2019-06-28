@@ -26,7 +26,6 @@ namespace SRDP.WebUI.Models
         [Required(ErrorMessage = "el porcentaje de participación es requerido")]
         [DisplayFormat(DataFormatString = "{0:P1}")]
         [Range(1, 100, ErrorMessage = "Debe ingresar un valor entre 1 y 100")]
-        [RegularExpression(@"^(0*100{1,1}\.?((?<=\.)0*)?%?$)|(^0*\d{0,2}\.?((?<=\.)\d*)?%?)$", ErrorMessage = "El valor de porcentaje introducido no es válido")]
         public decimal PorcentajeParticipacion { get; set; }
 
         [Display(Name ="Valor Comercial $us")]

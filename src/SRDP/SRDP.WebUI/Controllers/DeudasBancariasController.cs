@@ -61,9 +61,16 @@ namespace SRDP.WebUI.Controllers
         [HttpPost]
         public async Task<ActionResult> Save(DeudaBancariaModel deuda)
         {
-
-            var deudaOutput = await _saveDeudasBancariasUserCase.Execute(deuda.ID, deuda.DeclaracionID, deuda.InstitucionFinanciera, deuda.Monto, deuda.Tipo);
-            return Json(new { success = true, message = "Actualizado correctamente" }, JsonRequestBehavior.AllowGet);
+            try
+            {
+                var deudaOutput = await _saveDeudasBancariasUserCase.Execute(deuda.ID, deuda.DeclaracionID, deuda.InstitucionFinanciera, deuda.Monto, deuda.Tipo);
+                return Json(new { success = true, message = "Actualizado correctamente" }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+            
         }
 
         [HttpPost]
