@@ -43,13 +43,16 @@ namespace SRDP.WebUI.Controllers
 
             var inmueble = await _getInmueblesUserCase.Execute(id);
 
-            if (inmueble == null) return View(new InmuebleModel
+            if (inmueble == null) return PartialView(new InmuebleModel
             {
                 ID = Guid.Empty,
                 DeclaracionID = declaracionID,
-                Direccion = String.Empty,
+                Direccion = string.Empty,
+                TipoDeInmueble = String.Empty,
                 TiposDeInmuebles = InmuebleModel.GetTiposDeInmuebles(),
-                SaldoHipoteca = 0
+                PorcentajeParticipacion = 0,
+                ValorComercial = 0,
+                SaldoHipoteca = 0, 
             }
             );
 
@@ -60,10 +63,17 @@ namespace SRDP.WebUI.Controllers
         [HttpPost]
         public async Task<ActionResult> Save(InmuebleModel inmueble)
         {
+            if(ModelState.IsValid)
+            { 
+                var inmuebleOutput = await _saveInmueblesUserCase.Execute(inmueble.ID, inmueble.DeclaracionID, inmueble.Direccion, inmueble.TipoDeInmueble, inmueble.PorcentajeParticipacion,
+                    inmueble.ValorComercial, inmueble.SaldoHipoteca, inmueble.Banco);
+                return Json(new { success = true, message = "Actualizado correctamente" }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new { success = false, message = "NO se ha actualizado el Inmueble" }, JsonRequestBehavior.AllowGet);
+            }
 
-            var inmuebleOutput = await _saveInmueblesUserCase.Execute(inmueble.ID, inmueble.DeclaracionID, inmueble.Direccion, inmueble.TipoDeInmueble, inmueble.PorcentajeParticipacion,
-                inmueble.ValorComercial, inmueble.SaldoHipoteca, inmueble.Banco);
-            return Json(new { success = true, message = "Actualizado correctamente" }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

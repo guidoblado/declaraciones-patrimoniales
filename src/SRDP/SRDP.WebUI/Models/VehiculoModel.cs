@@ -20,6 +20,7 @@ namespace SRDP.WebUI.Models
         public string TipoVehiculo { get; set; }
 
         [Display(Name = "Año")]
+        [Range(1950, int.MaxValue, ErrorMessage = "Debe ingresar un valor para el Año del vehiculo")]
         public int Anio { get; set; }
 
         [Display(Name = "Valor Comercial Actual $us")]

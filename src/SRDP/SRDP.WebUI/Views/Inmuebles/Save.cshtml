@@ -1,7 +1,4 @@
 ﻿@model SRDP.WebUI.Models.InmuebleModel
-@{
-    Layout = null;
-}
 
 @using (Html.BeginForm("Save", "Inmuebles", FormMethod.Post, new { onSubmit = "return SubmitForm(this)" }))
 {
@@ -15,10 +12,8 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.TipoDeInmueble, new { @class = "control-label" })
-        <div>
-            @Html.DropDownListFor(model => model.TipoDeInmueble, Model.TiposDeInmuebles, "-Seleccionar-", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.TipoDeInmueble, "", new { @class = "text-danger" })
-        </div>
+        @Html.DropDownListFor(model => model.TipoDeInmueble, Model.TiposDeInmuebles, "-Seleccionar-", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.TipoDeInmueble, "", new { @class = "text-danger" })
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.PorcentajeParticipacion, new { @class = "control-label" })
@@ -69,4 +64,3 @@
         <div class="btn btn-secondary" onclick="return CloseForm()">Cancelar</div>
     </div>
 }
-
