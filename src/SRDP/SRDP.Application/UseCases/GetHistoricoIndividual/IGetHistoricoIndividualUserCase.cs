@@ -11,5 +11,6 @@ namespace SRDP.Application.UseCases.GetHistoricoIndividual
     public interface IGetHistoricoIndividualUserCase
     {
         Task<ICollection<HistoricoIndividualOutput>> ExecuteList(int gestion, FiltroFuncionario filtro);
+        Task<ICollection<HistoricoIndividualItemOutput>> ExecutePivotList(FiltroFuncionario filtro);
     }
 }

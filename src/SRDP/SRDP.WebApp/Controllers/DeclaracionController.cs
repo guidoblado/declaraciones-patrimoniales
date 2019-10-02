@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SRDP.Application.UseCases.GetDeclaracion;
+using SRDP.Application.UseCases.GetGestiones;
 using SRDP.WebApp.Models;
 
 namespace SRDP.WebApp.Controllers
@@ -15,18 +16,21 @@ namespace SRDP.WebApp.Controllers
     public class DeclaracionController : Controller
     {
         private readonly IGetDeclaracionUserCase _getDeclaracionUserCase;
+        private readonly IGetGestionesUserCase _getGestionesUserCase;
         private readonly IMapper _mapper;
 
-        public DeclaracionController(IGetDeclaracionUserCase getDeclaracionUserCase, IMapper mapper)
+        public DeclaracionController(IGetDeclaracionUserCase getDeclaracionUserCase, IGetGestionesUserCase getGestionesUserCase, IMapper mapper)
         {
             _getDeclaracionUserCase = getDeclaracionUserCase;
+            _getGestionesUserCase = getGestionesUserCase;
             _mapper = mapper;
         }
         
         // GET: Declaracion
         public async Task<ActionResult> Index(int ? gestion)
         {
-            var gestionParam = gestion.HasValue ? (int)gestion : 2016;
+            var gestionVigente = await _getGestionesUserCase.GestionVigente();
+            var gestionParam = gestion.HasValue ? gestion.Value : gestionVigente.Anio;
             var declaraciones = await _getDeclaracionUserCase.ExecuteList(gestionParam);
 
             return View(declaraciones);

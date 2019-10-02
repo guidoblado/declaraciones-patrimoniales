@@ -44,6 +44,23 @@ namespace SRDP.Application.UseCases.GetHistoricoIndividual
             return result;
         }
 
-       
+        public async Task<ICollection<HistoricoIndividualItemOutput>> ExecutePivotList(FiltroFuncionario filtro)
+        {
+            var historicoIndividualList = await _HistoricoIndividualReadOnlyRepository.GetHistoricoItems(2016);
+            if (filtro != null)
+            {
+                if (!String.IsNullOrEmpty(filtro.CodArea))
+                    historicoIndividualList = historicoIndividualList.Where(x => x.CodArea == filtro.CodArea).ToList();
+                if (!String.IsNullOrEmpty(filtro.CodCargo))
+                    historicoIndividualList = historicoIndividualList.Where(x => x.CodCargo == filtro.CodCargo).ToList();
+                if (!String.IsNullOrEmpty(filtro.CodCentroCosto))
+                    historicoIndividualList = historicoIndividualList.Where(x => x.CodCentroCosto == filtro.CodCentroCosto).ToList();
+                if (!String.IsNullOrEmpty(filtro.CodGeografico))
+                    historicoIndividualList = historicoIndividualList.Where(x => x.CodGeografico == filtro.CodGeografico).ToList();
+                if (filtro.Rol.HasValue)
+                    historicoIndividualList = historicoIndividualList.Where(x => x.TipoRol == Convert.ToInt32(filtro.Rol)).ToList();
+            }
+            return historicoIndividualList.ToList();
+        }
     }
 }

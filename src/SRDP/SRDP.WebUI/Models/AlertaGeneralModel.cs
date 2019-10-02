@@ -38,7 +38,7 @@ namespace SRDP.WebUI.Models
 
         public string Rol { get; set; }
 
-        [Display(Name = "Estado")]
+        [Display(Name = "Estado Declaracion")]
         public int EstadoDeclaracion { get; set; }
 
         [Display(Name = "Patrimonio Actual")]

@@ -28,7 +28,7 @@ namespace SRDP.WebApp.Controllers
         public async Task<IActionResult> Index(int gestion, int? estadoDeclaracion, SearchParametersModel searchParameters )
         {
             var estado = estadoDeclaracion == null ? 0 : estadoDeclaracion.Value;
-            var outputModel = await _GetEstadoGeneralUserCase.ExecuteList(2016, estado, new Application.SearchParameters.FiltroFuncionario (
+            var outputModel = await _GetEstadoGeneralUserCase.ExecuteList(gestion, estado, new Application.SearchParameters.FiltroFuncionario (
                 searchParameters.CodArea,
                 searchParameters.CodGeog,
                 searchParameters.CodCentroCosto,

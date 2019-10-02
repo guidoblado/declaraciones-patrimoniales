@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css" />
 
 <div class="container">
-    <h4 class="page-title">Estado general</h4>
+    <h4 class="page-title text-center">Estado general gestión @Model.AnioGestion</h4>
     <div class="row">
         <div class="col-md-3">
             @using (Html.BeginForm((FormMethod.Get, new { @class = "col-md-12" })))
@@ -48,6 +48,11 @@
             }
         </div>
         <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.ActionLink("Ver Reporte", "EstadoGeneralReport", new { codArea = Model.SearchParameters.CodArea, codCargo = Model.SearchParameters.CodCargo, codGeog = Model.SearchParameters.CodGeog, codCentroCosto = Model.SearchParameters.CodCentroCosto, tipoRol = Model.SearchParameters.TipoRol }, new { @class = "btn btn-info btn-round pull-right" })
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     <table class="table table-striped table-bordered" id="declaracionEstadoTable">
@@ -150,15 +155,9 @@
             dataTable = $("#declaracionEstadoTable").DataTable({
                 dom: 'Bfrtip',
                 lengthChange: false,
-                buttons: ['copy', 'excel',
-                    {
-                        extend: 'pdfHtml5',
-                        orientation: 'landscape',
-                        pageSize: 'LETTER'
-                    }
-                ],
+                buttons: ['copy'],
                 //dom: "tip",
-                //searching: false,
+                searching: false,
                 //language: {
 
                 //    "emptyTable": "No data found, Please click on <b>Add New</b> Button"
