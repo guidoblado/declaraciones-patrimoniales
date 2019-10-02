@@ -12,6 +12,6 @@ namespace SRDP.Application.Repositories
     {
         Task<ICollection<HistoricoIndividual>> GetFromGestion(int gestion);
         Task<ICollection<HistoricoIndividual>> GetTwoGestiones(int gestionActual, int gestionAnterior);
-        Task<ICollection<HistoricoItem>> GetHistoricoItems(int gestion, RubroDeclaracion rubro);
+        Task<ICollection<HistoricoIndividualItemOutput>> GetHistoricoItems(int gestionInicial);
     }
 }

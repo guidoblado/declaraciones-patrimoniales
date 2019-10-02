@@ -56,7 +56,9 @@
     <Compile Include="DapperDataAccess\Entities\EstadoGeneralSchema.cs" />
     <Compile Include="DapperDataAccess\Entities\FuncionarioUsuario.cs" />
     <Compile Include="DapperDataAccess\Entities\GestionSchema.cs" />
+    <Compile Include="DapperDataAccess\Entities\HistoricoFuncionarioSchema.cs" />
     <Compile Include="DapperDataAccess\Entities\HistoricoIndividualSchema.cs" />
+    <Compile Include="DapperDataAccess\Entities\HistoricoPivotSchema.cs" />
     <Compile Include="DapperDataAccess\Entities\Notificacion.cs" />
     <Compile Include="DapperDataAccess\Entities\NotificationQ.cs" />
     <Compile Include="DapperDataAccess\Entities\NroRegistros.cs" />

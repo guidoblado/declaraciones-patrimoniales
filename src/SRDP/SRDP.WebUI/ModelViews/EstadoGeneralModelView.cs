@@ -8,6 +8,7 @@ namespace SRDP.WebUI.ModelViews
 {
     public class EstadoGeneralModelView
     {
+        public int AnioGestion { get; set; }
         public IList<EstadoGeneralModel> Data { get; set; }
         public SearchParametersModel SearchParameters { get; set; }
     }

@@ -66,56 +66,56 @@ namespace SRDP.Application
             if (historicoIndividual.Historico.ContainsKey(RubroDeclaracion.Depositos) 
                 && historicoIndividual.Historico[RubroDeclaracion.Depositos].Patrimonios.Count ==2)
             {
-                DepositoDeclaracionIDActual = historicoIndividual.Historico[RubroDeclaracion.Depositos].Patrimonios[0].DeclaracionID;
-                DepositoDeclaracionIDAnterior = historicoIndividual.Historico[RubroDeclaracion.Depositos].Patrimonios[1].DeclaracionID;
-                DepositoGestionActual = historicoIndividual.Historico[RubroDeclaracion.Depositos].Patrimonios[0].Gestion;
-                DepositoGestionAnterior = historicoIndividual.Historico[RubroDeclaracion.Depositos].Patrimonios[1].Gestion;
-                DepositoMontoGestionActual = historicoIndividual.Historico[RubroDeclaracion.Depositos].Patrimonios[0].Monto;
-                DepositoMontoGestionAnterior = historicoIndividual.Historico[RubroDeclaracion.Depositos].Patrimonios[1].Monto;
+                DepositoDeclaracionIDActual = historicoIndividual.Historico[RubroDeclaracion.Depositos].Patrimonios[1].DeclaracionID;
+                DepositoDeclaracionIDAnterior = historicoIndividual.Historico[RubroDeclaracion.Depositos].Patrimonios[0].DeclaracionID;
+                DepositoGestionActual = historicoIndividual.Historico[RubroDeclaracion.Depositos].Patrimonios[1].Gestion;
+                DepositoGestionAnterior = historicoIndividual.Historico[RubroDeclaracion.Depositos].Patrimonios[0].Gestion;
+                DepositoMontoGestionActual = historicoIndividual.Historico[RubroDeclaracion.Depositos].Patrimonios[1].Monto;
+                DepositoMontoGestionAnterior = historicoIndividual.Historico[RubroDeclaracion.Depositos].Patrimonios[0].Monto;
             }
             //Inmueble
             if (historicoIndividual.Historico.ContainsKey(RubroDeclaracion.Inmuebles)
                 && historicoIndividual.Historico[RubroDeclaracion.Inmuebles].Patrimonios.Count == 2)
             {
-                InmuebleDeclaracionIDActual = historicoIndividual.Historico[RubroDeclaracion.Inmuebles].Patrimonios[0].DeclaracionID;
-                InmuebleDeclaracionIDAnterior = historicoIndividual.Historico[RubroDeclaracion.Inmuebles].Patrimonios[1].DeclaracionID;
-                InmuebleGestionActual = historicoIndividual.Historico[RubroDeclaracion.Inmuebles].Patrimonios[0].Gestion;
-                InmuebleGestionAnterior = historicoIndividual.Historico[RubroDeclaracion.Inmuebles].Patrimonios[1].Gestion;
-                InmuebleMontoGestionActual = historicoIndividual.Historico[RubroDeclaracion.Inmuebles].Patrimonios[0].Monto;
-                InmuebleMontoGestionAnterior = historicoIndividual.Historico[RubroDeclaracion.Inmuebles].Patrimonios[1].Monto;
+                InmuebleDeclaracionIDActual = historicoIndividual.Historico[RubroDeclaracion.Inmuebles].Patrimonios[1].DeclaracionID;
+                InmuebleDeclaracionIDAnterior = historicoIndividual.Historico[RubroDeclaracion.Inmuebles].Patrimonios[0].DeclaracionID;
+                InmuebleGestionActual = historicoIndividual.Historico[RubroDeclaracion.Inmuebles].Patrimonios[1].Gestion;
+                InmuebleGestionAnterior = historicoIndividual.Historico[RubroDeclaracion.Inmuebles].Patrimonios[0].Gestion;
+                InmuebleMontoGestionActual = historicoIndividual.Historico[RubroDeclaracion.Inmuebles].Patrimonios[1].Monto;
+                InmuebleMontoGestionAnterior = historicoIndividual.Historico[RubroDeclaracion.Inmuebles].Patrimonios[0].Monto;
             }
             //Vehiculo
             if (historicoIndividual.Historico.ContainsKey(RubroDeclaracion.Vehiculos)
                 && historicoIndividual.Historico[RubroDeclaracion.Vehiculos].Patrimonios.Count == 2)
             {
-                VehiculoDeclaracionIDActual = historicoIndividual.Historico[RubroDeclaracion.Vehiculos].Patrimonios[0].DeclaracionID;
-                VehiculoDeclaracionIDAnterior = historicoIndividual.Historico[RubroDeclaracion.Vehiculos].Patrimonios[1].DeclaracionID;
-                VehiculoGestionActual = historicoIndividual.Historico[RubroDeclaracion.Vehiculos].Patrimonios[0].Gestion;
-                VehiculoGestionAnterior = historicoIndividual.Historico[RubroDeclaracion.Vehiculos].Patrimonios[1].Gestion;
-                VehiculoMontoGestionActual = historicoIndividual.Historico[RubroDeclaracion.Vehiculos].Patrimonios[0].Monto;
-                VehiculoMontoGestionAnterior = historicoIndividual.Historico[RubroDeclaracion.Vehiculos].Patrimonios[1].Monto;
+                VehiculoDeclaracionIDActual = historicoIndividual.Historico[RubroDeclaracion.Vehiculos].Patrimonios[1].DeclaracionID;
+                VehiculoDeclaracionIDAnterior = historicoIndividual.Historico[RubroDeclaracion.Vehiculos].Patrimonios[0].DeclaracionID;
+                VehiculoGestionActual = historicoIndividual.Historico[RubroDeclaracion.Vehiculos].Patrimonios[1].Gestion;
+                VehiculoGestionAnterior = historicoIndividual.Historico[RubroDeclaracion.Vehiculos].Patrimonios[0].Gestion;
+                VehiculoMontoGestionActual = historicoIndividual.Historico[RubroDeclaracion.Vehiculos].Patrimonios[1].Monto;
+                VehiculoMontoGestionAnterior = historicoIndividual.Historico[RubroDeclaracion.Vehiculos].Patrimonios[0].Monto;
             }
             //OtroIngreso
             if (historicoIndividual.Historico.ContainsKey(RubroDeclaracion.OtrosIngresos)
                 && historicoIndividual.Historico[RubroDeclaracion.OtrosIngresos].Patrimonios.Count == 2)
             {
-                OtroIngresoDeclaracionIDActual = historicoIndividual.Historico[RubroDeclaracion.OtrosIngresos].Patrimonios[0].DeclaracionID;
-                OtroIngresoDeclaracionIDAnterior = historicoIndividual.Historico[RubroDeclaracion.OtrosIngresos].Patrimonios[1].DeclaracionID;
-                OtroIngresoGestionActual = historicoIndividual.Historico[RubroDeclaracion.OtrosIngresos].Patrimonios[0].Gestion;
-                OtroIngresoGestionAnterior = historicoIndividual.Historico[RubroDeclaracion.OtrosIngresos].Patrimonios[1].Gestion;
-                OtroIngresoMontoGestionActual = historicoIndividual.Historico[RubroDeclaracion.OtrosIngresos].Patrimonios[0].Monto;
-                OtroIngresoMontoGestionAnterior = historicoIndividual.Historico[RubroDeclaracion.OtrosIngresos].Patrimonios[1].Monto;
+                OtroIngresoDeclaracionIDActual = historicoIndividual.Historico[RubroDeclaracion.OtrosIngresos].Patrimonios[1].DeclaracionID;
+                OtroIngresoDeclaracionIDAnterior = historicoIndividual.Historico[RubroDeclaracion.OtrosIngresos].Patrimonios[0].DeclaracionID;
+                OtroIngresoGestionActual = historicoIndividual.Historico[RubroDeclaracion.OtrosIngresos].Patrimonios[1].Gestion;
+                OtroIngresoGestionAnterior = historicoIndividual.Historico[RubroDeclaracion.OtrosIngresos].Patrimonios[0].Gestion;
+                OtroIngresoMontoGestionActual = historicoIndividual.Historico[RubroDeclaracion.OtrosIngresos].Patrimonios[1].Monto;
+                OtroIngresoMontoGestionAnterior = historicoIndividual.Historico[RubroDeclaracion.OtrosIngresos].Patrimonios[0].Monto;
             }
             //DeudBancaria
             if (historicoIndividual.Historico.ContainsKey(RubroDeclaracion.DeudasBancarias)
                 && historicoIndividual.Historico[RubroDeclaracion.DeudasBancarias].Patrimonios.Count == 2)
             {
-                DeudaBancariaDeclaracionIDActual = historicoIndividual.Historico[RubroDeclaracion.DeudasBancarias].Patrimonios[0].DeclaracionID;
-                DeudaBancariaDeclaracionIDAnterior = historicoIndividual.Historico[RubroDeclaracion.DeudasBancarias].Patrimonios[1].DeclaracionID;
-                DeudaBancariaGestionActual = historicoIndividual.Historico[RubroDeclaracion.DeudasBancarias].Patrimonios[0].Gestion;
-                DeudaBancariaGestionAnterior = historicoIndividual.Historico[RubroDeclaracion.DeudasBancarias].Patrimonios[1].Gestion;
-                DeudaBancariaMontoGestionActual = historicoIndividual.Historico[RubroDeclaracion.DeudasBancarias].Patrimonios[0].Monto;
-                DeudaBancariaMontoGestionAnterior = historicoIndividual.Historico[RubroDeclaracion.DeudasBancarias].Patrimonios[1].Monto;
+                DeudaBancariaDeclaracionIDActual = historicoIndividual.Historico[RubroDeclaracion.DeudasBancarias].Patrimonios[1].DeclaracionID;
+                DeudaBancariaDeclaracionIDAnterior = historicoIndividual.Historico[RubroDeclaracion.DeudasBancarias].Patrimonios[0].DeclaracionID;
+                DeudaBancariaGestionActual = historicoIndividual.Historico[RubroDeclaracion.DeudasBancarias].Patrimonios[1].Gestion;
+                DeudaBancariaGestionAnterior = historicoIndividual.Historico[RubroDeclaracion.DeudasBancarias].Patrimonios[0].Gestion;
+                DeudaBancariaMontoGestionActual = historicoIndividual.Historico[RubroDeclaracion.DeudasBancarias].Patrimonios[1].Monto;
+                DeudaBancariaMontoGestionAnterior = historicoIndividual.Historico[RubroDeclaracion.DeudasBancarias].Patrimonios[0].Monto;
             }
         }
     }

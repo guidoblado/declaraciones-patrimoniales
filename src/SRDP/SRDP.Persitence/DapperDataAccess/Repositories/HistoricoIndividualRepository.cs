@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using SRDP.Persitence.Entities;
+using SRDP.Application;
 
 namespace SRDP.Persitence.DapperDataAccess.Repositories
 {
@@ -27,9 +28,82 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<ICollection<HistoricoItem>> GetHistoricoItems(int gestion, RubroDeclaracion rubro)
+        public async Task<ICollection<HistoricoIndividualItemOutput>> GetHistoricoItems(int gestionInicial)
         {
-            throw new NotImplementedException();
+            var result = new List<HistoricoIndividualItemOutput>();
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                string sqlCommand = "Exec dbo.HistoricoFuncionario_Seleccionar";
+                var queryResult = await db.QueryAsync<HistoricoFuncionarioSchema>(sqlCommand);
+
+                foreach (var item in queryResult)
+                {
+                    result.Add(new HistoricoIndividualItemOutput(item.FuncionarioID, item.NombreCompleto, item.CodCargo, item.Cargo, item.CodArea, item.Area, 
+                        item.CodGeografico, item.UbicacionGeografica, item.CodCentroCosto, item.CentroCosto, item.TipoRol, item.Rol));
+                }
+
+                sqlCommand = sqlCommand = "Exec dbo.HistoricoDepositos_Pivot";
+                var queryDepositos = await db.QueryAsync<HistoricoPivotSchema>(sqlCommand);
+
+                foreach (var item in queryDepositos)
+                {
+                    var historico =  result.Find(c => c.FuncionarioID == item.FuncionarioID);
+                    if (historico != null)
+                        historico.SetDepositos(item.Gestion2016, item.Gestion2017, item.Gestion2018, item.Gestion2019, item.Gestion2020);
+                }
+
+                sqlCommand = sqlCommand = "Exec dbo.HistoricoDeudasBancarias_Pivot";
+                var queryDeudas = await db.QueryAsync<HistoricoPivotSchema>(sqlCommand);
+
+                foreach (var item in queryDeudas)
+                {
+                    var historico = result.Find(c => c.FuncionarioID == item.FuncionarioID);
+                    if (historico != null)
+                        historico.SetDeudasBancarias(item.Gestion2016, item.Gestion2017, item.Gestion2018, item.Gestion2019, item.Gestion2020);
+                }
+
+                sqlCommand = sqlCommand = "Exec dbo.HistoricoInmuebles_Pivot";
+                var queryInmuebles = await db.QueryAsync<HistoricoPivotSchema>(sqlCommand);
+
+                foreach (var item in queryInmuebles)
+                {
+                    var historico = result.Find(c => c.FuncionarioID == item.FuncionarioID);
+                    if (historico != null)
+                        historico.SetInmuebles(item.Gestion2016, item.Gestion2017, item.Gestion2018, item.Gestion2019, item.Gestion2020);
+                }
+
+                sqlCommand = sqlCommand = "Exec dbo.HistoricoOtrosIngresos_Pivot";
+                var queryOtrosIngresos = await db.QueryAsync<HistoricoPivotSchema>(sqlCommand);
+
+                foreach (var item in queryOtrosIngresos)
+                {
+                    var historico = result.Find(c => c.FuncionarioID == item.FuncionarioID);
+                    if (historico != null)
+                        historico.SetOtrosIngresos(item.Gestion2016, item.Gestion2017, item.Gestion2018, item.Gestion2019, item.Gestion2020);
+                }
+
+                sqlCommand = sqlCommand = "Exec dbo.HistoricoValoresNegociables_Pivot";
+                var queryValoresNegociables = await db.QueryAsync<HistoricoPivotSchema>(sqlCommand);
+
+                foreach (var item in queryValoresNegociables)
+                {
+                    var historico = result.Find(c => c.FuncionarioID == item.FuncionarioID);
+                    if (historico != null)
+                        historico.SetValoresNegociables(item.Gestion2016, item.Gestion2017, item.Gestion2018, item.Gestion2019, item.Gestion2020);
+                }
+
+                sqlCommand = sqlCommand = "Exec dbo.HistoricoVehiculos_Pivot";
+                var queryVehiculos = await db.QueryAsync<HistoricoPivotSchema>(sqlCommand);
+
+                foreach (var item in queryVehiculos)
+                {
+                    var historico = result.Find(c => c.FuncionarioID == item.FuncionarioID);
+                    if (historico != null)
+                        historico.SetVehiculos(item.Gestion2016, item.Gestion2017, item.Gestion2018, item.Gestion2019, item.Gestion2020);
+                }
+            }
+
+            return result;
         }
 
         public async Task<ICollection<HistoricoIndividual>> GetTwoGestiones(int gestionActual, int gestionAnterior)

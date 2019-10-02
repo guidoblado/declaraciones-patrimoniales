@@ -67,7 +67,11 @@
         <div class="col-md-9">
             <div class="row">
                 <div class="col-md-12">
-
+                    @Html.ActionLink("Ver Reporte", "AlertaIndividualReport", new { id = Model.ReglaAlertaParameters.ID }, new { @class = "btn btn-info btn-round pull-right" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
                     <table class="table table-striped table-bordered table-sm" id="alertaIndividualTable">
                         <thead>
                             <tr>
