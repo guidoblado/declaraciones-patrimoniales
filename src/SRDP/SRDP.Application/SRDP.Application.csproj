@@ -51,6 +51,7 @@
     <Compile Include="HistoricoIndividualOutput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IAlertaGeneralReadOnlyRepository.cs" />
+    <Compile Include="Repositories\IAlertaIndividualReadOnlyRepository.cs" />
     <Compile Include="Repositories\ICatalogosReadOnlyRepository.cs" />
     <Compile Include="Repositories\IColaboradorReadOnlyRepository.cs" />
     <Compile Include="Repositories\IDeclaracionReadOnlyRepository.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Repositories\IVehiculoWriteOnlyRepository.cs" />
     <Compile Include="SearchParameters\FiltroFuncionario.cs" />
     <Compile Include="UseCases\AlertaGeneralOutput.cs" />
+    <Compile Include="UseCases\AlertaIndividualOutput.cs" />
     <Compile Include="UseCases\CabeceraEmailOutput.cs" />
     <Compile Include="UseCases\CreateGestion\CreateGestionUserCase.cs" />
     <Compile Include="UseCases\CreateGestion\ICreateGestionUserCase.cs" />
@@ -93,6 +95,8 @@
     <Compile Include="UseCases\GestionOutput.cs" />
     <Compile Include="UseCases\GetAlertaGeneral\GetAlertaGeneralUserCase.cs" />
     <Compile Include="UseCases\GetAlertaGeneral\IGetAlertaGeneralUserCase.cs" />
+    <Compile Include="UseCases\GetAlertaIndividual\GetAlertaIndividualUserCase.cs" />
+    <Compile Include="UseCases\GetAlertaIndividual\IGetAlertaIndividualUserCase.cs" />
     <Compile Include="UseCases\GetCatalogos\GetCatalogosUserCase.cs" />
     <Compile Include="UseCases\GetCatalogos\IGetCatalogosUserCase.cs" />
     <Compile Include="UseCases\GetDeclaracion\GetDeclaracionUserCase.cs" />

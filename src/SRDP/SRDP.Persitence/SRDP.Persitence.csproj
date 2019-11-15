@@ -69,6 +69,7 @@
     <Compile Include="DapperDataAccess\Entities\Vehiculo.cs" />
     <Compile Include="DapperDataAccess\Module.cs" />
     <Compile Include="DapperDataAccess\Repositories\AlertaGeneralRepository.cs" />
+    <Compile Include="DapperDataAccess\Repositories\AlertaIndividualRepository.cs" />
     <Compile Include="DapperDataAccess\Repositories\CatalogosRepository.cs" />
     <Compile Include="DapperDataAccess\Repositories\DeclaracionRepository.cs" />
     <Compile Include="DapperDataAccess\Repositories\DepositoRepository.cs" />

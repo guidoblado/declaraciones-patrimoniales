@@ -30,6 +30,8 @@ namespace SRDP.WebUI.Reports {
         
         private EstadoGeneralDataTable tableEstadoGeneral;
         
+        private AlertaIndividualDataTable tableAlertaIndividual;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -66,6 +68,9 @@ namespace SRDP.WebUI.Reports {
                 }
                 if ((ds.Tables["EstadoGeneral"] != null)) {
                     base.Tables.Add(new EstadoGeneralDataTable(ds.Tables["EstadoGeneral"]));
+                }
+                if ((ds.Tables["AlertaIndividual"] != null)) {
+                    base.Tables.Add(new AlertaIndividualDataTable(ds.Tables["AlertaIndividual"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -112,6 +117,16 @@ namespace SRDP.WebUI.Reports {
         public EstadoGeneralDataTable EstadoGeneral {
             get {
                 return this.tableEstadoGeneral;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public AlertaIndividualDataTable AlertaIndividual {
+            get {
+                return this.tableAlertaIndividual;
             }
         }
         
@@ -191,6 +206,9 @@ namespace SRDP.WebUI.Reports {
                 if ((ds.Tables["EstadoGeneral"] != null)) {
                     base.Tables.Add(new EstadoGeneralDataTable(ds.Tables["EstadoGeneral"]));
                 }
+                if ((ds.Tables["AlertaIndividual"] != null)) {
+                    base.Tables.Add(new AlertaIndividualDataTable(ds.Tables["AlertaIndividual"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -242,6 +260,12 @@ namespace SRDP.WebUI.Reports {
                     this.tableEstadoGeneral.InitVars();
                 }
             }
+            this.tableAlertaIndividual = ((AlertaIndividualDataTable)(base.Tables["AlertaIndividual"]));
+            if ((initTable == true)) {
+                if ((this.tableAlertaIndividual != null)) {
+                    this.tableAlertaIndividual.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -258,6 +282,8 @@ namespace SRDP.WebUI.Reports {
             base.Tables.Add(this.tableAlertaGeneral);
             this.tableEstadoGeneral = new EstadoGeneralDataTable();
             base.Tables.Add(this.tableEstadoGeneral);
+            this.tableAlertaIndividual = new AlertaIndividualDataTable();
+            base.Tables.Add(this.tableAlertaIndividual);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -275,6 +301,12 @@ namespace SRDP.WebUI.Reports {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private bool ShouldSerializeEstadoGeneral() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private bool ShouldSerializeAlertaIndividual() {
             return false;
         }
         
@@ -341,6 +373,9 @@ namespace SRDP.WebUI.Reports {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void EstadoGeneralRowChangeEventHandler(object sender, EstadoGeneralRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public delegate void AlertaIndividualRowChangeEventHandler(object sender, AlertaIndividualRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -2170,6 +2205,919 @@ namespace SRDP.WebUI.Reports {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class AlertaIndividualDataTable : global::System.Data.TypedTableBase<AlertaIndividualRow> {
+            
+            private global::System.Data.DataColumn columnDeclaracionID;
+            
+            private global::System.Data.DataColumn columnFuncionarioID;
+            
+            private global::System.Data.DataColumn columnNombreCompleto;
+            
+            private global::System.Data.DataColumn columnCodCargo;
+            
+            private global::System.Data.DataColumn columnCargo;
+            
+            private global::System.Data.DataColumn columnCodArea;
+            
+            private global::System.Data.DataColumn columnArea;
+            
+            private global::System.Data.DataColumn columnCodUbicacionGeografica;
+            
+            private global::System.Data.DataColumn columnUbicacionGeografica;
+            
+            private global::System.Data.DataColumn columnCodCentroDeCosto;
+            
+            private global::System.Data.DataColumn columnCentroDeCosto;
+            
+            private global::System.Data.DataColumn columnTipoRol;
+            
+            private global::System.Data.DataColumn columnRol;
+            
+            private global::System.Data.DataColumn columnEstadoDeclaracion;
+            
+            private global::System.Data.DataColumn columnInmueblesPatrimonioActual;
+            
+            private global::System.Data.DataColumn columnInmueblesPatrimonioGestionAnterior;
+            
+            private global::System.Data.DataColumn columnInmueblesDiferenciaPatrimonio;
+            
+            private global::System.Data.DataColumn columnInmueblesValoracionPorcentual;
+            
+            private global::System.Data.DataColumn columnOtrosIngresosPatrimonioActual;
+            
+            private global::System.Data.DataColumn columnOtrosIngresosPatrimonioGestionAnterior;
+            
+            private global::System.Data.DataColumn columnOtrosIngresosDiferenciaPatrimonio;
+            
+            private global::System.Data.DataColumn columnOtrosIngresosValoracionPorcentual;
+            
+            private global::System.Data.DataColumn columnDepositosPatrimonioActual;
+            
+            private global::System.Data.DataColumn columnDepositosPatrimonioGestionAnterior;
+            
+            private global::System.Data.DataColumn columnDepositosDiferenciaPatrimonio;
+            
+            private global::System.Data.DataColumn columnDepositosValoracionPorcentual;
+            
+            private global::System.Data.DataColumn columnDeudaBancariaPatrimonioActual;
+            
+            private global::System.Data.DataColumn columnDeudaBancariaPatrimonioGestionAnterior;
+            
+            private global::System.Data.DataColumn columnDeudaBancariaDiferenciaPatrimonio;
+            
+            private global::System.Data.DataColumn columnDeudaBancariaValoracionPorcentual;
+            
+            private global::System.Data.DataColumn columnVehiculosPatrimonioActual;
+            
+            private global::System.Data.DataColumn columnVehiculosPatrimonioGestionAnterior;
+            
+            private global::System.Data.DataColumn columnVehiculosDiferenciaPatrimonio;
+            
+            private global::System.Data.DataColumn columnVehiculosValoracionPorcentual;
+            
+            private global::System.Data.DataColumn columnValoresNegociablesPatrimonioActual;
+            
+            private global::System.Data.DataColumn columnValoresNegociablesPatrimonioGestionAnterior;
+            
+            private global::System.Data.DataColumn columnValoresNegociablesDiferenciaPatrimonio;
+            
+            private global::System.Data.DataColumn columnValoresNegociablesValoracionPorcentual;
+            
+            private global::System.Data.DataColumn columnPatrimonioActual;
+            
+            private global::System.Data.DataColumn columnPatrimonioGestionAnterior;
+            
+            private global::System.Data.DataColumn columnDiferenciaPatrimonio;
+            
+            private global::System.Data.DataColumn columnValoracionPorcentual;
+            
+            private global::System.Data.DataColumn columnDeclaracionAnteriorID;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public AlertaIndividualDataTable() {
+                this.TableName = "AlertaIndividual";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal AlertaIndividualDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected AlertaIndividualDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DeclaracionIDColumn {
+                get {
+                    return this.columnDeclaracionID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn FuncionarioIDColumn {
+                get {
+                    return this.columnFuncionarioID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn NombreCompletoColumn {
+                get {
+                    return this.columnNombreCompleto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CodCargoColumn {
+                get {
+                    return this.columnCodCargo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CargoColumn {
+                get {
+                    return this.columnCargo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CodAreaColumn {
+                get {
+                    return this.columnCodArea;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn AreaColumn {
+                get {
+                    return this.columnArea;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CodUbicacionGeograficaColumn {
+                get {
+                    return this.columnCodUbicacionGeografica;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn UbicacionGeograficaColumn {
+                get {
+                    return this.columnUbicacionGeografica;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CodCentroDeCostoColumn {
+                get {
+                    return this.columnCodCentroDeCosto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CentroDeCostoColumn {
+                get {
+                    return this.columnCentroDeCosto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn TipoRolColumn {
+                get {
+                    return this.columnTipoRol;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn RolColumn {
+                get {
+                    return this.columnRol;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn EstadoDeclaracionColumn {
+                get {
+                    return this.columnEstadoDeclaracion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn InmueblesPatrimonioActualColumn {
+                get {
+                    return this.columnInmueblesPatrimonioActual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn InmueblesPatrimonioGestionAnteriorColumn {
+                get {
+                    return this.columnInmueblesPatrimonioGestionAnterior;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn InmueblesDiferenciaPatrimonioColumn {
+                get {
+                    return this.columnInmueblesDiferenciaPatrimonio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn InmueblesValoracionPorcentualColumn {
+                get {
+                    return this.columnInmueblesValoracionPorcentual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn OtrosIngresosPatrimonioActualColumn {
+                get {
+                    return this.columnOtrosIngresosPatrimonioActual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn OtrosIngresosPatrimonioGestionAnteriorColumn {
+                get {
+                    return this.columnOtrosIngresosPatrimonioGestionAnterior;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn OtrosIngresosDiferenciaPatrimonioColumn {
+                get {
+                    return this.columnOtrosIngresosDiferenciaPatrimonio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn OtrosIngresosValoracionPorcentualColumn {
+                get {
+                    return this.columnOtrosIngresosValoracionPorcentual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DepositosPatrimonioActualColumn {
+                get {
+                    return this.columnDepositosPatrimonioActual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DepositosPatrimonioGestionAnteriorColumn {
+                get {
+                    return this.columnDepositosPatrimonioGestionAnterior;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DepositosDiferenciaPatrimonioColumn {
+                get {
+                    return this.columnDepositosDiferenciaPatrimonio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DepositosValoracionPorcentualColumn {
+                get {
+                    return this.columnDepositosValoracionPorcentual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DeudaBancariaPatrimonioActualColumn {
+                get {
+                    return this.columnDeudaBancariaPatrimonioActual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DeudaBancariaPatrimonioGestionAnteriorColumn {
+                get {
+                    return this.columnDeudaBancariaPatrimonioGestionAnterior;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DeudaBancariaDiferenciaPatrimonioColumn {
+                get {
+                    return this.columnDeudaBancariaDiferenciaPatrimonio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DeudaBancariaValoracionPorcentualColumn {
+                get {
+                    return this.columnDeudaBancariaValoracionPorcentual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn VehiculosPatrimonioActualColumn {
+                get {
+                    return this.columnVehiculosPatrimonioActual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn VehiculosPatrimonioGestionAnteriorColumn {
+                get {
+                    return this.columnVehiculosPatrimonioGestionAnterior;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn VehiculosDiferenciaPatrimonioColumn {
+                get {
+                    return this.columnVehiculosDiferenciaPatrimonio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn VehiculosValoracionPorcentualColumn {
+                get {
+                    return this.columnVehiculosValoracionPorcentual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ValoresNegociablesPatrimonioActualColumn {
+                get {
+                    return this.columnValoresNegociablesPatrimonioActual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ValoresNegociablesPatrimonioGestionAnteriorColumn {
+                get {
+                    return this.columnValoresNegociablesPatrimonioGestionAnterior;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ValoresNegociablesDiferenciaPatrimonioColumn {
+                get {
+                    return this.columnValoresNegociablesDiferenciaPatrimonio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ValoresNegociablesValoracionPorcentualColumn {
+                get {
+                    return this.columnValoresNegociablesValoracionPorcentual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn PatrimonioActualColumn {
+                get {
+                    return this.columnPatrimonioActual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn PatrimonioGestionAnteriorColumn {
+                get {
+                    return this.columnPatrimonioGestionAnterior;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DiferenciaPatrimonioColumn {
+                get {
+                    return this.columnDiferenciaPatrimonio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ValoracionPorcentualColumn {
+                get {
+                    return this.columnValoracionPorcentual;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DeclaracionAnteriorIDColumn {
+                get {
+                    return this.columnDeclaracionAnteriorID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public AlertaIndividualRow this[int index] {
+                get {
+                    return ((AlertaIndividualRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event AlertaIndividualRowChangeEventHandler AlertaIndividualRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event AlertaIndividualRowChangeEventHandler AlertaIndividualRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event AlertaIndividualRowChangeEventHandler AlertaIndividualRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event AlertaIndividualRowChangeEventHandler AlertaIndividualRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void AddAlertaIndividualRow(AlertaIndividualRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public AlertaIndividualRow AddAlertaIndividualRow(
+                        System.Guid DeclaracionID, 
+                        string FuncionarioID, 
+                        string NombreCompleto, 
+                        string CodCargo, 
+                        string Cargo, 
+                        string CodArea, 
+                        string Area, 
+                        string CodUbicacionGeografica, 
+                        string UbicacionGeografica, 
+                        string CodCentroDeCosto, 
+                        string CentroDeCosto, 
+                        int TipoRol, 
+                        string Rol, 
+                        string EstadoDeclaracion, 
+                        double InmueblesPatrimonioActual, 
+                        double InmueblesPatrimonioGestionAnterior, 
+                        double InmueblesDiferenciaPatrimonio, 
+                        double InmueblesValoracionPorcentual, 
+                        double OtrosIngresosPatrimonioActual, 
+                        double OtrosIngresosPatrimonioGestionAnterior, 
+                        double OtrosIngresosDiferenciaPatrimonio, 
+                        double OtrosIngresosValoracionPorcentual, 
+                        double DepositosPatrimonioActual, 
+                        double DepositosPatrimonioGestionAnterior, 
+                        double DepositosDiferenciaPatrimonio, 
+                        double DepositosValoracionPorcentual, 
+                        double DeudaBancariaPatrimonioActual, 
+                        double DeudaBancariaPatrimonioGestionAnterior, 
+                        double DeudaBancariaDiferenciaPatrimonio, 
+                        double DeudaBancariaValoracionPorcentual, 
+                        double VehiculosPatrimonioActual, 
+                        double VehiculosPatrimonioGestionAnterior, 
+                        double VehiculosDiferenciaPatrimonio, 
+                        double VehiculosValoracionPorcentual, 
+                        double ValoresNegociablesPatrimonioActual, 
+                        double ValoresNegociablesPatrimonioGestionAnterior, 
+                        double ValoresNegociablesDiferenciaPatrimonio, 
+                        double ValoresNegociablesValoracionPorcentual, 
+                        double PatrimonioActual, 
+                        double PatrimonioGestionAnterior, 
+                        double DiferenciaPatrimonio, 
+                        double ValoracionPorcentual, 
+                        System.Guid DeclaracionAnteriorID) {
+                AlertaIndividualRow rowAlertaIndividualRow = ((AlertaIndividualRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        DeclaracionID,
+                        FuncionarioID,
+                        NombreCompleto,
+                        CodCargo,
+                        Cargo,
+                        CodArea,
+                        Area,
+                        CodUbicacionGeografica,
+                        UbicacionGeografica,
+                        CodCentroDeCosto,
+                        CentroDeCosto,
+                        TipoRol,
+                        Rol,
+                        EstadoDeclaracion,
+                        InmueblesPatrimonioActual,
+                        InmueblesPatrimonioGestionAnterior,
+                        InmueblesDiferenciaPatrimonio,
+                        InmueblesValoracionPorcentual,
+                        OtrosIngresosPatrimonioActual,
+                        OtrosIngresosPatrimonioGestionAnterior,
+                        OtrosIngresosDiferenciaPatrimonio,
+                        OtrosIngresosValoracionPorcentual,
+                        DepositosPatrimonioActual,
+                        DepositosPatrimonioGestionAnterior,
+                        DepositosDiferenciaPatrimonio,
+                        DepositosValoracionPorcentual,
+                        DeudaBancariaPatrimonioActual,
+                        DeudaBancariaPatrimonioGestionAnterior,
+                        DeudaBancariaDiferenciaPatrimonio,
+                        DeudaBancariaValoracionPorcentual,
+                        VehiculosPatrimonioActual,
+                        VehiculosPatrimonioGestionAnterior,
+                        VehiculosDiferenciaPatrimonio,
+                        VehiculosValoracionPorcentual,
+                        ValoresNegociablesPatrimonioActual,
+                        ValoresNegociablesPatrimonioGestionAnterior,
+                        ValoresNegociablesDiferenciaPatrimonio,
+                        ValoresNegociablesValoracionPorcentual,
+                        PatrimonioActual,
+                        PatrimonioGestionAnterior,
+                        DiferenciaPatrimonio,
+                        ValoracionPorcentual,
+                        DeclaracionAnteriorID};
+                rowAlertaIndividualRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowAlertaIndividualRow);
+                return rowAlertaIndividualRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public AlertaIndividualRow FindByDeclaracionID(System.Guid DeclaracionID) {
+                return ((AlertaIndividualRow)(this.Rows.Find(new object[] {
+                            DeclaracionID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                AlertaIndividualDataTable cln = ((AlertaIndividualDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new AlertaIndividualDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal void InitVars() {
+                this.columnDeclaracionID = base.Columns["DeclaracionID"];
+                this.columnFuncionarioID = base.Columns["FuncionarioID"];
+                this.columnNombreCompleto = base.Columns["NombreCompleto"];
+                this.columnCodCargo = base.Columns["CodCargo"];
+                this.columnCargo = base.Columns["Cargo"];
+                this.columnCodArea = base.Columns["CodArea"];
+                this.columnArea = base.Columns["Area"];
+                this.columnCodUbicacionGeografica = base.Columns["CodUbicacionGeografica"];
+                this.columnUbicacionGeografica = base.Columns["UbicacionGeografica"];
+                this.columnCodCentroDeCosto = base.Columns["CodCentroDeCosto"];
+                this.columnCentroDeCosto = base.Columns["CentroDeCosto"];
+                this.columnTipoRol = base.Columns["TipoRol"];
+                this.columnRol = base.Columns["Rol"];
+                this.columnEstadoDeclaracion = base.Columns["EstadoDeclaracion"];
+                this.columnInmueblesPatrimonioActual = base.Columns["InmueblesPatrimonioActual"];
+                this.columnInmueblesPatrimonioGestionAnterior = base.Columns["InmueblesPatrimonioGestionAnterior"];
+                this.columnInmueblesDiferenciaPatrimonio = base.Columns["InmueblesDiferenciaPatrimonio"];
+                this.columnInmueblesValoracionPorcentual = base.Columns["InmueblesValoracionPorcentual"];
+                this.columnOtrosIngresosPatrimonioActual = base.Columns["OtrosIngresosPatrimonioActual"];
+                this.columnOtrosIngresosPatrimonioGestionAnterior = base.Columns["OtrosIngresosPatrimonioGestionAnterior"];
+                this.columnOtrosIngresosDiferenciaPatrimonio = base.Columns["OtrosIngresosDiferenciaPatrimonio"];
+                this.columnOtrosIngresosValoracionPorcentual = base.Columns["OtrosIngresosValoracionPorcentual"];
+                this.columnDepositosPatrimonioActual = base.Columns["DepositosPatrimonioActual"];
+                this.columnDepositosPatrimonioGestionAnterior = base.Columns["DepositosPatrimonioGestionAnterior"];
+                this.columnDepositosDiferenciaPatrimonio = base.Columns["DepositosDiferenciaPatrimonio"];
+                this.columnDepositosValoracionPorcentual = base.Columns["DepositosValoracionPorcentual"];
+                this.columnDeudaBancariaPatrimonioActual = base.Columns["DeudaBancariaPatrimonioActual"];
+                this.columnDeudaBancariaPatrimonioGestionAnterior = base.Columns["DeudaBancariaPatrimonioGestionAnterior"];
+                this.columnDeudaBancariaDiferenciaPatrimonio = base.Columns["DeudaBancariaDiferenciaPatrimonio"];
+                this.columnDeudaBancariaValoracionPorcentual = base.Columns["DeudaBancariaValoracionPorcentual"];
+                this.columnVehiculosPatrimonioActual = base.Columns["VehiculosPatrimonioActual"];
+                this.columnVehiculosPatrimonioGestionAnterior = base.Columns["VehiculosPatrimonioGestionAnterior"];
+                this.columnVehiculosDiferenciaPatrimonio = base.Columns["VehiculosDiferenciaPatrimonio"];
+                this.columnVehiculosValoracionPorcentual = base.Columns["VehiculosValoracionPorcentual"];
+                this.columnValoresNegociablesPatrimonioActual = base.Columns["ValoresNegociablesPatrimonioActual"];
+                this.columnValoresNegociablesPatrimonioGestionAnterior = base.Columns["ValoresNegociablesPatrimonioGestionAnterior"];
+                this.columnValoresNegociablesDiferenciaPatrimonio = base.Columns["ValoresNegociablesDiferenciaPatrimonio"];
+                this.columnValoresNegociablesValoracionPorcentual = base.Columns["ValoresNegociablesValoracionPorcentual"];
+                this.columnPatrimonioActual = base.Columns["PatrimonioActual"];
+                this.columnPatrimonioGestionAnterior = base.Columns["PatrimonioGestionAnterior"];
+                this.columnDiferenciaPatrimonio = base.Columns["DiferenciaPatrimonio"];
+                this.columnValoracionPorcentual = base.Columns["ValoracionPorcentual"];
+                this.columnDeclaracionAnteriorID = base.Columns["DeclaracionAnteriorID"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitClass() {
+                this.columnDeclaracionID = new global::System.Data.DataColumn("DeclaracionID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDeclaracionID);
+                this.columnFuncionarioID = new global::System.Data.DataColumn("FuncionarioID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFuncionarioID);
+                this.columnNombreCompleto = new global::System.Data.DataColumn("NombreCompleto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNombreCompleto);
+                this.columnCodCargo = new global::System.Data.DataColumn("CodCargo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodCargo);
+                this.columnCargo = new global::System.Data.DataColumn("Cargo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCargo);
+                this.columnCodArea = new global::System.Data.DataColumn("CodArea", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodArea);
+                this.columnArea = new global::System.Data.DataColumn("Area", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnArea);
+                this.columnCodUbicacionGeografica = new global::System.Data.DataColumn("CodUbicacionGeografica", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodUbicacionGeografica);
+                this.columnUbicacionGeografica = new global::System.Data.DataColumn("UbicacionGeografica", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUbicacionGeografica);
+                this.columnCodCentroDeCosto = new global::System.Data.DataColumn("CodCentroDeCosto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodCentroDeCosto);
+                this.columnCentroDeCosto = new global::System.Data.DataColumn("CentroDeCosto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCentroDeCosto);
+                this.columnTipoRol = new global::System.Data.DataColumn("TipoRol", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTipoRol);
+                this.columnRol = new global::System.Data.DataColumn("Rol", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRol);
+                this.columnEstadoDeclaracion = new global::System.Data.DataColumn("EstadoDeclaracion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEstadoDeclaracion);
+                this.columnInmueblesPatrimonioActual = new global::System.Data.DataColumn("InmueblesPatrimonioActual", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInmueblesPatrimonioActual);
+                this.columnInmueblesPatrimonioGestionAnterior = new global::System.Data.DataColumn("InmueblesPatrimonioGestionAnterior", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInmueblesPatrimonioGestionAnterior);
+                this.columnInmueblesDiferenciaPatrimonio = new global::System.Data.DataColumn("InmueblesDiferenciaPatrimonio", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInmueblesDiferenciaPatrimonio);
+                this.columnInmueblesValoracionPorcentual = new global::System.Data.DataColumn("InmueblesValoracionPorcentual", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInmueblesValoracionPorcentual);
+                this.columnOtrosIngresosPatrimonioActual = new global::System.Data.DataColumn("OtrosIngresosPatrimonioActual", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOtrosIngresosPatrimonioActual);
+                this.columnOtrosIngresosPatrimonioGestionAnterior = new global::System.Data.DataColumn("OtrosIngresosPatrimonioGestionAnterior", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOtrosIngresosPatrimonioGestionAnterior);
+                this.columnOtrosIngresosDiferenciaPatrimonio = new global::System.Data.DataColumn("OtrosIngresosDiferenciaPatrimonio", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOtrosIngresosDiferenciaPatrimonio);
+                this.columnOtrosIngresosValoracionPorcentual = new global::System.Data.DataColumn("OtrosIngresosValoracionPorcentual", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOtrosIngresosValoracionPorcentual);
+                this.columnDepositosPatrimonioActual = new global::System.Data.DataColumn("DepositosPatrimonioActual", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDepositosPatrimonioActual);
+                this.columnDepositosPatrimonioGestionAnterior = new global::System.Data.DataColumn("DepositosPatrimonioGestionAnterior", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDepositosPatrimonioGestionAnterior);
+                this.columnDepositosDiferenciaPatrimonio = new global::System.Data.DataColumn("DepositosDiferenciaPatrimonio", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDepositosDiferenciaPatrimonio);
+                this.columnDepositosValoracionPorcentual = new global::System.Data.DataColumn("DepositosValoracionPorcentual", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDepositosValoracionPorcentual);
+                this.columnDeudaBancariaPatrimonioActual = new global::System.Data.DataColumn("DeudaBancariaPatrimonioActual", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDeudaBancariaPatrimonioActual);
+                this.columnDeudaBancariaPatrimonioGestionAnterior = new global::System.Data.DataColumn("DeudaBancariaPatrimonioGestionAnterior", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDeudaBancariaPatrimonioGestionAnterior);
+                this.columnDeudaBancariaDiferenciaPatrimonio = new global::System.Data.DataColumn("DeudaBancariaDiferenciaPatrimonio", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDeudaBancariaDiferenciaPatrimonio);
+                this.columnDeudaBancariaValoracionPorcentual = new global::System.Data.DataColumn("DeudaBancariaValoracionPorcentual", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDeudaBancariaValoracionPorcentual);
+                this.columnVehiculosPatrimonioActual = new global::System.Data.DataColumn("VehiculosPatrimonioActual", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVehiculosPatrimonioActual);
+                this.columnVehiculosPatrimonioGestionAnterior = new global::System.Data.DataColumn("VehiculosPatrimonioGestionAnterior", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVehiculosPatrimonioGestionAnterior);
+                this.columnVehiculosDiferenciaPatrimonio = new global::System.Data.DataColumn("VehiculosDiferenciaPatrimonio", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVehiculosDiferenciaPatrimonio);
+                this.columnVehiculosValoracionPorcentual = new global::System.Data.DataColumn("VehiculosValoracionPorcentual", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVehiculosValoracionPorcentual);
+                this.columnValoresNegociablesPatrimonioActual = new global::System.Data.DataColumn("ValoresNegociablesPatrimonioActual", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnValoresNegociablesPatrimonioActual);
+                this.columnValoresNegociablesPatrimonioGestionAnterior = new global::System.Data.DataColumn("ValoresNegociablesPatrimonioGestionAnterior", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnValoresNegociablesPatrimonioGestionAnterior);
+                this.columnValoresNegociablesDiferenciaPatrimonio = new global::System.Data.DataColumn("ValoresNegociablesDiferenciaPatrimonio", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnValoresNegociablesDiferenciaPatrimonio);
+                this.columnValoresNegociablesValoracionPorcentual = new global::System.Data.DataColumn("ValoresNegociablesValoracionPorcentual", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnValoresNegociablesValoracionPorcentual);
+                this.columnPatrimonioActual = new global::System.Data.DataColumn("PatrimonioActual", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPatrimonioActual);
+                this.columnPatrimonioGestionAnterior = new global::System.Data.DataColumn("PatrimonioGestionAnterior", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPatrimonioGestionAnterior);
+                this.columnDiferenciaPatrimonio = new global::System.Data.DataColumn("DiferenciaPatrimonio", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDiferenciaPatrimonio);
+                this.columnValoracionPorcentual = new global::System.Data.DataColumn("ValoracionPorcentual", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnValoracionPorcentual);
+                this.columnDeclaracionAnteriorID = new global::System.Data.DataColumn("DeclaracionAnteriorID", typeof(global::System.Guid), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDeclaracionAnteriorID);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnDeclaracionID}, true));
+                this.columnDeclaracionID.AllowDBNull = false;
+                this.columnDeclaracionID.Unique = true;
+                this.columnFuncionarioID.AllowDBNull = false;
+                this.columnFuncionarioID.MaxLength = 10;
+                this.columnNombreCompleto.AllowDBNull = false;
+                this.columnNombreCompleto.MaxLength = 500;
+                this.columnCodCargo.AllowDBNull = false;
+                this.columnCodCargo.MaxLength = 50;
+                this.columnCargo.AllowDBNull = false;
+                this.columnCargo.MaxLength = 500;
+                this.columnCodArea.AllowDBNull = false;
+                this.columnCodArea.MaxLength = 50;
+                this.columnArea.AllowDBNull = false;
+                this.columnArea.MaxLength = 500;
+                this.columnCodUbicacionGeografica.AllowDBNull = false;
+                this.columnCodUbicacionGeografica.MaxLength = 50;
+                this.columnUbicacionGeografica.AllowDBNull = false;
+                this.columnUbicacionGeografica.MaxLength = 500;
+                this.columnCodCentroDeCosto.AllowDBNull = false;
+                this.columnCodCentroDeCosto.MaxLength = 50;
+                this.columnCentroDeCosto.AllowDBNull = false;
+                this.columnCentroDeCosto.MaxLength = 500;
+                this.columnTipoRol.AllowDBNull = false;
+                this.columnRol.AllowDBNull = false;
+                this.columnRol.MaxLength = 250;
+                this.columnEstadoDeclaracion.MaxLength = 50;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public AlertaIndividualRow NewAlertaIndividualRow() {
+                return ((AlertaIndividualRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new AlertaIndividualRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(AlertaIndividualRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.AlertaIndividualRowChanged != null)) {
+                    this.AlertaIndividualRowChanged(this, new AlertaIndividualRowChangeEvent(((AlertaIndividualRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.AlertaIndividualRowChanging != null)) {
+                    this.AlertaIndividualRowChanging(this, new AlertaIndividualRowChangeEvent(((AlertaIndividualRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.AlertaIndividualRowDeleted != null)) {
+                    this.AlertaIndividualRowDeleted(this, new AlertaIndividualRowChangeEvent(((AlertaIndividualRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.AlertaIndividualRowDeleting != null)) {
+                    this.AlertaIndividualRowDeleting(this, new AlertaIndividualRowChangeEvent(((AlertaIndividualRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void RemoveAlertaIndividualRow(AlertaIndividualRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                ReportsDataSet ds = new ReportsDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "AlertaIndividualDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class HistoricoIndividualRow : global::System.Data.DataRow {
@@ -3715,6 +4663,1032 @@ namespace SRDP.WebUI.Reports {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class AlertaIndividualRow : global::System.Data.DataRow {
+            
+            private AlertaIndividualDataTable tableAlertaIndividual;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal AlertaIndividualRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableAlertaIndividual = ((AlertaIndividualDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.Guid DeclaracionID {
+                get {
+                    return ((global::System.Guid)(this[this.tableAlertaIndividual.DeclaracionIDColumn]));
+                }
+                set {
+                    this[this.tableAlertaIndividual.DeclaracionIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string FuncionarioID {
+                get {
+                    return ((string)(this[this.tableAlertaIndividual.FuncionarioIDColumn]));
+                }
+                set {
+                    this[this.tableAlertaIndividual.FuncionarioIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string NombreCompleto {
+                get {
+                    return ((string)(this[this.tableAlertaIndividual.NombreCompletoColumn]));
+                }
+                set {
+                    this[this.tableAlertaIndividual.NombreCompletoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string CodCargo {
+                get {
+                    return ((string)(this[this.tableAlertaIndividual.CodCargoColumn]));
+                }
+                set {
+                    this[this.tableAlertaIndividual.CodCargoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Cargo {
+                get {
+                    return ((string)(this[this.tableAlertaIndividual.CargoColumn]));
+                }
+                set {
+                    this[this.tableAlertaIndividual.CargoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string CodArea {
+                get {
+                    return ((string)(this[this.tableAlertaIndividual.CodAreaColumn]));
+                }
+                set {
+                    this[this.tableAlertaIndividual.CodAreaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Area {
+                get {
+                    return ((string)(this[this.tableAlertaIndividual.AreaColumn]));
+                }
+                set {
+                    this[this.tableAlertaIndividual.AreaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string CodUbicacionGeografica {
+                get {
+                    return ((string)(this[this.tableAlertaIndividual.CodUbicacionGeograficaColumn]));
+                }
+                set {
+                    this[this.tableAlertaIndividual.CodUbicacionGeograficaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string UbicacionGeografica {
+                get {
+                    return ((string)(this[this.tableAlertaIndividual.UbicacionGeograficaColumn]));
+                }
+                set {
+                    this[this.tableAlertaIndividual.UbicacionGeograficaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string CodCentroDeCosto {
+                get {
+                    return ((string)(this[this.tableAlertaIndividual.CodCentroDeCostoColumn]));
+                }
+                set {
+                    this[this.tableAlertaIndividual.CodCentroDeCostoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string CentroDeCosto {
+                get {
+                    return ((string)(this[this.tableAlertaIndividual.CentroDeCostoColumn]));
+                }
+                set {
+                    this[this.tableAlertaIndividual.CentroDeCostoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int TipoRol {
+                get {
+                    return ((int)(this[this.tableAlertaIndividual.TipoRolColumn]));
+                }
+                set {
+                    this[this.tableAlertaIndividual.TipoRolColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Rol {
+                get {
+                    return ((string)(this[this.tableAlertaIndividual.RolColumn]));
+                }
+                set {
+                    this[this.tableAlertaIndividual.RolColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string EstadoDeclaracion {
+                get {
+                    try {
+                        return ((string)(this[this.tableAlertaIndividual.EstadoDeclaracionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EstadoDeclaracion\' in table \'AlertaIndividual\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.EstadoDeclaracionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double InmueblesPatrimonioActual {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.InmueblesPatrimonioActualColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InmueblesPatrimonioActual\' in table \'AlertaIndividual\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.InmueblesPatrimonioActualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double InmueblesPatrimonioGestionAnterior {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.InmueblesPatrimonioGestionAnteriorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InmueblesPatrimonioGestionAnterior\' in table \'AlertaIndivid" +
+                                "ual\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.InmueblesPatrimonioGestionAnteriorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double InmueblesDiferenciaPatrimonio {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.InmueblesDiferenciaPatrimonioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InmueblesDiferenciaPatrimonio\' in table \'AlertaIndividual\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.InmueblesDiferenciaPatrimonioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double InmueblesValoracionPorcentual {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.InmueblesValoracionPorcentualColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InmueblesValoracionPorcentual\' in table \'AlertaIndividual\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.InmueblesValoracionPorcentualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double OtrosIngresosPatrimonioActual {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.OtrosIngresosPatrimonioActualColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OtrosIngresosPatrimonioActual\' in table \'AlertaIndividual\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.OtrosIngresosPatrimonioActualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double OtrosIngresosPatrimonioGestionAnterior {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.OtrosIngresosPatrimonioGestionAnteriorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OtrosIngresosPatrimonioGestionAnterior\' in table \'AlertaInd" +
+                                "ividual\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.OtrosIngresosPatrimonioGestionAnteriorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double OtrosIngresosDiferenciaPatrimonio {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.OtrosIngresosDiferenciaPatrimonioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OtrosIngresosDiferenciaPatrimonio\' in table \'AlertaIndividu" +
+                                "al\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.OtrosIngresosDiferenciaPatrimonioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double OtrosIngresosValoracionPorcentual {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.OtrosIngresosValoracionPorcentualColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OtrosIngresosValoracionPorcentual\' in table \'AlertaIndividu" +
+                                "al\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.OtrosIngresosValoracionPorcentualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double DepositosPatrimonioActual {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.DepositosPatrimonioActualColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DepositosPatrimonioActual\' in table \'AlertaIndividual\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.DepositosPatrimonioActualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double DepositosPatrimonioGestionAnterior {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.DepositosPatrimonioGestionAnteriorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DepositosPatrimonioGestionAnterior\' in table \'AlertaIndivid" +
+                                "ual\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.DepositosPatrimonioGestionAnteriorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double DepositosDiferenciaPatrimonio {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.DepositosDiferenciaPatrimonioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DepositosDiferenciaPatrimonio\' in table \'AlertaIndividual\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.DepositosDiferenciaPatrimonioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double DepositosValoracionPorcentual {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.DepositosValoracionPorcentualColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DepositosValoracionPorcentual\' in table \'AlertaIndividual\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.DepositosValoracionPorcentualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double DeudaBancariaPatrimonioActual {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.DeudaBancariaPatrimonioActualColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DeudaBancariaPatrimonioActual\' in table \'AlertaIndividual\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.DeudaBancariaPatrimonioActualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double DeudaBancariaPatrimonioGestionAnterior {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.DeudaBancariaPatrimonioGestionAnteriorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DeudaBancariaPatrimonioGestionAnterior\' in table \'AlertaInd" +
+                                "ividual\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.DeudaBancariaPatrimonioGestionAnteriorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double DeudaBancariaDiferenciaPatrimonio {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.DeudaBancariaDiferenciaPatrimonioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DeudaBancariaDiferenciaPatrimonio\' in table \'AlertaIndividu" +
+                                "al\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.DeudaBancariaDiferenciaPatrimonioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double DeudaBancariaValoracionPorcentual {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.DeudaBancariaValoracionPorcentualColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DeudaBancariaValoracionPorcentual\' in table \'AlertaIndividu" +
+                                "al\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.DeudaBancariaValoracionPorcentualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double VehiculosPatrimonioActual {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.VehiculosPatrimonioActualColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'VehiculosPatrimonioActual\' in table \'AlertaIndividual\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.VehiculosPatrimonioActualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double VehiculosPatrimonioGestionAnterior {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.VehiculosPatrimonioGestionAnteriorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'VehiculosPatrimonioGestionAnterior\' in table \'AlertaIndivid" +
+                                "ual\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.VehiculosPatrimonioGestionAnteriorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double VehiculosDiferenciaPatrimonio {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.VehiculosDiferenciaPatrimonioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'VehiculosDiferenciaPatrimonio\' in table \'AlertaIndividual\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.VehiculosDiferenciaPatrimonioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double VehiculosValoracionPorcentual {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.VehiculosValoracionPorcentualColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'VehiculosValoracionPorcentual\' in table \'AlertaIndividual\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.VehiculosValoracionPorcentualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double ValoresNegociablesPatrimonioActual {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.ValoresNegociablesPatrimonioActualColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ValoresNegociablesPatrimonioActual\' in table \'AlertaIndivid" +
+                                "ual\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.ValoresNegociablesPatrimonioActualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double ValoresNegociablesPatrimonioGestionAnterior {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.ValoresNegociablesPatrimonioGestionAnteriorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ValoresNegociablesPatrimonioGestionAnterior\' in table \'Aler" +
+                                "taIndividual\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.ValoresNegociablesPatrimonioGestionAnteriorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double ValoresNegociablesDiferenciaPatrimonio {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.ValoresNegociablesDiferenciaPatrimonioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ValoresNegociablesDiferenciaPatrimonio\' in table \'AlertaInd" +
+                                "ividual\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.ValoresNegociablesDiferenciaPatrimonioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double ValoresNegociablesValoracionPorcentual {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.ValoresNegociablesValoracionPorcentualColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ValoresNegociablesValoracionPorcentual\' in table \'AlertaInd" +
+                                "ividual\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.ValoresNegociablesValoracionPorcentualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double PatrimonioActual {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.PatrimonioActualColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PatrimonioActual\' in table \'AlertaIndividual\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.PatrimonioActualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double PatrimonioGestionAnterior {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.PatrimonioGestionAnteriorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PatrimonioGestionAnterior\' in table \'AlertaIndividual\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.PatrimonioGestionAnteriorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double DiferenciaPatrimonio {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.DiferenciaPatrimonioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DiferenciaPatrimonio\' in table \'AlertaIndividual\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.DiferenciaPatrimonioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public double ValoracionPorcentual {
+                get {
+                    try {
+                        return ((double)(this[this.tableAlertaIndividual.ValoracionPorcentualColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ValoracionPorcentual\' in table \'AlertaIndividual\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.ValoracionPorcentualColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.Guid DeclaracionAnteriorID {
+                get {
+                    try {
+                        return ((global::System.Guid)(this[this.tableAlertaIndividual.DeclaracionAnteriorIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DeclaracionAnteriorID\' in table \'AlertaIndividual\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableAlertaIndividual.DeclaracionAnteriorIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsEstadoDeclaracionNull() {
+                return this.IsNull(this.tableAlertaIndividual.EstadoDeclaracionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetEstadoDeclaracionNull() {
+                this[this.tableAlertaIndividual.EstadoDeclaracionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInmueblesPatrimonioActualNull() {
+                return this.IsNull(this.tableAlertaIndividual.InmueblesPatrimonioActualColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInmueblesPatrimonioActualNull() {
+                this[this.tableAlertaIndividual.InmueblesPatrimonioActualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInmueblesPatrimonioGestionAnteriorNull() {
+                return this.IsNull(this.tableAlertaIndividual.InmueblesPatrimonioGestionAnteriorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInmueblesPatrimonioGestionAnteriorNull() {
+                this[this.tableAlertaIndividual.InmueblesPatrimonioGestionAnteriorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInmueblesDiferenciaPatrimonioNull() {
+                return this.IsNull(this.tableAlertaIndividual.InmueblesDiferenciaPatrimonioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInmueblesDiferenciaPatrimonioNull() {
+                this[this.tableAlertaIndividual.InmueblesDiferenciaPatrimonioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInmueblesValoracionPorcentualNull() {
+                return this.IsNull(this.tableAlertaIndividual.InmueblesValoracionPorcentualColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInmueblesValoracionPorcentualNull() {
+                this[this.tableAlertaIndividual.InmueblesValoracionPorcentualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsOtrosIngresosPatrimonioActualNull() {
+                return this.IsNull(this.tableAlertaIndividual.OtrosIngresosPatrimonioActualColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetOtrosIngresosPatrimonioActualNull() {
+                this[this.tableAlertaIndividual.OtrosIngresosPatrimonioActualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsOtrosIngresosPatrimonioGestionAnteriorNull() {
+                return this.IsNull(this.tableAlertaIndividual.OtrosIngresosPatrimonioGestionAnteriorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetOtrosIngresosPatrimonioGestionAnteriorNull() {
+                this[this.tableAlertaIndividual.OtrosIngresosPatrimonioGestionAnteriorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsOtrosIngresosDiferenciaPatrimonioNull() {
+                return this.IsNull(this.tableAlertaIndividual.OtrosIngresosDiferenciaPatrimonioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetOtrosIngresosDiferenciaPatrimonioNull() {
+                this[this.tableAlertaIndividual.OtrosIngresosDiferenciaPatrimonioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsOtrosIngresosValoracionPorcentualNull() {
+                return this.IsNull(this.tableAlertaIndividual.OtrosIngresosValoracionPorcentualColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetOtrosIngresosValoracionPorcentualNull() {
+                this[this.tableAlertaIndividual.OtrosIngresosValoracionPorcentualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDepositosPatrimonioActualNull() {
+                return this.IsNull(this.tableAlertaIndividual.DepositosPatrimonioActualColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDepositosPatrimonioActualNull() {
+                this[this.tableAlertaIndividual.DepositosPatrimonioActualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDepositosPatrimonioGestionAnteriorNull() {
+                return this.IsNull(this.tableAlertaIndividual.DepositosPatrimonioGestionAnteriorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDepositosPatrimonioGestionAnteriorNull() {
+                this[this.tableAlertaIndividual.DepositosPatrimonioGestionAnteriorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDepositosDiferenciaPatrimonioNull() {
+                return this.IsNull(this.tableAlertaIndividual.DepositosDiferenciaPatrimonioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDepositosDiferenciaPatrimonioNull() {
+                this[this.tableAlertaIndividual.DepositosDiferenciaPatrimonioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDepositosValoracionPorcentualNull() {
+                return this.IsNull(this.tableAlertaIndividual.DepositosValoracionPorcentualColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDepositosValoracionPorcentualNull() {
+                this[this.tableAlertaIndividual.DepositosValoracionPorcentualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDeudaBancariaPatrimonioActualNull() {
+                return this.IsNull(this.tableAlertaIndividual.DeudaBancariaPatrimonioActualColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDeudaBancariaPatrimonioActualNull() {
+                this[this.tableAlertaIndividual.DeudaBancariaPatrimonioActualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDeudaBancariaPatrimonioGestionAnteriorNull() {
+                return this.IsNull(this.tableAlertaIndividual.DeudaBancariaPatrimonioGestionAnteriorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDeudaBancariaPatrimonioGestionAnteriorNull() {
+                this[this.tableAlertaIndividual.DeudaBancariaPatrimonioGestionAnteriorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDeudaBancariaDiferenciaPatrimonioNull() {
+                return this.IsNull(this.tableAlertaIndividual.DeudaBancariaDiferenciaPatrimonioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDeudaBancariaDiferenciaPatrimonioNull() {
+                this[this.tableAlertaIndividual.DeudaBancariaDiferenciaPatrimonioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDeudaBancariaValoracionPorcentualNull() {
+                return this.IsNull(this.tableAlertaIndividual.DeudaBancariaValoracionPorcentualColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDeudaBancariaValoracionPorcentualNull() {
+                this[this.tableAlertaIndividual.DeudaBancariaValoracionPorcentualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsVehiculosPatrimonioActualNull() {
+                return this.IsNull(this.tableAlertaIndividual.VehiculosPatrimonioActualColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetVehiculosPatrimonioActualNull() {
+                this[this.tableAlertaIndividual.VehiculosPatrimonioActualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsVehiculosPatrimonioGestionAnteriorNull() {
+                return this.IsNull(this.tableAlertaIndividual.VehiculosPatrimonioGestionAnteriorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetVehiculosPatrimonioGestionAnteriorNull() {
+                this[this.tableAlertaIndividual.VehiculosPatrimonioGestionAnteriorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsVehiculosDiferenciaPatrimonioNull() {
+                return this.IsNull(this.tableAlertaIndividual.VehiculosDiferenciaPatrimonioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetVehiculosDiferenciaPatrimonioNull() {
+                this[this.tableAlertaIndividual.VehiculosDiferenciaPatrimonioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsVehiculosValoracionPorcentualNull() {
+                return this.IsNull(this.tableAlertaIndividual.VehiculosValoracionPorcentualColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetVehiculosValoracionPorcentualNull() {
+                this[this.tableAlertaIndividual.VehiculosValoracionPorcentualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsValoresNegociablesPatrimonioActualNull() {
+                return this.IsNull(this.tableAlertaIndividual.ValoresNegociablesPatrimonioActualColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetValoresNegociablesPatrimonioActualNull() {
+                this[this.tableAlertaIndividual.ValoresNegociablesPatrimonioActualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsValoresNegociablesPatrimonioGestionAnteriorNull() {
+                return this.IsNull(this.tableAlertaIndividual.ValoresNegociablesPatrimonioGestionAnteriorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetValoresNegociablesPatrimonioGestionAnteriorNull() {
+                this[this.tableAlertaIndividual.ValoresNegociablesPatrimonioGestionAnteriorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsValoresNegociablesDiferenciaPatrimonioNull() {
+                return this.IsNull(this.tableAlertaIndividual.ValoresNegociablesDiferenciaPatrimonioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetValoresNegociablesDiferenciaPatrimonioNull() {
+                this[this.tableAlertaIndividual.ValoresNegociablesDiferenciaPatrimonioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsValoresNegociablesValoracionPorcentualNull() {
+                return this.IsNull(this.tableAlertaIndividual.ValoresNegociablesValoracionPorcentualColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetValoresNegociablesValoracionPorcentualNull() {
+                this[this.tableAlertaIndividual.ValoresNegociablesValoracionPorcentualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsPatrimonioActualNull() {
+                return this.IsNull(this.tableAlertaIndividual.PatrimonioActualColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetPatrimonioActualNull() {
+                this[this.tableAlertaIndividual.PatrimonioActualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsPatrimonioGestionAnteriorNull() {
+                return this.IsNull(this.tableAlertaIndividual.PatrimonioGestionAnteriorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetPatrimonioGestionAnteriorNull() {
+                this[this.tableAlertaIndividual.PatrimonioGestionAnteriorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDiferenciaPatrimonioNull() {
+                return this.IsNull(this.tableAlertaIndividual.DiferenciaPatrimonioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDiferenciaPatrimonioNull() {
+                this[this.tableAlertaIndividual.DiferenciaPatrimonioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsValoracionPorcentualNull() {
+                return this.IsNull(this.tableAlertaIndividual.ValoracionPorcentualColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetValoracionPorcentualNull() {
+                this[this.tableAlertaIndividual.ValoracionPorcentualColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDeclaracionAnteriorIDNull() {
+                return this.IsNull(this.tableAlertaIndividual.DeclaracionAnteriorIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDeclaracionAnteriorIDNull() {
+                this[this.tableAlertaIndividual.DeclaracionAnteriorIDColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -3802,6 +5776,40 @@ namespace SRDP.WebUI.Reports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public EstadoGeneralRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public class AlertaIndividualRowChangeEvent : global::System.EventArgs {
+            
+            private AlertaIndividualRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public AlertaIndividualRowChangeEvent(AlertaIndividualRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public AlertaIndividualRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -5885,6 +7893,1105 @@ namespace SRDP.WebUI.Reports.ReportsDataSetTableAdapters {
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class AlertaIndividualTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public AlertaIndividualTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "AlertaIndividual";
+            tableMapping.ColumnMappings.Add("DeclaracionID", "DeclaracionID");
+            tableMapping.ColumnMappings.Add("FuncionarioID", "FuncionarioID");
+            tableMapping.ColumnMappings.Add("NombreCompleto", "NombreCompleto");
+            tableMapping.ColumnMappings.Add("CodCargo", "CodCargo");
+            tableMapping.ColumnMappings.Add("Cargo", "Cargo");
+            tableMapping.ColumnMappings.Add("CodArea", "CodArea");
+            tableMapping.ColumnMappings.Add("Area", "Area");
+            tableMapping.ColumnMappings.Add("CodUbicacionGeografica", "CodUbicacionGeografica");
+            tableMapping.ColumnMappings.Add("UbicacionGeografica", "UbicacionGeografica");
+            tableMapping.ColumnMappings.Add("CodCentroDeCosto", "CodCentroDeCosto");
+            tableMapping.ColumnMappings.Add("CentroDeCosto", "CentroDeCosto");
+            tableMapping.ColumnMappings.Add("TipoRol", "TipoRol");
+            tableMapping.ColumnMappings.Add("Rol", "Rol");
+            tableMapping.ColumnMappings.Add("EstadoDeclaracion", "EstadoDeclaracion");
+            tableMapping.ColumnMappings.Add("InmueblesPatrimonioActual", "InmueblesPatrimonioActual");
+            tableMapping.ColumnMappings.Add("InmueblesPatrimonioGestionAnterior", "InmueblesPatrimonioGestionAnterior");
+            tableMapping.ColumnMappings.Add("InmueblesDiferenciaPatrimonio", "InmueblesDiferenciaPatrimonio");
+            tableMapping.ColumnMappings.Add("InmueblesValoracionPorcentual", "InmueblesValoracionPorcentual");
+            tableMapping.ColumnMappings.Add("OtrosIngresosPatrimonioActual", "OtrosIngresosPatrimonioActual");
+            tableMapping.ColumnMappings.Add("OtrosIngresosPatrimonioGestionAnterior", "OtrosIngresosPatrimonioGestionAnterior");
+            tableMapping.ColumnMappings.Add("OtrosIngresosDiferenciaPatrimonio", "OtrosIngresosDiferenciaPatrimonio");
+            tableMapping.ColumnMappings.Add("OtrosIngresosValoracionPorcentual", "OtrosIngresosValoracionPorcentual");
+            tableMapping.ColumnMappings.Add("DepositosPatrimonioActual", "DepositosPatrimonioActual");
+            tableMapping.ColumnMappings.Add("DepositosPatrimonioGestionAnterior", "DepositosPatrimonioGestionAnterior");
+            tableMapping.ColumnMappings.Add("DepositosDiferenciaPatrimonio", "DepositosDiferenciaPatrimonio");
+            tableMapping.ColumnMappings.Add("DepositosValoracionPorcentual", "DepositosValoracionPorcentual");
+            tableMapping.ColumnMappings.Add("DeudaBancariaPatrimonioActual", "DeudaBancariaPatrimonioActual");
+            tableMapping.ColumnMappings.Add("DeudaBancariaPatrimonioGestionAnterior", "DeudaBancariaPatrimonioGestionAnterior");
+            tableMapping.ColumnMappings.Add("DeudaBancariaDiferenciaPatrimonio", "DeudaBancariaDiferenciaPatrimonio");
+            tableMapping.ColumnMappings.Add("DeudaBancariaValoracionPorcentual", "DeudaBancariaValoracionPorcentual");
+            tableMapping.ColumnMappings.Add("VehiculosPatrimonioActual", "VehiculosPatrimonioActual");
+            tableMapping.ColumnMappings.Add("VehiculosPatrimonioGestionAnterior", "VehiculosPatrimonioGestionAnterior");
+            tableMapping.ColumnMappings.Add("VehiculosDiferenciaPatrimonio", "VehiculosDiferenciaPatrimonio");
+            tableMapping.ColumnMappings.Add("VehiculosValoracionPorcentual", "VehiculosValoracionPorcentual");
+            tableMapping.ColumnMappings.Add("ValoresNegociablesPatrimonioActual", "ValoresNegociablesPatrimonioActual");
+            tableMapping.ColumnMappings.Add("ValoresNegociablesPatrimonioGestionAnterior", "ValoresNegociablesPatrimonioGestionAnterior");
+            tableMapping.ColumnMappings.Add("ValoresNegociablesDiferenciaPatrimonio", "ValoresNegociablesDiferenciaPatrimonio");
+            tableMapping.ColumnMappings.Add("ValoresNegociablesValoracionPorcentual", "ValoresNegociablesValoracionPorcentual");
+            tableMapping.ColumnMappings.Add("PatrimonioActual", "PatrimonioActual");
+            tableMapping.ColumnMappings.Add("PatrimonioGestionAnterior", "PatrimonioGestionAnterior");
+            tableMapping.ColumnMappings.Add("DiferenciaPatrimonio", "DiferenciaPatrimonio");
+            tableMapping.ColumnMappings.Add("ValoracionPorcentual", "ValoracionPorcentual");
+            tableMapping.ColumnMappings.Add("DeclaracionAnteriorID", "DeclaracionAnteriorID");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[AlertaIndividual] WHERE (([DeclaracionID] = @Original_Declarac" +
+                "ionID))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DeclaracionID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeclaracionID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[AlertaIndividual] ([DeclaracionID], [FuncionarioID], [NombreCo" +
+                "mpleto], [CodCargo], [Cargo], [CodArea], [Area], [CodUbicacionGeografica], [Ubic" +
+                "acionGeografica], [CodCentroDeCosto], [CentroDeCosto], [TipoRol], [Rol], [Estado" +
+                "Declaracion], [InmueblesPatrimonioActual], [InmueblesPatrimonioGestionAnterior]," +
+                " [InmueblesDiferenciaPatrimonio], [InmueblesValoracionPorcentual], [OtrosIngreso" +
+                "sPatrimonioActual], [OtrosIngresosPatrimonioGestionAnterior], [OtrosIngresosDife" +
+                "renciaPatrimonio], [OtrosIngresosValoracionPorcentual], [DepositosPatrimonioActu" +
+                "al], [DepositosPatrimonioGestionAnterior], [DepositosDiferenciaPatrimonio], [Dep" +
+                "ositosValoracionPorcentual], [DeudaBancariaPatrimonioActual], [DeudaBancariaPatr" +
+                "imonioGestionAnterior], [DeudaBancariaDiferenciaPatrimonio], [DeudaBancariaValor" +
+                "acionPorcentual], [VehiculosPatrimonioActual], [VehiculosPatrimonioGestionAnteri" +
+                "or], [VehiculosDiferenciaPatrimonio], [VehiculosValoracionPorcentual], [ValoresN" +
+                "egociablesPatrimonioActual], [ValoresNegociablesPatrimonioGestionAnterior], [Val" +
+                "oresNegociablesDiferenciaPatrimonio], [ValoresNegociablesValoracionPorcentual], " +
+                "[PatrimonioActual], [PatrimonioGestionAnterior], [DiferenciaPatrimonio], [Valora" +
+                "cionPorcentual], [DeclaracionAnteriorID]) VALUES (@DeclaracionID, @FuncionarioID" +
+                ", @NombreCompleto, @CodCargo, @Cargo, @CodArea, @Area, @CodUbicacionGeografica, " +
+                "@UbicacionGeografica, @CodCentroDeCosto, @CentroDeCosto, @TipoRol, @Rol, @Estado" +
+                "Declaracion, @InmueblesPatrimonioActual, @InmueblesPatrimonioGestionAnterior, @I" +
+                "nmueblesDiferenciaPatrimonio, @InmueblesValoracionPorcentual, @OtrosIngresosPatr" +
+                "imonioActual, @OtrosIngresosPatrimonioGestionAnterior, @OtrosIngresosDiferenciaP" +
+                "atrimonio, @OtrosIngresosValoracionPorcentual, @DepositosPatrimonioActual, @Depo" +
+                "sitosPatrimonioGestionAnterior, @DepositosDiferenciaPatrimonio, @DepositosValora" +
+                "cionPorcentual, @DeudaBancariaPatrimonioActual, @DeudaBancariaPatrimonioGestionA" +
+                "nterior, @DeudaBancariaDiferenciaPatrimonio, @DeudaBancariaValoracionPorcentual," +
+                " @VehiculosPatrimonioActual, @VehiculosPatrimonioGestionAnterior, @VehiculosDife" +
+                "renciaPatrimonio, @VehiculosValoracionPorcentual, @ValoresNegociablesPatrimonioA" +
+                "ctual, @ValoresNegociablesPatrimonioGestionAnterior, @ValoresNegociablesDiferenc" +
+                "iaPatrimonio, @ValoresNegociablesValoracionPorcentual, @PatrimonioActual, @Patri" +
+                "monioGestionAnterior, @DiferenciaPatrimonio, @ValoracionPorcentual, @Declaracion" +
+                "AnteriorID)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DeclaracionID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeclaracionID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FuncionarioID", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FuncionarioID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NombreCompleto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NombreCompleto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodCargo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CodCargo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cargo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cargo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodArea", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CodArea", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Area", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Area", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodUbicacionGeografica", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CodUbicacionGeografica", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UbicacionGeografica", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UbicacionGeografica", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodCentroDeCosto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CodCentroDeCosto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CentroDeCosto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CentroDeCosto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TipoRol", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TipoRol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rol", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EstadoDeclaracion", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EstadoDeclaracion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InmueblesPatrimonioActual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InmueblesPatrimonioActual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InmueblesPatrimonioGestionAnterior", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InmueblesPatrimonioGestionAnterior", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InmueblesDiferenciaPatrimonio", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InmueblesDiferenciaPatrimonio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InmueblesValoracionPorcentual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InmueblesValoracionPorcentual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OtrosIngresosPatrimonioActual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OtrosIngresosPatrimonioActual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OtrosIngresosPatrimonioGestionAnterior", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OtrosIngresosPatrimonioGestionAnterior", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OtrosIngresosDiferenciaPatrimonio", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OtrosIngresosDiferenciaPatrimonio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OtrosIngresosValoracionPorcentual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OtrosIngresosValoracionPorcentual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DepositosPatrimonioActual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DepositosPatrimonioActual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DepositosPatrimonioGestionAnterior", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DepositosPatrimonioGestionAnterior", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DepositosDiferenciaPatrimonio", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DepositosDiferenciaPatrimonio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DepositosValoracionPorcentual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DepositosValoracionPorcentual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DeudaBancariaPatrimonioActual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeudaBancariaPatrimonioActual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DeudaBancariaPatrimonioGestionAnterior", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeudaBancariaPatrimonioGestionAnterior", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DeudaBancariaDiferenciaPatrimonio", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeudaBancariaDiferenciaPatrimonio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DeudaBancariaValoracionPorcentual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeudaBancariaValoracionPorcentual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VehiculosPatrimonioActual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehiculosPatrimonioActual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VehiculosPatrimonioGestionAnterior", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehiculosPatrimonioGestionAnterior", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VehiculosDiferenciaPatrimonio", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehiculosDiferenciaPatrimonio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VehiculosValoracionPorcentual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehiculosValoracionPorcentual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ValoresNegociablesPatrimonioActual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ValoresNegociablesPatrimonioActual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ValoresNegociablesPatrimonioGestionAnterior", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ValoresNegociablesPatrimonioGestionAnterior", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ValoresNegociablesDiferenciaPatrimonio", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ValoresNegociablesDiferenciaPatrimonio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ValoresNegociablesValoracionPorcentual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ValoresNegociablesValoracionPorcentual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PatrimonioActual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PatrimonioActual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PatrimonioGestionAnterior", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PatrimonioGestionAnterior", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DiferenciaPatrimonio", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DiferenciaPatrimonio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ValoracionPorcentual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ValoracionPorcentual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DeclaracionAnteriorID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeclaracionAnteriorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[AlertaIndividual] SET [DeclaracionID] = @DeclaracionID, [Funcionari" +
+                "oID] = @FuncionarioID, [NombreCompleto] = @NombreCompleto, [CodCargo] = @CodCarg" +
+                "o, [Cargo] = @Cargo, [CodArea] = @CodArea, [Area] = @Area, [CodUbicacionGeografi" +
+                "ca] = @CodUbicacionGeografica, [UbicacionGeografica] = @UbicacionGeografica, [Co" +
+                "dCentroDeCosto] = @CodCentroDeCosto, [CentroDeCosto] = @CentroDeCosto, [TipoRol]" +
+                " = @TipoRol, [Rol] = @Rol, [EstadoDeclaracion] = @EstadoDeclaracion, [InmueblesP" +
+                "atrimonioActual] = @InmueblesPatrimonioActual, [InmueblesPatrimonioGestionAnteri" +
+                "or] = @InmueblesPatrimonioGestionAnterior, [InmueblesDiferenciaPatrimonio] = @In" +
+                "mueblesDiferenciaPatrimonio, [InmueblesValoracionPorcentual] = @InmueblesValorac" +
+                "ionPorcentual, [OtrosIngresosPatrimonioActual] = @OtrosIngresosPatrimonioActual," +
+                " [OtrosIngresosPatrimonioGestionAnterior] = @OtrosIngresosPatrimonioGestionAnter" +
+                "ior, [OtrosIngresosDiferenciaPatrimonio] = @OtrosIngresosDiferenciaPatrimonio, [" +
+                "OtrosIngresosValoracionPorcentual] = @OtrosIngresosValoracionPorcentual, [Deposi" +
+                "tosPatrimonioActual] = @DepositosPatrimonioActual, [DepositosPatrimonioGestionAn" +
+                "terior] = @DepositosPatrimonioGestionAnterior, [DepositosDiferenciaPatrimonio] =" +
+                " @DepositosDiferenciaPatrimonio, [DepositosValoracionPorcentual] = @DepositosVal" +
+                "oracionPorcentual, [DeudaBancariaPatrimonioActual] = @DeudaBancariaPatrimonioAct" +
+                "ual, [DeudaBancariaPatrimonioGestionAnterior] = @DeudaBancariaPatrimonioGestionA" +
+                "nterior, [DeudaBancariaDiferenciaPatrimonio] = @DeudaBancariaDiferenciaPatrimoni" +
+                "o, [DeudaBancariaValoracionPorcentual] = @DeudaBancariaValoracionPorcentual, [Ve" +
+                "hiculosPatrimonioActual] = @VehiculosPatrimonioActual, [VehiculosPatrimonioGesti" +
+                "onAnterior] = @VehiculosPatrimonioGestionAnterior, [VehiculosDiferenciaPatrimoni" +
+                "o] = @VehiculosDiferenciaPatrimonio, [VehiculosValoracionPorcentual] = @Vehiculo" +
+                "sValoracionPorcentual, [ValoresNegociablesPatrimonioActual] = @ValoresNegociable" +
+                "sPatrimonioActual, [ValoresNegociablesPatrimonioGestionAnterior] = @ValoresNegoc" +
+                "iablesPatrimonioGestionAnterior, [ValoresNegociablesDiferenciaPatrimonio] = @Val" +
+                "oresNegociablesDiferenciaPatrimonio, [ValoresNegociablesValoracionPorcentual] = " +
+                "@ValoresNegociablesValoracionPorcentual, [PatrimonioActual] = @PatrimonioActual," +
+                " [PatrimonioGestionAnterior] = @PatrimonioGestionAnterior, [DiferenciaPatrimonio" +
+                "] = @DiferenciaPatrimonio, [ValoracionPorcentual] = @ValoracionPorcentual, [Decl" +
+                "aracionAnteriorID] = @DeclaracionAnteriorID WHERE (([DeclaracionID] = @Original_" +
+                "DeclaracionID))";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DeclaracionID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeclaracionID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FuncionarioID", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FuncionarioID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NombreCompleto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NombreCompleto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodCargo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CodCargo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cargo", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cargo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodArea", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CodArea", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Area", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Area", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodUbicacionGeografica", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CodUbicacionGeografica", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UbicacionGeografica", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UbicacionGeografica", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodCentroDeCosto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CodCentroDeCosto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CentroDeCosto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CentroDeCosto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TipoRol", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TipoRol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rol", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@EstadoDeclaracion", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EstadoDeclaracion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InmueblesPatrimonioActual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InmueblesPatrimonioActual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InmueblesPatrimonioGestionAnterior", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InmueblesPatrimonioGestionAnterior", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InmueblesDiferenciaPatrimonio", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InmueblesDiferenciaPatrimonio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InmueblesValoracionPorcentual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InmueblesValoracionPorcentual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OtrosIngresosPatrimonioActual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OtrosIngresosPatrimonioActual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OtrosIngresosPatrimonioGestionAnterior", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OtrosIngresosPatrimonioGestionAnterior", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OtrosIngresosDiferenciaPatrimonio", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OtrosIngresosDiferenciaPatrimonio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OtrosIngresosValoracionPorcentual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OtrosIngresosValoracionPorcentual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DepositosPatrimonioActual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DepositosPatrimonioActual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DepositosPatrimonioGestionAnterior", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DepositosPatrimonioGestionAnterior", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DepositosDiferenciaPatrimonio", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DepositosDiferenciaPatrimonio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DepositosValoracionPorcentual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DepositosValoracionPorcentual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DeudaBancariaPatrimonioActual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeudaBancariaPatrimonioActual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DeudaBancariaPatrimonioGestionAnterior", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeudaBancariaPatrimonioGestionAnterior", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DeudaBancariaDiferenciaPatrimonio", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeudaBancariaDiferenciaPatrimonio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DeudaBancariaValoracionPorcentual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeudaBancariaValoracionPorcentual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VehiculosPatrimonioActual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehiculosPatrimonioActual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VehiculosPatrimonioGestionAnterior", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehiculosPatrimonioGestionAnterior", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VehiculosDiferenciaPatrimonio", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehiculosDiferenciaPatrimonio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VehiculosValoracionPorcentual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VehiculosValoracionPorcentual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ValoresNegociablesPatrimonioActual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ValoresNegociablesPatrimonioActual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ValoresNegociablesPatrimonioGestionAnterior", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ValoresNegociablesPatrimonioGestionAnterior", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ValoresNegociablesDiferenciaPatrimonio", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ValoresNegociablesDiferenciaPatrimonio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ValoresNegociablesValoracionPorcentual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ValoresNegociablesValoracionPorcentual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PatrimonioActual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PatrimonioActual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PatrimonioGestionAnterior", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PatrimonioGestionAnterior", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DiferenciaPatrimonio", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DiferenciaPatrimonio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ValoracionPorcentual", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ValoracionPorcentual", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DeclaracionAnteriorID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeclaracionAnteriorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DeclaracionID", global::System.Data.SqlDbType.UniqueIdentifier, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DeclaracionID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["SRDPConnection"].ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT DeclaracionID, FuncionarioID, NombreCompleto, CodCargo, Cargo, CodArea, Area, CodUbicacionGeografica, UbicacionGeografica, CodCentroDeCosto, CentroDeCosto, TipoRol, Rol, EstadoDeclaracion, InmueblesPatrimonioActual, InmueblesPatrimonioGestionAnterior, InmueblesDiferenciaPatrimonio, InmueblesValoracionPorcentual, OtrosIngresosPatrimonioActual, OtrosIngresosPatrimonioGestionAnterior, OtrosIngresosDiferenciaPatrimonio, OtrosIngresosValoracionPorcentual, DepositosPatrimonioActual, DepositosPatrimonioGestionAnterior, DepositosDiferenciaPatrimonio, DepositosValoracionPorcentual, DeudaBancariaPatrimonioActual, DeudaBancariaPatrimonioGestionAnterior, DeudaBancariaDiferenciaPatrimonio, DeudaBancariaValoracionPorcentual, VehiculosPatrimonioActual, VehiculosPatrimonioGestionAnterior, VehiculosDiferenciaPatrimonio, VehiculosValoracionPorcentual, ValoresNegociablesPatrimonioActual, ValoresNegociablesPatrimonioGestionAnterior, ValoresNegociablesDiferenciaPatrimonio, ValoresNegociablesValoracionPorcentual, PatrimonioActual, PatrimonioGestionAnterior, DiferenciaPatrimonio, ValoracionPorcentual, DeclaracionAnteriorID FROM dbo.AlertaIndividual";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(ReportsDataSet.AlertaIndividualDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual ReportsDataSet.AlertaIndividualDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            ReportsDataSet.AlertaIndividualDataTable dataTable = new ReportsDataSet.AlertaIndividualDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(ReportsDataSet.AlertaIndividualDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(ReportsDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "AlertaIndividual");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(System.Guid Original_DeclaracionID) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((System.Guid)(Original_DeclaracionID));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(
+                    System.Guid DeclaracionID, 
+                    string FuncionarioID, 
+                    string NombreCompleto, 
+                    string CodCargo, 
+                    string Cargo, 
+                    string CodArea, 
+                    string Area, 
+                    string CodUbicacionGeografica, 
+                    string UbicacionGeografica, 
+                    string CodCentroDeCosto, 
+                    string CentroDeCosto, 
+                    int TipoRol, 
+                    string Rol, 
+                    string EstadoDeclaracion, 
+                    global::System.Nullable<double> InmueblesPatrimonioActual, 
+                    global::System.Nullable<double> InmueblesPatrimonioGestionAnterior, 
+                    global::System.Nullable<double> InmueblesDiferenciaPatrimonio, 
+                    global::System.Nullable<double> InmueblesValoracionPorcentual, 
+                    global::System.Nullable<double> OtrosIngresosPatrimonioActual, 
+                    global::System.Nullable<double> OtrosIngresosPatrimonioGestionAnterior, 
+                    global::System.Nullable<double> OtrosIngresosDiferenciaPatrimonio, 
+                    global::System.Nullable<double> OtrosIngresosValoracionPorcentual, 
+                    global::System.Nullable<double> DepositosPatrimonioActual, 
+                    global::System.Nullable<double> DepositosPatrimonioGestionAnterior, 
+                    global::System.Nullable<double> DepositosDiferenciaPatrimonio, 
+                    global::System.Nullable<double> DepositosValoracionPorcentual, 
+                    global::System.Nullable<double> DeudaBancariaPatrimonioActual, 
+                    global::System.Nullable<double> DeudaBancariaPatrimonioGestionAnterior, 
+                    global::System.Nullable<double> DeudaBancariaDiferenciaPatrimonio, 
+                    global::System.Nullable<double> DeudaBancariaValoracionPorcentual, 
+                    global::System.Nullable<double> VehiculosPatrimonioActual, 
+                    global::System.Nullable<double> VehiculosPatrimonioGestionAnterior, 
+                    global::System.Nullable<double> VehiculosDiferenciaPatrimonio, 
+                    global::System.Nullable<double> VehiculosValoracionPorcentual, 
+                    global::System.Nullable<double> ValoresNegociablesPatrimonioActual, 
+                    global::System.Nullable<double> ValoresNegociablesPatrimonioGestionAnterior, 
+                    global::System.Nullable<double> ValoresNegociablesDiferenciaPatrimonio, 
+                    global::System.Nullable<double> ValoresNegociablesValoracionPorcentual, 
+                    global::System.Nullable<double> PatrimonioActual, 
+                    global::System.Nullable<double> PatrimonioGestionAnterior, 
+                    global::System.Nullable<double> DiferenciaPatrimonio, 
+                    global::System.Nullable<double> ValoracionPorcentual, 
+                    global::System.Nullable<global::System.Guid> DeclaracionAnteriorID) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((System.Guid)(DeclaracionID));
+            if ((FuncionarioID == null)) {
+                throw new global::System.ArgumentNullException("FuncionarioID");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(FuncionarioID));
+            }
+            if ((NombreCompleto == null)) {
+                throw new global::System.ArgumentNullException("NombreCompleto");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(NombreCompleto));
+            }
+            if ((CodCargo == null)) {
+                throw new global::System.ArgumentNullException("CodCargo");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(CodCargo));
+            }
+            if ((Cargo == null)) {
+                throw new global::System.ArgumentNullException("Cargo");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Cargo));
+            }
+            if ((CodArea == null)) {
+                throw new global::System.ArgumentNullException("CodArea");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(CodArea));
+            }
+            if ((Area == null)) {
+                throw new global::System.ArgumentNullException("Area");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Area));
+            }
+            if ((CodUbicacionGeografica == null)) {
+                throw new global::System.ArgumentNullException("CodUbicacionGeografica");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(CodUbicacionGeografica));
+            }
+            if ((UbicacionGeografica == null)) {
+                throw new global::System.ArgumentNullException("UbicacionGeografica");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(UbicacionGeografica));
+            }
+            if ((CodCentroDeCosto == null)) {
+                throw new global::System.ArgumentNullException("CodCentroDeCosto");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(CodCentroDeCosto));
+            }
+            if ((CentroDeCosto == null)) {
+                throw new global::System.ArgumentNullException("CentroDeCosto");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(CentroDeCosto));
+            }
+            this.Adapter.InsertCommand.Parameters[11].Value = ((int)(TipoRol));
+            if ((Rol == null)) {
+                throw new global::System.ArgumentNullException("Rol");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(Rol));
+            }
+            if ((EstadoDeclaracion == null)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(EstadoDeclaracion));
+            }
+            if ((InmueblesPatrimonioActual.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[14].Value = ((double)(InmueblesPatrimonioActual.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((InmueblesPatrimonioGestionAnterior.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((double)(InmueblesPatrimonioGestionAnterior.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            if ((InmueblesDiferenciaPatrimonio.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[16].Value = ((double)(InmueblesDiferenciaPatrimonio.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            if ((InmueblesValoracionPorcentual.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[17].Value = ((double)(InmueblesValoracionPorcentual.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            if ((OtrosIngresosPatrimonioActual.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[18].Value = ((double)(OtrosIngresosPatrimonioActual.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            if ((OtrosIngresosPatrimonioGestionAnterior.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[19].Value = ((double)(OtrosIngresosPatrimonioGestionAnterior.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            if ((OtrosIngresosDiferenciaPatrimonio.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[20].Value = ((double)(OtrosIngresosDiferenciaPatrimonio.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            if ((OtrosIngresosValoracionPorcentual.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[21].Value = ((double)(OtrosIngresosValoracionPorcentual.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            if ((DepositosPatrimonioActual.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[22].Value = ((double)(DepositosPatrimonioActual.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            if ((DepositosPatrimonioGestionAnterior.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[23].Value = ((double)(DepositosPatrimonioGestionAnterior.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            if ((DepositosDiferenciaPatrimonio.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[24].Value = ((double)(DepositosDiferenciaPatrimonio.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            if ((DepositosValoracionPorcentual.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[25].Value = ((double)(DepositosValoracionPorcentual.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            if ((DeudaBancariaPatrimonioActual.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[26].Value = ((double)(DeudaBancariaPatrimonioActual.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            if ((DeudaBancariaPatrimonioGestionAnterior.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[27].Value = ((double)(DeudaBancariaPatrimonioGestionAnterior.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[27].Value = global::System.DBNull.Value;
+            }
+            if ((DeudaBancariaDiferenciaPatrimonio.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[28].Value = ((double)(DeudaBancariaDiferenciaPatrimonio.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            if ((DeudaBancariaValoracionPorcentual.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[29].Value = ((double)(DeudaBancariaValoracionPorcentual.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[29].Value = global::System.DBNull.Value;
+            }
+            if ((VehiculosPatrimonioActual.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[30].Value = ((double)(VehiculosPatrimonioActual.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[30].Value = global::System.DBNull.Value;
+            }
+            if ((VehiculosPatrimonioGestionAnterior.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[31].Value = ((double)(VehiculosPatrimonioGestionAnterior.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[31].Value = global::System.DBNull.Value;
+            }
+            if ((VehiculosDiferenciaPatrimonio.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[32].Value = ((double)(VehiculosDiferenciaPatrimonio.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[32].Value = global::System.DBNull.Value;
+            }
+            if ((VehiculosValoracionPorcentual.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[33].Value = ((double)(VehiculosValoracionPorcentual.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[33].Value = global::System.DBNull.Value;
+            }
+            if ((ValoresNegociablesPatrimonioActual.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[34].Value = ((double)(ValoresNegociablesPatrimonioActual.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[34].Value = global::System.DBNull.Value;
+            }
+            if ((ValoresNegociablesPatrimonioGestionAnterior.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[35].Value = ((double)(ValoresNegociablesPatrimonioGestionAnterior.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[35].Value = global::System.DBNull.Value;
+            }
+            if ((ValoresNegociablesDiferenciaPatrimonio.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[36].Value = ((double)(ValoresNegociablesDiferenciaPatrimonio.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[36].Value = global::System.DBNull.Value;
+            }
+            if ((ValoresNegociablesValoracionPorcentual.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[37].Value = ((double)(ValoresNegociablesValoracionPorcentual.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[37].Value = global::System.DBNull.Value;
+            }
+            if ((PatrimonioActual.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[38].Value = ((double)(PatrimonioActual.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[38].Value = global::System.DBNull.Value;
+            }
+            if ((PatrimonioGestionAnterior.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[39].Value = ((double)(PatrimonioGestionAnterior.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[39].Value = global::System.DBNull.Value;
+            }
+            if ((DiferenciaPatrimonio.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[40].Value = ((double)(DiferenciaPatrimonio.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[40].Value = global::System.DBNull.Value;
+            }
+            if ((ValoracionPorcentual.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[41].Value = ((double)(ValoracionPorcentual.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[41].Value = global::System.DBNull.Value;
+            }
+            if ((DeclaracionAnteriorID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[42].Value = ((System.Guid)(DeclaracionAnteriorID.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[42].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    System.Guid DeclaracionID, 
+                    string FuncionarioID, 
+                    string NombreCompleto, 
+                    string CodCargo, 
+                    string Cargo, 
+                    string CodArea, 
+                    string Area, 
+                    string CodUbicacionGeografica, 
+                    string UbicacionGeografica, 
+                    string CodCentroDeCosto, 
+                    string CentroDeCosto, 
+                    int TipoRol, 
+                    string Rol, 
+                    string EstadoDeclaracion, 
+                    global::System.Nullable<double> InmueblesPatrimonioActual, 
+                    global::System.Nullable<double> InmueblesPatrimonioGestionAnterior, 
+                    global::System.Nullable<double> InmueblesDiferenciaPatrimonio, 
+                    global::System.Nullable<double> InmueblesValoracionPorcentual, 
+                    global::System.Nullable<double> OtrosIngresosPatrimonioActual, 
+                    global::System.Nullable<double> OtrosIngresosPatrimonioGestionAnterior, 
+                    global::System.Nullable<double> OtrosIngresosDiferenciaPatrimonio, 
+                    global::System.Nullable<double> OtrosIngresosValoracionPorcentual, 
+                    global::System.Nullable<double> DepositosPatrimonioActual, 
+                    global::System.Nullable<double> DepositosPatrimonioGestionAnterior, 
+                    global::System.Nullable<double> DepositosDiferenciaPatrimonio, 
+                    global::System.Nullable<double> DepositosValoracionPorcentual, 
+                    global::System.Nullable<double> DeudaBancariaPatrimonioActual, 
+                    global::System.Nullable<double> DeudaBancariaPatrimonioGestionAnterior, 
+                    global::System.Nullable<double> DeudaBancariaDiferenciaPatrimonio, 
+                    global::System.Nullable<double> DeudaBancariaValoracionPorcentual, 
+                    global::System.Nullable<double> VehiculosPatrimonioActual, 
+                    global::System.Nullable<double> VehiculosPatrimonioGestionAnterior, 
+                    global::System.Nullable<double> VehiculosDiferenciaPatrimonio, 
+                    global::System.Nullable<double> VehiculosValoracionPorcentual, 
+                    global::System.Nullable<double> ValoresNegociablesPatrimonioActual, 
+                    global::System.Nullable<double> ValoresNegociablesPatrimonioGestionAnterior, 
+                    global::System.Nullable<double> ValoresNegociablesDiferenciaPatrimonio, 
+                    global::System.Nullable<double> ValoresNegociablesValoracionPorcentual, 
+                    global::System.Nullable<double> PatrimonioActual, 
+                    global::System.Nullable<double> PatrimonioGestionAnterior, 
+                    global::System.Nullable<double> DiferenciaPatrimonio, 
+                    global::System.Nullable<double> ValoracionPorcentual, 
+                    global::System.Nullable<global::System.Guid> DeclaracionAnteriorID, 
+                    System.Guid Original_DeclaracionID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((System.Guid)(DeclaracionID));
+            if ((FuncionarioID == null)) {
+                throw new global::System.ArgumentNullException("FuncionarioID");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(FuncionarioID));
+            }
+            if ((NombreCompleto == null)) {
+                throw new global::System.ArgumentNullException("NombreCompleto");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(NombreCompleto));
+            }
+            if ((CodCargo == null)) {
+                throw new global::System.ArgumentNullException("CodCargo");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(CodCargo));
+            }
+            if ((Cargo == null)) {
+                throw new global::System.ArgumentNullException("Cargo");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Cargo));
+            }
+            if ((CodArea == null)) {
+                throw new global::System.ArgumentNullException("CodArea");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(CodArea));
+            }
+            if ((Area == null)) {
+                throw new global::System.ArgumentNullException("Area");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Area));
+            }
+            if ((CodUbicacionGeografica == null)) {
+                throw new global::System.ArgumentNullException("CodUbicacionGeografica");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(CodUbicacionGeografica));
+            }
+            if ((UbicacionGeografica == null)) {
+                throw new global::System.ArgumentNullException("UbicacionGeografica");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(UbicacionGeografica));
+            }
+            if ((CodCentroDeCosto == null)) {
+                throw new global::System.ArgumentNullException("CodCentroDeCosto");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(CodCentroDeCosto));
+            }
+            if ((CentroDeCosto == null)) {
+                throw new global::System.ArgumentNullException("CentroDeCosto");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(CentroDeCosto));
+            }
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(TipoRol));
+            if ((Rol == null)) {
+                throw new global::System.ArgumentNullException("Rol");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Rol));
+            }
+            if ((EstadoDeclaracion == null)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(EstadoDeclaracion));
+            }
+            if ((InmueblesPatrimonioActual.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((double)(InmueblesPatrimonioActual.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((InmueblesPatrimonioGestionAnterior.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((double)(InmueblesPatrimonioGestionAnterior.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            if ((InmueblesDiferenciaPatrimonio.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((double)(InmueblesDiferenciaPatrimonio.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            if ((InmueblesValoracionPorcentual.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((double)(InmueblesValoracionPorcentual.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            if ((OtrosIngresosPatrimonioActual.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((double)(OtrosIngresosPatrimonioActual.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            if ((OtrosIngresosPatrimonioGestionAnterior.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((double)(OtrosIngresosPatrimonioGestionAnterior.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            if ((OtrosIngresosDiferenciaPatrimonio.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((double)(OtrosIngresosDiferenciaPatrimonio.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            if ((OtrosIngresosValoracionPorcentual.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((double)(OtrosIngresosValoracionPorcentual.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            if ((DepositosPatrimonioActual.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((double)(DepositosPatrimonioActual.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            if ((DepositosPatrimonioGestionAnterior.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((double)(DepositosPatrimonioGestionAnterior.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            if ((DepositosDiferenciaPatrimonio.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((double)(DepositosDiferenciaPatrimonio.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            if ((DepositosValoracionPorcentual.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((double)(DepositosValoracionPorcentual.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            if ((DeudaBancariaPatrimonioActual.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((double)(DeudaBancariaPatrimonioActual.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            if ((DeudaBancariaPatrimonioGestionAnterior.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((double)(DeudaBancariaPatrimonioGestionAnterior.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
+            }
+            if ((DeudaBancariaDiferenciaPatrimonio.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((double)(DeudaBancariaDiferenciaPatrimonio.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            if ((DeudaBancariaValoracionPorcentual.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((double)(DeudaBancariaValoracionPorcentual.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
+            }
+            if ((VehiculosPatrimonioActual.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((double)(VehiculosPatrimonioActual.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
+            }
+            if ((VehiculosPatrimonioGestionAnterior.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((double)(VehiculosPatrimonioGestionAnterior.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
+            }
+            if ((VehiculosDiferenciaPatrimonio.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((double)(VehiculosDiferenciaPatrimonio.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
+            }
+            if ((VehiculosValoracionPorcentual.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((double)(VehiculosValoracionPorcentual.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
+            }
+            if ((ValoresNegociablesPatrimonioActual.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((double)(ValoresNegociablesPatrimonioActual.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
+            }
+            if ((ValoresNegociablesPatrimonioGestionAnterior.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((double)(ValoresNegociablesPatrimonioGestionAnterior.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
+            }
+            if ((ValoresNegociablesDiferenciaPatrimonio.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((double)(ValoresNegociablesDiferenciaPatrimonio.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
+            }
+            if ((ValoresNegociablesValoracionPorcentual.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((double)(ValoresNegociablesValoracionPorcentual.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
+            }
+            if ((PatrimonioActual.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((double)(PatrimonioActual.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
+            }
+            if ((PatrimonioGestionAnterior.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((double)(PatrimonioGestionAnterior.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
+            }
+            if ((DiferenciaPatrimonio.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((double)(DiferenciaPatrimonio.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
+            }
+            if ((ValoracionPorcentual.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((double)(ValoracionPorcentual.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
+            }
+            if ((DeclaracionAnteriorID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((System.Guid)(DeclaracionAnteriorID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[43].Value = ((System.Guid)(Original_DeclaracionID));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    string FuncionarioID, 
+                    string NombreCompleto, 
+                    string CodCargo, 
+                    string Cargo, 
+                    string CodArea, 
+                    string Area, 
+                    string CodUbicacionGeografica, 
+                    string UbicacionGeografica, 
+                    string CodCentroDeCosto, 
+                    string CentroDeCosto, 
+                    int TipoRol, 
+                    string Rol, 
+                    string EstadoDeclaracion, 
+                    global::System.Nullable<double> InmueblesPatrimonioActual, 
+                    global::System.Nullable<double> InmueblesPatrimonioGestionAnterior, 
+                    global::System.Nullable<double> InmueblesDiferenciaPatrimonio, 
+                    global::System.Nullable<double> InmueblesValoracionPorcentual, 
+                    global::System.Nullable<double> OtrosIngresosPatrimonioActual, 
+                    global::System.Nullable<double> OtrosIngresosPatrimonioGestionAnterior, 
+                    global::System.Nullable<double> OtrosIngresosDiferenciaPatrimonio, 
+                    global::System.Nullable<double> OtrosIngresosValoracionPorcentual, 
+                    global::System.Nullable<double> DepositosPatrimonioActual, 
+                    global::System.Nullable<double> DepositosPatrimonioGestionAnterior, 
+                    global::System.Nullable<double> DepositosDiferenciaPatrimonio, 
+                    global::System.Nullable<double> DepositosValoracionPorcentual, 
+                    global::System.Nullable<double> DeudaBancariaPatrimonioActual, 
+                    global::System.Nullable<double> DeudaBancariaPatrimonioGestionAnterior, 
+                    global::System.Nullable<double> DeudaBancariaDiferenciaPatrimonio, 
+                    global::System.Nullable<double> DeudaBancariaValoracionPorcentual, 
+                    global::System.Nullable<double> VehiculosPatrimonioActual, 
+                    global::System.Nullable<double> VehiculosPatrimonioGestionAnterior, 
+                    global::System.Nullable<double> VehiculosDiferenciaPatrimonio, 
+                    global::System.Nullable<double> VehiculosValoracionPorcentual, 
+                    global::System.Nullable<double> ValoresNegociablesPatrimonioActual, 
+                    global::System.Nullable<double> ValoresNegociablesPatrimonioGestionAnterior, 
+                    global::System.Nullable<double> ValoresNegociablesDiferenciaPatrimonio, 
+                    global::System.Nullable<double> ValoresNegociablesValoracionPorcentual, 
+                    global::System.Nullable<double> PatrimonioActual, 
+                    global::System.Nullable<double> PatrimonioGestionAnterior, 
+                    global::System.Nullable<double> DiferenciaPatrimonio, 
+                    global::System.Nullable<double> ValoracionPorcentual, 
+                    global::System.Nullable<global::System.Guid> DeclaracionAnteriorID, 
+                    System.Guid Original_DeclaracionID) {
+            return this.Update(Original_DeclaracionID, FuncionarioID, NombreCompleto, CodCargo, Cargo, CodArea, Area, CodUbicacionGeografica, UbicacionGeografica, CodCentroDeCosto, CentroDeCosto, TipoRol, Rol, EstadoDeclaracion, InmueblesPatrimonioActual, InmueblesPatrimonioGestionAnterior, InmueblesDiferenciaPatrimonio, InmueblesValoracionPorcentual, OtrosIngresosPatrimonioActual, OtrosIngresosPatrimonioGestionAnterior, OtrosIngresosDiferenciaPatrimonio, OtrosIngresosValoracionPorcentual, DepositosPatrimonioActual, DepositosPatrimonioGestionAnterior, DepositosDiferenciaPatrimonio, DepositosValoracionPorcentual, DeudaBancariaPatrimonioActual, DeudaBancariaPatrimonioGestionAnterior, DeudaBancariaDiferenciaPatrimonio, DeudaBancariaValoracionPorcentual, VehiculosPatrimonioActual, VehiculosPatrimonioGestionAnterior, VehiculosDiferenciaPatrimonio, VehiculosValoracionPorcentual, ValoresNegociablesPatrimonioActual, ValoresNegociablesPatrimonioGestionAnterior, ValoresNegociablesDiferenciaPatrimonio, ValoresNegociablesValoracionPorcentual, PatrimonioActual, PatrimonioGestionAnterior, DiferenciaPatrimonio, ValoracionPorcentual, DeclaracionAnteriorID, Original_DeclaracionID);
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -5901,6 +9008,8 @@ namespace SRDP.WebUI.Reports.ReportsDataSetTableAdapters {
         private AlertaGeneralTableAdapter _alertaGeneralTableAdapter;
         
         private EstadoGeneralTableAdapter _estadoGeneralTableAdapter;
+        
+        private AlertaIndividualTableAdapter _alertaIndividualTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -5961,6 +9070,20 @@ namespace SRDP.WebUI.Reports.ReportsDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public AlertaIndividualTableAdapter AlertaIndividualTableAdapter {
+            get {
+                return this._alertaIndividualTableAdapter;
+            }
+            set {
+                this._alertaIndividualTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -5990,6 +9113,10 @@ namespace SRDP.WebUI.Reports.ReportsDataSetTableAdapters {
                             && (this._estadoGeneralTableAdapter.Connection != null))) {
                     return this._estadoGeneralTableAdapter.Connection;
                 }
+                if (((this._alertaIndividualTableAdapter != null) 
+                            && (this._alertaIndividualTableAdapter.Connection != null))) {
+                    return this._alertaIndividualTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -6010,6 +9137,9 @@ namespace SRDP.WebUI.Reports.ReportsDataSetTableAdapters {
                     count = (count + 1);
                 }
                 if ((this._estadoGeneralTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._alertaIndividualTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -6050,6 +9180,15 @@ namespace SRDP.WebUI.Reports.ReportsDataSetTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._alertaIndividualTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.AlertaIndividual.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._alertaIndividualTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -6084,6 +9223,14 @@ namespace SRDP.WebUI.Reports.ReportsDataSetTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._alertaIndividualTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.AlertaIndividual.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._alertaIndividualTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -6094,6 +9241,14 @@ namespace SRDP.WebUI.Reports.ReportsDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateDeletedRows(ReportsDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._alertaIndividualTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.AlertaIndividual.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._alertaIndividualTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._estadoGeneralTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.EstadoGeneral.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -6172,6 +9327,11 @@ namespace SRDP.WebUI.Reports.ReportsDataSetTableAdapters {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
+            if (((this._alertaIndividualTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._alertaIndividualTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
@@ -6229,6 +9389,15 @@ namespace SRDP.WebUI.Reports.ReportsDataSetTableAdapters {
                     if (this._estadoGeneralTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._estadoGeneralTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._estadoGeneralTableAdapter.Adapter);
+                    }
+                }
+                if ((this._alertaIndividualTableAdapter != null)) {
+                    revertConnections.Add(this._alertaIndividualTableAdapter, this._alertaIndividualTableAdapter.Connection);
+                    this._alertaIndividualTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._alertaIndividualTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._alertaIndividualTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._alertaIndividualTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._alertaIndividualTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -6300,6 +9469,10 @@ namespace SRDP.WebUI.Reports.ReportsDataSetTableAdapters {
                 if ((this._estadoGeneralTableAdapter != null)) {
                     this._estadoGeneralTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._estadoGeneralTableAdapter]));
                     this._estadoGeneralTableAdapter.Transaction = null;
+                }
+                if ((this._alertaIndividualTableAdapter != null)) {
+                    this._alertaIndividualTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._alertaIndividualTableAdapter]));
+                    this._alertaIndividualTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

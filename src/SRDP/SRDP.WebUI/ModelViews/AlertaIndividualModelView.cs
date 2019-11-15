@@ -9,7 +9,7 @@ namespace SRDP.WebUI.ModelViews
     public class AlertaIndividualModelView
     {
         public Guid ID { get; set; }
-        public IList<AlertaGeneralModel> Data { get; set; }
+        public IList<AlertaIndividualModel> Data { get; set; }
         public ReglaAlertaParameterModel ReglaAlertaParameters { get; set; }
     }
 }

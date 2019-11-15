@@ -279,6 +279,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AlertaGeneralModel.cs" />
+    <Compile Include="Models\AlertaIndividualModel.cs" />
     <Compile Include="Models\AlertaParametersModel.cs" />
     <Compile Include="Models\DeclaracionModel.cs" />
     <Compile Include="Models\DepositoModel.cs" />
@@ -503,6 +504,9 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reports\AlertaIndividual.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\AlertaGeneral.rdlc" />
     <EmbeddedResource Include="Reports\EstadoGeneral.rdlc" />
     <EmbeddedResource Include="Reports\HistoricoIndividual.rdlc" />

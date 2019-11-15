@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.Reporting.WebForms;
 using SRDP.Application.UseCases;
-using SRDP.Application.UseCases.GetAlertaGeneral;
+using SRDP.Application.UseCases.GetAlertaIndividual;
 using SRDP.Application.UseCases.GetGestiones;
 using SRDP.Application.UseCases.GetReglasAlerta;
 using SRDP.WebUI.App_Start;
@@ -21,15 +21,15 @@ namespace SRDP.WebUI.Controllers
     [RoleAuthorize(Roles.Administrador)]
     public class AlertaIndividualController : Controller
     {
-        private readonly IGetAlertaGeneralUserCase _getAlertaGeneralUserCase;
+        private readonly IGetAlertaIndividualUserCase _getAlertaIndividualUserCase;
         private readonly IGetGestionesUserCase _getGestionesUserCase;
         private readonly IGetReglasAlertaUserCase _getReglasAlertaUserCase;
         private ReportsDataSet ds = new ReportsDataSet();
 
-        public AlertaIndividualController(IGetAlertaGeneralUserCase getAlertaGeneralUserCase, IGetGestionesUserCase getGestionesUserCase,
+        public AlertaIndividualController(IGetAlertaIndividualUserCase getAlertaIndividualUserCase, IGetGestionesUserCase getGestionesUserCase,
             IGetReglasAlertaUserCase getReglasAlertaUserCase)
         {
-            _getAlertaGeneralUserCase = getAlertaGeneralUserCase;
+            _getAlertaIndividualUserCase = getAlertaIndividualUserCase;
             _getGestionesUserCase = getGestionesUserCase;
             _getReglasAlertaUserCase = getReglasAlertaUserCase;
         }
@@ -52,7 +52,7 @@ namespace SRDP.WebUI.Controllers
             else
                 currentRegla = Mapper.Map<ReglaAlertaOutput, ReglaAlertaModel>(reglasAlerta.Where(c => c.ID == id).First());
 
-            var outputList = await _getAlertaGeneralUserCase.ExecuteList(gestionActual.Anio, currentRegla.Monto, currentRegla.Operador, currentRegla.Porcentaje);
+            var outputList = await _getAlertaIndividualUserCase.ExecuteList(gestionActual.Anio, currentRegla.Monto, currentRegla.Operador, currentRegla.Porcentaje);
 
             var parameters = new ReglaAlertaParameterModel
             {
@@ -64,7 +64,7 @@ namespace SRDP.WebUI.Controllers
             var modelView = new AlertaIndividualModelView
             {
                 ID = currentRegla.ID,
-                Data = Mapper.Map<ICollection<AlertaGeneralOutput>, List<AlertaGeneralModel>>(outputList),
+                Data = Mapper.Map<ICollection<AlertaIndividualOutput>, List<AlertaIndividualModel>>(outputList),
                 ReglaAlertaParameters = parameters,
             };
 
@@ -89,13 +89,19 @@ namespace SRDP.WebUI.Controllers
             else
                 currentRegla = Mapper.Map<ReglaAlertaOutput, ReglaAlertaModel>(reglasAlerta.Where(c => c.ID == id).First());
 
-            var reporte = await _getAlertaGeneralUserCase.ExecuteList(gestionActual.Anio, currentRegla.Monto, currentRegla.Operador, currentRegla.Porcentaje);
+            var reporte = await _getAlertaIndividualUserCase.ExecuteList(gestionActual.Anio, currentRegla.Monto, currentRegla.Operador, currentRegla.Porcentaje);
 
             foreach (var item in reporte)
             {
-                ds.AlertaGeneral.Rows.Add(item.DeclaracionID, item.FuncionarioID, item.NombreCompleto, item.CodCargo, item.Cargo, item.CodArea, item.Area,
-                    item.CodUbicacionGeografica, item.UbicacionGeografica, item.CodCentroDeCosto, item.CentroDeCosto, item.TipoRol, item.Rol,
-                    item.EstadoDeclaracion, item.PatrimonioActual, item.PatrimonioGestionAnterior, item.DiferenciaPatrimonio, item.VariacionPorcentual,
+                ds.AlertaIndividual.Rows.Add(item.DeclaracionID, item.FuncionarioID, item.NombreCompleto, item.CodCargo, item.Cargo, item.CodArea, item.Area,
+                    item.CodUbicacionGeografica, item.UbicacionGeografica, item.CodCentroDeCosto, item.CentroDeCosto, item.TipoRol, item.Rol, item.EstadoDeclaracion,
+                    item.InmueblesPatrimonioActual, item.InmueblesPatrimonioGestionAnterior, item.InmueblesDiferenciaPatrimonio, item.InmueblesVariacionPorcentual,
+                    item.OtrosIngresosPatrimonioActual, item.OtrosIngresosPatrimonioGestionAnterior, item.OtrosIngresosDiferenciaPatrimonio, item.OtrosIngresosVariacionPorcentual,
+                    item.DepositosPatrimonioActual, item.DepositosPatrimonioGestionAnterior, item.DepositosDiferenciaPatrimonio, item.DepositosVariacionPorcentual,
+                    item.DeudaBancariaPatrimonioActual, item.DeudaBancariaPatrimonioGestionAnterior, item.DeudaBancariaDiferenciaPatrimonio, item.DeudaBancariaVariacionPorcentual,
+                    item.VehiculosPatrimonioActual, item.VehiculosPatrimonioGestionAnterior, item.VehiculosDiferenciaPatrimonio, item.VehiculosVariacionPorcentual,
+                    item.ValoresNegociablesPatrimonioActual, item.ValoresNegociablesPatrimonioGestionAnterior, item.ValoresNegociablesDiferenciaPatrimonio, item.ValoresNegociablesVariacionPorcentual,
+                    item.PatrimonioActual, item.PatrimonioGestionAnterior, item.DiferenciaPatrimonio, item.VariacionPorcentual,
                     item.DeclaracionAnteriorID);
             }
 
@@ -105,8 +111,8 @@ namespace SRDP.WebUI.Controllers
             reportViewer.Width = Unit.Percentage(900);
             reportViewer.Height = Unit.Percentage(900);
 
-            reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports\AlertaGeneral.rdlc";
-            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("AlertaDataSet", ds.Tables["AlertaGeneral"]));
+            reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports\AlertaIndividual.rdlc";
+            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("AlertaIndividualDataSet", ds.Tables["AlertaIndividual"]));
 
             ViewBag.ReportViewer = reportViewer;
 
