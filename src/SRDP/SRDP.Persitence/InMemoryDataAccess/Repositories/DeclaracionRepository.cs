@@ -26,7 +26,7 @@ namespace SRDP.Persitence.InMemoryDataAccess.Repositories
             await Task.CompletedTask;
         }
 
-        public async Task<Declaracion> Get(Guid declaracionID)
+        public async Task<Declaracion> Get(Guid declaracionID, bool loadDeclaracionAnterior = false)
         {
             var declaracion = _context.Declaraciones
                 .Where(c => c.ID == declaracionID)
@@ -45,6 +45,11 @@ namespace SRDP.Persitence.InMemoryDataAccess.Repositories
                 .Where(c => c.Gestion == gestion)
                 .ToList();
             return await Task.FromResult<List<Declaracion>>(declaraciones);
+        }
+
+        public Task<Guid> GetDeclaracionAnteriorID(Guid declaracionID)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task Update(Declaracion declaracion)

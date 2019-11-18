@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SRDP.Application.UseCases;
+using SRDP.Application.UseCases.CloneDeclaracion;
 using SRDP.Application.UseCases.GetDeclaracion;
 using SRDP.Application.UseCases.GetGestiones;
 using SRDP.Application.UseCases.UpdateDeclaracion;
@@ -20,20 +21,22 @@ namespace SRDP.WebUI.Controllers
         private readonly IGetDeclaracionUserCase _getDeclaracionUserCase;
         private readonly IGetGestionesUserCase _getGestionesUserCase;
         private readonly IUpdateDeclaracionUserCase _updateDeclaracionUserCase;
+        private readonly ICloneDeclaracionUserCase _cloneDeclaracionUserCase;
 
         public DeclaracionesController(IGetDeclaracionUserCase getDeclaracionUserCase, IGetGestionesUserCase getGestionesUserCase,
-            IUpdateDeclaracionUserCase updateDeclaracionUserCase)
+            IUpdateDeclaracionUserCase updateDeclaracionUserCase, ICloneDeclaracionUserCase cloneDeclaracionUserCase)
         {
             _getDeclaracionUserCase = getDeclaracionUserCase;
             _getGestionesUserCase = getGestionesUserCase;
             _updateDeclaracionUserCase = updateDeclaracionUserCase;
+            _cloneDeclaracionUserCase = cloneDeclaracionUserCase;
         }
         // GET: Declaraciones
         [RoleAuthorize(Roles.Administrador)]
         public async Task<ActionResult> Index()
         {
             var gestionActual = await _getGestionesUserCase.GestionVigente();
-            var outputList = await _getDeclaracionUserCase.ExecuteList(gestionActual.Anio);
+            var outputList = await _getDeclaracionUserCase.ExecuteList(gestionActual.Anio, false);
             var viewModel = Mapper.Map<ICollection<DeclaracionOutput>, List<DeclaracionModel>> (outputList);
             return View(viewModel);
         }
@@ -51,6 +54,13 @@ namespace SRDP.WebUI.Controllers
             var modelView = Mapper.Map<DeclaracionModel>(output);
             var report = new Rotativa.PartialViewAsPdf("DetailsPdf", modelView);
             return report;
+        }
+
+        public async Task<ActionResult> AnularDeclaracion(Guid id)
+        {
+            await _cloneDeclaracionUserCase.Execute(id);
+            return RedirectToAction("Index");
+            //return Json(new { success = true, message = "La Declaracion ha sido procesada" }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]

@@ -34,6 +34,7 @@ namespace SRDP.WebUI.Models
         [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal PatrimonioNeto { get; set; }
 
+        [Display(Name = "Estado Declaración")]
         public string Estado { get; set; }
 
         public bool EsEditable { get; set; }

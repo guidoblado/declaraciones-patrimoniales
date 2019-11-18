@@ -12,6 +12,7 @@ namespace SRDP.Application.UseCases
     public class DeclaracionOutput
     {
         public Guid DeclaracionID { get; }
+        public int Codigo { get; }
         public int Gestion { get; }
         public string NombreCompleto { get; }
         public string CedulaIdentidad { get;  }
@@ -44,6 +45,7 @@ namespace SRDP.Application.UseCases
             List<ValorNegociableOutput> valoresNegociables, List<VehiculoOutput> vehiculos, decimal patrimonioNeto, List<string> importante)
         {
             DeclaracionID = declaracion.ID;
+            Codigo = funcionario.Codigo;
             Gestion = declaracion.Gestion.Anio;
             NombreCompleto = funcionario.NombreFuncionario.ToString();
             CedulaIdentidad = funcionario.CI.ToString();

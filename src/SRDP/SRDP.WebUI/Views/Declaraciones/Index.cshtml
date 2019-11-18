@@ -29,6 +29,9 @@
                             @Html.DisplayNameFor(model => model.EstadoCivil)
                         </th>
                         <th>
+                            @Html.DisplayNameFor(model => model.Estado)
+                        </th>
+                        <th>
                             @Html.DisplayNameFor(model => model.FechaLlenado)
                         </th>
                         <th></th>
@@ -54,10 +57,13 @@
                                 @Html.DisplayFor(modelItem => item.EstadoCivil)
                             </td>
                             <td>
+                                @Html.DisplayFor(modelItem => item.Estado)
+                            </td>
+                            <td>
                                 @Html.DisplayFor(modelItem => item.FechaLlenado)
                             </td>
                             <td>
-                                @Html.ActionLink("Detalles", "Details", new { id = item.DeclaracionID })
+                                @Html.ActionLink("Anular Declaracion", "AnularDeclaracion", new { id = item.DeclaracionID })
                             </td>
                         </tr>
                     }

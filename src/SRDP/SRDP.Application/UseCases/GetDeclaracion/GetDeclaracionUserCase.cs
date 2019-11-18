@@ -122,7 +122,7 @@ namespace SRDP.Application.UseCases.GetDeclaracion
             return output;
         }
 
-        public async Task<ICollection<DeclaracionOutput>> ExecuteList(int anioGestion)
+        public async Task<ICollection<DeclaracionOutput>> ExecuteList(int anioGestion, bool showAnuladas)
         {
             var gestion = await _gestionReadOnlyRepository.Get(anioGestion);
 
@@ -131,6 +131,9 @@ namespace SRDP.Application.UseCases.GetDeclaracion
 
             var declaraciones = await _declaracionReadOnlyRepository.GetByGestion(Gestion.For(gestion.Anio, gestion.FechaInicio, gestion.FechaFinal, gestion.Vigente));
             var output = new List<DeclaracionOutput>();
+
+            if (!showAnuladas)
+                declaraciones = declaraciones.Where(c => c.Estado != Domain.Enumerations.EstadoDeclaracion.Anulada).ToList();
 
             foreach (var declaracion in declaraciones)
             {
@@ -145,7 +148,7 @@ namespace SRDP.Application.UseCases.GetDeclaracion
 
             }
             
-            return output;
+            return output.OrderBy(c => c.Codigo).ToList();
         }
     }
 }

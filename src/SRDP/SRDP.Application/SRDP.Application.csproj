@@ -87,6 +87,8 @@
     <Compile Include="UseCases\AlertaGeneralOutput.cs" />
     <Compile Include="UseCases\AlertaIndividualOutput.cs" />
     <Compile Include="UseCases\CabeceraEmailOutput.cs" />
+    <Compile Include="UseCases\CloneDeclaracion\CloneDeclaracionUserCase.cs" />
+    <Compile Include="UseCases\CloneDeclaracion\ICloneDeclaracionUserCase.cs" />
     <Compile Include="UseCases\CreateGestion\CreateGestionUserCase.cs" />
     <Compile Include="UseCases\CreateGestion\ICreateGestionUserCase.cs" />
     <Compile Include="UseCases\DeclaracionOutput.cs" />

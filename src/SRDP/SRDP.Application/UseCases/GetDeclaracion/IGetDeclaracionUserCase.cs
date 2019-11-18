@@ -11,6 +11,6 @@ namespace SRDP.Application.UseCases.GetDeclaracion
     {
         Task<DeclaracionOutput> Execute(Guid declaracionID);
         Task<DeclaracionOutput> Execute(int anioGestion, int funcionarioID);
-        Task<ICollection<DeclaracionOutput>> ExecuteList(int anioGestion);
+        Task<ICollection<DeclaracionOutput>> ExecuteList(int anioGestion, bool showAnuladas);
     }
 }

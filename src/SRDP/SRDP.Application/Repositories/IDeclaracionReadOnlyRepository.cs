@@ -10,9 +10,9 @@ namespace SRDP.Application.Repositories
 {
     public interface IDeclaracionReadOnlyRepository
     {
-        Task<Declaracion> Get(Guid declaracionID);
+        Task<Declaracion> Get(Guid declaracionID, bool loadDeclaracionAnterior = false);
         Task<Declaracion> Get(Gestion gestion, int funcionarioID);
         Task<ICollection<Declaracion>> GetByGestion(Gestion gestion);
-
+        Task<Guid> GetDeclaracionAnteriorID(Guid declaracionID);
     }
 }

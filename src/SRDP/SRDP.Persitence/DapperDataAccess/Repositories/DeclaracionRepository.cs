@@ -29,7 +29,7 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
         }
 
         #region Select
-        public async Task<Declaracion> Get(Guid declaracionID)
+        public async Task<Declaracion> Get(Guid declaracionID, bool loadDeclaracionAnterior = false)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
@@ -39,65 +39,37 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
 
                 if (declaracion == null) return null;
 
-                string gestionSql = "SELECT * FROM Gestiones WHERE Gestion = @gestion";
-                var gestion = await db.QueryFirstOrDefaultAsync<Entities.GestionSchema>(gestionSql, new { declaracion.Gestion });
+                var gestion = await db.QueryFirstOrDefaultAsync<Entities.GestionSchema>("SELECT * FROM Gestiones WHERE Gestion = @gestion", new { declaracion.Gestion });
                 
-                var depositosCollection = new DepositoCollection();
-                var deudasCollection = new DeudaBancariaCollection();
-                var inmueblesCollection = new InmuebleCollection();
-                var otrosIngresosCollection = new OtroIngresoCollection();
-                var valoresNegociablesCollection = new ValorNegociableCollection();
-                var vehiculosCollection = new VehiculoCollection();
-                var depositoSQL = "SELECT * FROM Depositos WHERE DeclaracionID = @declaracionID";
-                var depositos = await db.QueryAsync<Entities.Deposito>(depositoSQL, new { declaracionID });
+                DepositoCollection depositosCollection = await ReadDepositoCollection(declaracionID, db);
+                DeudaBancariaCollection deudasCollection = await ReadDeudasCollection(declaracionID, db);
+                InmuebleCollection inmueblesCollection = await ReadInmueblesCollection(declaracionID, db);
+                OtroIngresoCollection otrosIngresosCollection = await ReadOtrosIngresosCollection(declaracionID, db);
+                ValorNegociableCollection valoresNegociablesCollection = await ReadValoresNegociablesCollection(declaracionID, db);
+                VehiculoCollection vehiculosCollection = await ReadVehiculosCollection(declaracionID, db);
 
-                foreach (var item in depositos.ToList())
+                Declaracion declaracionAnterior = null;
+
+                if (loadDeclaracionAnterior && declaracion.DeclaracionAnteriorID != Guid.Empty)
                 {
-                    depositosCollection.AddItem(DepositoMayor10K.Load(item.ID, item.DeclaracionID, item.InstitucionFinanciera, item.TipoCuenta, item.Saldo));
+                    var declaracionAnteriorID = declaracion.DeclaracionAnteriorID;
+
+                    DepositoCollection depositosAnteriorCollection = await ReadDepositoCollection(declaracionAnteriorID, db);
+                    DeudaBancariaCollection deudasAnteriorCollection = await ReadDeudasCollection(declaracionAnteriorID, db);
+                    InmuebleCollection inmueblesAnteriorCollection = await ReadInmueblesCollection(declaracionAnteriorID, db);
+                    OtroIngresoCollection otrosAnteriorIngresosCollection = await ReadOtrosIngresosCollection(declaracionAnteriorID, db);
+                    ValorNegociableCollection valoresAnteriorNegociablesCollection = await ReadValoresNegociablesCollection(declaracionAnteriorID, db);
+                    VehiculoCollection vehiculosAnteriorCollection = await ReadVehiculosCollection(declaracionAnteriorID, db);
+
+                    declaracionAnterior = Declaracion.Load(declaracionAnteriorID, declaracion.FuncionarioID, Gestion.For(gestion.Gestion,
+                    gestion.FechaInicio, gestion.FechaFinal, gestion.Vigente), declaracion.FechaLlenado, (EstadoDeclaracion)Enum.Parse(typeof(EstadoDeclaracion), declaracion.Estado),
+                    depositosAnteriorCollection, deudasAnteriorCollection, inmueblesAnteriorCollection, otrosAnteriorIngresosCollection, valoresAnteriorNegociablesCollection,
+                    vehiculosAnteriorCollection, null);
                 }
 
-                var deudaBancariaSQL = "SELECT * FROM DeudasBancarias WHERE DeclaracionID = @declaracionID";
-                var deudas = await db.QueryAsync<Entities.DeudaBancaria>(deudaBancariaSQL, new { declaracionID });
-
-                foreach (var item in deudas.ToList())
-                {
-                    deudasCollection.AddItem(DeudaBancariaMayor10K.Load(item.ID, item.DeclaracionID, item.InstitucionFinanciera, item.Monto, item.Tipo));
-                }
-
-                var inmuebleSQL = "SELECT * FROM Inmuebles WHERE DeclaracionID = @declaracionID";
-                var inmuebles = await db.QueryAsync<Entities.Inmueble>(inmuebleSQL, new { declaracionID });
-
-                foreach (var item in inmuebles.ToList())
-                {
-                    inmueblesCollection.AddItem(Inmueble.Load(item.ID, item.DeclaracionID, item.Direccion, item.TipoDeInmueble, Porcentaje.For(item.PorcentajeParticipacion), item.ValorComercial, item.SaldoHipoteca, item.Banco));
-                }
-
-                var otrosIngresosSQL = "SELECT * FROM OtrosIngresos WHERE DeclaracionID = @declaracionID";
-                var otrosIngresos = await db.QueryAsync<Entities.OtroIngreso>(otrosIngresosSQL, new { declaracionID });
-
-                foreach (var item in otrosIngresos.ToList())
-                {
-                    otrosIngresosCollection.AddItem(OtroIngreso.Load(item.ID, item.DeclaracionID, item.Concepto, item.IngresoMensual));
-                }
-
-                var valoresNegociablesSQL = "SELECT * FROM ValoresNegociables WHERE DeclaracionID = @declaracionID";
-                var valoresNegociables = await db.QueryAsync<Entities.ValorNegociable>(valoresNegociablesSQL, new { declaracionID });
-
-                foreach (var item in valoresNegociables.ToList())
-                {
-                    valoresNegociablesCollection.AddItem(ValorNegociableMayor10K.Load(item.ID, item.DeclaracionID, item.Descripcion, item.TipoValor, item.ValorAproximado));
-                }
-
-                var vehiculosSQL = "SELECT * FROM Vehiculos WHERE DeclaracionID = @declaracionID";
-                var vehiculos = await db.QueryAsync<Entities.Vehiculo>(vehiculosSQL, new { declaracionID });
-
-                foreach (var item in vehiculos.ToList())
-                {
-                    vehiculosCollection.AddItem(Vehiculo.Load(item.ID, item.DeclaracionID, item.Marca, item.TipoVehiculo, Convert.ToString(item.Anio), item.ValorAproximado, item.SaldoDeudor, item.Banco));
-                }
                 Declaracion result = Declaracion.Load(declaracion.ID, declaracion.FuncionarioID, Gestion.For(gestion.Gestion,
                     gestion.FechaInicio, gestion.FechaFinal, gestion.Vigente), declaracion.FechaLlenado, (EstadoDeclaracion)Enum.Parse(typeof(EstadoDeclaracion), declaracion.Estado),
-                    depositosCollection, deudasCollection, inmueblesCollection, otrosIngresosCollection, valoresNegociablesCollection, vehiculosCollection, null);
+                    depositosCollection, deudasCollection, inmueblesCollection, otrosIngresosCollection, valoresNegociablesCollection, vehiculosCollection, declaracionAnterior);
                 return result;
             }
         }
@@ -112,61 +84,13 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
 
                 if (declaracion == null) return null;
 
-                var depositosCollection = new DepositoCollection();
-                var deudasCollection = new DeudaBancariaCollection();
-                var inmueblesCollection = new InmuebleCollection();
-                var otrosIngresosCollection = new OtroIngresoCollection();
-                var valoresNegociablesCollection = new ValorNegociableCollection();
-                var vehiculosCollection = new VehiculoCollection();
                 var declaracionID = declaracion.ID;
-
-                var depositoSQL = "SELECT * FROM Depositos WHERE DeclaracionID = @declaracionID";
-                var depositos = await db.QueryAsync<Entities.Deposito>(depositoSQL, new { declaracionID });
-
-                foreach (var item in depositos.ToList())
-                {
-                    depositosCollection.AddItem(DepositoMayor10K.Load(item.ID, item.DeclaracionID, item.InstitucionFinanciera, item.TipoCuenta, item.Saldo));
-                }
-
-                var deudaBancariaSQL = "SELECT * FROM DeudasBancarias WHERE DeclaracionID = @declaracionID";
-                var deudas = await db.QueryAsync<Entities.DeudaBancaria>(deudaBancariaSQL, new { declaracionID });
-
-                foreach (var item in deudas.ToList())
-                {
-                    deudasCollection.AddItem(DeudaBancariaMayor10K.Load(item.ID, item.DeclaracionID, item.InstitucionFinanciera, item.Monto, item.Tipo));
-                }
-
-                var inmuebleSQL = "SELECT * FROM Inmuebles WHERE DeclaracionID = @declaracionID";
-                var inmuebles = await db.QueryAsync<Entities.Inmueble>(inmuebleSQL, new { declaracionID });
-
-                foreach (var item in inmuebles.ToList())
-                {
-                    inmueblesCollection.AddItem(Inmueble.Load(item.ID, item.DeclaracionID, item.Direccion, item.TipoDeInmueble, Porcentaje.For(item.PorcentajeParticipacion), item.ValorComercial, item.SaldoHipoteca, item.Banco));
-                }
-
-                var otrosIngresosSQL = "SELECT * FROM OtrosIngresos WHERE DeclaracionID = @declaracionID";
-                var otrosIngresos = await db.QueryAsync<Entities.OtroIngreso>(otrosIngresosSQL, new { declaracionID });
-
-                foreach (var item in otrosIngresos.ToList())
-                {
-                    otrosIngresosCollection.AddItem(OtroIngreso.Load(item.ID, item.DeclaracionID, item.Concepto, item.IngresoMensual));
-                }
-
-                var valoresNegociablesSQL = "SELECT * FROM ValoresNegociables WHERE DeclaracionID = @declaracionID";
-                var valoresNegociables = await db.QueryAsync<Entities.ValorNegociable>(valoresNegociablesSQL, new { declaracionID });
-
-                foreach (var item in valoresNegociables.ToList())
-                {
-                    valoresNegociablesCollection.AddItem(ValorNegociableMayor10K.Load(item.ID, item.DeclaracionID, item.Descripcion, item.TipoValor, item.ValorAproximado));
-                }
-
-                var vehiculosSQL = "SELECT * FROM Vehiculos WHERE DeclaracionID = @declaracionID";
-                var vehiculos = await db.QueryAsync<Entities.Vehiculo>(vehiculosSQL, new { declaracionID });
-
-                foreach (var item in vehiculos.ToList())
-                {
-                    vehiculosCollection.AddItem(Vehiculo.Load(item.ID, item.DeclaracionID, item.Marca, item.TipoVehiculo, Convert.ToString(item.Anio), item.ValorAproximado, item.SaldoDeudor, item.Banco));
-                }
+                DepositoCollection depositosCollection = await ReadDepositoCollection(declaracionID, db);
+                DeudaBancariaCollection deudasCollection = await ReadDeudasCollection(declaracionID, db);
+                InmuebleCollection inmueblesCollection = await ReadInmueblesCollection(declaracionID, db);
+                OtroIngresoCollection otrosIngresosCollection = await ReadOtrosIngresosCollection(declaracionID, db);
+                ValorNegociableCollection valoresNegociablesCollection = await ReadValoresNegociablesCollection(declaracionID, db);
+                VehiculoCollection vehiculosCollection = await ReadVehiculosCollection(declaracionID, db);
 
                 Declaracion result = Declaracion.Load(declaracion.ID, declaracion.FuncionarioID, gestion, declaracion.FechaLlenado, (EstadoDeclaracion)Enum.Parse(typeof(EstadoDeclaracion), declaracion.Estado),
                     depositosCollection, deudasCollection, inmueblesCollection, otrosIngresosCollection, valoresNegociablesCollection, vehiculosCollection, null);
@@ -194,6 +118,105 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
                 }
                 return outputResult;
             }
+        }
+
+        public async Task<Guid> GetDeclaracionAnteriorID(Guid declaracionID)
+        {
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                string declaracionSQL = "SELECT DeclaracionAntieriorID FROM Declaraciones WHERE DeclaracionID = @declaracionID";
+                var declaracionAnteriorID = await db.QueryFirstOrDefaultAsync<string>(declaracionSQL, new { declaracionID });
+
+                return String.IsNullOrEmpty(declaracionAnteriorID) ? Guid.Empty : new Guid(declaracionAnteriorID);
+            }
+        }
+
+        #endregion
+
+        #region Private Methods
+        private static async Task<VehiculoCollection> ReadVehiculosCollection(Guid declaracionID, IDbConnection db)
+        {
+            var vehiculosCollection = new VehiculoCollection();
+            var vehiculosSQL = "SELECT * FROM Vehiculos WHERE DeclaracionID = @declaracionID";
+            var vehiculos = await db.QueryAsync<Entities.Vehiculo>(vehiculosSQL, new { declaracionID });
+
+            foreach (var item in vehiculos.ToList())
+            {
+                vehiculosCollection.AddItem(Vehiculo.Load(item.ID, item.DeclaracionID, item.Marca, item.TipoVehiculo, Convert.ToString(item.Anio), item.ValorAproximado, item.SaldoDeudor, item.Banco));
+            }
+
+            return vehiculosCollection;
+        }
+
+        private static async Task<ValorNegociableCollection> ReadValoresNegociablesCollection(Guid declaracionID, IDbConnection db)
+        {
+            var valoresNegociablesCollection = new ValorNegociableCollection();
+            var valoresNegociablesSQL = "SELECT * FROM ValoresNegociables WHERE DeclaracionID = @declaracionID";
+            var valoresNegociables = await db.QueryAsync<Entities.ValorNegociable>(valoresNegociablesSQL, new { declaracionID });
+
+            foreach (var item in valoresNegociables.ToList())
+            {
+                valoresNegociablesCollection.AddItem(ValorNegociableMayor10K.Load(item.ID, item.DeclaracionID, item.Descripcion, item.TipoValor, item.ValorAproximado));
+            }
+
+            return valoresNegociablesCollection;
+        }
+
+        private static async Task<OtroIngresoCollection> ReadOtrosIngresosCollection(Guid declaracionID, IDbConnection db)
+        {
+            var otrosIngresosCollection = new OtroIngresoCollection();
+            var otrosIngresosSQL = "SELECT * FROM OtrosIngresos WHERE DeclaracionID = @declaracionID";
+            var otrosIngresos = await db.QueryAsync<Entities.OtroIngreso>(otrosIngresosSQL, new { declaracionID });
+
+            foreach (var item in otrosIngresos.ToList())
+            {
+                otrosIngresosCollection.AddItem(OtroIngreso.Load(item.ID, item.DeclaracionID, item.Concepto, item.IngresoMensual));
+            }
+
+            return otrosIngresosCollection;
+        }
+
+        private static async Task<InmuebleCollection> ReadInmueblesCollection(Guid declaracionID, IDbConnection db)
+        {
+            var inmueblesCollection = new InmuebleCollection();
+            var inmuebleSQL = "SELECT * FROM Inmuebles WHERE DeclaracionID = @declaracionID";
+            var inmuebles = await db.QueryAsync<Entities.Inmueble>(inmuebleSQL, new { declaracionID });
+
+            foreach (var item in inmuebles.ToList())
+            {
+                inmueblesCollection.AddItem(Inmueble.Load(item.ID, item.DeclaracionID, item.Direccion, item.TipoDeInmueble, Porcentaje.For(item.PorcentajeParticipacion), item.ValorComercial, item.SaldoHipoteca, item.Banco));
+            }
+
+            return inmueblesCollection;
+        }
+
+        private static async Task<DeudaBancariaCollection> ReadDeudasCollection(Guid declaracionID, IDbConnection db)
+        {
+            var deudasCollection = new DeudaBancariaCollection();
+            var deudaBancariaSQL = "SELECT * FROM DeudasBancarias WHERE DeclaracionID = @declaracionID";
+            var deudas = await db.QueryAsync<Entities.DeudaBancaria>(deudaBancariaSQL, new { declaracionID });
+
+            foreach (var item in deudas.ToList())
+            {
+                deudasCollection.AddItem(DeudaBancariaMayor10K.Load(item.ID, item.DeclaracionID, item.InstitucionFinanciera, item.Monto, item.Tipo));
+            }
+
+            return deudasCollection;
+        }
+
+        private static async Task<DepositoCollection> ReadDepositoCollection(Guid declaracionID, IDbConnection db)
+        {
+            var depositosCollection = new DepositoCollection();
+
+            var depositoSQL = "SELECT * FROM Depositos WHERE DeclaracionID = @declaracionID";
+            var depositos = await db.QueryAsync<Entities.Deposito>(depositoSQL, new { declaracionID });
+
+            foreach (var item in depositos.ToList())
+            {
+                depositosCollection.AddItem(DepositoMayor10K.Load(item.ID, item.DeclaracionID, item.InstitucionFinanciera, item.TipoCuenta, item.Saldo));
+            }
+
+            return depositosCollection;
         }
         #endregion
 
@@ -237,6 +260,8 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
                 int rows = await db.ExecuteAsync(sqlCommand, declaracionParameters);
             }
         }
+
+        
         #endregion
     }
 }
