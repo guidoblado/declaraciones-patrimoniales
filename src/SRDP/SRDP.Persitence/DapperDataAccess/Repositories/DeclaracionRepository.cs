@@ -226,8 +226,8 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                string sqlCommand = "INSERT INTO [dbo].[Declaraciones] ([ID],[Gestion],[FuncionarioID],[FechaLlenado],[Estado],[FechaCreacion],[FechaActualización])";
-                sqlCommand = sqlCommand + " VALUES(@ID, @Gestion, @FuncionarioID, @FechaLlenado, @Estado, @FechaCreacion, @FechaActualizacion)";
+                string sqlCommand = "INSERT INTO [dbo].[Declaraciones] ([ID],[Gestion],[FuncionarioID],[FechaLlenado],[Estado],[FechaCreacion],[FechaActualización],[DeclaracionAnteriorID])";
+                sqlCommand = sqlCommand + " VALUES(@ID, @Gestion, @FuncionarioID, @FechaLlenado, @Estado, @FechaCreacion, @FechaActualizacion, @DeclaracionAnteriorID)";
                 DynamicParameters declaracionParameters = new DynamicParameters();
                 declaracionParameters.Add("@ID", declaracion.ID);
                 declaracionParameters.Add("@Gestion", declaracion.Gestion.Anio, DbType.Int32);
@@ -236,6 +236,10 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
                 declaracionParameters.Add("@Estado", declaracion.Estado, DbType.Int32);
                 declaracionParameters.Add("@FechaCreacion", DateTime.Now, DbType.DateTime);
                 declaracionParameters.Add("@FechaActualizacion", DateTime.Now, DbType.DateTime);
+                if (declaracion.DeclaracionAnterior != null)
+                    declaracionParameters.Add("@DeclaracionAnteriorID", declaracion.DeclaracionAnterior.ID);
+                else
+                    declaracionParameters.Add("@DeclaracionAnteriorID", DBNull.Value);
 
                 int rows = await db.ExecuteAsync(sqlCommand, declaracionParameters);
             }
