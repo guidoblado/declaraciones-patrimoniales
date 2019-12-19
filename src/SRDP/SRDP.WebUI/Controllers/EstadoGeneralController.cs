@@ -94,7 +94,7 @@ namespace SRDP.WebUI.Controllers
             reportViewer.Width = Unit.Percentage(900);
             reportViewer.Height = Unit.Percentage(900);
 
-            reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports\EstadoGeneral.rdlc";
+            reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"\Reports\EstadoGeneral.rdlc";
             reportViewer.LocalReport.DataSources.Add(new ReportDataSource("EstadoDataSet", ds.Tables["EstadoGeneral"]));
 
             ViewBag.ReportViewer = reportViewer;

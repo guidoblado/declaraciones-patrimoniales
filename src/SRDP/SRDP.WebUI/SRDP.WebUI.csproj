@@ -507,9 +507,12 @@
     <EmbeddedResource Include="Reports\AlertaIndividual.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\AlertaGeneral.rdlc" />
+    <EmbeddedResource Include="Reports\AlertaGeneral.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\EstadoGeneral.rdlc" />
     <EmbeddedResource Include="Reports\HistoricoIndividual.rdlc" />
+    <EmbeddedResource Include="Reports\DeclaracionFuncionario.rdlc" />
     <EmbeddedResource Include="Reports\Report1.rdlc" />
   </ItemGroup>
   <PropertyGroup>

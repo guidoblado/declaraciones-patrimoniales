@@ -101,7 +101,7 @@ namespace SRDP.WebUI.Controllers
             reportViewer.Width = Unit.Percentage(900);
             reportViewer.Height = Unit.Percentage(900);
            
-            reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports\HistoricoIndividual.rdlc";
+            reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"\Reports\HistoricoIndividual.rdlc";
             reportViewer.LocalReport.DataSources.Add(new ReportDataSource("HistoricoDataSet", ds.Tables["HistoricoIndividual"]));
 
             ViewBag.ReportViewer = reportViewer;
