@@ -78,7 +78,7 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                string declaracionSQL = "SELECT * FROM Declaraciones WHERE Gestion = @Anio AND FuncionarioID = @funcionarioID";
+                string declaracionSQL = "SELECT * FROM Declaraciones WHERE Gestion = @Anio AND FuncionarioID = @funcionarioID Order by FechaActualización DESC";
                 Entities.DeclaracionPatrimonial declaracion = await db
                     .QueryFirstOrDefaultAsync<Entities.DeclaracionPatrimonial>(declaracionSQL, new { gestion.Anio, funcionarioID });
 
@@ -254,12 +254,13 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                string sqlCommand = "UPDATE Declaraciones SET Estado = @estado, FechaLlenado = @fechaLlenado WHERE ID = @declaracionID";
+                string sqlCommand = "UPDATE Declaraciones SET Estado = @estado, FechaLlenado = @fechaLlenado, FechaActualización = @fechaActualizacion WHERE ID = @declaracionID";
 
                 DynamicParameters declaracionParameters = new DynamicParameters();
                 declaracionParameters.Add("@estado", (int)estado, DbType.Int32);
                 declaracionParameters.Add("@fechaLlenado", DateTime.Now, DbType.DateTime);
                 declaracionParameters.Add("@declaracionID", declaracionID);
+                declaracionParameters.Add("@fechaActualizacion", DateTime.Now, DbType.DateTime);
 
                 int rows = await db.ExecuteAsync(sqlCommand, declaracionParameters);
             }
