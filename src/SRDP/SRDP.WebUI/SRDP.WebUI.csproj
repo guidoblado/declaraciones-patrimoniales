@@ -472,6 +472,7 @@
     <Content Include="Views\AlertaGeneral\AlertaGeneralReport.cshtml" />
     <Content Include="Views\AlertaIndividual\AlertaIndividualReport.cshtml" />
     <Content Include="Views\EstadoGeneral\EstadoGeneralReport.cshtml" />
+    <Content Include="Views\Declaraciones\DeclaracionReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -513,6 +514,7 @@
     <EmbeddedResource Include="Reports\EstadoGeneral.rdlc" />
     <EmbeddedResource Include="Reports\HistoricoIndividual.rdlc" />
     <EmbeddedResource Include="Reports\DeclaracionFuncionario.rdlc" />
+    <EmbeddedResource Include="Reports\Inmuebles.rdlc" />
     <EmbeddedResource Include="Reports\Report1.rdlc" />
   </ItemGroup>
   <PropertyGroup>
