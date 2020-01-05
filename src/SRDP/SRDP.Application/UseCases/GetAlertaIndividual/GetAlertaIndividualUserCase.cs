@@ -13,21 +13,31 @@ namespace SRDP.Application.UseCases.GetAlertaIndividual
     {
         private IAlertaIndividualReadOnlyRepository _alertaIndividualReadOnlyRepository;
         private IDeclaracionReadOnlyRepository _declaracionReadOnlyRepository;
+        private IGestionReadOnlyRepository _gestionReadOnlyRepository;
 
-        public GetAlertaIndividualUserCase(IAlertaIndividualReadOnlyRepository alertaIndividualReadOnlyRepository, IDeclaracionReadOnlyRepository declaracionReadOnlyRepository)
+        public GetAlertaIndividualUserCase(IAlertaIndividualReadOnlyRepository alertaIndividualReadOnlyRepository, IDeclaracionReadOnlyRepository declaracionReadOnlyRepository, IGestionReadOnlyRepository gestionReadOnlyRepository)
         {
             _alertaIndividualReadOnlyRepository = alertaIndividualReadOnlyRepository;
             _declaracionReadOnlyRepository = declaracionReadOnlyRepository;
+            _gestionReadOnlyRepository = gestionReadOnlyRepository;
         }
 
         public async Task<ICollection<AlertaIndividualOutput>> ExecuteList(int gestion, decimal monto, string operador, decimal porcentaje)
         {
             var declaracionesAlerta = await _alertaIndividualReadOnlyRepository.GetFromGestion(gestion);
+            var gestionOutput = await _gestionReadOnlyRepository.Get(gestion);
             var result = new List<AlertaIndividualOutput>();
             foreach (var item in declaracionesAlerta)
             {
                 var declaracionActual = await _declaracionReadOnlyRepository.Get(item.DeclaracionID);
-                var declaracionAnterior = await _declaracionReadOnlyRepository.Get(item.DeclaracionAnteriorID);
+                Declaracion declaracionAnterior = null;
+                if (item.DeclaracionAnteriorID == null)
+                    declaracionAnterior = Declaracion.Load(Guid.NewGuid(), item.FuncionarioID, Gestion.For(gestionOutput.Anio, gestionOutput.FechaInicio, gestionOutput.FechaFinal, gestionOutput.Vigente), 
+                        DateTime.Now, Domain.Enumerations.EstadoDeclaracion.Completado, new DepositoCollection(),new DeudaBancariaCollection(), new InmuebleCollection(),
+                        new OtroIngresoCollection(), new ValorNegociableCollection(), new VehiculoCollection(), null);
+                else 
+                    declaracionAnterior = await _declaracionReadOnlyRepository.Get(item.DeclaracionAnteriorID);
+
                 var declaracion = Declaracion.Load(declaracionActual.ID, declaracionActual.FuncionarioID, declaracionActual.Gestion,
                     declaracionActual.FechaLlenado, declaracionActual.Estado, declaracionActual.Depositos, declaracionActual.DeudasBancarias, declaracionActual.Inmuebles,
                     declaracionActual.OtrosIngresos, declaracionActual.ValoresNegociables, declaracionActual.Vehiculos, declaracionAnterior);
