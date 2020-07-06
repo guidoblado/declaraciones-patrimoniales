@@ -37,7 +37,7 @@ namespace SRDP.Application.UseCases.GetProfile
                 return await _funcionarioUsuarioReadOnlyRepository.Get(adUser.Name);
             });
 
-            if (funcionario.Result == null) return null;
+            if (funcionario == null) return null;
 
             return UserProfileOutput.LoadRoles(adUser.Name, funcionario.Result.FuncionarioID, funcionario.Result.NombreCompleto.ToString(),
                 funcionario.Result.EstadoID, funcionario.Result.Estado, funcionario.Result.Email,  roles.Result);
