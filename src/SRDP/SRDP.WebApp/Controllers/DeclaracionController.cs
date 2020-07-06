@@ -31,7 +31,7 @@ namespace SRDP.WebApp.Controllers
         {
             var gestionVigente = await _getGestionesUserCase.GestionVigente();
             var gestionParam = gestion.HasValue ? gestion.Value : gestionVigente.Anio;
-            var declaraciones = await _getDeclaracionUserCase.ExecuteList(gestionParam);
+            var declaraciones = await _getDeclaracionUserCase.ExecuteList(gestionParam, false);
 
             return View(declaraciones);
         }

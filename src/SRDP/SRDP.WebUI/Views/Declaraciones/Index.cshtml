@@ -45,7 +45,8 @@
                                 @Html.DisplayFor(modelItem => item.Gestion)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.NombreCompleto)
+                                @*@Html.DisplayFor(modelItem => item.NombreCompleto)*@
+                                @Html.ActionLink(item.NombreCompleto, "DeclaracionReport", new { declaracionID = item.DeclaracionID })
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.CedulaIdentidad)

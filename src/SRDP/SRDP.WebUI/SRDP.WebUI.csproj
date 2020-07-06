@@ -536,6 +536,7 @@
     <EmbeddedResource Include="Reports\HistoricoIndividual.rdlc" />
     <EmbeddedResource Include="Reports\DeclaracionFuncionario.rdlc" />
     <EmbeddedResource Include="Reports\Inmuebles.rdlc" />
+    <EmbeddedResource Include="Reports\DeclaracionPatrimonial.rdlc" />
     <EmbeddedResource Include="Reports\Report1.rdlc" />
   </ItemGroup>
   <PropertyGroup>
