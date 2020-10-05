@@ -49,7 +49,6 @@ namespace SRDP.Application.UseCases.ProcessNotificationQueue
                     var userProfile = await _funcionarioUsuarioReadOnlyRepository.Get(item.UserName);
                     if (userProfile == null)
                         throw new ApplicationException($"El usuario {item.UserName} no tiene un Funcionario asociado");
-
                     var cabeceraNotificacion = new CabeceraEmailOutput(fromAddress, userProfile.Email, String.Empty, "SRDP - Se ha creado un nuevo formulario de Declaración Patrimonial para su usuario", DateTime.Now);
                     var gestionVigente = await _getGestionesUserCase.GestionVigente();
                     var declaracion = new Declaracion(item.FuncionarioID,
