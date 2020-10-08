@@ -35,7 +35,7 @@ namespace SRDP.WebUI.Models
 
         [Display(Name ="Saldo Hipoteca $us")]
         [DisplayFormat(DataFormatString = "{0:C}")]
-        //[RequiredIf("Banco", ErrorMessage = "El campo 'Banco' es requerido cuando se especifica Saldo Hipoteca")]
+        //[RequiredIf("Banco", ErrorMessage = "El campo 'Saldo' es requerido cuando se especifica 'Banco'")]
         public decimal SaldoHipoteca { get; set; }
 
         [Display(Name = "Banco")]
@@ -49,7 +49,7 @@ namespace SRDP.WebUI.Models
             result.Add(new SelectListItem { Text = "Departamento", Value = "Departamento" });
             result.Add(new SelectListItem { Text = "Terreno", Value = "Terreno" });
             result.Add(new SelectListItem { Text = "Local Comercial - Deposito", Value = "Local Comercial - Deposito" });
-            result.Add(new SelectListItem { Text = "Casa de Campo - Hacienda", Value = "Cas de Campo - Hacienda" });
+            result.Add(new SelectListItem { Text = "Casa de Campo - Hacienda", Value = "Casa de Campo - Hacienda" });
             return result;
         }
     }

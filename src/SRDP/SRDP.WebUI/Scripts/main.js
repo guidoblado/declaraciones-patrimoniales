@@ -11,7 +11,7 @@
         function (value, elemnet, params) {
             var propertyValue = $('#' + params.propertynametocheck).val();
             if (propertyValue.length === 0)
-                return false;
+                return false; 
             return true;
         });
 
