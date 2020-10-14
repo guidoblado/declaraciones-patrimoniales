@@ -34,11 +34,19 @@ namespace SRDP.Application.UseCases.GetAlertaIndividual
                 try
                 {
                     if (item.DeclaracionAnteriorID == null)
+                    { 
                         declaracionAnterior = Declaracion.Load(Guid.NewGuid(), item.FuncionarioID, Gestion.For(gestionOutput.Anio, gestionOutput.FechaInicio, gestionOutput.FechaFinal, gestionOutput.Vigente),
                             DateTime.Now, Domain.Enumerations.EstadoDeclaracion.Completado, new DepositoCollection(), new DeudaBancariaCollection(), new InmuebleCollection(),
                             new OtroIngresoCollection(), new ValorNegociableCollection(), new VehiculoCollection(), null);
+                    }
                     else
+                    { 
                         declaracionAnterior = await _declaracionReadOnlyRepository.Get(item.DeclaracionAnteriorID);
+                        if (declaracionAnterior == null)
+                            declaracionAnterior = Declaracion.Load(Guid.NewGuid(), item.FuncionarioID, Gestion.For(gestionOutput.Anio, gestionOutput.FechaInicio, gestionOutput.FechaFinal, gestionOutput.Vigente),
+                            DateTime.Now, Domain.Enumerations.EstadoDeclaracion.Completado, new DepositoCollection(), new DeudaBancariaCollection(), new InmuebleCollection(),
+                            new OtroIngresoCollection(), new ValorNegociableCollection(), new VehiculoCollection(), null);
+                    }
 
                     var declaracion = Declaracion.Load(declaracionActual.ID, declaracionActual.FuncionarioID, declaracionActual.Gestion,
                         declaracionActual.FechaLlenado, declaracionActual.Estado, declaracionActual.Depositos, declaracionActual.DeudasBancarias, declaracionActual.Inmuebles,
