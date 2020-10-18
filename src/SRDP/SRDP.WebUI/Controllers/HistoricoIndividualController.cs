@@ -11,11 +11,13 @@ using SRDP.WebUI.ModelViews;
 using SRDP.WebUI.Reports;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
+using static SRDP.WebUI.Reports.ReportsDataSet;
 
 namespace SRDP.WebUI.Controllers
 {
@@ -86,13 +88,57 @@ namespace SRDP.WebUI.Controllers
 
             foreach (var item in reporte)
             {
-                ds.HistoricoIndividual.Rows.Add(item.FuncionarioID, item.NombreCompleto, item.CodCargo, item.Cargo, item.CodArea, item.Area, item.CodGeografico, item.UbicacionGeografica,
-                    item.TipoRol, item.Rol, item.Depositos2016, item.Depositos2017, item.Depositos2018, item.Depositos2019, item.Depositos2020,
-                    item.Inmuebles2016, item.Inmuebles2017, item.Inmuebles2018, item.Inmuebles2019, item.Inmuebles2020,
-                    item.Vehiculos2016, item.Vehiculos2017, item.Vehiculos2018, item.Vehiculos2019, item.Vehiculos2020,
-                    item.OtrosIngresos2016, item.OtrosIngresos2017, item.OtrosIngresos2018, item.OtrosIngresos2019, item.OtrosIngresos2020,
-                    item.DeudasBancarias2016, item.DeudasBancarias2017, item.DeudasBancarias2018, item.DeudasBancarias2019, item.DeudasBancarias2020,
-                    item.ValoresNegociables2016, item.ValoresNegociables2017, item.ValoresNegociables2018, item.ValoresNegociables2019, item.ValoresNegociables2020);
+                DataRow row = ds.HistoricoIndividual.NewRow();
+                row["FuncionarioID"] = item.FuncionarioID;
+                row["NombreCompleto"] = item.NombreCompleto;
+                row["CodCargo"] = item.CodCargo;
+                row["Cargo"] = item.Cargo;
+                row["CodArea"] = item.CodArea;
+                row["Area"] = item.Area;
+                row["CodGeografico"] = item.CodGeografico;
+                row["UbicacionGeografica"] = item.UbicacionGeografica;
+                row["CodCentroCosto"] = item.CodCentroCosto;
+                row["CentroCosto"] = item.CentroCosto;
+                row["TipoRol"] = item.TipoRol;
+                row["Rol"] = item.Rol;
+                
+                row["Depositos2016"] = item.Depositos2016;
+                row["Depositos2017"] = item.Depositos2017;
+                row["Depositos2018"] = item.Depositos2018;
+                row["Depositos2019"] = item.Depositos2019;
+                row["Depositos2020"] = item.Depositos2020;
+
+                row["Inmuebles2016"] = item.Inmuebles2016;
+                row["Inmuebles2017"] = item.Inmuebles2017;
+                row["Inmuebles2018"] = item.Inmuebles2018;
+                row["Inmuebles2019"] = item.Inmuebles2019;
+                row["Inmuebles2020"] = item.Inmuebles2020;
+
+                row["Vehiculos2016"] = item.Vehiculos2016;
+                row["Vehiculos2017"] = item.Vehiculos2017;
+                row["Vehiculos2018"] = item.Vehiculos2018;
+                row["Vehiculos2019"] = item.Vehiculos2019;
+                row["Vehiculos2020"] = item.Vehiculos2020;
+
+                row["OtrosIngresos2016"] = item.OtrosIngresos2016;
+                row["OtrosIngresos2017"] = item.OtrosIngresos2017;
+                row["OtrosIngresos2018"] = item.OtrosIngresos2018;
+                row["OtrosIngresos2019"] = item.OtrosIngresos2019;
+                row["OtrosIngresos2020"] = item.OtrosIngresos2020;
+
+                row["DeudasBancarias2016"] = item.DeudasBancarias2016;
+                row["DeudasBancarias2017"] = item.DeudasBancarias2017;
+                row["DeudasBancarias2018"] = item.DeudasBancarias2018;
+                row["DeudasBancarias2019"] = item.DeudasBancarias2019;
+                row["DeudasBancarias2020"] = item.DeudasBancarias2020;
+
+                row["ValoresNegociables2016"] = item.ValoresNegociables2016;
+                row["ValoresNegociables2017"] = item.ValoresNegociables2017;
+                row["ValoresNegociables2018"] = item.ValoresNegociables2018;
+                row["ValoresNegociables2019"] = item.ValoresNegociables2019;
+                row["ValoresNegociables2020"] = item.ValoresNegociables2020;
+
+                ds.HistoricoIndividual.Rows.Add(row);
             }
 
             ReportViewer reportViewer = new ReportViewer();
