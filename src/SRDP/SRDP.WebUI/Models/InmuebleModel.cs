@@ -35,7 +35,7 @@ namespace SRDP.WebUI.Models
 
         [Display(Name ="Saldo Hipoteca $us")]
         [DisplayFormat(DataFormatString = "{0:C}")]
-        //[RequiredIf("Banco", ErrorMessage = "El campo 'Saldo' es requerido cuando se especifica 'Banco'")]
+        [RequiredIf("Banco", ErrorMessage = "El campo 'Saldo' es requerido y mayor a cero cuando se especifica 'Banco'")]
         public decimal SaldoHipoteca { get; set; }
 
         [Display(Name = "Banco")]

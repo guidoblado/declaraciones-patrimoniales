@@ -24,9 +24,13 @@ namespace SRDP.WebUI.DataValidations
             if (propertyName == null)
                 return new ValidationResult(string.Format(CultureInfo.CurrentCulture, "Unknown property {0}", new[] { propertyNameToCheck }));
 
+            Type propertyType = propertyName.PropertyType;
+
             var propertyValue = propertyName.GetValue(validationContext.ObjectInstance, null) as string;
 
-            if (value != null)
+            var decimalValue = (decimal)value;
+
+            if ((value == null || decimalValue == 0) && (propertyValue !=null && propertyValue.Length > 0 ))
                 return new ValidationResult(string.Format(ErrorMessageString, validationContext.DisplayName));
            
             return ValidationResult.Success;

@@ -10,8 +10,8 @@
     jQuery.validator.addMethod('requiredif',
         function (value, elemnet, params) {
             var propertyValue = $('#' + params.propertynametocheck).val();
-            if (propertyValue.length === 0)
-                return false; 
+            if (Number(value) === 0 && propertyValue.length > 0)
+                return false;
             return true;
         });
 
