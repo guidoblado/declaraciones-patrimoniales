@@ -9,6 +9,9 @@ namespace SRDP.Domain.Enumerations
     public enum EstadoCivil
     {
         Soltero,
-        Casado
+        Casado,
+        Divorciado,
+        UnionLibre,
+        Viudo
     }
 }

@@ -44,7 +44,7 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
                     new Domain.ValueObjects.NombreCompleto(funcionarioItem.NOMBRE, funcionarioItem.APELLIDO),
                     new Domain.ValueObjects.Cedula(funcionarioItem.CEDULA),
                     Convert.ToDateTime(funcionarioItem.FECHA_NAC),
-                    funcionarioItem.COD_ESTADO == "CAS" ? Domain.Enumerations.EstadoCivil.Casado : Domain.Enumerations.EstadoCivil.Soltero
+                    Funcionario.GetEstadoCivil(funcionarioItem.COD_ESTADO) 
                     );
                     outputList.Add(funcionario);
                 }
@@ -68,7 +68,7 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
                     new Domain.ValueObjects.NombreCompleto(funcionarioItem.NOMBRE, funcionarioItem.APELLIDO),
                     new Domain.ValueObjects.Cedula(funcionarioItem.CEDULA),
                     Convert.ToDateTime(funcionarioItem.FECHA_NAC),
-                    funcionarioItem.COD_ESTADO == "CAS" ? Domain.Enumerations.EstadoCivil.Casado : Domain.Enumerations.EstadoCivil.Soltero
+                    Funcionario.GetEstadoCivil(funcionarioItem.COD_ESTADO)
                     );
 
                 return funcionario;

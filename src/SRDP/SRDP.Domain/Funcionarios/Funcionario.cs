@@ -47,5 +47,22 @@ namespace SRDP.Domain.Funcionarios
 
             return funcionario;
         }
+
+        public static EstadoCivil GetEstadoCivil(string codEstado) 
+        {
+            if (codEstado == "CAS")
+                return EstadoCivil.Casado;
+            else if (codEstado == "DIV")
+                return EstadoCivil.Divorciado;
+            else if (codEstado == "SOL")
+                return EstadoCivil.Soltero;
+            else if (codEstado == "VIU")
+                return EstadoCivil.Viudo;
+            else if (codEstado == "UNL")
+                return EstadoCivil.UnionLibre;
+            else
+                return EstadoCivil.Soltero;
+        }
+
     }
 }
