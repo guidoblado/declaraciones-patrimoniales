@@ -14,7 +14,7 @@ namespace SRDP.WebUI.Models
         [Required(ErrorMessage = "Debe ingresar un concepto")]
         public string Concepto { get; set; }
 
-        [Display(Name = "Ingreso Menusal $us")]
+        [Display(Name = "Ingreso Mensual $us")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [Range(1, int.MaxValue, ErrorMessage = "Debe ingresar un monto mayor a cero")]
         public decimal IngresoMensual { get; set; }
