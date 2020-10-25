@@ -39,7 +39,7 @@ namespace SRDP.Application.UseCases.GetGestiones
         public async Task<int> SiguienteGestion()
         {
             var resultList = await _gestionReadOnlyRepository.GetAll();
-            var siguiente = resultList.Max(c => c.Anio) + 1;
+            var siguiente = resultList.Max(c => c.Anio) + 2;
             return siguiente;
         }
     }
