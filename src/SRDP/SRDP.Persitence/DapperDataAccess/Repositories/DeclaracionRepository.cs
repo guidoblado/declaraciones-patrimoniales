@@ -131,9 +131,23 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
             }
         }
 
-        public async Task<ICollection<Guid>> GetDeclaracionesAnterioresIDs(Guid declaracionID)
+        public async Task<ICollection<DeclaracionResumen>> GetDeclaracionesResumen(int gestion, int funcionarioID)
         {
-            throw new NotImplementedException();
+            using (IDbConnection db = new SqlConnection(connectionString))
+            {
+                string sqlCommand = "Exec dbo.DeclaracionResumen_Selecionar";
+                var declaraciones = await db.QueryAsync<Entities.DeclaracionResumen>(sqlCommand);
+
+                var outputResult = new List<DeclaracionResumen>();
+                if (declaraciones == null) return outputResult;
+
+                foreach (var declaracion in declaraciones)
+                {
+                    outputResult.Add(DeclaracionResumen.Load(declaracion.ID, declaracion.Gestion, declaracion.FuncionarioID,
+                         (EstadoDeclaracion)Enum.Parse(typeof(EstadoDeclaracion), declaracion.Estado.ToString())));
+                }
+                return outputResult;
+            }
         }
 
         #endregion

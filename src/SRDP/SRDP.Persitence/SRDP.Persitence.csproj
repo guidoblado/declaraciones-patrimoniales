@@ -61,6 +61,7 @@
     <Compile Include="DapperDataAccess\Entities\AlertaGeneralSchema.cs" />
     <Compile Include="DapperDataAccess\Entities\CatalogosSchema.cs" />
     <Compile Include="DapperDataAccess\Entities\DeclaracionPatrimonial.cs" />
+    <Compile Include="DapperDataAccess\Entities\DeclaracionResumen.cs" />
     <Compile Include="DapperDataAccess\Entities\Deposito.cs" />
     <Compile Include="DapperDataAccess\Entities\DeudaBancaria.cs" />
     <Compile Include="DapperDataAccess\Entities\EstadoGeneralSchema.cs" />

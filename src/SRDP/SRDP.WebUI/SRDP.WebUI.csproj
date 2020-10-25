@@ -304,6 +304,7 @@
     <Compile Include="Models\AlertaIndividualModel.cs" />
     <Compile Include="Models\AlertaParametersModel.cs" />
     <Compile Include="Models\DeclaracionModel.cs" />
+    <Compile Include="Models\DeclaracionResumenModel.cs" />
     <Compile Include="Models\DepositoModel.cs" />
     <Compile Include="Models\DeudaBancariaModel.cs" />
     <Compile Include="Models\EstadoGeneralModel.cs" />
@@ -322,6 +323,7 @@
     <Compile Include="Models\VehiculoModel.cs" />
     <Compile Include="ModelViews\AlertaGeneralModelView.cs" />
     <Compile Include="ModelViews\AlertaIndividualModelView.cs" />
+    <Compile Include="ModelViews\DeclaracionResumenView.cs" />
     <Compile Include="ModelViews\EstadoGeneralModelView.cs" />
     <Compile Include="ModelViews\HistoricoIndividualModelView.cs" />
     <Compile Include="ModelViews\NuevaGestionModelView.cs" />

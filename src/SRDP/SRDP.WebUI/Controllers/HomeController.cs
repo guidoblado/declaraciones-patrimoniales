@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SRDP.Application.UseCases.GetDeclaracion;
+using SRDP.Application.UseCases.GetDeclaracionResumen;
 using SRDP.Application.UseCases.GetGestiones;
 using SRDP.Application.UseCases.GetProfile;
 using SRDP.WebUI.Models;
@@ -14,13 +15,13 @@ namespace SRDP.WebUI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IGetDeclaracionUserCase _getDeclaracionUserCase;
+        private readonly IGetDeclaracionResumenUserCase _getDeclaracionResumenUserCase;
         private readonly IGetProfileUserCase _getProfileUserCase;
         private readonly IGetGestionesUserCase _getGestionesUserCase;
 
-        public HomeController(IGetDeclaracionUserCase getDeclaracionUserCase, IGetProfileUserCase getProfileUserCase, IGetGestionesUserCase getGestionesUserCase)
+        public HomeController(IGetDeclaracionResumenUserCase getDeclaracionResumenUserCase, IGetProfileUserCase getProfileUserCase, IGetGestionesUserCase getGestionesUserCase)
         {
-            _getDeclaracionUserCase = getDeclaracionUserCase;
+            _getDeclaracionResumenUserCase = getDeclaracionResumenUserCase;
             _getProfileUserCase = getProfileUserCase;
             _getGestionesUserCase = getGestionesUserCase;
         }
@@ -33,8 +34,8 @@ namespace SRDP.WebUI.Controllers
             var gestionActual = await _getGestionesUserCase.GestionVigente();
             if (gestionActual == null)
                 throw new Exception("No hay ninguna gestión Vigente");
-            var declaracion = await _getDeclaracionUserCase.Execute(gestionActual.Anio, profile.FuncionarioID);
-            var viewModel = Mapper.Map<DeclaracionModel>(declaracion);
+            var declaracion = await _getDeclaracionResumenUserCase.Execute(gestionActual.Anio, profile.FuncionarioID);
+            var viewModel = Mapper.Map<DeclaracionResumenModel>(declaracion);
             return View(viewModel);
         }
 

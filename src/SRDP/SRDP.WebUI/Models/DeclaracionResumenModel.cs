@@ -16,5 +16,8 @@ namespace SRDP.WebUI.Models
 
         [Display(Name = "Estado Declaración")]
         public string Estado { get; set; }
+
+        public IList<DeclaracionResumenModel> DeclaracionesAnteriores { get; set; }
+
     }
 }

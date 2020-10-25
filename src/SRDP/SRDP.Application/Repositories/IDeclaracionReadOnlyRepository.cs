@@ -14,6 +14,6 @@ namespace SRDP.Application.Repositories
         Task<Declaracion> Get(Gestion gestion, int funcionarioID);
         Task<ICollection<Declaracion>> GetByGestion(Gestion gestion);
         Task<Guid> GetDeclaracionAnteriorID(Guid declaracionID);
-        Task<ICollection<Guid>> GetDeclaracionesAnterioresIDs(Guid declaracionID);
+        Task<ICollection<DeclaracionResumen>> GetDeclaracionesResumen(int gestion, int funcionarioID);
     }
 }

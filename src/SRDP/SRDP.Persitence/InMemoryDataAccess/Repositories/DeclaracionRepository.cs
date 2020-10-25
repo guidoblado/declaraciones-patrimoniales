@@ -51,7 +51,7 @@ namespace SRDP.Persitence.InMemoryDataAccess.Repositories
         {
             throw new NotImplementedException();
         }
-        public async Task<ICollection<Guid>> GetDeclaracionesAnterioresIDs(Guid declaracionID)
+        public async Task<ICollection<DeclaracionResumen>> GetDeclaracionesResumen(int gestion, int funcionarioID)
         {
             throw new NotImplementedException();
         }

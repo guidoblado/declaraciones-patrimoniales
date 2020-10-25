@@ -44,6 +44,7 @@
     <Compile Include="AdAccountInvalidException.cs" />
     <Compile Include="Alertas\ReglaAlerta.cs" />
     <Compile Include="Declaraciones\Declaracion.cs" />
+    <Compile Include="Declaraciones\DeclaracionResumen.cs" />
     <Compile Include="Declaraciones\DepositoCollection.cs" />
     <Compile Include="Declaraciones\DeudaBancariaCollection.cs" />
     <Compile Include="Declaraciones\InmuebleCollection.cs" />

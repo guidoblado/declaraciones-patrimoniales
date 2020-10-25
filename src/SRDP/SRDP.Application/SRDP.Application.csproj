@@ -92,6 +92,7 @@
     <Compile Include="UseCases\CreateGestion\CreateGestionUserCase.cs" />
     <Compile Include="UseCases\CreateGestion\ICreateGestionUserCase.cs" />
     <Compile Include="UseCases\DeclaracionOutput.cs" />
+    <Compile Include="UseCases\DeclaracionResumenOutput.cs" />
     <Compile Include="UseCases\DepositoOutput.cs" />
     <Compile Include="UseCases\DeudaBancariaOutput.cs" />
     <Compile Include="UseCases\GestionOutput.cs" />
@@ -101,6 +102,8 @@
     <Compile Include="UseCases\GetAlertaIndividual\IGetAlertaIndividualUserCase.cs" />
     <Compile Include="UseCases\GetCatalogos\GetCatalogosUserCase.cs" />
     <Compile Include="UseCases\GetCatalogos\IGetCatalogosUserCase.cs" />
+    <Compile Include="UseCases\GetDeclaracionResumen\GetDeclaracionResumenUserCase.cs" />
+    <Compile Include="UseCases\GetDeclaracionResumen\IGetDeclaracionResumenUserCase.cs" />
     <Compile Include="UseCases\GetDeclaracion\GetDeclaracionUserCase.cs" />
     <Compile Include="UseCases\GetDeclaracion\IGetDeclaracionUserCase.cs" />
     <Compile Include="UseCases\GetDepositos\GetDepositosUserCase.cs" />
