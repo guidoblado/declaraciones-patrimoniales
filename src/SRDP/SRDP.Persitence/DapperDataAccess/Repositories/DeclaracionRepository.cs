@@ -131,6 +131,11 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
             }
         }
 
+        public async Task<ICollection<Guid>> GetDeclaracionesAnterioresIDs(Guid declaracionID)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region Private Methods
@@ -266,7 +271,6 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
             }
         }
 
-        
         #endregion
     }
 }
