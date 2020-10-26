@@ -7,8 +7,60 @@
 <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 <div class="jumbotron">
     <h1>SRDP</h1>
-    <p class="lead">Bienvenido al Sistema de Registro de Declaraciones Patrimoniales.</p>
+    <p class="lead">Bienvenido @ViewBag.NombreCompleto al Sistema de Registro de Declaraciones Patrimoniales.</p>
     <p><a href="~/declaraciones/details/@Model.DeclaracionID" class="btn btn-primary btn-lg">Ingresar al Formulario &raquo;</a></p>
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card" style="margin:16px 0 8px 0">
+                <div class="card-header">
+                    <div class="card-title">
+                        <p class="lead">Declaraciones Anteriores</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    @if (Model.DeclaracionesAnteriores.Count == 0)
+                    {
+                        <p class="font-weight-bolder">Ud. no tiene declaraciones anteriores</p>
+                    }
+                    else 
+                    { 
+
+                    <table id="depositosTable" class="table table-bordered table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.DeclaracionesAnteriores[0].Gestion)
+                                </th>
+                                <th scope="col">
+                                    @Html.LabelFor(model => model.DeclaracionesAnteriores[0].Estado)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.DeclaracionesAnteriores)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Gestion)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Estado)
+                                    </td>
+                                    <td width="130px">
+                                        @Html.ActionLink("Ver declaración", "DeclaracionReport", "Declaraciones", new { declaracionID = item.DeclaracionID }, new { @class = "btn btn-info btn-round" })
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 

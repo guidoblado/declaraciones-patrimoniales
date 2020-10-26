@@ -35,6 +35,7 @@ namespace SRDP.WebUI.Controllers
             if (gestionActual == null)
                 throw new Exception("No hay ninguna gestión Vigente");
             var declaracion = await _getDeclaracionResumenUserCase.Execute(gestionActual.Anio, profile.FuncionarioID);
+            ViewBag.NombreCompleto = profile.NombreCompleto;
             var viewModel = Mapper.Map<DeclaracionResumenModel>(declaracion);
             return View(viewModel);
         }

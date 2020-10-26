@@ -135,8 +135,8 @@ namespace SRDP.Persitence.DapperDataAccess.Repositories
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                string sqlCommand = "Exec dbo.DeclaracionResumen_Selecionar";
-                var declaraciones = await db.QueryAsync<Entities.DeclaracionResumen>(sqlCommand);
+                string sqlCommand = "Exec dbo.DeclaracionResumen_Selecionar @Gestion, @FuncionarioID";
+                var declaraciones = await db.QueryAsync<Entities.DeclaracionResumen>(sqlCommand, new { gestion, funcionarioID });
 
                 var outputResult = new List<DeclaracionResumen>();
                 if (declaraciones == null) return outputResult;
