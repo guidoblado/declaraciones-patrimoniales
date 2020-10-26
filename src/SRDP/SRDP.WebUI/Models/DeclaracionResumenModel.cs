@@ -12,6 +12,7 @@ namespace SRDP.WebUI.Models
         [Key]
         public Guid DeclaracionID { get; set; }
 
+        [Display(Name = "Gestión")]
         public int Gestion { get; set; }
 
         [Display(Name = "Estado Declaración")]
