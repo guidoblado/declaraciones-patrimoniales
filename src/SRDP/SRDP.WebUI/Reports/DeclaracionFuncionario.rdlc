@@ -993,7 +993,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Valor Comercial</Value>
+                                  <Value>Valor Comercial/Anticrético</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
@@ -1097,7 +1097,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Banco</Value>
+                                  <Value>Banco/Observación</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>

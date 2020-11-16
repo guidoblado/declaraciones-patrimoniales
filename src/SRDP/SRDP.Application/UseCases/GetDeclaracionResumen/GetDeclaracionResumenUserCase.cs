@@ -29,7 +29,7 @@ namespace SRDP.Application.UseCases.GetDeclaracionResumen
             var declaracionActual = await _declaracionReadOnlyRepository.Get(Gestion.For(gestion.Anio, gestion.FechaInicio, gestion.FechaFinal, gestion.Vigente), funcionarioID);
 
             if (declaracionActual == null)
-                throw new ApplicationException("No exsite Declarion para el FuncionarioID '" + funcionarioID.ToString() + "' en la gestión '" + anio.ToString() + "'");
+                throw new ApplicationException("No exsiste Declaración para el FuncionarioID '" + funcionarioID.ToString() + "' en la gestión '" + anio.ToString() + "'");
             
             var declaraciones = await _declaracionReadOnlyRepository.GetDeclaracionesResumen(anio, funcionarioID);
 

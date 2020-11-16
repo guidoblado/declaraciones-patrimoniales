@@ -189,7 +189,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Valor Comercial</Value>
+                                  <Value>Valor Comercial/Anticrético</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -249,7 +249,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Banco</Value>
+                                  <Value>Banco/Observación</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>

@@ -28,7 +28,7 @@ namespace SRDP.WebUI.Models
         [Range(1, 100, ErrorMessage = "Debe ingresar un valor entre 1 y 100")]
         public decimal PorcentajeParticipacion { get; set; }
 
-        [Display(Name ="Valor Comercial $us")]
+        [Display(Name ="Valor Comercial / Anticrético $us")]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [Range(1, int.MaxValue, ErrorMessage = "Debe ingresar un valor mayor a cero")]
         public decimal ValorComercial { get; set; }
@@ -38,8 +38,7 @@ namespace SRDP.WebUI.Models
         [RequiredIf("Banco", ErrorMessage = "El campo 'Saldo' es requerido y mayor a cero cuando se especifica 'Banco'")]
         public decimal SaldoHipoteca { get; set; }
 
-        [Display(Name = "Banco")]
-        [RequiredOnDecimalPropertyValue("SaldoHipoteca", ErrorMessage = "El Banco es requerido cuando Saldo Hipoteca tiene valor")]
+        [Display(Name = "Banco / Observación")]
         public string Banco { get; set; }
 
         public static IEnumerable<SelectListItem> GetTiposDeInmuebles()
