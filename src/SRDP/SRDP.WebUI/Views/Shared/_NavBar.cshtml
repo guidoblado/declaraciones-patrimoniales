@@ -4,10 +4,11 @@
         @Html.ActionLink("SRDP", "Index", "Home", new { @class = "navbar-brand" })
         <ul class="nav navbar-nav">
             <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-            <li>@Html.ActionLink("Declaraciones", "Index", "Declaraciones")</li>
+            
             @*Administrator AREA*@
             @if(User.IsInRole("Administrador"))
             { 
+                <li>@Html.ActionLink("Declaraciones", "Index", "Declaraciones")</li>
                 <li class="nav-item dropdown">
                     <a class="dropdown-toggle" href="#" id="navbardropreports" data-toggle="dropdown">
                         Reportes
